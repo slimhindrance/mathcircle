@@ -81,12 +81,20 @@ write_files:
       __DOMAIN__ {
           encode zstd gzip
 
-          basic_auth {
+          # Public-facing pages that bypass basic-auth (school-district pitch + static assets)
+          @public {
+              path /about /about/ /static/*
+          }
+
+          # Everything else requires household login.
+          @private {
+              not path /about /about/ /static/*
+          }
+          basic_auth @private {
               __BASIC_AUTH_USER__ __BASIC_AUTH_HASH__
           }
 
-          @static path /static/*
-          header @static Cache-Control "public, max-age=86400"
+          header /static/* Cache-Control "public, max-age=86400"
 
           header {
               Strict-Transport-Security "max-age=31536000; includeSubDomains"

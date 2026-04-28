@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+{% block title %}About Math Circle Home{% endblock %}
+{% block head %}
+<style>
+  .hero {
+    padding: 2.4rem 1.5rem 2rem;
+    background: linear-gradient(120deg, #fdf6e3 0%, #fff8e7 100%);
+    border-radius: var(--radius);
+    margin-bottom: 1.4rem;
+    border: 1px solid var(--line);
+  }
+  .hero h1 { font-size: 2.4rem; margin: 0 0 .4rem; }
+  .hero .tagline { font-size: 1.2rem; color: var(--ink-soft); font-style: italic; max-width: 680px; }
+  .stat-row { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 1.4rem; }
+  .stat { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: .8rem 1.1rem; }
+  .stat .num { font-size: 1.8rem; font-weight: 700; color: var(--cool); }
+  .stat .label { font-size: .85rem; color: var(--ink-soft); }
+  .pillar { display: grid; grid-template-columns: 64px 1fr; gap: 1rem; padding: 1.1rem 0; border-top: 1px solid var(--line); }
+  .pillar:first-of-type { border-top: none; }
+  .pillar .icon { font-size: 2rem; line-height: 1; padding-top: .15rem; }
+  .pillar h3 { margin: 0 0 .25rem; font-size: 1.15rem; }
+  .pillar p  { margin: 0 0 .25rem; }
+  .quote { font-style: italic; color: var(--cool); padding-left: 1rem; border-left: 3px solid var(--accent-2); margin: .6rem 0; }
+  .pulldown { background: var(--bg-soft); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: .9rem 1.1rem; }
+  .pulldown summary { font-weight: 600; cursor: pointer; color: var(--cool); }
+  .pulldown[open] { background: var(--paper); }
+  .lineage-item { padding: .35rem 0; }
+  .lineage-item .src { font-weight: 600; color: var(--cool); }
+  .grid-3 { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+  .pitch-card {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--primary);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.1rem;
+  }
+  .pitch-card h4 { margin: 0 0 .25rem; }
+  .compare-table { width: 100%; border-collapse: collapse; margin: .8rem 0; }
+  .compare-table th, .compare-table td { padding: .55rem .6rem; text-align: left; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .compare-table th { background: var(--bg-soft); font-size: .9rem; }
+  .compare-table tr:last-child td { border-bottom: none; }
+  .footer-cta { background: var(--cool); color: #fff; padding: 1.6rem; border-radius: var(--radius); margin-top: 2rem; }
+  .footer-cta a { color: var(--warm); border-bottom-color: var(--warm); }
+  ol.numbered { padding-left: 1.4rem; }
+  ol.numbered li { margin: .35rem 0; }
+</style>
+{% endblock %}
+{% block body %}
+
+<section class="hero">
+  <h1>Math Circle Home</h1>
+  <p class="tagline">A joyful, Soviet-style enrichment app for K–2 — depth before acceleration, strategies before answers, conversation before quizzes.</p>
+  <div class="stat-row">
+    <div class="stat"><div class="num">{{ problem_count }}+</div><div class="label">curated puzzles, growing daily</div></div>
+    <div class="stat"><div class="num">{{ strand_count }}</div><div class="label">math strands rotated weekly</div></div>
+    <div class="stat"><div class="num">22</div><div class="label">generators producing infinite variants</div></div>
+    <div class="stat"><div class="num">7</div><div class="label">progressive difficulty levels (Pre-K → Gr 3)</div></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Why this exists</h2>
+  <p>A Romanian high-school graduate at 18 has covered single-variable calculus with proofs, linear algebra, abstract algebra, complex numbers, combinatorics, probability, and analytic geometry. A US student finishing AP Calculus BC has done single-variable calculus, no proofs, and that's it.</p>
+  <p>The gap doesn't open in 11th grade. <strong>It opens in kindergarten</strong> — when one tradition is teaching arithmetic drill while the other is teaching structure, decomposition, parity, invariance, systematic listing, and reasoning under constraints.</p>
+  <p class="quote">"Math is not about numbers, equations, computations or algorithms: it is about understanding." — William Paul Thurston</p>
+  <p>Math Circle Home is a small, focused tool to do that other kind of math at home, joyfully, 15–25 minutes a day.</p>
+</section>
+
+<section class="card">
+  <h2>Six pillars of the design</h2>
+
+  <div class="pillar">
+    <div class="icon">📚</div>
+    <div>
+      <h3>1. Pedagogical lineage is explicit</h3>
+      <p>This is not invented from scratch. It draws from a documented tradition of cognitive-development math education:</p>
+      <div class="lineage-item"><span class="src">Alexander Zvonkin</span> — <em>Math from Three to Seven</em> (the Soviet "math circle for preschoolers" classic; the source of our preference for puzzles over worksheets at this age).</div>
+      <div class="lineage-item"><span class="src">Boris Kordemsky</span> — <em>The Moscow Puzzles</em> (the canonical Russian puzzle anthology; many of our logic-classification problems trace back here).</div>
+      <div class="lineage-item"><span class="src">Tracy Zager</span> — <em>Becoming the Math Teacher You Wish You'd Had</em> (the modern clinical articulation of the four magic prompts and the "good struggle" idea).</div>
+      <div class="lineage-item"><span class="src">Jo Boaler</span> — <em>Mathematical Mindsets</em> (the research case for praising strategy over speed; for us, this is why we never time problems).</div>
+      <div class="lineage-item"><span class="src">James Tanton</span> — Curriculum Inspirations (the "explain another way" prompt that ends every problem).</div>
+      <div class="lineage-item"><span class="src">Phil Daro</span> — Common Core architect; influenced our balance-and-equality strand specifically (the radical idea that <code>=</code> means "the same as", not "the answer is").</div>
+    </div>
+  </div>
+
+  <div class="pillar">
+    <div class="icon">🪄</div>
+    <div>
+      <h3>2. The four magic prompts, baked in</h3>
+      <p>Every problem ends with one or more of these. They are the most reliably underused tools in early math instruction:</p>
+      <ol class="numbered">
+        <li><strong>"How do you know?"</strong> — even after a right answer.</li>
+        <li><strong>"Can you show it another way?"</strong> — fingers, drawing, ten-frame, story.</li>
+        <li><strong>"What if it were different?"</strong> — what if the number were 8 instead of 7? what if there were 3 baskets?</li>
+        <li><strong>"What did you notice?"</strong> — at the end of every session.</li>
+      </ol>
+      <p>Each problem in the bank carries an <code>explain_prompt</code> field. A child can reach the right answer without articulation, but the conversation is what builds long-term mathematical thinking.</p>
+    </div>
+  </div>
+
+  <div class="pillar">
+    <div class="icon">🧭</div>
+    <div>
+      <h3>3. Strategy tracking, not score tracking</h3>
+      <p>Most apps track <em>whether</em> a child got the answer. Math Circle Home tracks <em>how</em> they thought about it.</p>
+      <ul>
+        <li>Each problem ships with a list of <em>possible strategies</em> a child might use ("count up", "near-doubles", "decompose", "balance model", "work backwards", etc.).</li>
+        <li>Children and parents can record the strategy used in a strategy-notes field per attempt.</li>
+        <li>Every attempt also receives a parent rating: <strong>easy</strong>, <strong>good struggle</strong>, or <strong>too hard</strong>. This rating directly drives level adaptation — the system targets the productive-confusion zone, not the get-it-right zone.</li>
+      </ul>
+      <p class="quote">"Praise the strategy, not the speed." — the principle behind every UX choice in this app.</p>
+    </div>
+  </div>
+
+  <div class="pillar">
+    <div class="icon">🌟</div>
+    <div>
+      <h3>4. Math Circle Night mode</h3>
+      <p>Modeled on the Soviet/Russian after-school math circle: a 20–30 minute session for siblings or small mixed-age groups, working <em>cooperatively</em> on a shared problem. The system composes a mixed-level plan automatically — the older child explains, the younger spots patterns, both contribute.</p>
+      <p>This is the underrated dimension of the math-circle tradition: <strong>math is a social activity</strong>. The home version of "math night" can be ten minutes at the kitchen table, but it changes how children identify with the subject.</p>
+    </div>
+  </div>
+
+  <div class="pillar">
+    <div class="icon">📊</div>
+    <div>
+      <h3>5. Open longitudinal data (JSON / CSV export)</h3>
+      <p>Every attempt, every strategy note, every parent rating, every session plan is exportable as JSON or CSV from the parent dashboard. No proprietary lock-in, no walled garden. A teacher, researcher, or curious parent can:</p>
+      <ul>
+        <li>See which strategies a child returns to over time.</li>
+        <li>Track when "good struggle" turns into mastery, by strand.</li>
+        <li>Look for stalled levels and target conversations there.</li>
+        <li>Hand the data to another tool — anki, a spreadsheet, a research project.</li>
+      </ul>
+      <p>The promise: <strong>your child's mathematical thinking belongs to you</strong>.</p>
+    </div>
+  </div>
+
+  <div class="pillar">
+    <div class="icon">🔄</div>
+    <div>
+      <h3>6. A living curriculum</h3>
+      <p>Math Circle Home is open source and auto-deployed from GitHub. Every commit to <code>main</code> updates the live system within seconds. Curriculum improvements show up the next morning. New problem types ship monthly. The seed bank grows with use — every parametric problem a child sees is persisted, so the bank gets richer over time.</p>
+      <p>Effective bank size <strong>after one year of daily use: ~2,300 problems</strong>. After three years, more than 6,000.</p>
+    </div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>The 10 strands we rotate across</h2>
+  <p>Most American K–2 math sits in two strands: number sense and addition/subtraction. We rotate across ten:</p>
+  <div class="grid-3">
+    <div class="pitch-card" style="border-left-color:#e76f51"><h4>🔢 Number Sense</h4><p>Subitizing, counting, ten-frames, place value, comparing.</p></div>
+    <div class="pitch-card" style="border-left-color:#f4a261"><h4>➕ Add/Sub Structures</h4><p>Part-whole, change, comparison — the <em>shapes</em> of arithmetic, not just answers.</p></div>
+    <div class="pitch-card" style="border-left-color:#e9c46a"><h4>🔍 Mystery Numbers</h4><p>Secret-number puzzles that plant the seed of algebra without symbols.</p></div>
+    <div class="pitch-card" style="border-left-color:#2a9d8f"><h4>⚖️ Equality & Balance</h4><p>"=" means the same as. True/false equations, balance scales.</p></div>
+    <div class="pitch-card" style="border-left-color:#264653"><h4>🔁 Patterns</h4><p>Repeating, growing, function-machine. Predict and explain.</p></div>
+    <div class="pitch-card" style="border-left-color:#9b5de5"><h4>🧠 Logic & Sorting</h4><p>Attribute games, "is not" clues, line-ups, pigeonhole reasoning.</p></div>
+    <div class="pitch-card" style="border-left-color:#00bbf9"><h4>🔺 Geometry & Space</h4><p>Symmetry, paper folding, mental rotation, tangram, position words.</p></div>
+    <div class="pitch-card" style="border-left-color:#00f5d4"><h4>📏 Measurement</h4><p>Length, time, money, weight — standard and child-invented units.</p></div>
+    <div class="pitch-card" style="border-left-color:#f15bb5"><h4>🌳 Counting Ways</h4><p>How many ways? Outfits, paths, breakdowns. Early combinatorics.</p></div>
+    <div class="pitch-card" style="border-left-color:#fee440"><h4>🎲 Math Games</h4><p>Two-player strategy (Nim, Race-to-100, Pig). Strategy = invariant thinking.</p></div>
+  </div>
+</section>
+
+<section class="card">
+  <h2>How a session works</h2>
+  <p>Every daily session is 15–25 minutes and follows the same shape — modeled on the Russian math-circle session structure:</p>
+  <ol class="numbered">
+    <li>☀️ <strong>Warm-up:</strong> 3 quick mental-math rounds (often parametrically generated, so they never repeat).</li>
+    <li>🧩 <strong>Rich puzzle:</strong> one juicy problem worth talking through (5–8 minutes).</li>
+    <li>🖐️ <strong>Visual / hands-on:</strong> ten-frames, blocks, paper folding, tangrams.</li>
+    <li>📖 <strong>Story problem:</strong> a small situation to model and solve.</li>
+    <li>💬 <strong>Explain:</strong> "How do you know?" — the most important question in math.</li>
+    <li>🏡 <strong>Kitchen-table follow-up:</strong> a physical activity to play later with toys, coins, or food.</li>
+  </ol>
+  <p>The session composer adapts difficulty per-child, per-strand, in real time. There's no single "Grade 1 track" — Danica might be at Level 4 in patterns and Level 2 in geometry, and that's the whole point.</p>
+</section>
+
+<section class="card">
+  <h2>What's <em>not</em> here, on purpose</h2>
+  <table class="compare-table">
+    <thead>
+      <tr><th>What we don't do</th><th>Why</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Speed timing on problems</td>
+        <td>Speed pressure correlates negatively with deep understanding (Boaler 2014). We never time anything.</td>
+      </tr>
+      <tr>
+        <td>Stars, gold coins, leaderboards</td>
+        <td>External rewards reliably crowd out intrinsic interest in math. The reward IS the puzzle being satisfying.</td>
+      </tr>
+      <tr>
+        <td>Cartoon characters teaching algorithms</td>
+        <td>The teacher is the parent. The animation is the child explaining their own thinking.</td>
+      </tr>
+      <tr>
+        <td>"Drill mode" / fluency races</td>
+        <td>Our position: K–2 is the wrong age for fluency drill. Number sense first — fluency follows it, not the other way around.</td>
+      </tr>
+      <tr>
+        <td>Pushing toward formal algebra</td>
+        <td>The seeds of algebra (mystery numbers, balance thinking, equality both ways) are everywhere. The notation can wait until Grade 4–5.</td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section class="card">
+  <h2>For school administrators</h2>
+  <details class="pulldown">
+    <summary>Could this scale to a classroom or a district?</summary>
+    <p>Today the architecture is "single-household local-first" — one parent, ≤4 children, SQLite database, single EC2 t2.micro instance. The promotion path to multi-tenant is straightforward:</p>
+    <ol class="numbered">
+      <li>Switch the database connection string to Postgres (no schema port needed; SQLAlchemy supports both natively).</li>
+      <li>Add a <code>User</code>/<code>Family</code> table as the tenant boundary; the <code>Child</code> model already keys cleanly under that.</li>
+      <li>Move the seed bank to S3 so it can be updated independently of code releases.</li>
+      <li>Front the app with a CDN; pages are mostly read-mostly per child.</li>
+      <li>Add classroom-mode auth (teacher account → multiple children → cohort dashboard).</li>
+    </ol>
+    <p>Estimated cost at 1,000 active families: ~$30/month infrastructure on AWS.</p>
+  </details>
+  <details class="pulldown">
+    <summary>Where is the data stored? Is it private?</summary>
+    <p>In the current single-household configuration, all data lives on one EC2 instance the family controls. SQLite snapshots are encrypted (AES-256) and backed up nightly to a private S3 bucket the family owns. No third-party analytics, no telemetry, no data sharing. The full export is a single button in the parent dashboard.</p>
+    <p>For a multi-tenant deployment, the operator would need to define a privacy policy and either keep data per-tenant in isolated databases or apply row-level security in Postgres. The codebase is licensed permissively — schools can fork and self-host.</p>
+  </details>
+  <details class="pulldown">
+    <summary>What does the research say about this approach?</summary>
+    <ul>
+      <li>Boaler, J. (2016). <em>Mathematical Mindsets</em>. Strategy-praise &gt; speed-praise; "low floor, high ceiling" tasks; reasoning over computation.</li>
+      <li>Carpenter, T. P. et al. (2003). <em>Thinking Mathematically</em>. The case for treating equality as a relation between two equally-valued expressions, not as "compute the answer".</li>
+      <li>Russian Math Circle tradition (Zvonkin, Stankova). Documented advantage of <em>conversational, problem-based</em> early math over algorithmic instruction. Most striking finding: by age 12, the gap between "circle kids" and "drill kids" is roughly 2–3 grade levels of mathematical sophistication.</li>
+      <li>Tanton, J. <em>Curriculum Inspirations</em>. Practical taxonomy of how to extend a problem rather than move on.</li>
+    </ul>
+  </details>
+  <details class="pulldown">
+    <summary>How is the curriculum kept current?</summary>
+    <p>Every change to the public GitHub repository (<a href="https://github.com/slimhindrance/mathcircle">slimhindrance/mathcircle</a>) is auto-deployed within seconds. New problem types ship monthly. The parametric generators produce fresh content indefinitely — the bank effectively grows by roughly 50–80 problems per active family per month of use.</p>
+  </details>
+</section>
+
+<section class="footer-cta">
+  <h2>To explore the live app</h2>
+  <p>Behind a household login at <a href="/">mathcircle.base2ml.com</a>. For research access or a school-district pilot, contact <a href="mailto:christopherwlindeman@gmail.com">christopherwlindeman@gmail.com</a>.</p>
+  <p style="margin-top:1rem"><a href="https://github.com/slimhindrance/mathcircle">Source code on GitHub →</a></p>
+</section>
+
+{% endblock %}

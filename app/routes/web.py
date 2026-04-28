@@ -309,6 +309,18 @@ def parent_guide(request: Request):
     return _templates(request).TemplateResponse(request, "parent_guide.html")
 
 
+@router.get("/about", response_class=HTMLResponse)
+def about(request: Request, db: Session = Depends(get_db)):
+    """Public-facing pitch page. Caddy is configured to bypass basic-auth here."""
+    strand_count = db.execute(select(func.count(Strand.id))).scalar_one()
+    problem_count = db.execute(select(func.count(Problem.id))).scalar_one()
+    return _templates(request).TemplateResponse(
+        request,
+        "about.html",
+        {"problem_count": problem_count, "strand_count": strand_count},
+    )
+
+
 @router.get("/parent/notes/{child_id}", response_class=HTMLResponse)
 def parent_notes(child_id: int, request: Request, db: Session = Depends(get_db)):
     c = db.get(Child, child_id)
