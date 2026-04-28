@@ -137,16 +137,16 @@ def ensure_default_children(db: Session) -> None:
         [
             Child(
                 name="Danica",
-                grade="K",
-                age=6,
+                grade="1",
+                age=7,
                 interests="",
                 avatar="🦊",
                 color="#f4a261",
             ),
             Child(
                 name="Mila",
-                grade="1",
-                age=7,
+                grade="K",
+                age=6,
                 interests="",
                 avatar="🐝",
                 color="#e9c46a",
