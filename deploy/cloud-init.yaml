@@ -156,11 +156,12 @@ write_files:
       17 3 * * * root /opt/mathcircle/bin/backup.sh
 
 runcmd:
-  # 1. install Caddy
+  # 1. install Caddy — force-confnew so our pre-written /etc/caddy/Caddyfile wins
+  #    (otherwise dpkg prompts about modified config files and stalls)
   - curl -fsSL "https://dl.cloudsmith.io/public/caddy/stable/gpg.key" | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
   - 'echo "deb [signed-by=/usr/share/keyrings/caddy-stable-archive-keyring.gpg] https://dl.cloudsmith.io/public/caddy/stable/deb/debian any-version main" > /etc/apt/sources.list.d/caddy-stable.list'
-  - apt-get update
-  - DEBIAN_FRONTEND=noninteractive apt-get install -y caddy
+  - DEBIAN_FRONTEND=noninteractive apt-get update
+  - DEBIAN_FRONTEND=noninteractive apt-get install -y -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confdef" caddy
 
   # 2. clone the app
   - mkdir -p /opt/mathcircle/data /opt/mathcircle/logs /opt/mathcircle/backups
@@ -178,8 +179,5 @@ runcmd:
   - systemctl daemon-reload
   - systemctl enable --now mathcircle
   - systemctl reload caddy || systemctl restart caddy
-
-  # 6. enable unattended security updates
-  - dpkg-reconfigure --priority=low unattended-upgrades
 
 final_message: "Math Circle Home is up. Tail journalctl -u mathcircle / journalctl -u caddy."
