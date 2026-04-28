@@ -105,13 +105,14 @@
   <div class="pillar">
     <div class="icon">🧭</div>
     <div>
-      <h3>3. Strategy tracking, not score tracking</h3>
+      <h3>3. Strategy tracking + an optional AI tutor's-eye-view</h3>
       <p>Most apps track <em>whether</em> a child got the answer. Math Circle Home tracks <em>how</em> they thought about it.</p>
       <ul>
-        <li>Each problem ships with a list of <em>possible strategies</em> a child might use ("count up", "near-doubles", "decompose", "balance model", "work backwards", etc.).</li>
-        <li>Children and parents can record the strategy used in a strategy-notes field per attempt.</li>
-        <li>Every attempt also receives a parent rating: <strong>easy</strong>, <strong>good struggle</strong>, or <strong>too hard</strong>. This rating directly drives level adaptation — the system targets the productive-confusion zone, not the get-it-right zone.</li>
+        <li>Each problem ships with a list of <em>possible strategies</em> a child might use ("count up", "near-doubles", "decompose", "balance model", "work backwards", etc.). These are hand-authored by the curriculum.</li>
+        <li>Parents type a free-text strategy note per attempt. The system stores the verbatim text.</li>
+        <li>Every attempt receives a parent rating: <strong>easy</strong>, <strong>good struggle</strong>, or <strong>too hard</strong>. This rating directly drives level adaptation — targeting the productive-confusion zone.</li>
       </ul>
+      <p><strong>Optionally</strong>, you can opt in to a daily AI digest: a short, parent-facing note that reads the last 24 hours of attempts + strategy notes + parent ratings, and surfaces patterns a parent might miss skimming the raw data. Powered by <a href="https://aws.amazon.com/bedrock/">Amazon Bedrock</a> with Anthropic's Claude Haiku 4.5, running in your own AWS account. Data does not leave your AWS region; the model is not trained on your prompts; child names are anonymized to "Child" before being sent. Costs roughly half a cent per digest (~$1.60/year for two children).</p>
       <p class="quote">"Praise the strategy, not the speed." — the principle behind every UX choice in this app.</p>
     </div>
   </div>
@@ -230,6 +231,14 @@
     <summary>Where is the data stored? Is it private?</summary>
     <p>In the current single-household configuration, all data lives on one EC2 instance the family controls. SQLite snapshots are encrypted (AES-256) and backed up nightly to a private S3 bucket the family owns. No third-party analytics, no telemetry, no data sharing. The full export is a single button in the parent dashboard.</p>
     <p>For a multi-tenant deployment, the operator would need to define a privacy policy and either keep data per-tenant in isolated databases or apply row-level security in Postgres. The codebase is licensed permissively — schools can fork and self-host.</p>
+  </details>
+  <details class="pulldown">
+    <summary>What does the optional AI digest do — and what about privacy?</summary>
+    <p>If a parent opts in (it's off by default; the opt-in screen requires reading a "what gets sent" disclosure first), the system runs one short call per day to <strong>Anthropic's Claude Haiku 4.5</strong> via <strong>Amazon Bedrock</strong>. The model writes a 1-paragraph parent-facing note about the day's practice — strategies, productive struggle, and a few suggestions for tomorrow.</p>
+    <p>What's sent: problem titles, strands, attempt outcomes, parent ratings, time-spent, and any parent-typed strategy notes from the last 24 hours.<br>
+    What's <em>not</em> sent: the child's real name (replaced with "Child" before the call), credentials, location, anything about other children.</p>
+    <p>Bedrock's contract: prompts and completions are not used to train models, do not leave the AWS region they're invoked in (us-east-1 here), and are not seen by any third party. The data lives only inside the customer's own AWS account.</p>
+    <p>Cost runs ~half a cent per digest. Disabling AI digests at any time is a single button on the dashboard; past digests are retained, future ones are not generated.</p>
   </details>
   <details class="pulldown">
     <summary>What does the research say about this approach?</summary>

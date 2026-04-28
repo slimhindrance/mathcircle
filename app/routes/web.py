@@ -9,7 +9,8 @@ from sqlalchemy import desc, func, select
 from sqlalchemy.orm import Session
 
 from ..database import get_db
-from ..models import Attempt, Child, Note, Problem, Session as SessionRow, Skill, Strand
+from ..models import Attempt, Child, Digest, Note, Problem, Session as SessionRow, Skill, Strand
+from ..ai_digest import generate_and_persist as ai_generate_and_persist
 from ..session_generator import build_preview_session, build_session_plan, circle_night_plan
 
 router = APIRouter()
@@ -145,6 +146,13 @@ def child_dashboard(child_id: int, request: Request, db: Session = Depends(get_d
             Attempt.child_id == child_id, Attempt.correct.is_(True)
         )
     ).scalar_one()
+    latest_digest = (
+        db.execute(
+            select(Digest).where(Digest.child_id == child_id).order_by(desc(Digest.created_at)).limit(1)
+        )
+        .scalars()
+        .first()
+    )
     return _templates(request).TemplateResponse(request, "child_dashboard.html", {
             "child": c,
             "strands": strands,
@@ -154,6 +162,7 @@ def child_dashboard(child_id: int, request: Request, db: Session = Depends(get_d
             "notes": notes,
             "total_attempts": total_attempts,
             "total_correct": total_correct,
+            "latest_digest": latest_digest,
         })
 
 
@@ -307,6 +316,33 @@ def problem_print(problem_id: int, request: Request, db: Session = Depends(get_d
 @router.get("/parent/guide", response_class=HTMLResponse)
 def parent_guide(request: Request):
     return _templates(request).TemplateResponse(request, "parent_guide.html")
+
+
+@router.post("/child/{child_id}/ai-optin")
+async def child_ai_optin(
+    child_id: int,
+    enabled: str = Form("false"),
+    db: Session = Depends(get_db),
+):
+    c = db.get(Child, child_id)
+    if c is None:
+        raise HTTPException(404)
+    c.ai_digests_enabled = enabled.lower() == "true"
+    from datetime import datetime as _dt
+    c.ai_digests_decided_at = _dt.utcnow()
+    db.commit()
+    return RedirectResponse(f"/child/{child_id}", status_code=303)
+
+
+@router.post("/child/{child_id}/digest/run")
+def child_digest_run(child_id: int, db: Session = Depends(get_db)):
+    c = db.get(Child, child_id)
+    if c is None:
+        raise HTTPException(404)
+    if not c.ai_digests_enabled:
+        raise HTTPException(403, "AI digests not enabled")
+    ai_generate_and_persist(db, c, hours=24, period_label="adhoc")
+    return RedirectResponse(f"/child/{child_id}", status_code=303)
 
 
 @router.get("/about", response_class=HTMLResponse)

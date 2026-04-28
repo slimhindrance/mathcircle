@@ -47,6 +47,9 @@ class Child(Base):
     avatar: Mapped[str] = mapped_column(String(8), default="🦊")
     color: Mapped[str] = mapped_column(String(16), default="#f4a261")
     created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+    # AI digests opt-in. None = never asked; True/False = explicit choice.
+    ai_digests_enabled: Mapped[Optional[bool]] = mapped_column(Boolean, nullable=True)
+    ai_digests_decided_at: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
 
     skills: Mapped[list["Skill"]] = relationship(
         back_populates="child", cascade="all, delete-orphan"
@@ -158,6 +161,29 @@ class Note(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
 
     child: Mapped[Child] = relationship(back_populates="notes")
+
+
+class Digest(Base):
+    """Daily AI-generated summary of a child's math practice."""
+    __tablename__ = "digests"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    child_id: Mapped[int] = mapped_column(ForeignKey("children.id"), index=True)
+    period_start: Mapped[datetime] = mapped_column(DateTime, index=True)
+    period_end: Mapped[datetime] = mapped_column(DateTime)
+    period_label: Mapped[str] = mapped_column(String(32), default="daily")  # daily|weekly|adhoc
+    # Structured summary the model returns; rendered in the UI.
+    summary: Mapped[dict] = mapped_column(JSON)
+    # Full raw model response for debugging / auditing.
+    raw: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    model_id: Mapped[str] = mapped_column(String(80), default="")
+    input_tokens: Mapped[int] = mapped_column(Integer, default=0)
+    output_tokens: Mapped[int] = mapped_column(Integer, default=0)
+    cost_usd: Mapped[float] = mapped_column(default=0.0)
+    error: Mapped[Optional[str]] = mapped_column(Text, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, index=True)
+
+    child: Mapped[Child] = relationship()
 
 
 class GeneratedTemplate(Base):

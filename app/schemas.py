@@ -38,6 +38,26 @@ class ChildOut(_Base):
     avatar: str
     color: str
     created_at: datetime
+    ai_digests_enabled: Optional[bool] = None
+
+
+class DigestOut(_Base):
+    id: int
+    child_id: int
+    period_start: datetime
+    period_end: datetime
+    period_label: str
+    summary: dict
+    model_id: str
+    input_tokens: int
+    output_tokens: int
+    cost_usd: float
+    error: Optional[str] = None
+    created_at: datetime
+
+
+class AiOptIn(BaseModel):
+    enabled: bool
 
 
 class ProblemOut(_Base):

@@ -57,7 +57,23 @@ def session_scope() -> Iterator[Session]:
 
 
 def init_db() -> None:
-    """Create all tables. Idempotent."""
+    """Create all tables + apply lightweight in-place column migrations. Idempotent."""
     from . import models  # noqa: F401 — register mappers
+    from sqlalchemy import inspect, text
 
     Base.metadata.create_all(bind=engine)
+
+    # Lightweight schema additions for already-deployed DBs. Each entry is
+    # (table, column, ddl) and is only run if the column is missing.
+    additions = [
+        ("children", "ai_digests_enabled", "BOOLEAN"),
+        ("children", "ai_digests_decided_at", "DATETIME"),
+    ]
+    insp = inspect(engine)
+    with engine.begin() as conn:
+        for table, col, ddl in additions:
+            if table not in insp.get_table_names():
+                continue
+            existing_cols = {c["name"] for c in insp.get_columns(table)}
+            if col not in existing_cols:
+                conn.execute(text(f"ALTER TABLE {table} ADD COLUMN {col} {ddl}"))

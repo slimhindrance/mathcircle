@@ -13,10 +13,12 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from .. import schemas
+from ..ai_digest import generate_and_persist as ai_generate_and_persist
 from ..database import get_db
 from ..models import (
     Attempt,
     Child,
+    Digest,
     Note,
     Problem,
     Session as SessionRow,
@@ -275,6 +277,60 @@ def start_circle_session(child_ids: list[int], db: Session = Depends(get_db)):
 
 
 # ---------- Export ----------
+@router.put("/children/{child_id}/ai-digests")
+def set_ai_digests(
+    child_id: int,
+    payload: schemas.AiOptIn,
+    db: Session = Depends(get_db),
+):
+    c = db.get(Child, child_id)
+    if c is None:
+        raise HTTPException(404)
+    c.ai_digests_enabled = payload.enabled
+    c.ai_digests_decided_at = datetime.utcnow()
+    db.commit()
+    return {"child_id": c.id, "ai_digests_enabled": c.ai_digests_enabled}
+
+
+@router.get("/children/{child_id}/digests", response_model=list[schemas.DigestOut])
+def list_digests(child_id: int, limit: int = Query(20, le=100), db: Session = Depends(get_db)):
+    rows = (
+        db.execute(
+            select(Digest)
+            .where(Digest.child_id == child_id)
+            .order_by(Digest.created_at.desc())
+            .limit(limit)
+        )
+        .scalars()
+        .all()
+    )
+    return rows
+
+
+@router.post("/children/{child_id}/digests/run")
+def run_digest(
+    child_id: int,
+    hours: int = Query(24, ge=1, le=168),
+    period_label: str = "adhoc",
+    db: Session = Depends(get_db),
+):
+    c = db.get(Child, child_id)
+    if c is None:
+        raise HTTPException(404)
+    if not c.ai_digests_enabled:
+        raise HTTPException(403, "AI digests are not enabled for this child")
+    row = ai_generate_and_persist(db, c, hours=hours, period_label=period_label)
+    return {
+        "id": row.id,
+        "summary": row.summary,
+        "model_id": row.model_id,
+        "input_tokens": row.input_tokens,
+        "output_tokens": row.output_tokens,
+        "cost_usd": row.cost_usd,
+        "error": row.error,
+    }
+
+
 @router.get("/children/{child_id}/export.json")
 def export_json(child_id: int, db: Session = Depends(get_db)):
     child = db.get(Child, child_id)

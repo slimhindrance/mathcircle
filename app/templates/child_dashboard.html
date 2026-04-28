@@ -1,5 +1,49 @@
 {% extends "base.html" %}
 {% block title %}{{ child.name }} — Dashboard{% endblock %}
+{% block head %}
+<style>
+  .digest-card {
+    background: linear-gradient(120deg, #f7eefc 0%, #fff 100%);
+    border: 1.5px solid #d6b8f0;
+    border-radius: var(--radius);
+    padding: 1.4rem 1.5rem;
+    margin-bottom: 1.1rem;
+  }
+  .digest-card h2 { color: #6b3a8c; margin-top: 0; }
+  .digest-card .headline {
+    font-family: var(--serif);
+    font-size: 1.25rem;
+    color: var(--cool);
+    margin: .4rem 0 1rem;
+    line-height: 1.4;
+  }
+  .digest-card ul { margin: .3rem 0 .8rem 1.2rem; padding: 0; }
+  .digest-card .grid-2 { gap: 1rem; }
+  .digest-card .panel {
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: .8rem 1rem;
+  }
+  .digest-card .panel.celebrate { border-left: 4px solid #2a9d8f; }
+  .digest-card .panel.watch { border-left: 4px solid #e76f51; }
+  .digest-card .panel.try { border-left: 4px solid #f4a261; }
+  .digest-card .meta { color: var(--ink-soft); font-size: .8rem; margin-top: .8rem; }
+  .digest-card .strand-notes { background: var(--bg-soft); border-radius: var(--radius-sm); padding: .6rem .9rem; }
+  .digest-card .strand-notes .row { padding: .25rem 0; border-bottom: 1px dashed var(--line); }
+  .digest-card .strand-notes .row:last-child { border-bottom: none; }
+  .optin-banner {
+    background: #fff8e7;
+    border: 2px dashed var(--accent-2);
+    border-radius: var(--radius);
+    padding: 1.3rem 1.5rem;
+    margin-bottom: 1.1rem;
+  }
+  .optin-banner h2 { color: var(--cool); margin-top: 0; }
+  .optin-banner ul { margin: .3rem 0 1rem 1.2rem; }
+  .optin-banner .actions { display: flex; gap: .6rem; flex-wrap: wrap; }
+</style>
+{% endblock %}
 {% block body %}
 <section class="child-card" style="--child-color: {{ child.color }}; margin-bottom: 1rem;">
   <div style="display:flex; gap:1rem; align-items:center;">
@@ -24,6 +68,99 @@
     <a class="btn ghost small" href="/api/children/{{ child.id }}/export.csv" download>Export CSV</a>
   </div>
 </section>
+
+{# AI digest opt-in flow + digest panel #}
+{% if child.ai_digests_enabled is none %}
+<section class="optin-banner" id="ai-optin">
+  <h2>✨ Try the AI daily digest?</h2>
+  <p>Each night, an AI tutor (Anthropic's Claude Haiku 4.5, running in your AWS account through Amazon Bedrock) can read {{ child.name }}'s practice from the last 24 hours and write a one-paragraph note for you: what strategies they used, what they're working on, what to try tomorrow.</p>
+
+  <details>
+    <summary><strong>What gets sent? (read this before deciding)</strong></summary>
+    <ul style="margin-top:.5rem">
+      <li>Problem titles, prompts, and strands {{ child.name }} attempted in the last 24 hours.</li>
+      <li>Whether each attempt was correct, the parent rating (easy / good struggle / too hard), the time spent, and any strategy notes <em>you typed</em>.</li>
+      <li>Parent notes you wrote in the last 24 hours.</li>
+      <li><strong>{{ child.name }}'s name is replaced with "Child" before sending</strong> — the model never sees their real name.</li>
+      <li>Bedrock's contract: prompts and responses are not used to train models, do not leave your AWS region (us-east-1), and are not seen by any third party.</li>
+      <li>You can turn this off any time. Past digests stay; new ones won't be generated.</li>
+      <li>Cost: roughly half a cent per digest, charged to your AWS account.</li>
+    </ul>
+  </details>
+
+  <div class="actions">
+    <form method="post" action="/child/{{ child.id }}/ai-optin" style="display:inline">
+      <input type="hidden" name="enabled" value="true">
+      <button class="btn" type="submit">Yes, enable daily digests</button>
+    </form>
+    <form method="post" action="/child/{{ child.id }}/ai-optin" style="display:inline">
+      <input type="hidden" name="enabled" value="false">
+      <button class="btn ghost" type="submit">No thanks</button>
+    </form>
+  </div>
+</section>
+{% endif %}
+
+{% if latest_digest %}
+<section class="digest-card">
+  <h2>🧠 Today's digest <span class="muted" style="font-size:.85rem; font-weight:normal">— {{ latest_digest.period_label }}, {{ latest_digest.created_at.strftime('%b %d, %Y %H:%M UTC') }}</span></h2>
+  <p class="headline">{{ latest_digest.summary.headline }}</p>
+
+  {% if latest_digest.summary.what_we_noticed %}
+    <h3>What we noticed</h3>
+    <ul>
+      {% for line in latest_digest.summary.what_we_noticed %}<li>{{ line }}</li>{% endfor %}
+    </ul>
+  {% endif %}
+
+  {% if latest_digest.summary.strand_notes %}
+    <h3 style="margin-top:1rem">By strand</h3>
+    <div class="strand-notes">
+      {% for key, note in latest_digest.summary.strand_notes.items() %}
+        <div class="row"><strong>{{ key.replace('_', ' ').title() }}:</strong> {{ note }}</div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <div class="grid-2" style="margin-top:1rem">
+    {% if latest_digest.summary.celebrate %}
+      <div class="panel celebrate"><strong>✨ Celebrate</strong><br>{{ latest_digest.summary.celebrate }}</div>
+    {% endif %}
+    {% if latest_digest.summary.watch %}
+      <div class="panel watch"><strong>👀 Watch for</strong><br>{{ latest_digest.summary.watch }}</div>
+    {% endif %}
+  </div>
+
+  {% if latest_digest.summary.try_next %}
+    <div class="panel try" style="margin-top:1rem">
+      <strong>🎯 Try next</strong>
+      <ul style="margin: .3rem 0 0 1rem">
+        {% for line in latest_digest.summary.try_next %}<li>{{ line }}</li>{% endfor %}
+      </ul>
+    </div>
+  {% endif %}
+
+  <div class="meta">
+    Model: {{ latest_digest.model_id }} · {{ latest_digest.input_tokens }} in / {{ latest_digest.output_tokens }} out tokens · ${{ "%.4f"|format(latest_digest.cost_usd) }}
+    {% if latest_digest.error %}<br><span style="color:var(--primary-dark)">⚠ {{ latest_digest.error[:200] }}</span>{% endif %}
+    <form method="post" action="/child/{{ child.id }}/digest/run" style="display:inline; margin-left:.6rem">
+      <button class="btn tiny ghost" type="submit">Regenerate now</button>
+    </form>
+    <form method="post" action="/child/{{ child.id }}/ai-optin" style="display:inline">
+      <input type="hidden" name="enabled" value="false">
+      <button class="btn tiny ghost" type="submit" onclick="return confirm('Turn off AI digests for {{ child.name }}? Past digests will be kept.')">Turn off digests</button>
+    </form>
+  </div>
+</section>
+{% elif child.ai_digests_enabled %}
+<section class="digest-card">
+  <h2>🧠 AI digest</h2>
+  <p>Digests are enabled for {{ child.name }}. The first one will appear after the next overnight run, or you can generate one now:</p>
+  <form method="post" action="/child/{{ child.id }}/digest/run" style="display:inline">
+    <button class="btn" type="submit">Generate digest now</button>
+  </form>
+</section>
+{% endif %}
 
 <div class="grid-2">
   <section class="card">
