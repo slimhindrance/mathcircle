@@ -1,0 +1,44 @@
+# Caddy config for mathcircle.base2ml.com
+# - auto-HTTPS via Let's Encrypt (HTTP-01 challenge)
+# - basic auth protects the whole site (single household password)
+# - reverse-proxies to local uvicorn on 127.0.0.1:8000
+
+# The {$VAR} substitutions are filled by /etc/caddy/Caddyfile on first boot
+# (cloud-init writes them in). Keep them as placeholders here.
+
+mathcircle.base2ml.com {
+	encode zstd gzip
+
+	# Basic auth — bcrypt hash injected at provision time.
+	# Username defaults to "family"; password is whatever you set.
+	basic_auth {
+		family {$CADDY_BASIC_AUTH_HASH}
+	}
+
+	# Static assets are fingerprinted by file path; cache for a day.
+	@static path /static/*
+	header @static Cache-Control "public, max-age=86400"
+
+	# Light security headers — appropriate for a local-first single-household app.
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		# remove the Server header
+		-Server
+	}
+
+	reverse_proxy 127.0.0.1:8000 {
+		header_up X-Real-IP {remote_host}
+		header_up X-Forwarded-For {remote_host}
+		header_up X-Forwarded-Proto {scheme}
+	}
+
+	log {
+		output file /var/log/caddy/mathcircle.log {
+			roll_size 10mb
+			roll_keep 5
+		}
+		format console
+	}
+}

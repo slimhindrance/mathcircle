@@ -1,0 +1,25 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "MathCircleBackupWrite",
+      "Effect": "Allow",
+      "Action": [
+        "s3:PutObject",
+        "s3:PutObjectAcl"
+      ],
+      "Resource": "arn:aws:s3:::base2ml-mathcircle-backups/mathcircle/*"
+    },
+    {
+      "Sid": "MathCircleBackupListBucket",
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::base2ml-mathcircle-backups",
+      "Condition": {
+        "StringLike": {
+          "s3:prefix": "mathcircle/*"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Math Circle Home{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', path='css/app.css') }}" />
+  <link rel="icon" href="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><text y='52' font-size='52'>🧮</text></svg>" />
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <header class="site no-print">
+    <a href="/" class="brand"><span class="logo">🧮</span>Math Circle Home</a>
+    <nav>
+      <a href="/">Home</a>
+      <a href="/strands">Strands</a>
+      <a href="/puzzles">Puzzles</a>
+      <a href="/circle">Math Circle Night</a>
+      <a href="/parent/guide">Parent Guide</a>
+    </nav>
+  </header>
+  <main>
+    {% block body %}{% endblock %}
+  </main>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

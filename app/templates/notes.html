@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block title %}Parent notes — {{ child.name }}{% endblock %}
+{% block body %}
+<section class="card">
+  <h1>📝 Parent notes — {{ child.name }}</h1>
+  <p class="muted">A running log: little wins, sticky concepts, strategies you noticed, things to try next time.</p>
+  <form class="stack" method="post" action="/parent/notes/{{ child.id }}">
+    <div class="field-row">
+      <select name="kind">
+        <option value="parent">📓 General</option>
+        <option value="win">✨ Win</option>
+        <option value="concern">🌧 Concern</option>
+        <option value="observation">👀 Observation</option>
+        <option value="strategy">🧭 Strategy seen</option>
+      </select>
+      <textarea name="body" placeholder="What did you see today?" required></textarea>
+    </div>
+    <div><button class="btn" type="submit">Save note</button></div>
+  </form>
+</section>
+
+<h2>History</h2>
+{% if notes %}
+  {% for n in notes %}
+    <div class="note {{ n.kind }}">
+      {{ n.body }}
+      <div class="meta">
+        {{ n.kind }} · {{ n.created_at.strftime('%b %d, %Y at %H:%M') }}
+        <form method="post" action="/parent/notes/{{ n.id }}/delete" style="display:inline; margin-left:.5rem">
+          <button class="btn tiny ghost" type="submit" onclick="return confirm('Delete this note?')">delete</button>
+        </form>
+      </div>
+    </div>
+  {% endfor %}
+{% else %}
+  <div class="empty"><p>No notes yet — they help you spot patterns over weeks.</p></div>
+{% endif %}
+
+<p><a href="/child/{{ child.id }}">← Back to {{ child.name }}'s dashboard</a></p>
+{% endblock %}

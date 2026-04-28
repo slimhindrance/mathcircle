@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}{{ strand.name }}{% endblock %}
+{% block body %}
+<section class="card" style="border-left: 8px solid {{ strand_color(strand.key) }}">
+  <h1>{{ strand.icon }} {{ strand.name }}</h1>
+  <p>{{ strand.description }}</p>
+  <p>
+    <strong>Filter:</strong>
+    {% for lvl in [1,2,3,4,5] %}
+      <a class="tag level-{{ lvl }}" href="/strands/{{ strand.key }}?level={{ lvl }}">L{{ lvl }}</a>
+    {% endfor %}
+    <a class="tag" href="/strands/{{ strand.key }}">all</a>
+  </p>
+</section>
+
+{% for p in problems %}
+<section class="problem kind-{{ p.kind }}">
+  <div class="top">
+    <span class="tag kind">{{ kind_emoji(p.kind) }} {{ kind_label(p.kind) }}</span>
+    <span class="tag level-{{ p.level }}">L{{ p.level }}</span>
+    <span class="muted">grade {{ p.grade_band }} · ~{{ p.minutes }} min</span>
+  </div>
+  <h3>{{ p.title }}</h3>
+  <p class="prompt">{{ p.prompt }}</p>
+  <details>
+    <summary>Hints, strategies, answer</summary>
+    {% if p.hints %}
+      <p><strong>Hints:</strong></p>
+      <ul>{% for h in p.hints %}<li>{{ h }}</li>{% endfor %}</ul>
+    {% endif %}
+    {% if p.strategies %}
+      <p><strong>Strategies:</strong> {{ p.strategies|join(', ') }}</p>
+    {% endif %}
+    {% if p.answer %}<p><strong>Answer:</strong> {{ p.answer }}</p>{% endif %}
+    {% if p.parent_extension %}
+      <p><strong>Parent extension:</strong> {{ p.parent_extension }}</p>
+    {% endif %}
+  </details>
+  <div class="actions">
+    <a class="btn ghost small" href="/problem/{{ p.id }}">Open</a>
+    <a class="btn small warm" href="/problem/{{ p.id }}/print">Print card</a>
+  </div>
+</section>
+{% else %}
+  <div class="empty">No problems match this filter.</div>
+{% endfor %}
+{% endblock %}

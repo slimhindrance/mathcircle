@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Puzzle bank{% endblock %}
+{% block body %}
+<section class="card">
+  <h1>Puzzle bank</h1>
+  <p class="muted">Search and filter the whole bank. Use this to find a problem you remember, or to seed an offline activity.</p>
+  <form method="get" action="/puzzles" class="field-row">
+    <input type="text" name="q" placeholder="Search title or prompt..." value="{{ q }}">
+    <select name="strand">
+      <option value="">All strands</option>
+      {% for s in strands %}
+        <option value="{{ s.key }}" {% if current_strand == s.key %}selected{% endif %}>{{ s.icon }} {{ s.name }}</option>
+      {% endfor %}
+    </select>
+    <select name="level">
+      <option value="">Any level</option>
+      {% for lvl in [1,2,3,4,5] %}
+        <option value="{{ lvl }}" {% if current_level == lvl %}selected{% endif %}>Level {{ lvl }}</option>
+      {% endfor %}
+    </select>
+    <select name="kind">
+      <option value="">Any kind</option>
+      {% for k in ['warm_up','rich_puzzle','visual','story','game','parent_extension'] %}
+        <option value="{{ k }}" {% if current_kind == k %}selected{% endif %}>{{ kind_emoji(k) }} {{ kind_label(k) }}</option>
+      {% endfor %}
+    </select>
+    <button class="btn small" type="submit">Filter</button>
+    <a class="btn ghost small" href="/puzzles">Reset</a>
+  </form>
+</section>
+
+<p class="muted">{{ problems|length }} matching puzzles</p>
+<div class="grid">
+{% for p in problems %}
+  <a class="card" href="/problem/{{ p.id }}" style="text-decoration:none; color: inherit; border: none">
+    <div class="top">
+      <span class="tag kind">{{ kind_emoji(p.kind) }} {{ kind_label(p.kind) }}</span>
+      <span class="tag level-{{ p.level }}">L{{ p.level }}</span>
+    </div>
+    <h3>{{ p.title }}</h3>
+    <p class="muted">{{ p.prompt[:120] }}{% if p.prompt|length > 120 %}…{% endif %}</p>
+  </a>
+{% endfor %}
+</div>
+{% endblock %}

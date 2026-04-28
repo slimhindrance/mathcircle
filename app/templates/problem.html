@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}{{ problem.title }}{% endblock %}
+{% block body %}
+<section class="problem kind-{{ problem.kind }}">
+  <div class="top">
+    <span class="tag kind">{{ kind_emoji(problem.kind) }} {{ kind_label(problem.kind) }}</span>
+    {% if strand %}
+      <span class="strand-pill" style="background: {{ strand_color(strand.key) }}">{{ strand.icon }} {{ strand.name }}</span>
+    {% endif %}
+    <span class="tag level-{{ problem.level }}">Level {{ problem.level }}</span>
+    <span class="muted">grade {{ problem.grade_band }} · ~{{ problem.minutes }} min</span>
+  </div>
+  <h1>{{ problem.title }}</h1>
+  <p class="prompt">{{ problem.prompt }}</p>
+
+  {% if problem.materials %}
+    <p><strong>Materials:</strong> {{ problem.materials|join(', ') }}</p>
+  {% endif %}
+
+  {% if problem.hints %}
+    <h3>Hints</h3>
+    <ol>{% for h in problem.hints %}<li>{{ h }}</li>{% endfor %}</ol>
+  {% endif %}
+
+  {% if problem.strategies %}
+    <p><strong>Possible strategies:</strong> {{ problem.strategies|join(', ') }}</p>
+  {% endif %}
+
+  {% if problem.answer %}
+    <details>
+      <summary>Answer</summary>
+      <p>{{ problem.answer }}</p>
+    </details>
+  {% endif %}
+
+  {% if problem.explain_prompt %}
+    <p><strong>💬 Explain prompt:</strong> {{ problem.explain_prompt }}</p>
+  {% endif %}
+  {% if problem.parent_extension %}
+    <p><strong>🏡 Parent extension:</strong> {{ problem.parent_extension }}</p>
+  {% endif %}
+
+  <div class="actions">
+    <a class="btn warm" href="/problem/{{ problem.id }}/print">🖨 Print activity card</a>
+    <a class="btn ghost small" href="/strands/{{ strand.key if strand else '' }}">← Back to strand</a>
+  </div>
+</section>
+{% endblock %}

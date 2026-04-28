@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Activity card — {{ problem.title }}{% endblock %}
+{% block body %}
+<section class="problem kind-{{ problem.kind }}" style="page-break-after: always">
+  <div class="top">
+    <span class="tag kind">{{ kind_emoji(problem.kind) }} {{ kind_label(problem.kind) }}</span>
+    {% if strand %}<span class="strand-pill" style="background: {{ strand_color(strand.key) }}">{{ strand.icon }} {{ strand.name }}</span>{% endif %}
+    <span class="tag level-{{ problem.level }}">Level {{ problem.level }}</span>
+  </div>
+  <h1>{{ problem.title }}</h1>
+  <p class="prompt" style="font-size: 1.4rem; padding: .8rem 0;">{{ problem.prompt }}</p>
+
+  {% if problem.materials %}
+    <p><strong>You'll need:</strong> {{ problem.materials|join(', ') }}</p>
+  {% endif %}
+
+  <p><strong>Sketch / scratch space:</strong></p>
+  <div style="border: 1.5px dashed var(--line); height: 220px; border-radius: 8px;"></div>
+
+  <p><strong>Strategy used:</strong> ____________________________________________________</p>
+  <p><strong>How they explained it:</strong> __________________________________________</p>
+
+  {% if problem.parent_extension %}
+    <p style="margin-top:1rem"><strong>🏡 Try later:</strong> {{ problem.parent_extension }}</p>
+  {% endif %}
+</section>
+
+<p class="no-print">
+  <button class="btn" onclick="window.print()">Print this card</button>
+  <a class="btn ghost" href="/problem/{{ problem.id }}">← Back</a>
+</p>
+{% endblock %}

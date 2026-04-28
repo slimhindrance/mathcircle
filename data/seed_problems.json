@@ -1,0 +1,6378 @@
+{
+  "version": 2,
+  "strands": [
+    {
+      "key": "number_sense",
+      "name": "Number Sense",
+      "icon": "🔢",
+      "sort_order": 1,
+      "description": "Subitizing, counting, ten-frames, place value, comparing — building a feel for how numbers live."
+    },
+    {
+      "key": "add_sub_structures",
+      "name": "Add & Subtract Structures",
+      "icon": "➕",
+      "sort_order": 2,
+      "description": "Part-whole, change, comparison — the *shapes* of arithmetic, not just the answers."
+    },
+    {
+      "key": "missing_number_stories",
+      "name": "Mystery Numbers",
+      "icon": "🔍",
+      "sort_order": 3,
+      "description": "Secret-number puzzles that plant the seed of algebra without symbols."
+    },
+    {
+      "key": "equality_balance",
+      "name": "Equality & Balance",
+      "icon": "⚖️",
+      "sort_order": 4,
+      "description": "Equals means *the same as*. True/false equations, balance scales, both-sides thinking."
+    },
+    {
+      "key": "patterns",
+      "name": "Patterns",
+      "icon": "🔁",
+      "sort_order": 5,
+      "description": "Repeating, growing, function-machine patterns. Predicting and explaining."
+    },
+    {
+      "key": "logic_classification",
+      "name": "Logic & Sorting",
+      "icon": "🧠",
+      "sort_order": 6,
+      "description": "Attribute games, 'is not' clues, ordering puzzles. Reasoning under constraints."
+    },
+    {
+      "key": "geometry_spatial",
+      "name": "Geometry & Space",
+      "icon": "🔺",
+      "sort_order": 7,
+      "description": "Shapes, symmetry, paper folding, mental rotation, tangram, position words."
+    },
+    {
+      "key": "measurement",
+      "name": "Measurement",
+      "icon": "📏",
+      "sort_order": 8,
+      "description": "Length, time, money, weight — using both standard and child-invented units."
+    },
+    {
+      "key": "combinatorics_counting",
+      "name": "Counting Ways",
+      "icon": "🌳",
+      "sort_order": 9,
+      "description": "How many ways? Outfits, paths, breakdowns of a number — early combinatorics."
+    },
+    {
+      "key": "math_games",
+      "name": "Math Games",
+      "icon": "🎲",
+      "sort_order": 10,
+      "description": "Two-player strategy games (Nim, Race-to-100, Pig). Strategy = invariant thinking."
+    }
+  ],
+  "problems": [
+    {
+      "slug": "ns-subitize-dots-1",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "K",
+      "kind": "warm_up",
+      "title": "Quick look: 1 dots",
+      "prompt": "I'll flash 1 dots. Tell me how many — without counting one-by-one. How did you 'see' it?",
+      "answer": "1",
+      "answer_type": "number",
+      "hints": [
+        "Picture the dots in your mind after they disappear.",
+        "Did you see 1 as a whole, or as smaller groups?",
+        "Two and -1 make 1. Three and -2 make 1."
+      ],
+      "strategies": [
+        "subitize",
+        "decompose"
+      ],
+      "materials": [
+        "dot card",
+        "fingers"
+      ],
+      "tags": [
+        "subitize",
+        "K",
+        "fluency"
+      ],
+      "explain_prompt": "What did your eyes 'grab' first?",
+      "minutes": 1,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-subitize-dots-2",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "K",
+      "kind": "warm_up",
+      "title": "Quick look: 2 dots",
+      "prompt": "I'll flash 2 dots. Tell me how many — without counting one-by-one. How did you 'see' it?",
+      "answer": "2",
+      "answer_type": "number",
+      "hints": [
+        "Picture the dots in your mind after they disappear.",
+        "Did you see 2 as a whole, or as smaller groups?",
+        "Two and 0 make 2. Three and -1 make 2."
+      ],
+      "strategies": [
+        "subitize",
+        "decompose"
+      ],
+      "materials": [
+        "dot card",
+        "fingers"
+      ],
+      "tags": [
+        "subitize",
+        "K",
+        "fluency"
+      ],
+      "explain_prompt": "What did your eyes 'grab' first?",
+      "minutes": 1,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-subitize-dots-3",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "K",
+      "kind": "warm_up",
+      "title": "Quick look: 3 dots",
+      "prompt": "I'll flash 3 dots. Tell me how many — without counting one-by-one. How did you 'see' it?",
+      "answer": "3",
+      "answer_type": "number",
+      "hints": [
+        "Picture the dots in your mind after they disappear.",
+        "Did you see 3 as a whole, or as smaller groups?",
+        "Two and 1 make 3. Three and 0 make 3."
+      ],
+      "strategies": [
+        "subitize",
+        "decompose"
+      ],
+      "materials": [
+        "dot card",
+        "fingers"
+      ],
+      "tags": [
+        "subitize",
+        "K",
+        "fluency"
+      ],
+      "explain_prompt": "What did your eyes 'grab' first?",
+      "minutes": 1,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-subitize-dots-4",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "K",
+      "kind": "warm_up",
+      "title": "Quick look: 4 dots",
+      "prompt": "I'll flash 4 dots. Tell me how many — without counting one-by-one. How did you 'see' it?",
+      "answer": "4",
+      "answer_type": "number",
+      "hints": [
+        "Picture the dots in your mind after they disappear.",
+        "Did you see 4 as a whole, or as smaller groups?",
+        "Two and 2 make 4. Three and 1 make 4."
+      ],
+      "strategies": [
+        "subitize",
+        "decompose"
+      ],
+      "materials": [
+        "dot card",
+        "fingers"
+      ],
+      "tags": [
+        "subitize",
+        "K",
+        "fluency"
+      ],
+      "explain_prompt": "What did your eyes 'grab' first?",
+      "minutes": 1,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-subitize-dots-5",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "K",
+      "kind": "warm_up",
+      "title": "Quick look: 5 dots",
+      "prompt": "I'll flash 5 dots. Tell me how many — without counting one-by-one. How did you 'see' it?",
+      "answer": "5",
+      "answer_type": "number",
+      "hints": [
+        "Picture the dots in your mind after they disappear.",
+        "Did you see 5 as a whole, or as smaller groups?",
+        "Two and 3 make 5. Three and 2 make 5."
+      ],
+      "strategies": [
+        "subitize",
+        "decompose"
+      ],
+      "materials": [
+        "dot card",
+        "fingers"
+      ],
+      "tags": [
+        "subitize",
+        "K",
+        "fluency"
+      ],
+      "explain_prompt": "What did your eyes 'grab' first?",
+      "minutes": 1,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-subitize-dots-6",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "K",
+      "kind": "warm_up",
+      "title": "Quick look: 6 dots",
+      "prompt": "I'll flash 6 dots. Tell me how many — without counting one-by-one. How did you 'see' it?",
+      "answer": "6",
+      "answer_type": "number",
+      "hints": [
+        "Picture the dots in your mind after they disappear.",
+        "Did you see 6 as a whole, or as smaller groups?",
+        "Two and 4 make 6. Three and 3 make 6."
+      ],
+      "strategies": [
+        "subitize",
+        "decompose"
+      ],
+      "materials": [
+        "dot card",
+        "fingers"
+      ],
+      "tags": [
+        "subitize",
+        "K",
+        "fluency"
+      ],
+      "explain_prompt": "What did your eyes 'grab' first?",
+      "minutes": 1,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-counting-stairs-15",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "K",
+      "kind": "warm_up",
+      "title": "Counting up the stairs",
+      "prompt": "Count from 1 up to 15 like climbing stairs. Now count back down. Where does it feel hardest?",
+      "answer": "1..15..1",
+      "answer_type": "text",
+      "hints": [
+        "Use your fingers as steps.",
+        "Pause at each number.",
+        "Try in a sing-song rhythm."
+      ],
+      "strategies": [
+        "count up",
+        "count back"
+      ],
+      "materials": [
+        "fingers"
+      ],
+      "tags": [
+        "counting",
+        "K"
+      ],
+      "minutes": 2,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-skip-2s-to-20",
+      "strand": "number_sense",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "Skip count by 2s",
+      "prompt": "Count by 2s up to 20: 2, 4, 6 ... How would you say it as 'pairs of socks'?",
+      "answer": "2,4,6,8,10,12,14,16,18,20",
+      "answer_type": "text",
+      "hints": [
+        "Each step = 2 fingers.",
+        "Even numbers only.",
+        "Pair up shoes/socks."
+      ],
+      "strategies": [
+        "skip count",
+        "pair model"
+      ],
+      "materials": [
+        "socks",
+        "shoes",
+        "fingers"
+      ],
+      "tags": [
+        "skip-counting",
+        "even",
+        "K-1"
+      ],
+      "parent_extension": "Lay out 10 pennies in pairs. Skip-count to 20 by touching pairs.",
+      "minutes": 2,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "template": null
+    },
+    {
+      "slug": "ns-skip-5s-to-50",
+      "strand": "number_sense",
+      "level": 3,
+      "grade_band": "1-2",
+      "kind": "warm_up",
+      "title": "Skip count by 5s",
+      "prompt": "Count by 5s to 50. Then to 100. What pattern do the last digits make?",
+      "answer": "0/5/0/5...",
+      "answer_type": "text",
+      "hints": [
+        "Hands: each hand = 5.",
+        "Last digits alternate 0, 5.",
+        "5 fives is 25."
+      ],
+      "strategies": [
+        "skip count",
+        "hand model"
+      ],
+      "materials": [
+        "hands"
+      ],
+      "tags": [
+        "skip-counting",
+        "1-2"
+      ],
+      "minutes": 2,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-skip-10s-to-100",
+      "strand": "number_sense",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "Skip count by 10s",
+      "prompt": "Count by 10s to 100. Now start at 7 and add 10 each time: 7, 17, 27 ... what do you notice?",
+      "answer": "7,17,27,37,47,57,67,77,87,97",
+      "answer_type": "text",
+      "hints": [
+        "Each jump = 1 in the tens place.",
+        "The ones digit stays the same.",
+        "Like climbing a tens ladder."
+      ],
+      "strategies": [
+        "place value",
+        "skip count"
+      ],
+      "materials": [
+        "hundred chart"
+      ],
+      "tags": [
+        "place-value",
+        "K-1"
+      ],
+      "minutes": 2,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-tenframe-fill-7",
+      "strand": "number_sense",
+      "level": 2,
+      "grade_band": "K",
+      "kind": "visual",
+      "title": "Ten-frame for 7",
+      "prompt": "Fill a ten-frame to show 7. How many empty squares? What does that tell you?",
+      "answer": "3 empty",
+      "answer_type": "number",
+      "hints": [
+        "A ten-frame has 10 boxes.",
+        "Count the empty boxes to see how far from 10.",
+        "7 + ? = 10."
+      ],
+      "strategies": [
+        "ten-frame",
+        "complement to 10"
+      ],
+      "materials": [
+        "ten-frame",
+        "counters"
+      ],
+      "tags": [
+        "ten-frame",
+        "K"
+      ],
+      "explain_prompt": "How does the ten-frame help you see 'how many to 10'?",
+      "minutes": 3,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-tenframe-decompose-9",
+      "strand": "number_sense",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "visual",
+      "title": "Two ways to see 9",
+      "prompt": "Show 9 on a ten-frame two different ways. Are they really different — or the same?",
+      "answer": "9",
+      "answer_type": "open",
+      "hints": [
+        "Try 5 in the top row and 4 below.",
+        "Try filling all 10 then removing 1.",
+        "Both show 9."
+      ],
+      "strategies": [
+        "decompose",
+        "subitize"
+      ],
+      "materials": [
+        "ten-frame",
+        "counters"
+      ],
+      "tags": [
+        "decompose",
+        "K-1"
+      ],
+      "minutes": 4,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-compare-23-32",
+      "strand": "number_sense",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "warm_up",
+      "title": "Bigger: 23 or 32?",
+      "prompt": "Which is bigger, 23 or 32? Show with tens-and-ones blocks. How many tens does each one have?",
+      "answer": "32",
+      "answer_type": "number",
+      "hints": [
+        "Tens first, ones second.",
+        "23 has 2 tens. 32 has 3 tens.",
+        "More tens wins."
+      ],
+      "strategies": [
+        "place value"
+      ],
+      "materials": [
+        "base-10 blocks"
+      ],
+      "tags": [
+        "place-value",
+        "1"
+      ],
+      "minutes": 2,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-place-value-47",
+      "strand": "number_sense",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "visual",
+      "title": "Build 47",
+      "prompt": "Build 47 with tens and ones blocks. How many tens? How many ones? Now make it with different blocks but the same value.",
+      "answer": "4 tens 7 ones",
+      "answer_type": "text",
+      "hints": [
+        "4 tens = 40.",
+        "7 ones makes the rest.",
+        "Could you use 3 tens and 17 ones?"
+      ],
+      "strategies": [
+        "place value",
+        "exchange"
+      ],
+      "materials": [
+        "base-10 blocks"
+      ],
+      "tags": [
+        "place-value",
+        "1"
+      ],
+      "minutes": 4,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-even-odd-12",
+      "strand": "number_sense",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "rich_puzzle",
+      "title": "Even or odd: 12 cookies",
+      "prompt": "You have 12 cookies. Can you split them into 2 equal piles? What about 13 cookies? Why does one work and one doesn't?",
+      "answer": "12 even; 13 odd",
+      "answer_type": "text",
+      "hints": [
+        "Try pairing them up.",
+        "Odd = one left over.",
+        "Even = perfect pairs."
+      ],
+      "strategies": [
+        "pair model",
+        "halving"
+      ],
+      "materials": [
+        "counters",
+        "cookies"
+      ],
+      "tags": [
+        "even-odd",
+        "K-1"
+      ],
+      "explain_prompt": "What is special about every odd number?",
+      "parent_extension": "Look at house numbers on a walk. Predict odd or even before counting.",
+      "minutes": 4,
+      "template": null
+    },
+    {
+      "slug": "ns-ordinal-race",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "K",
+      "kind": "story",
+      "title": "The animal race",
+      "prompt": "A turtle, rabbit, fox, and bear race. The fox is third. The rabbit is right after the fox. Who is fourth? Where is the turtle?",
+      "answer": "rabbit 4th; turtle 1st or 2nd",
+      "answer_type": "text",
+      "hints": [
+        "Draw four spots in a line.",
+        "Put the fox in the third spot.",
+        "Right after = next."
+      ],
+      "strategies": [
+        "draw it out",
+        "place markers"
+      ],
+      "materials": [
+        "paper",
+        "pencil"
+      ],
+      "tags": [
+        "ordinal",
+        "K"
+      ],
+      "minutes": 4,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-100chart-mystery-37",
+      "strand": "number_sense",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Hundred-chart mystery: 37",
+      "prompt": "On a hundred chart, what number is right above 37? Right below? To the left? To the right? What pattern do you see?",
+      "answer": "27, 47, 36, 38",
+      "answer_type": "multi",
+      "hints": [
+        "Above = 10 less.",
+        "Below = 10 more.",
+        "Left = 1 less; right = 1 more."
+      ],
+      "strategies": [
+        "place value",
+        "use chart"
+      ],
+      "materials": [
+        "hundred chart"
+      ],
+      "tags": [
+        "place-value",
+        "1"
+      ],
+      "explain_prompt": "Why does going up give 10 less?",
+      "minutes": 5,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-double-7",
+      "strand": "number_sense",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "Double 7",
+      "prompt": "What is 7 + 7? How can you use it to find 7 + 8?",
+      "answer": "14; 15",
+      "answer_type": "multi",
+      "hints": [
+        "Doubles are special facts.",
+        "7+8 = double 7 plus one.",
+        "Or double 8 minus one."
+      ],
+      "strategies": [
+        "doubles",
+        "near-doubles"
+      ],
+      "tags": [
+        "doubles",
+        "K-1"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-make-ten-eights",
+      "strand": "number_sense",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "rich_puzzle",
+      "title": "Friends of ten",
+      "prompt": "Two numbers add to 10. One of them is 8. What is the other? Now what if one is 3?",
+      "answer": "2; 7",
+      "answer_type": "multi",
+      "hints": [
+        "Use your fingers — show 8, count up to 10.",
+        "Friends of ten always make 10.",
+        "Ten-frame: empty boxes show the partner."
+      ],
+      "strategies": [
+        "ten-frame",
+        "complements"
+      ],
+      "materials": [
+        "ten-frame"
+      ],
+      "tags": [
+        "complements-10",
+        "K-1"
+      ],
+      "minutes": 3,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-1-more-1-less",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "K",
+      "kind": "warm_up",
+      "title": "One more, one less",
+      "prompt": "What's one more than 9? One less than 9? What's one more than 19? One less than 20?",
+      "answer": "10; 8; 20; 19",
+      "answer_type": "multi",
+      "hints": [
+        "Climb up one stair / down one stair.",
+        "Use a number line.",
+        "Tens are speed bumps — pause and notice."
+      ],
+      "strategies": [
+        "count on",
+        "count back"
+      ],
+      "tags": [
+        "fluency",
+        "K"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-decompose-10-many",
+      "strand": "number_sense",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "rich_puzzle",
+      "title": "All the ways to make 10",
+      "prompt": "Find all the ways to make 10 using two whole numbers (zero is okay). How do you know you found them all?",
+      "answer": "0+10,1+9,2+8,3+7,4+6,5+5",
+      "answer_type": "set",
+      "hints": [
+        "Start with 0+10.",
+        "March up: 1+9, 2+8 ...",
+        "Stop when you 'cross over' (5+5)."
+      ],
+      "strategies": [
+        "systematic list",
+        "be organized"
+      ],
+      "materials": [
+        "counters",
+        "ten-frame"
+      ],
+      "tags": [
+        "decompose",
+        "complements-10",
+        "K-1"
+      ],
+      "explain_prompt": "Why can you stop at 5+5?",
+      "parent_extension": "Try 'all the ways to make 7' on the kitchen table with cereal pieces.",
+      "minutes": 6,
+      "template": null
+    },
+    {
+      "slug": "ns-decompose-7-three",
+      "strand": "number_sense",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Three numbers that make 7",
+      "prompt": "Find three different whole numbers that add to 7. How many sets can you find? (Order doesn't count.)",
+      "answer": "0+1+6,0+2+5,0+3+4,1+2+4",
+      "answer_type": "set",
+      "hints": [
+        "Try starting with 0.",
+        "Then start with 1.",
+        "Be organized — smallest first."
+      ],
+      "strategies": [
+        "systematic list"
+      ],
+      "tags": [
+        "decompose",
+        "1"
+      ],
+      "minutes": 6,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-mental-add-30-40",
+      "strand": "number_sense",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "warm_up",
+      "title": "Add by tens: 30 + 40",
+      "prompt": "What is 30 + 40? How is it like 3 + 4? What is 35 + 40?",
+      "answer": "70; 75",
+      "answer_type": "multi",
+      "hints": [
+        "3 tens + 4 tens = 7 tens.",
+        "Tens add like ones.",
+        "35 = 30 + 5."
+      ],
+      "strategies": [
+        "place value",
+        "decompose"
+      ],
+      "tags": [
+        "place-value",
+        "2"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-partwhole-blocks-8",
+      "strand": "add_sub_structures",
+      "level": 1,
+      "grade_band": "K",
+      "kind": "visual",
+      "title": "Red and blue blocks",
+      "prompt": "There are red and blue blocks. I made 8 blocks total. Show me three different ways the reds and blues could split.",
+      "answer": "any pair adding to 8",
+      "answer_type": "set",
+      "hints": [
+        "Could be 0 red, 8 blue.",
+        "Could be 1 red, 7 blue.",
+        "Walk up: 2 and 6, 3 and 5..."
+      ],
+      "strategies": [
+        "part-whole",
+        "systematic list"
+      ],
+      "materials": [
+        "red and blue counters"
+      ],
+      "tags": [
+        "part-whole",
+        "K"
+      ],
+      "explain_prompt": "How are these all 'the same' (8 total) and 'different' (different splits)?",
+      "parent_extension": "With 10 grapes, ask: how many can you eat now if you save some for later?",
+      "minutes": 5,
+      "template": null
+    },
+    {
+      "slug": "as-changeadd-frogs",
+      "strand": "add_sub_structures",
+      "level": 1,
+      "grade_band": "K",
+      "kind": "story",
+      "title": "Frogs on the log",
+      "prompt": "3 frogs sat on a log. 4 more hopped on. How many frogs now? Tell the story with your fingers.",
+      "answer": "7",
+      "answer_type": "number",
+      "hints": [
+        "3 fingers up first.",
+        "Now 4 more.",
+        "Count them all."
+      ],
+      "strategies": [
+        "count all",
+        "count on"
+      ],
+      "materials": [
+        "fingers"
+      ],
+      "tags": [
+        "change-add-to",
+        "K"
+      ],
+      "minutes": 2,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-changetake-cookies",
+      "strand": "add_sub_structures",
+      "level": 1,
+      "grade_band": "K",
+      "kind": "story",
+      "title": "Cookie monster",
+      "prompt": "There were 9 cookies on a plate. The cookie monster ate 4. How many cookies are left?",
+      "answer": "5",
+      "answer_type": "number",
+      "hints": [
+        "9 fingers up.",
+        "Put 4 down (monster ate them).",
+        "Count what's left."
+      ],
+      "strategies": [
+        "count back",
+        "subtract"
+      ],
+      "tags": [
+        "change-take-from",
+        "K"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-compare-stickers",
+      "strand": "add_sub_structures",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "story",
+      "title": "Sticker comparison",
+      "prompt": "Lila has 6 stickers. Sam has 9 stickers. How many more stickers does Sam have than Lila?",
+      "answer": "3",
+      "answer_type": "number",
+      "hints": [
+        "Line them up — Lila's row, Sam's row.",
+        "Look at Sam's extras.",
+        "9 - 6 = ?"
+      ],
+      "strategies": [
+        "line-up model",
+        "count up"
+      ],
+      "materials": [
+        "counters"
+      ],
+      "tags": [
+        "compare",
+        "K-1"
+      ],
+      "minutes": 3,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-missing-addend-7-13",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "Missing addend",
+      "prompt": "7 children are at the park. Some more arrive, and now there are 13. How many more came?",
+      "answer": "6",
+      "answer_type": "number",
+      "hints": [
+        "7 + ? = 13.",
+        "Count up from 7 to 13.",
+        "Use a number line."
+      ],
+      "strategies": [
+        "count up",
+        "missing addend"
+      ],
+      "materials": [
+        "number line"
+      ],
+      "tags": [
+        "missing-addend",
+        "1"
+      ],
+      "minutes": 4,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-comparison-flip",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "Flip the comparison",
+      "prompt": "Lila has 4 fewer marbles than Sam. Sam has 11. How many does Lila have? Now: if Lila has 7 and that's 4 fewer than Sam, how many does Sam have?",
+      "answer": "7; 11",
+      "answer_type": "multi",
+      "hints": [
+        "Lila is the smaller one.",
+        "Going down: subtract.",
+        "Going up: add."
+      ],
+      "strategies": [
+        "draw bars",
+        "compare"
+      ],
+      "tags": [
+        "compare",
+        "1"
+      ],
+      "explain_prompt": "The story changed direction. What stayed the same?",
+      "minutes": 5,
+      "materials": [],
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-twostep-bus",
+      "strand": "add_sub_structures",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "story",
+      "title": "The bus problem",
+      "prompt": "8 kids were on the bus. At the next stop, 5 got off and 3 got on. How many kids on the bus now?",
+      "answer": "6",
+      "answer_type": "number",
+      "hints": [
+        "What happens first? People get off.",
+        "8 - 5 = 3. Then add 3 more.",
+        "3 + 3 = 6."
+      ],
+      "strategies": [
+        "sequence events",
+        "two-step"
+      ],
+      "tags": [
+        "two-step",
+        "2"
+      ],
+      "minutes": 5,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-twostep-toys",
+      "strand": "add_sub_structures",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "story",
+      "title": "Buying toys",
+      "prompt": "Maya had 10 dollars. She bought a toy for 4 dollars and got 2 dollars from her brother. How much money does she have now?",
+      "answer": "8",
+      "answer_type": "number",
+      "hints": [
+        "Spend first: 10 - 4 = 6.",
+        "Then receive: 6 + 2.",
+        "Order matters in stories."
+      ],
+      "strategies": [
+        "sequence events"
+      ],
+      "tags": [
+        "two-step",
+        "money",
+        "2"
+      ],
+      "minutes": 5,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-partwhole-rabbit-carrots",
+      "strand": "add_sub_structures",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "story",
+      "title": "Carrots in two baskets",
+      "prompt": "A rabbit has 10 carrots in two baskets. The first basket has 4. How many in the second basket?",
+      "answer": "6",
+      "answer_type": "number",
+      "hints": [
+        "Total minus part = other part.",
+        "4 + ? = 10.",
+        "Friends of ten!"
+      ],
+      "strategies": [
+        "part-whole",
+        "complements"
+      ],
+      "tags": [
+        "part-whole",
+        "K-1"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-partwhole-three",
+      "strand": "add_sub_structures",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Three baskets",
+      "prompt": "Three baskets hold 15 apples in all. The first has 6 apples; the second has 4. How many in the third?",
+      "answer": "5",
+      "answer_type": "number",
+      "hints": [
+        "Add the two you know.",
+        "6 + 4 = 10.",
+        "15 - 10 = 5."
+      ],
+      "strategies": [
+        "part-whole",
+        "decompose"
+      ],
+      "tags": [
+        "part-whole",
+        "2"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-comparison-ages",
+      "strand": "add_sub_structures",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "story",
+      "title": "Ages",
+      "prompt": "Anna is 6. Her brother is 9. How much older is the brother? In two years, what will the difference be?",
+      "answer": "3; 3",
+      "answer_type": "multi",
+      "hints": [
+        "Older - younger.",
+        "Both ages grow by 2.",
+        "Differences stay the same as both grow!"
+      ],
+      "strategies": [
+        "compare",
+        "invariance"
+      ],
+      "tags": [
+        "compare",
+        "invariance",
+        "2"
+      ],
+      "explain_prompt": "Why doesn't the difference change as time passes?",
+      "parent_extension": "Ask: in 10 years, how much older will the brother be?",
+      "minutes": 5,
+      "materials": [],
+      "template": null
+    },
+    {
+      "slug": "as-near-doubles-6-7",
+      "strand": "add_sub_structures",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "Near doubles: 6 + 7",
+      "prompt": "What is 6 + 7? Use 6 + 6 to help you.",
+      "answer": "13",
+      "answer_type": "number",
+      "hints": [
+        "6+6 = 12.",
+        "7 is one more than 6.",
+        "12 + 1 = 13."
+      ],
+      "strategies": [
+        "near-doubles"
+      ],
+      "tags": [
+        "near-doubles",
+        "K-1"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-bridge-ten-8-5",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "warm_up",
+      "title": "Bridge through 10",
+      "prompt": "What is 8 + 5? Try splitting the 5 into 2 + 3 to get to 10 first.",
+      "answer": "13",
+      "answer_type": "number",
+      "hints": [
+        "8 + 2 = 10.",
+        "Then 10 + 3.",
+        "10 + 3 = 13."
+      ],
+      "strategies": [
+        "bridge to 10"
+      ],
+      "materials": [
+        "ten-frame"
+      ],
+      "tags": [
+        "bridge-10",
+        "1"
+      ],
+      "minutes": 3,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-story-pair-01",
+      "strand": "add_sub_structures",
+      "level": 2,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "2 and 3",
+      "prompt": "There are 2 ducks in the pond. 3 more swim over. How many ducks now?",
+      "answer": "5",
+      "answer_type": "number",
+      "hints": [
+        "Start with 2.",
+        "Add 3 more.",
+        "Count on or count all."
+      ],
+      "strategies": [
+        "count on",
+        "decompose"
+      ],
+      "tags": [
+        "change-add-to",
+        "1"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-story-pair-02",
+      "strand": "add_sub_structures",
+      "level": 2,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "4 and 5",
+      "prompt": "There are 4 ducks in the pond. 5 more swim over. How many ducks now?",
+      "answer": "9",
+      "answer_type": "number",
+      "hints": [
+        "Start with 4.",
+        "Add 5 more.",
+        "Count on or count all."
+      ],
+      "strategies": [
+        "count on",
+        "decompose"
+      ],
+      "tags": [
+        "change-add-to",
+        "1"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-story-pair-03",
+      "strand": "add_sub_structures",
+      "level": 2,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "6 and 4",
+      "prompt": "There are 6 ducks in the pond. 4 more swim over. How many ducks now?",
+      "answer": "10",
+      "answer_type": "number",
+      "hints": [
+        "Start with 6.",
+        "Add 4 more.",
+        "Count on or count all."
+      ],
+      "strategies": [
+        "count on",
+        "decompose"
+      ],
+      "tags": [
+        "change-add-to",
+        "1"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-story-pair-04",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "5 and 7",
+      "prompt": "There are 5 ducks in the pond. 7 more swim over. How many ducks now?",
+      "answer": "12",
+      "answer_type": "number",
+      "hints": [
+        "Start with 5.",
+        "Add 7 more.",
+        "Count on or count all."
+      ],
+      "strategies": [
+        "count on",
+        "decompose"
+      ],
+      "tags": [
+        "change-add-to",
+        "1"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-story-pair-05",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "8 and 6",
+      "prompt": "There are 8 ducks in the pond. 6 more swim over. How many ducks now?",
+      "answer": "14",
+      "answer_type": "number",
+      "hints": [
+        "Start with 8.",
+        "Add 6 more.",
+        "Count on or count all."
+      ],
+      "strategies": [
+        "count on",
+        "decompose"
+      ],
+      "tags": [
+        "change-add-to",
+        "1"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-story-pair-06",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "9 and 4",
+      "prompt": "There are 9 ducks in the pond. 4 more swim over. How many ducks now?",
+      "answer": "13",
+      "answer_type": "number",
+      "hints": [
+        "Start with 9.",
+        "Add 4 more.",
+        "Count on or count all."
+      ],
+      "strategies": [
+        "count on",
+        "decompose"
+      ],
+      "tags": [
+        "change-add-to",
+        "1"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-secret-add-4-9",
+      "strand": "missing_number_stories",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "rich_puzzle",
+      "title": "Secret number (+4 = 9)",
+      "prompt": "I'm thinking of a secret number. If I add 4, I get 9. What is my number?",
+      "answer": "5",
+      "answer_type": "number",
+      "hints": [
+        "Work backwards: 9 minus 4.",
+        "Or count up from 4 to 9.",
+        "5 + 4 = 9 ✓"
+      ],
+      "strategies": [
+        "work backwards",
+        "missing addend"
+      ],
+      "tags": [
+        "mystery",
+        "K-1"
+      ],
+      "explain_prompt": "How is undoing 'add 4' the same as 'subtract 4'?",
+      "minutes": 4,
+      "materials": [],
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-secret-double-12",
+      "strand": "missing_number_stories",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Secret number (doubled = 12)",
+      "prompt": "If I double my secret number, I get 12. What is the number?",
+      "answer": "6",
+      "answer_type": "number",
+      "hints": [
+        "Double means + itself.",
+        "Half of 12.",
+        "6 + 6 = 12 ✓"
+      ],
+      "strategies": [
+        "halve",
+        "guess and check"
+      ],
+      "tags": [
+        "mystery",
+        "doubles",
+        "1"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-secret-sub-3-7",
+      "strand": "missing_number_stories",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "rich_puzzle",
+      "title": "Secret number (-3 = 7)",
+      "prompt": "A secret number minus 3 is 7. What is it?",
+      "answer": "10",
+      "answer_type": "number",
+      "hints": [
+        "Undo subtract by adding.",
+        "7 + 3 = ?",
+        "10 - 3 = 7 ✓"
+      ],
+      "strategies": [
+        "work backwards"
+      ],
+      "tags": [
+        "mystery",
+        "K-1"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-twoclues",
+      "strand": "missing_number_stories",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Two clues",
+      "prompt": "My number is between 10 and 20. It's odd. The digits add to 7. What is it?",
+      "answer": "13",
+      "answer_type": "number",
+      "hints": [
+        "List odds from 11 to 19.",
+        "Check digit sum: 11→2, 13→4, 15→6, 17→8, 19→10.",
+        "Wait — 13's digits are 1 and 3, that's 4. Try 16... not odd. Re-check 13... 1+3=4, not 7. Try 25? Out of range. Hmm — re-read."
+      ],
+      "strategies": [
+        "systematic list",
+        "check clues"
+      ],
+      "tags": [
+        "mystery",
+        "logic",
+        "2"
+      ],
+      "explain_prompt": "Which clue narrowed it the most?",
+      "minutes": 6,
+      "materials": [],
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-twoclues-fix",
+      "strand": "missing_number_stories",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Three-clue mystery",
+      "prompt": "My number is even. It's between 20 and 40. The digits add to 6. What is it?",
+      "answer": "24, 42... only 24 in range",
+      "answer_type": "number",
+      "hints": [
+        "Evens 20–40: 22, 24, 26, 28, 30, 32, 34, 36, 38.",
+        "Digit sums: 4, 6, 8, 10, 3, 5, 7, 9, 11.",
+        "24 has digit sum 6."
+      ],
+      "strategies": [
+        "systematic list"
+      ],
+      "tags": [
+        "mystery",
+        "logic",
+        "2"
+      ],
+      "minutes": 6,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-twostep",
+      "strand": "missing_number_stories",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Add then subtract",
+      "prompt": "A secret number plus 5, then minus 2, gives 10. What was the number?",
+      "answer": "7",
+      "answer_type": "number",
+      "hints": [
+        "Undo backwards: + 2 first.",
+        "10 + 2 = 12.",
+        "12 − 5 = 7."
+      ],
+      "strategies": [
+        "work backwards"
+      ],
+      "tags": [
+        "mystery",
+        "two-step",
+        "2"
+      ],
+      "minutes": 5,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-box-balance",
+      "strand": "missing_number_stories",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Box on the balance",
+      "prompt": "A balance scale shows: a box plus 3 marbles balances 8 marbles. How many marbles in the box?",
+      "answer": "5",
+      "answer_type": "number",
+      "hints": [
+        "Take 3 marbles off both sides.",
+        "Box = 8 - 3.",
+        "Both sides stay balanced."
+      ],
+      "strategies": [
+        "balance model",
+        "subtract from both sides"
+      ],
+      "materials": [
+        "balance scale",
+        "marbles"
+      ],
+      "tags": [
+        "mystery",
+        "balance",
+        "1"
+      ],
+      "explain_prompt": "Why does taking 3 from both sides keep it balanced?",
+      "minutes": 5,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-box-balance-2",
+      "strand": "missing_number_stories",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Two boxes balance",
+      "prompt": "Two equal boxes plus 2 marbles balance 12 marbles. How many marbles per box?",
+      "answer": "5",
+      "answer_type": "number",
+      "hints": [
+        "Take 2 off both sides.",
+        "Now 2 boxes balance 10 marbles.",
+        "Each box = 5."
+      ],
+      "strategies": [
+        "balance model",
+        "halve"
+      ],
+      "tags": [
+        "mystery",
+        "balance",
+        "2"
+      ],
+      "minutes": 6,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-add-itself",
+      "strand": "missing_number_stories",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Number plus itself",
+      "prompt": "A number plus itself plus 1 is 11. What is the number?",
+      "answer": "5",
+      "answer_type": "number",
+      "hints": [
+        "Subtract 1: 11 - 1 = 10.",
+        "Now find a doubles fact for 10.",
+        "5 + 5 = 10."
+      ],
+      "strategies": [
+        "work backwards",
+        "doubles"
+      ],
+      "tags": [
+        "mystery",
+        "doubles",
+        "2"
+      ],
+      "minutes": 5,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-fingers",
+      "strand": "missing_number_stories",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "rich_puzzle",
+      "title": "Hidden fingers",
+      "prompt": "I'm holding up some fingers behind my back. Together with the 3 in front, I'm showing 8 fingers total. How many are hidden?",
+      "answer": "5",
+      "answer_type": "number",
+      "hints": [
+        "3 + ? = 8.",
+        "Count up from 3 to 8.",
+        "Or 8 - 3."
+      ],
+      "strategies": [
+        "count up",
+        "missing addend"
+      ],
+      "materials": [
+        "fingers"
+      ],
+      "tags": [
+        "mystery",
+        "K-1"
+      ],
+      "minutes": 3,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-cards",
+      "strand": "missing_number_stories",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "Hidden card",
+      "prompt": "Two cards are face-down. I can see a 4 and the total is 11. What is the hidden card?",
+      "answer": "7",
+      "answer_type": "number",
+      "hints": [
+        "4 + ? = 11.",
+        "Count up.",
+        "11 - 4."
+      ],
+      "strategies": [
+        "missing addend"
+      ],
+      "materials": [
+        "playing cards"
+      ],
+      "tags": [
+        "mystery",
+        "1"
+      ],
+      "minutes": 3,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-stickers-hidden",
+      "strand": "missing_number_stories",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "Sticker pages",
+      "prompt": "A sticker book has 4 pages with stickers and 1 hidden page. Total stickers = 18. The four visible pages have 3, 5, 4, 4. How many on the hidden page?",
+      "answer": "2",
+      "answer_type": "number",
+      "hints": [
+        "Add the visible: 3+5+4+4=16.",
+        "Total minus visible = hidden.",
+        "18 - 16 = 2."
+      ],
+      "strategies": [
+        "sum then subtract"
+      ],
+      "tags": [
+        "mystery",
+        "multi-step",
+        "1"
+      ],
+      "minutes": 5,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-tf-3p4-eq-7",
+      "strand": "equality_balance",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "True or false: 3 + 4 = 7",
+      "prompt": "Is 3 + 4 = 7 a true statement? How do you know?",
+      "answer": "true",
+      "answer_type": "text",
+      "hints": [
+        "Count up.",
+        "Use fingers.",
+        "Both sides should match."
+      ],
+      "strategies": [
+        "compute",
+        "compare"
+      ],
+      "tags": [
+        "true-false",
+        "K-1"
+      ],
+      "minutes": 1,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-tf-5p2-eq-3p4",
+      "strand": "equality_balance",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "True or false: 5 + 2 = 3 + 4",
+      "prompt": "Is 5 + 2 = 3 + 4 true or false? Why? Equals doesn't mean 'the answer is' — it means 'is the same as'.",
+      "answer": "true",
+      "answer_type": "text",
+      "hints": [
+        "5+2 = 7.",
+        "3+4 = 7.",
+        "Same value → equal."
+      ],
+      "strategies": [
+        "compute both sides"
+      ],
+      "tags": [
+        "true-false",
+        "equality",
+        "1"
+      ],
+      "explain_prompt": "What does '=' really mean to you?",
+      "minutes": 3,
+      "materials": [],
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-fill-blank-blank-3-eq-7",
+      "strand": "equality_balance",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "rich_puzzle",
+      "title": "Fill the blank: __ + 3 = 7",
+      "prompt": "What number goes in the blank? __ + 3 = 7",
+      "answer": "4",
+      "answer_type": "number",
+      "hints": [
+        "7 - 3 = ?",
+        "Count up from 3 to 7.",
+        "4 + 3 = 7."
+      ],
+      "strategies": [
+        "missing addend"
+      ],
+      "tags": [
+        "equality",
+        "K-1"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-fill-blank-12-eq-blank-7",
+      "strand": "equality_balance",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Fill the blank: 12 = __ + 7",
+      "prompt": "What number makes 12 = __ + 7 true?",
+      "answer": "5",
+      "answer_type": "number",
+      "hints": [
+        "Equals on the right.",
+        "What plus 7 is 12?",
+        "12 - 7."
+      ],
+      "strategies": [
+        "missing addend",
+        "both sides equal"
+      ],
+      "tags": [
+        "equality",
+        "2"
+      ],
+      "explain_prompt": "Why is the equals sign in the middle still working?",
+      "minutes": 3,
+      "materials": [],
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-balance-blocks-3eq6",
+      "strand": "equality_balance",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "visual",
+      "title": "Balance: blocks",
+      "prompt": "One side of the scale has 3 blocks. The other side has 6 blocks. How many do you add to the lighter side to balance?",
+      "answer": "3",
+      "answer_type": "number",
+      "hints": [
+        "The smaller side needs more.",
+        "Difference is 3.",
+        "3 + 3 = 6."
+      ],
+      "strategies": [
+        "balance model"
+      ],
+      "materials": [
+        "balance",
+        "blocks"
+      ],
+      "tags": [
+        "balance",
+        "K-1"
+      ],
+      "minutes": 3,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-twosides-decompose",
+      "strand": "equality_balance",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Two ways to make the same value",
+      "prompt": "Write two different addition expressions that both equal 10. Now write one with subtraction. Connect them with =.",
+      "answer": "any equivalent",
+      "answer_type": "open",
+      "hints": [
+        "3 + 7.",
+        "5 + 5 — same as 3 + 7.",
+        "12 - 2 = 10."
+      ],
+      "strategies": [
+        "decompose",
+        "equivalence"
+      ],
+      "tags": [
+        "equality",
+        "decompose",
+        "2"
+      ],
+      "minutes": 5,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-blank-twosides-7p3",
+      "strand": "equality_balance",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Both sides equal: 7 + 3 = __ + 5",
+      "prompt": "What number goes in the blank? 7 + 3 = __ + 5. Don't 'do' the left first — think about what makes both sides match.",
+      "answer": "5",
+      "answer_type": "number",
+      "hints": [
+        "Left side = 10.",
+        "What plus 5 = 10?",
+        "Equals = same."
+      ],
+      "strategies": [
+        "both sides",
+        "equivalence"
+      ],
+      "tags": [
+        "equality",
+        "2"
+      ],
+      "explain_prompt": "What goes wrong if you write 7 + 3 = 10 + 5?",
+      "minutes": 4,
+      "materials": [],
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-twosides-9-2",
+      "strand": "equality_balance",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "9 - 2 = __ - 5",
+      "prompt": "What number makes 9 - 2 = __ - 5 true?",
+      "answer": "12",
+      "answer_type": "number",
+      "hints": [
+        "Left side = 7.",
+        "Right side: ? - 5 = 7.",
+        "12 - 5 = 7."
+      ],
+      "strategies": [
+        "compute one side",
+        "missing"
+      ],
+      "tags": [
+        "equality",
+        "subtraction",
+        "2"
+      ],
+      "minutes": 5,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-balance-twoboxes",
+      "strand": "equality_balance",
+      "level": 5,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Two boxes balance",
+      "prompt": "A balance shows: 2 boxes balance 10 marbles. Each box has the same number. How many marbles in one box?",
+      "answer": "5",
+      "answer_type": "number",
+      "hints": [
+        "Two equal boxes share the load.",
+        "Half of 10.",
+        "5 + 5 = 10."
+      ],
+      "strategies": [
+        "share equally",
+        "halve"
+      ],
+      "materials": [
+        "balance"
+      ],
+      "tags": [
+        "balance",
+        "halving",
+        "2"
+      ],
+      "minutes": 4,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-balance-mixed",
+      "strand": "equality_balance",
+      "level": 5,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Box + 4 = 11",
+      "prompt": "One box plus 4 marbles balances 11 marbles. How many marbles in the box? Show with a balance picture.",
+      "answer": "7",
+      "answer_type": "number",
+      "hints": [
+        "Take 4 off both sides.",
+        "Box balances 7 marbles.",
+        "Box = 7."
+      ],
+      "strategies": [
+        "balance model"
+      ],
+      "tags": [
+        "balance",
+        "2"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-find-tf",
+      "strand": "equality_balance",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "True or false: 8 = 8",
+      "prompt": "Is 8 = 8 a true equation? What about 8 = 5 + 3? What about 5 + 3 = 8?",
+      "answer": "true × 3",
+      "answer_type": "text",
+      "hints": [
+        "= means same as.",
+        "Both sides have value 8.",
+        "Order doesn't matter for =."
+      ],
+      "strategies": [
+        "both sides equal"
+      ],
+      "tags": [
+        "equality",
+        "1"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-ab-triangle-square",
+      "strand": "patterns",
+      "level": 1,
+      "grade_band": "K",
+      "kind": "warm_up",
+      "title": "Triangle, square, triangle ...",
+      "prompt": "A pattern: △ ◻ △ ◻ △ ◻ ___ ___ ___. What comes next? What about the 10th shape?",
+      "answer": "△ ◻ △; 10th = ◻",
+      "answer_type": "text",
+      "hints": [
+        "A then B, repeat.",
+        "Position 1, 3, 5 ... = △.",
+        "Even position = ◻."
+      ],
+      "strategies": [
+        "recognize unit",
+        "extend"
+      ],
+      "tags": [
+        "AB",
+        "K"
+      ],
+      "explain_prompt": "What's the smallest piece that repeats?",
+      "minutes": 3,
+      "materials": [],
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-aab-tri-sq-sq",
+      "strand": "patterns",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "Triangle, square, square ...",
+      "prompt": "Pattern: △ ◻ ◻ △ ◻ ◻ △ ___ ___. What comes next?",
+      "answer": "◻ ◻",
+      "answer_type": "text",
+      "hints": [
+        "Group of 3: △ ◻ ◻.",
+        "After △ comes ◻ ◻.",
+        "Then △ again."
+      ],
+      "strategies": [
+        "unit-of-repeat"
+      ],
+      "tags": [
+        "AAB",
+        "K-1"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-abc",
+      "strand": "patterns",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "warm_up",
+      "title": "Three-color pattern",
+      "prompt": "🔴🔵🟢🔴🔵🟢🔴 ___ ___. What comes next?",
+      "answer": "🔵 🟢",
+      "answer_type": "text",
+      "hints": [
+        "Group of 3: 🔴🔵🟢.",
+        "After 🔴 comes 🔵.",
+        "Then 🟢."
+      ],
+      "strategies": [
+        "unit-of-repeat"
+      ],
+      "tags": [
+        "ABC",
+        "1"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-grow-1-3-5",
+      "strand": "patterns",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Growing pattern",
+      "prompt": "1, 3, 5, 7 ... what's next? What's the 10th number?",
+      "answer": "9; 19",
+      "answer_type": "multi",
+      "hints": [
+        "Skip count by 2s starting at 1.",
+        "Each step adds 2.",
+        "10th: 1 + 9×2 = 19."
+      ],
+      "strategies": [
+        "common difference"
+      ],
+      "tags": [
+        "growing",
+        "skip-count",
+        "1"
+      ],
+      "explain_prompt": "How would you describe the rule in words?",
+      "minutes": 4,
+      "materials": [],
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-grow-doubling",
+      "strand": "patterns",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Doubling pattern",
+      "prompt": "2, 4, 8, 16 ... what's next? What's the rule?",
+      "answer": "32; double",
+      "answer_type": "multi",
+      "hints": [
+        "Each one is twice the one before.",
+        "Double 16 = 32.",
+        "Then double 32 = 64."
+      ],
+      "strategies": [
+        "doubling"
+      ],
+      "tags": [
+        "growing",
+        "double",
+        "2"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-fmachine-+3",
+      "strand": "patterns",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Function machine: + 3",
+      "prompt": "A machine: input 1 → output 4. Input 2 → 5. Input 5 → 8. What does it do? If input is 9, what's output?",
+      "answer": "adds 3; 12",
+      "answer_type": "multi",
+      "hints": [
+        "Compare in to out.",
+        "Each output is 3 more than input.",
+        "9 + 3 = 12."
+      ],
+      "strategies": [
+        "look at pairs",
+        "find rule"
+      ],
+      "tags": [
+        "function",
+        "1"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-fmachine-double",
+      "strand": "patterns",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Function machine: double",
+      "prompt": "Machine: 3 → 6, 5 → 10, 7 → 14. What does it do? If 11 goes in, what comes out? What goes in to make 20 come out?",
+      "answer": "doubles; 22; 10",
+      "answer_type": "multi",
+      "hints": [
+        "Twice the input.",
+        "11 → 22.",
+        "Half of 20 = 10."
+      ],
+      "strategies": [
+        "function rule"
+      ],
+      "tags": [
+        "function",
+        "double",
+        "halve",
+        "2"
+      ],
+      "minutes": 5,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-staircase",
+      "strand": "patterns",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "visual",
+      "title": "Staircase of squares",
+      "prompt": "Build a staircase: row 1 has 1 square, row 2 has 2, row 3 has 3, row 4 has 4. How many squares total in 4 rows? How about 5 rows?",
+      "answer": "10; 15",
+      "answer_type": "multi",
+      "hints": [
+        "Add row counts: 1+2+3+4.",
+        "10 squares.",
+        "Add 5 more for 5 rows."
+      ],
+      "strategies": [
+        "sum row counts"
+      ],
+      "materials": [
+        "square tiles"
+      ],
+      "tags": [
+        "growing",
+        "triangular",
+        "2"
+      ],
+      "explain_prompt": "Notice anything that pairs up to make 10s?",
+      "minutes": 5,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-broken-pattern",
+      "strand": "patterns",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Find the mistake",
+      "prompt": "A pattern goes 🔴 🔴 🔵 🔴 🔴 🔵 🔴 🔵 🔴 🔴 🔵. One thing is out of place. Which?",
+      "answer": "position 8 (should be 🔴)",
+      "answer_type": "text",
+      "hints": [
+        "Find the unit: 🔴 🔴 🔵.",
+        "Group by 3s.",
+        "Position 7,8,9 should be 🔴 🔴 🔵."
+      ],
+      "strategies": [
+        "unit-of-repeat",
+        "check"
+      ],
+      "tags": [
+        "error-find",
+        "1"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-100chart",
+      "strand": "patterns",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Patterns on the hundred chart",
+      "prompt": "On a hundred chart, color all the numbers ending in 5. What does it look like? Now numbers ending in 0. What patterns do you see together?",
+      "answer": "vertical columns",
+      "answer_type": "text",
+      "hints": [
+        "Look at the rightmost column.",
+        "Two parallel columns.",
+        "Skip-counting by 5 visits both."
+      ],
+      "strategies": [
+        "visual pattern"
+      ],
+      "materials": [
+        "hundred chart",
+        "crayons"
+      ],
+      "tags": [
+        "place-value",
+        "2"
+      ],
+      "explain_prompt": "Why do they form straight lines?",
+      "minutes": 6,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "lg-animal-line-fox",
+      "strand": "logic_classification",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "rich_puzzle",
+      "title": "Three animals in line",
+      "prompt": "A fox, rabbit, and bear are in a line. The fox is not first. The bear is right after the rabbit. Find an order.",
+      "answer": "rabbit, bear, fox",
+      "answer_type": "text",
+      "hints": [
+        "Try the bear first — does it work?",
+        "Bear after rabbit means rabbit before bear.",
+        "Fox not first → fox is 2nd or 3rd."
+      ],
+      "strategies": [
+        "test cases",
+        "use clues"
+      ],
+      "tags": [
+        "logic",
+        "K-1"
+      ],
+      "explain_prompt": "Which clue ruled out the most options?",
+      "minutes": 5,
+      "materials": [],
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "lg-animal-line-deduce",
+      "strand": "logic_classification",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Four kids in line",
+      "prompt": "Anna, Ben, Coco, Dev are in a line. Anna is right behind Ben. Coco is first. Dev is last. What order are they in?",
+      "answer": "Coco, Ben, Anna, Dev",
+      "answer_type": "text",
+      "hints": [
+        "Place the fixed people: Coco 1st, Dev 4th.",
+        "Ben and Anna fill 2nd and 3rd.",
+        "Anna is right behind Ben."
+      ],
+      "strategies": [
+        "place fixed first"
+      ],
+      "tags": [
+        "logic",
+        "ordering",
+        "2"
+      ],
+      "minutes": 6,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "lg-sort-attribute",
+      "strand": "logic_classification",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "visual",
+      "title": "Sort the buttons",
+      "prompt": "You have buttons: red round, red square, blue round, blue square, red triangle. Find a way to sort them into 2 groups, then find a different way.",
+      "answer": "by color, by shape",
+      "answer_type": "text",
+      "hints": [
+        "What attributes do the buttons have?",
+        "Try color.",
+        "Try shape."
+      ],
+      "strategies": [
+        "attribute sort"
+      ],
+      "materials": [
+        "buttons",
+        "shapes"
+      ],
+      "tags": [
+        "sort",
+        "K-1"
+      ],
+      "minutes": 4,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "lg-isnot-fruit",
+      "strand": "logic_classification",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Is not / is",
+      "prompt": "I'm thinking of a fruit. It is NOT red. It is NOT yellow. It is small and grows in bunches. What is it?",
+      "answer": "grape (or blueberry)",
+      "answer_type": "text",
+      "hints": [
+        "Cross out red and yellow fruits.",
+        "Small + bunches narrows it.",
+        "Could be grape or blueberry."
+      ],
+      "strategies": [
+        "elimination"
+      ],
+      "tags": [
+        "logic",
+        "1"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "lg-venn",
+      "strand": "logic_classification",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "visual",
+      "title": "Two-circle Venn",
+      "prompt": "One circle = animals with 4 legs. Another = animals that swim. Where does a frog go? A dog? A fish? A bird?",
+      "answer": "frog: both; dog: 4 legs only; fish: swim only; bird: outside",
+      "answer_type": "text",
+      "hints": [
+        "Each circle has its rule.",
+        "Overlap means both rules.",
+        "Outside means neither."
+      ],
+      "strategies": [
+        "sort",
+        "intersect"
+      ],
+      "materials": [
+        "paper hoops"
+      ],
+      "tags": [
+        "venn",
+        "2"
+      ],
+      "explain_prompt": "Why does the frog land in the middle?",
+      "minutes": 6,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "lg-truthtellers",
+      "strand": "logic_classification",
+      "level": 5,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Two doors",
+      "prompt": "Two doors. One says 'cake is here'. The other says 'cake is NOT here'. Exactly one sign is true. Which door has the cake?",
+      "answer": "depends — see hints",
+      "answer_type": "text",
+      "hints": [
+        "If door 1 is true, then cake is at 1, and door 2 ('not here') is false. Consistent!",
+        "If door 1 is false, cake is not at 1; door 2 says 'not here' = true. Cake at 2 — but door 2 means 'not at 2'? Re-check.",
+        "Best read: door 2 says cake is not at door 2. If true, cake at 1. So both readings give door 1."
+      ],
+      "strategies": [
+        "case analysis"
+      ],
+      "tags": [
+        "logic",
+        "2"
+      ],
+      "minutes": 8,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "lg-shoe-color",
+      "strand": "logic_classification",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Lost shoe",
+      "prompt": "Three kids each had two same-color shoes (red, blue, green). One shoe got lost. Now there are: 2 red, 1 blue, 2 green. What color is the lost shoe?",
+      "answer": "blue",
+      "answer_type": "text",
+      "hints": [
+        "Each color started with 2.",
+        "Red has 2 — none lost.",
+        "Blue has 1 — lost one!"
+      ],
+      "strategies": [
+        "count differences"
+      ],
+      "tags": [
+        "logic",
+        "1"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "lg-coin-heavier",
+      "strand": "logic_classification",
+      "level": 5,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "One heavier coin",
+      "prompt": "You have 3 coins. One is heavier than the others. Using a balance once, can you find which? How?",
+      "answer": "put 1 vs 1; if equal, the third is heavier",
+      "answer_type": "text",
+      "hints": [
+        "Try putting one coin on each side.",
+        "If they balance, the leftover is heavy.",
+        "If not, the heavy side has the heavy coin."
+      ],
+      "strategies": [
+        "case analysis",
+        "weighing"
+      ],
+      "materials": [
+        "balance",
+        "coins"
+      ],
+      "tags": [
+        "logic",
+        "weighing",
+        "2"
+      ],
+      "explain_prompt": "Why does one weighing work for 3 coins?",
+      "minutes": 8,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "lg-sock-drawer",
+      "strand": "logic_classification",
+      "level": 5,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Sock drawer in the dark",
+      "prompt": "A drawer has 3 red socks and 3 blue socks, all mixed up. In the dark, how many socks must you grab to be SURE you have a matching pair?",
+      "answer": "3",
+      "answer_type": "number",
+      "hints": [
+        "Worst case: pick 1 red, 1 blue.",
+        "Then your 3rd sock matches one of those.",
+        "Two colors → 3 grabs guarantees a pair."
+      ],
+      "strategies": [
+        "worst case",
+        "pigeonhole"
+      ],
+      "tags": [
+        "logic",
+        "pigeonhole",
+        "2"
+      ],
+      "explain_prompt": "What if there were 3 colors? How many socks then?",
+      "parent_extension": "Try with kids' actual sock drawer (eyes closed, with parent supervising).",
+      "minutes": 8,
+      "materials": [],
+      "template": null
+    },
+    {
+      "slug": "gm-shape-sides",
+      "strand": "geometry_spatial",
+      "level": 1,
+      "grade_band": "K",
+      "kind": "warm_up",
+      "title": "How many sides?",
+      "prompt": "Triangle: how many sides? Square? Hexagon (6 sides — bee's honeycomb shape)? Circle?",
+      "answer": "3, 4, 6, 0",
+      "answer_type": "multi",
+      "hints": [
+        "Trace each shape with your finger.",
+        "Count corners — they match the sides.",
+        "Circle has no straight sides."
+      ],
+      "strategies": [
+        "trace",
+        "count corners"
+      ],
+      "tags": [
+        "shapes",
+        "K"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "gm-symmetry-fold",
+      "strand": "geometry_spatial",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "visual",
+      "title": "Folding shapes",
+      "prompt": "Cut out a heart. Fold it down the middle. Do the halves match? That's symmetry. Now try with a square. With a triangle. Which folds work?",
+      "answer": "exploration",
+      "answer_type": "open",
+      "hints": [
+        "Match means edges align.",
+        "Squares fold many ways.",
+        "Some triangles only fold one way."
+      ],
+      "strategies": [
+        "fold and check"
+      ],
+      "materials": [
+        "paper",
+        "scissors"
+      ],
+      "tags": [
+        "symmetry",
+        "K-1"
+      ],
+      "explain_prompt": "What does a 'line of symmetry' do?",
+      "parent_extension": "Find symmetric things at home — leaves, faces, letters.",
+      "minutes": 8,
+      "template": null
+    },
+    {
+      "slug": "gm-tangram-square",
+      "strand": "geometry_spatial",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "visual",
+      "title": "Tangram square",
+      "prompt": "Use 2 small triangles to make a square. Use 2 small triangles to make a bigger triangle. What other shape can you make?",
+      "answer": "square, triangle, parallelogram",
+      "answer_type": "text",
+      "hints": [
+        "Start with the small triangles.",
+        "Match equal-length sides.",
+        "Try flipping a piece."
+      ],
+      "strategies": [
+        "compose shapes"
+      ],
+      "materials": [
+        "tangram"
+      ],
+      "tags": [
+        "compose",
+        "1"
+      ],
+      "minutes": 8,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "gm-position-words",
+      "strand": "geometry_spatial",
+      "level": 1,
+      "grade_band": "K",
+      "kind": "warm_up",
+      "title": "Position words",
+      "prompt": "Put a block ABOVE your pencil. BELOW it. To the LEFT. RIGHT. BETWEEN two pencils. Now describe where your shoe is in the room using these words.",
+      "answer": "practice",
+      "answer_type": "open",
+      "hints": [
+        "Above = higher up.",
+        "Between = in the middle.",
+        "Use 'next to' too."
+      ],
+      "strategies": [
+        "place and describe"
+      ],
+      "materials": [
+        "blocks",
+        "pencil"
+      ],
+      "tags": [
+        "position",
+        "K"
+      ],
+      "minutes": 4,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "gm-rotate-shape",
+      "strand": "geometry_spatial",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "visual",
+      "title": "Mental rotation",
+      "prompt": "Picture a capital letter L. Now rotate it a quarter-turn clockwise. What letter or shape does it look like? Try a quarter-turn the other way.",
+      "answer": "like a rotated L",
+      "answer_type": "text",
+      "hints": [
+        "Use your hand to mime the L.",
+        "Quarter-turn = 90°.",
+        "After 4 quarter-turns, you're back."
+      ],
+      "strategies": [
+        "hand model",
+        "rotate"
+      ],
+      "tags": [
+        "rotation",
+        "2"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "gm-paperfold",
+      "strand": "geometry_spatial",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "visual",
+      "title": "Paper folding holes",
+      "prompt": "Fold a square in half, then in half again. Punch a small hole near the corner. Unfold. How many holes? Where are they?",
+      "answer": "4 holes",
+      "answer_type": "number",
+      "hints": [
+        "Each fold doubles the layers.",
+        "1 fold = 2, 2 folds = 4.",
+        "The hole appears symmetrically."
+      ],
+      "strategies": [
+        "fold and predict"
+      ],
+      "materials": [
+        "paper",
+        "hole punch"
+      ],
+      "tags": [
+        "symmetry",
+        "fold",
+        "2"
+      ],
+      "explain_prompt": "What if you folded 3 times? How many holes?",
+      "parent_extension": "Predict before unfolding — that's the math.",
+      "minutes": 8,
+      "template": null
+    },
+    {
+      "slug": "gm-cube-faces",
+      "strand": "geometry_spatial",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "visual",
+      "title": "Cube faces",
+      "prompt": "A cube has 6 faces. How many edges? How many corners (vertices)? Try to count without missing any.",
+      "answer": "6, 12, 8",
+      "answer_type": "multi",
+      "hints": [
+        "Top + bottom + 4 sides = 6 faces.",
+        "Each face has 4 edges, but shared.",
+        "Corners: 4 on top + 4 on bottom = 8."
+      ],
+      "strategies": [
+        "count systematically"
+      ],
+      "materials": [
+        "a box / cube"
+      ],
+      "tags": [
+        "3D",
+        "2"
+      ],
+      "minutes": 6,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "gm-perimeter",
+      "strand": "geometry_spatial",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Around the rug",
+      "prompt": "A rectangular rug is 5 steps long and 3 steps wide. How many steps to walk all the way around it?",
+      "answer": "16",
+      "answer_type": "number",
+      "hints": [
+        "Two long sides = 5 + 5.",
+        "Two short sides = 3 + 3.",
+        "5+5+3+3 = 16."
+      ],
+      "strategies": [
+        "perimeter"
+      ],
+      "tags": [
+        "perimeter",
+        "2"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "gm-cut-rectangle",
+      "strand": "geometry_spatial",
+      "level": 5,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Cut the rectangle",
+      "prompt": "A rectangle is 4 squares long and 2 squares tall (8 squares total). Cut along grid lines into two pieces of 4 squares each. Find 3 different ways.",
+      "answer": "multiple solutions",
+      "answer_type": "open",
+      "hints": [
+        "Straight horizontal cut.",
+        "Straight vertical cut.",
+        "L-shaped cut."
+      ],
+      "strategies": [
+        "divide equally"
+      ],
+      "materials": [
+        "graph paper"
+      ],
+      "tags": [
+        "divide",
+        "shape",
+        "2"
+      ],
+      "explain_prompt": "What do all the cuts have in common?",
+      "minutes": 8,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "gm-shape-sort-2v3",
+      "strand": "geometry_spatial",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "visual",
+      "title": "Flat or solid",
+      "prompt": "Sort these into flat (2D) and solid (3D): square, ball, book, circle, can, triangle.",
+      "answer": "flat: square, circle, triangle; solid: ball, book, can",
+      "answer_type": "text",
+      "hints": [
+        "Flat = paper.",
+        "Solid = you can hold space inside.",
+        "A book has thickness — 3D."
+      ],
+      "strategies": [
+        "sort"
+      ],
+      "tags": [
+        "2D-3D",
+        "K-1"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ms-length-pencils",
+      "strand": "measurement",
+      "level": 1,
+      "grade_band": "K",
+      "kind": "visual",
+      "title": "How many pencils long?",
+      "prompt": "Use pencils end-to-end to measure the table. About how many pencils long is it? Now use crayons. Why is the number different?",
+      "answer": "varies; smaller unit = bigger count",
+      "answer_type": "text",
+      "hints": [
+        "Line them up tip-to-tip.",
+        "Smaller unit fits more times.",
+        "Same length, different count."
+      ],
+      "strategies": [
+        "nonstandard units"
+      ],
+      "materials": [
+        "pencils",
+        "crayons"
+      ],
+      "tags": [
+        "length",
+        "K"
+      ],
+      "explain_prompt": "What does it tell us when a smaller unit gives a bigger number?",
+      "minutes": 8,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ms-clock-half",
+      "strand": "measurement",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Half past three",
+      "prompt": "Where does the minute hand point at 'half past three'? Where does the hour hand point?",
+      "answer": "minute on 6; hour between 3 and 4",
+      "answer_type": "text",
+      "hints": [
+        "Half past = 30 minutes after.",
+        "Minute hand makes a half-circle.",
+        "Hour hand drifts halfway."
+      ],
+      "strategies": [
+        "clock model"
+      ],
+      "materials": [
+        "analog clock"
+      ],
+      "tags": [
+        "time",
+        "1"
+      ],
+      "minutes": 4,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ms-money-coins-25",
+      "strand": "measurement",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "25 cents many ways",
+      "prompt": "Find three different coin combinations that make 25 cents. (Pennies = 1, nickels = 5, dimes = 10, quarter = 25.)",
+      "answer": "quarter; 2 dimes + 1 nickel; 5 nickels; ...",
+      "answer_type": "set",
+      "hints": [
+        "Start with one quarter.",
+        "Try only dimes + nickels.",
+        "Try with pennies."
+      ],
+      "strategies": [
+        "systematic list"
+      ],
+      "materials": [
+        "coins"
+      ],
+      "tags": [
+        "money",
+        "1"
+      ],
+      "parent_extension": "Use real coins. Pay 25 cents 3 different ways.",
+      "minutes": 6,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "template": null
+    },
+    {
+      "slug": "ms-money-make-change",
+      "strand": "measurement",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "story",
+      "title": "Change from a dollar",
+      "prompt": "A toy costs 65 cents. You pay with 1 dollar (100 cents). How much change?",
+      "answer": "35",
+      "answer_type": "number",
+      "hints": [
+        "100 - 65.",
+        "Count up: 65 → 70 → 100.",
+        "5 + 30 = 35."
+      ],
+      "strategies": [
+        "count up",
+        "subtract"
+      ],
+      "tags": [
+        "money",
+        "2"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ms-weight-compare",
+      "strand": "measurement",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "visual",
+      "title": "Heavier or lighter?",
+      "prompt": "Hold a book in one hand and a pencil in the other. Which is heavier? Which feels easier to hold? How do you know?",
+      "answer": "book heavier",
+      "answer_type": "text",
+      "hints": [
+        "Heavier = harder to lift.",
+        "Use both hands to compare.",
+        "Tools: balance scale."
+      ],
+      "strategies": [
+        "compare directly"
+      ],
+      "materials": [
+        "book",
+        "pencil"
+      ],
+      "tags": [
+        "weight",
+        "K-1"
+      ],
+      "minutes": 3,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ms-time-elapsed",
+      "strand": "measurement",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "story",
+      "title": "How long did it take?",
+      "prompt": "Soccer practice started at 4:00. It ended at 4:45. How many minutes long? If we started at 4:00 and went 30 minutes, what time did we stop?",
+      "answer": "45; 4:30",
+      "answer_type": "multi",
+      "hints": [
+        "End time minus start time.",
+        "Count up: 4:00 → 4:45.",
+        "30 minutes after 4:00 is 4:30."
+      ],
+      "strategies": [
+        "count up"
+      ],
+      "tags": [
+        "time",
+        "elapsed",
+        "2"
+      ],
+      "minutes": 5,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ms-length-feet",
+      "strand": "measurement",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "visual",
+      "title": "Walking feet",
+      "prompt": "Measure the length of a room in your-feet (heel-to-toe). Now have a parent measure the same room in their-feet. Why are the counts different?",
+      "answer": "parent's foot is longer → smaller count",
+      "answer_type": "text",
+      "hints": [
+        "Bigger feet, fewer steps.",
+        "Same room, different units.",
+        "Need a STANDARD unit to share."
+      ],
+      "strategies": [
+        "measure",
+        "compare units"
+      ],
+      "tags": [
+        "length",
+        "units",
+        "1"
+      ],
+      "explain_prompt": "Why do people use feet/inches the same way?",
+      "minutes": 6,
+      "materials": [],
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ms-area-tiles",
+      "strand": "measurement",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "visual",
+      "title": "Cover with squares",
+      "prompt": "Cover a rectangle 3 squares wide and 2 squares tall with square tiles. How many tiles? Now 4 by 3.",
+      "answer": "6; 12",
+      "answer_type": "multi",
+      "hints": [
+        "Rows × tiles-per-row.",
+        "3 + 3 or 2 + 2 + 2.",
+        "Skip-count by rows."
+      ],
+      "strategies": [
+        "array model"
+      ],
+      "materials": [
+        "square tiles"
+      ],
+      "tags": [
+        "area",
+        "2"
+      ],
+      "explain_prompt": "How does this connect to multiplication?",
+      "minutes": 6,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ms-temp-warmer",
+      "strand": "measurement",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Warmer or cooler?",
+      "prompt": "It was 60 degrees this morning. Now it's 75. Did it get warmer or cooler? By how much?",
+      "answer": "warmer; 15 degrees",
+      "answer_type": "multi",
+      "hints": [
+        "Bigger number = warmer.",
+        "75 - 60.",
+        "Count up by tens: 60 → 70 (10) → 75 (5)."
+      ],
+      "strategies": [
+        "count up"
+      ],
+      "tags": [
+        "temperature",
+        "1"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ms-cap-cups",
+      "strand": "measurement",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "story",
+      "title": "Filling the bottle",
+      "prompt": "A bottle holds 8 cups. You pour in 3 cups. Then 2 more. How many more cups to fill it?",
+      "answer": "3",
+      "answer_type": "number",
+      "hints": [
+        "3 + 2 = 5 in.",
+        "8 - 5 = 3 to go.",
+        "Or count up from 5 to 8."
+      ],
+      "strategies": [
+        "partial sums"
+      ],
+      "tags": [
+        "capacity",
+        "2"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "cb-outfits-2x3",
+      "strand": "combinatorics_counting",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Outfit choices",
+      "prompt": "You have 2 shirts (red, blue) and 3 pants (black, gray, tan). How many different outfits?",
+      "answer": "6",
+      "answer_type": "number",
+      "hints": [
+        "With red shirt: 3 pants choices.",
+        "With blue shirt: 3 pants choices.",
+        "3 + 3 = 6."
+      ],
+      "strategies": [
+        "tree diagram",
+        "multiply"
+      ],
+      "materials": [
+        "paper for tree"
+      ],
+      "tags": [
+        "combinations",
+        "1"
+      ],
+      "explain_prompt": "Why does it equal 2 × 3?",
+      "parent_extension": "Use real clothes — count outfits for school.",
+      "minutes": 6,
+      "template": null
+    },
+    {
+      "slug": "cb-icecream",
+      "strand": "combinatorics_counting",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Ice cream cone",
+      "prompt": "Pick 1 cone (sugar or waffle) and 1 flavor (vanilla, chocolate, strawberry, mint). How many different cones?",
+      "answer": "8",
+      "answer_type": "number",
+      "hints": [
+        "For each cone, 4 flavors.",
+        "2 cones × 4 flavors.",
+        "8 cones total."
+      ],
+      "strategies": [
+        "multiply",
+        "tree"
+      ],
+      "tags": [
+        "combinations",
+        "2"
+      ],
+      "minutes": 5,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "cb-make-12-two",
+      "strand": "combinatorics_counting",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Making 12",
+      "prompt": "How many ways to make 12 using two whole numbers? (Order: 3+9 same as 9+3.) List them.",
+      "answer": "0+12,1+11,2+10,3+9,4+8,5+7,6+6 = 7 ways",
+      "answer_type": "set",
+      "hints": [
+        "Start with 0+12.",
+        "Walk up.",
+        "Stop at 6+6."
+      ],
+      "strategies": [
+        "systematic list"
+      ],
+      "tags": [
+        "decompose",
+        "1"
+      ],
+      "explain_prompt": "Why stop at 6+6?",
+      "minutes": 6,
+      "materials": [],
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "cb-make-15-three",
+      "strand": "combinatorics_counting",
+      "level": 5,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Making 15 with three",
+      "prompt": "Three different whole numbers, all bigger than 0, that add to 15. How many sets?",
+      "answer": "1+2+12, 1+3+11, 1+4+10, 1+5+9, 1+6+8, 2+3+10, 2+4+9, 2+5+8, 2+6+7, 3+4+8, 3+5+7, 4+5+6 = 12",
+      "answer_type": "set",
+      "hints": [
+        "Smallest first; second smallest next.",
+        "Don't repeat sets.",
+        "Be organized."
+      ],
+      "strategies": [
+        "systematic list"
+      ],
+      "tags": [
+        "decompose",
+        "2"
+      ],
+      "minutes": 10,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "cb-handshakes",
+      "strand": "combinatorics_counting",
+      "level": 5,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Handshakes",
+      "prompt": "3 friends each shake hands once with everyone else. How many handshakes total? What about 4 friends?",
+      "answer": "3; 6",
+      "answer_type": "multi",
+      "hints": [
+        "Draw dots and lines between them.",
+        "3 friends → 3 lines (a triangle).",
+        "4 friends → 6 lines."
+      ],
+      "strategies": [
+        "draw graph"
+      ],
+      "materials": [
+        "paper"
+      ],
+      "tags": [
+        "combinations",
+        "graph",
+        "2"
+      ],
+      "explain_prompt": "If you add a 5th friend, how many new handshakes?",
+      "minutes": 8,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "cb-paths-grid",
+      "strand": "combinatorics_counting",
+      "level": 5,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Paths on a 2x2 grid",
+      "prompt": "Move from corner to opposite corner of a 2-by-2 grid, only going right or up. How many different paths?",
+      "answer": "6",
+      "answer_type": "number",
+      "hints": [
+        "Each path is 4 moves: 2 right, 2 up.",
+        "List orderings: RRUU, RURU, RUUR, URRU, URUR, UURR.",
+        "6 paths."
+      ],
+      "strategies": [
+        "systematic list"
+      ],
+      "materials": [
+        "graph paper"
+      ],
+      "tags": [
+        "paths",
+        "combinations",
+        "2"
+      ],
+      "minutes": 8,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "cb-coin-3",
+      "strand": "combinatorics_counting",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Three coin flips",
+      "prompt": "Flip a coin 3 times. List all the possible sequences (like HHT, HTT...). How many?",
+      "answer": "8",
+      "answer_type": "number",
+      "hints": [
+        "First flip 2 ways.",
+        "For each, second 2 ways.",
+        "2 × 2 × 2 = 8."
+      ],
+      "strategies": [
+        "multiply",
+        "tree"
+      ],
+      "materials": [
+        "coin"
+      ],
+      "tags": [
+        "combinations",
+        "2"
+      ],
+      "explain_prompt": "How many would there be for 4 flips?",
+      "minutes": 6,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "cb-sandwich",
+      "strand": "combinatorics_counting",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Sandwich choices",
+      "prompt": "Bread (white, wheat) + filling (cheese, ham, tuna). How many sandwiches?",
+      "answer": "6",
+      "answer_type": "number",
+      "hints": [
+        "For each bread, 3 fillings.",
+        "2 × 3.",
+        "6 sandwiches."
+      ],
+      "strategies": [
+        "tree",
+        "multiply"
+      ],
+      "tags": [
+        "combinations",
+        "1"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "cb-line-up-3",
+      "strand": "combinatorics_counting",
+      "level": 5,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Three friends in line",
+      "prompt": "Anna, Ben, Coco line up at the door. How many different orders are possible? List them.",
+      "answer": "6 (ABC, ACB, BAC, BCA, CAB, CBA)",
+      "answer_type": "set",
+      "hints": [
+        "3 choices for first.",
+        "2 left for second.",
+        "1 left for third. 3 × 2 × 1 = 6."
+      ],
+      "strategies": [
+        "multiply",
+        "list"
+      ],
+      "tags": [
+        "permutations",
+        "2"
+      ],
+      "minutes": 6,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "cb-domino-pairs",
+      "strand": "combinatorics_counting",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "rich_puzzle",
+      "title": "Domino pairs",
+      "prompt": "Dominoes have two ends, each with 0 to 6 dots. How many different dominoes if no domino repeats? (Hint: a 3-5 is the same as 5-3.)",
+      "answer": "28",
+      "answer_type": "number",
+      "hints": [
+        "Doubles: 0-0, 1-1, ..., 6-6 → 7.",
+        "Different pairs: choose 2 of 7 → 21.",
+        "7 + 21 = 28."
+      ],
+      "strategies": [
+        "case split",
+        "list"
+      ],
+      "materials": [
+        "dominoes"
+      ],
+      "tags": [
+        "combinations",
+        "2"
+      ],
+      "minutes": 10,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "gm-race-to-20",
+      "strand": "math_games",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "game",
+      "title": "Race to 20",
+      "prompt": "Two players. Take turns adding 1 or 2 to a running total. The first to say 20 wins. Play 3 times. Can you find a winning trick?",
+      "answer": "say 17, then mirror to 20",
+      "answer_type": "text",
+      "hints": [
+        "Try to say 17.",
+        "If opponent says 18, you say 20. If they say 19, you say 20.",
+        "Working backwards: 17, 14, 11, 8, 5, 2."
+      ],
+      "strategies": [
+        "work backwards",
+        "find invariants"
+      ],
+      "materials": [
+        "paper for total"
+      ],
+      "tags": [
+        "nim",
+        "K-1"
+      ],
+      "explain_prompt": "Why is 17 a magic number?",
+      "parent_extension": "Try Race to 21, then Race to 50 (add 1, 2, or 3).",
+      "minutes": 10,
+      "template": null
+    },
+    {
+      "slug": "gm-pig",
+      "strand": "math_games",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "game",
+      "title": "Pig — risk and reward",
+      "prompt": "Roll a die. Add to your turn-total. Roll again or HOLD (keep). If you roll 1, you lose this turn's total. First to 50 wins. What's your strategy?",
+      "answer": "varies",
+      "answer_type": "text",
+      "hints": [
+        "Holding earlier is safer.",
+        "Rolling more risks losing it all.",
+        "Many strategies — try and see."
+      ],
+      "strategies": [
+        "risk-reward"
+      ],
+      "materials": [
+        "die",
+        "paper"
+      ],
+      "tags": [
+        "dice",
+        "probability",
+        "1"
+      ],
+      "parent_extension": "Play 5 rounds and track who wins. Discuss strategy after.",
+      "minutes": 15,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "template": null
+    },
+    {
+      "slug": "gm-target-7",
+      "strand": "math_games",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "game",
+      "title": "Target 7",
+      "prompt": "Roll 2 dice. Player chooses to add or subtract. Closest to 7 wins each round. First to 5 wins overall.",
+      "answer": "game",
+      "answer_type": "open",
+      "hints": [
+        "Sum of 2 dice ranges 2 to 12.",
+        "If you roll 5 and 2: add → 7. Bullseye!",
+        "Pick add or subtract to land closest."
+      ],
+      "strategies": [
+        "mental math",
+        "compare"
+      ],
+      "materials": [
+        "2 dice"
+      ],
+      "tags": [
+        "dice",
+        "K-1"
+      ],
+      "minutes": 10,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "gm-guess-mine",
+      "strand": "math_games",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "game",
+      "title": "Guess my number",
+      "prompt": "One player thinks of a number 1–50. Other guesses; for each guess, hear 'higher' or 'lower'. Try to find it in 6 guesses or fewer.",
+      "answer": "binary search ~6",
+      "answer_type": "open",
+      "hints": [
+        "Always guess the middle of what's left.",
+        "First guess: 25.",
+        "Each guess cuts the range in half."
+      ],
+      "strategies": [
+        "binary search"
+      ],
+      "tags": [
+        "search",
+        "1"
+      ],
+      "explain_prompt": "Why does guessing 25 first beat guessing 1?",
+      "minutes": 10,
+      "materials": [],
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "gm-make-100",
+      "strand": "math_games",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "game",
+      "title": "Race to 100",
+      "prompt": "Two players take turns adding 1, 2, 3, 4, 5, 6, 7, 8, 9, or 10. First to 100 wins. Find the magic numbers.",
+      "answer": "89, 78, 67, ..., 1",
+      "answer_type": "text",
+      "hints": [
+        "You want to say 100.",
+        "If you say 89, opponent says 90–99; you finish.",
+        "Step back by 11s: 89, 78, 67, 56, 45, 34, 23, 12, 1."
+      ],
+      "strategies": [
+        "work backwards",
+        "modular"
+      ],
+      "tags": [
+        "nim",
+        "2"
+      ],
+      "minutes": 12,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "gm-dot-corners",
+      "strand": "math_games",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "game",
+      "title": "Connect the corners",
+      "prompt": "On a 3-by-3 grid of dots, players take turns drawing a line between adjacent dots (no diagonals). Whoever closes a square claims it. Most squares wins.",
+      "answer": "game",
+      "answer_type": "open",
+      "hints": [
+        "Avoid drawing the third side of any box.",
+        "Force the other player to give you a square.",
+        "Long chains matter at the end."
+      ],
+      "strategies": [
+        "plan ahead",
+        "force"
+      ],
+      "materials": [
+        "dot paper"
+      ],
+      "tags": [
+        "strategy",
+        "1"
+      ],
+      "minutes": 15,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "gm-card-flip",
+      "strand": "math_games",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "game",
+      "title": "War with adding",
+      "prompt": "Each player flips 2 cards (Aces=1, faces=10). Add them. Highest sum wins all 4 cards. Most cards at the end wins.",
+      "answer": "game",
+      "answer_type": "open",
+      "hints": [
+        "Quick mental adding.",
+        "Doubles are easy.",
+        "Bigger cards usually win."
+      ],
+      "strategies": [
+        "mental math"
+      ],
+      "materials": [
+        "deck of cards"
+      ],
+      "tags": [
+        "cards",
+        "K-1"
+      ],
+      "parent_extension": "Try with 3 cards and add. Or subtract smaller from larger.",
+      "minutes": 15,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "template": null
+    },
+    {
+      "slug": "gm-number-line-jump",
+      "strand": "math_games",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "game",
+      "title": "Number line jump",
+      "prompt": "Mark a number line 0 to 30. Roll a die: jump that many forward. Roll a coin: heads = forward, tails = back. First to 30 wins (must land exactly).",
+      "answer": "game",
+      "answer_type": "open",
+      "hints": [
+        "Going past means staying.",
+        "Last few squares need exact rolls.",
+        "Going back can help if too high."
+      ],
+      "strategies": [
+        "plan moves"
+      ],
+      "materials": [
+        "number line",
+        "die",
+        "coin",
+        "marker"
+      ],
+      "tags": [
+        "dice",
+        "1"
+      ],
+      "minutes": 12,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "gm-21-stones",
+      "strand": "math_games",
+      "level": 5,
+      "grade_band": "2",
+      "kind": "game",
+      "title": "Take stones (Nim)",
+      "prompt": "21 stones. Take turns removing 1, 2, or 3 stones. Whoever takes the LAST stone wins. Find the strategy.",
+      "answer": "leave multiples of 4",
+      "answer_type": "text",
+      "hints": [
+        "After your turn, leave 4, 8, 12, 16, 20.",
+        "If 21 to start, you go first: take 1 → leave 20.",
+        "Mirror: opponent takes k, you take 4-k."
+      ],
+      "strategies": [
+        "work backwards",
+        "modular",
+        "mirroring"
+      ],
+      "materials": [
+        "21 stones / pennies"
+      ],
+      "tags": [
+        "nim",
+        "strategy",
+        "2"
+      ],
+      "explain_prompt": "Why is 'leaving a multiple of 4' a winning move?",
+      "minutes": 15,
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "gm-shut-the-box",
+      "strand": "math_games",
+      "level": 4,
+      "grade_band": "2",
+      "kind": "game",
+      "title": "Shut the box",
+      "prompt": "Numbers 1–9 are open. Roll 2 dice. Close numbers that sum to your roll (e.g., roll 7: close 7, OR 3+4, OR 1+6, OR 1+2+4). Goal: close them all. Score = unclosed sum (lower is better).",
+      "answer": "game",
+      "answer_type": "open",
+      "hints": [
+        "Plan combinations carefully.",
+        "Closing 1, 2 early is risky.",
+        "Decompositions matter."
+      ],
+      "strategies": [
+        "decompose",
+        "plan"
+      ],
+      "materials": [
+        "2 dice",
+        "paper",
+        "tokens 1-9"
+      ],
+      "tags": [
+        "dice",
+        "decompose",
+        "2"
+      ],
+      "minutes": 15,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-add-101",
+      "strand": "add_sub_structures",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "story",
+      "title": "2 Ducks + 3",
+      "prompt": "There are 2 ducks in the pond. Then 3 more swim over. How many now?",
+      "answer": "5",
+      "answer_type": "number",
+      "hints": [
+        "Start with 2.",
+        "Add 3.",
+        "Count on or count all."
+      ],
+      "strategies": [
+        "count on",
+        "decompose"
+      ],
+      "tags": [
+        "change-add-to"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-add-102",
+      "strand": "add_sub_structures",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "story",
+      "title": "3 Kittens + 4",
+      "prompt": "There are 3 kittens in a basket. Then 4 more more crawl in. How many now?",
+      "answer": "7",
+      "answer_type": "number",
+      "hints": [
+        "Start with 3.",
+        "Add 4.",
+        "Count on or count all."
+      ],
+      "strategies": [
+        "count on",
+        "decompose"
+      ],
+      "tags": [
+        "change-add-to"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-add-103",
+      "strand": "add_sub_structures",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "story",
+      "title": "4 Birds + 5",
+      "prompt": "There are 4 birds on the wire. Then 5 more more land. How many now?",
+      "answer": "9",
+      "answer_type": "number",
+      "hints": [
+        "Start with 4.",
+        "Add 5.",
+        "Count on or count all."
+      ],
+      "strategies": [
+        "count on",
+        "decompose"
+      ],
+      "tags": [
+        "change-add-to"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-add-104",
+      "strand": "add_sub_structures",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "story",
+      "title": "5 Cars + 4",
+      "prompt": "There are 5 cars in the lot. Then 4 more more park. How many now?",
+      "answer": "9",
+      "answer_type": "number",
+      "hints": [
+        "Start with 5.",
+        "Add 4.",
+        "Count on or count all."
+      ],
+      "strategies": [
+        "count on",
+        "decompose"
+      ],
+      "tags": [
+        "change-add-to"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-add-105",
+      "strand": "add_sub_structures",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "story",
+      "title": "6 Apples + 3",
+      "prompt": "There are 6 apples in the bowl. Then 3 more more fall in. How many now?",
+      "answer": "9",
+      "answer_type": "number",
+      "hints": [
+        "Start with 6.",
+        "Add 3.",
+        "Count on or count all."
+      ],
+      "strategies": [
+        "count on",
+        "decompose"
+      ],
+      "tags": [
+        "change-add-to"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-add-106",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "4 Crayons + 7",
+      "prompt": "There are 4 crayons in the box. Then 7 more more get added. How many now?",
+      "answer": "11",
+      "answer_type": "number",
+      "hints": [
+        "Start with 4.",
+        "Add 7.",
+        "Count on or count all."
+      ],
+      "strategies": [
+        "count on",
+        "decompose"
+      ],
+      "tags": [
+        "change-add-to"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-add-107",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "5 Snowballs + 6",
+      "prompt": "There are 5 snowballs. Then 6 more more get rolled. How many now?",
+      "answer": "11",
+      "answer_type": "number",
+      "hints": [
+        "Start with 5.",
+        "Add 6.",
+        "Count on or count all."
+      ],
+      "strategies": [
+        "count on",
+        "decompose"
+      ],
+      "tags": [
+        "change-add-to"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-add-108",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "8 Books + 4",
+      "prompt": "There are 8 books on the shelf. Then 4 more more get stacked. How many now?",
+      "answer": "12",
+      "answer_type": "number",
+      "hints": [
+        "Start with 8.",
+        "Add 4.",
+        "Count on or count all."
+      ],
+      "strategies": [
+        "count on",
+        "decompose"
+      ],
+      "tags": [
+        "change-add-to"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-add-109",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "7 Turtles + 5",
+      "prompt": "There are 7 turtles on the log. Then 5 more more climb up. How many now?",
+      "answer": "12",
+      "answer_type": "number",
+      "hints": [
+        "Start with 7.",
+        "Add 5.",
+        "Count on or count all."
+      ],
+      "strategies": [
+        "count on",
+        "decompose"
+      ],
+      "tags": [
+        "change-add-to"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-add-110",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "6 Balloons + 8",
+      "prompt": "There are 6 balloons in the air. Then 8 more more float up. How many now?",
+      "answer": "14",
+      "answer_type": "number",
+      "hints": [
+        "Start with 6.",
+        "Add 8.",
+        "Count on or count all."
+      ],
+      "strategies": [
+        "count on",
+        "decompose"
+      ],
+      "tags": [
+        "change-add-to"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-sub-201",
+      "strand": "add_sub_structures",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "story",
+      "title": "8 Ducks - 3",
+      "prompt": "There were 8 ducks in the pond. 3 left. How many remain?",
+      "answer": "5",
+      "answer_type": "number",
+      "hints": [
+        "Start with 8.",
+        "Take away 3.",
+        "Count back."
+      ],
+      "strategies": [
+        "count back",
+        "subtract"
+      ],
+      "tags": [
+        "change-take-from"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-sub-202",
+      "strand": "add_sub_structures",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "story",
+      "title": "10 Kittens - 4",
+      "prompt": "There were 10 kittens in a basket. 4 left. How many remain?",
+      "answer": "6",
+      "answer_type": "number",
+      "hints": [
+        "Start with 10.",
+        "Take away 4.",
+        "Count back."
+      ],
+      "strategies": [
+        "count back",
+        "subtract"
+      ],
+      "tags": [
+        "change-take-from"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-sub-203",
+      "strand": "add_sub_structures",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "story",
+      "title": "9 Birds - 5",
+      "prompt": "There were 9 birds on the wire. 5 flew. How many remain?",
+      "answer": "4",
+      "answer_type": "number",
+      "hints": [
+        "Start with 9.",
+        "Take away 5.",
+        "Count back."
+      ],
+      "strategies": [
+        "count back",
+        "subtract"
+      ],
+      "tags": [
+        "change-take-from"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-sub-204",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "12 Cars - 4",
+      "prompt": "There were 12 cars in the lot. 4 left. How many remain?",
+      "answer": "8",
+      "answer_type": "number",
+      "hints": [
+        "Start with 12.",
+        "Take away 4.",
+        "Count back."
+      ],
+      "strategies": [
+        "count back",
+        "subtract"
+      ],
+      "tags": [
+        "change-take-from"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-sub-205",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "11 Apples - 3",
+      "prompt": "There were 11 apples in the bowl. 3 left. How many remain?",
+      "answer": "8",
+      "answer_type": "number",
+      "hints": [
+        "Start with 11.",
+        "Take away 3.",
+        "Count back."
+      ],
+      "strategies": [
+        "count back",
+        "subtract"
+      ],
+      "tags": [
+        "change-take-from"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-sub-206",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "15 Crayons - 7",
+      "prompt": "There were 15 crayons in the box. 7 left. How many remain?",
+      "answer": "8",
+      "answer_type": "number",
+      "hints": [
+        "Start with 15.",
+        "Take away 7.",
+        "Count back."
+      ],
+      "strategies": [
+        "count back",
+        "subtract"
+      ],
+      "tags": [
+        "change-take-from"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-sub-207",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "13 Snowballs - 5",
+      "prompt": "There were 13 snowballs. 5 left. How many remain?",
+      "answer": "8",
+      "answer_type": "number",
+      "hints": [
+        "Start with 13.",
+        "Take away 5.",
+        "Count back."
+      ],
+      "strategies": [
+        "count back",
+        "subtract"
+      ],
+      "tags": [
+        "change-take-from"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-sub-208",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "14 Books - 6",
+      "prompt": "There were 14 books on the shelf. 6 left. How many remain?",
+      "answer": "8",
+      "answer_type": "number",
+      "hints": [
+        "Start with 14.",
+        "Take away 6.",
+        "Count back."
+      ],
+      "strategies": [
+        "count back",
+        "subtract"
+      ],
+      "tags": [
+        "change-take-from"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-sub-209",
+      "strand": "add_sub_structures",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "story",
+      "title": "10 Turtles - 7",
+      "prompt": "There were 10 turtles on the log. 7 left. How many remain?",
+      "answer": "3",
+      "answer_type": "number",
+      "hints": [
+        "Start with 10.",
+        "Take away 7.",
+        "Count back."
+      ],
+      "strategies": [
+        "count back",
+        "subtract"
+      ],
+      "tags": [
+        "change-take-from"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-sub-210",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "16 Balloons - 8",
+      "prompt": "There were 16 balloons in the air. 8 flew. How many remain?",
+      "answer": "8",
+      "answer_type": "number",
+      "hints": [
+        "Start with 16.",
+        "Take away 8.",
+        "Count back."
+      ],
+      "strategies": [
+        "count back",
+        "subtract"
+      ],
+      "tags": [
+        "change-take-from"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-missing-301",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "Missing addend 3→10",
+      "prompt": "3 ducks in the pond. Some more arrive — now there are 10. How many came?",
+      "answer": "7",
+      "answer_type": "number",
+      "hints": [
+        "3 + ? = 10.",
+        "Count up.",
+        "10 - 3."
+      ],
+      "strategies": [
+        "count up",
+        "missing addend"
+      ],
+      "tags": [
+        "missing-addend"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-missing-302",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "Missing addend 4→11",
+      "prompt": "4 kittens in a basket. Some more arrive — now there are 11. How many came?",
+      "answer": "7",
+      "answer_type": "number",
+      "hints": [
+        "4 + ? = 11.",
+        "Count up.",
+        "11 - 4."
+      ],
+      "strategies": [
+        "count up",
+        "missing addend"
+      ],
+      "tags": [
+        "missing-addend"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-missing-303",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "Missing addend 5→12",
+      "prompt": "5 birds on the wire. Some more arrive — now there are 12. How many came?",
+      "answer": "7",
+      "answer_type": "number",
+      "hints": [
+        "5 + ? = 12.",
+        "Count up.",
+        "12 - 5."
+      ],
+      "strategies": [
+        "count up",
+        "missing addend"
+      ],
+      "tags": [
+        "missing-addend"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-missing-304",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "Missing addend 6→13",
+      "prompt": "6 cars in the lot. Some more arrive — now there are 13. How many came?",
+      "answer": "7",
+      "answer_type": "number",
+      "hints": [
+        "6 + ? = 13.",
+        "Count up.",
+        "13 - 6."
+      ],
+      "strategies": [
+        "count up",
+        "missing addend"
+      ],
+      "tags": [
+        "missing-addend"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-missing-305",
+      "strand": "add_sub_structures",
+      "level": 4,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "Missing addend 7→14",
+      "prompt": "7 apples in the bowl. Some more arrive — now there are 14. How many came?",
+      "answer": "7",
+      "answer_type": "number",
+      "hints": [
+        "7 + ? = 14.",
+        "Count up.",
+        "14 - 7."
+      ],
+      "strategies": [
+        "count up",
+        "missing addend"
+      ],
+      "tags": [
+        "missing-addend"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-missing-306",
+      "strand": "add_sub_structures",
+      "level": 4,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "Missing addend 5→15",
+      "prompt": "5 crayons in the box. Some more arrive — now there are 15. How many came?",
+      "answer": "10",
+      "answer_type": "number",
+      "hints": [
+        "5 + ? = 15.",
+        "Count up.",
+        "15 - 5."
+      ],
+      "strategies": [
+        "count up",
+        "missing addend"
+      ],
+      "tags": [
+        "missing-addend"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-missing-307",
+      "strand": "add_sub_structures",
+      "level": 4,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "Missing addend 8→14",
+      "prompt": "8 snowballs. Some more arrive — now there are 14. How many came?",
+      "answer": "6",
+      "answer_type": "number",
+      "hints": [
+        "8 + ? = 14.",
+        "Count up.",
+        "14 - 8."
+      ],
+      "strategies": [
+        "count up",
+        "missing addend"
+      ],
+      "tags": [
+        "missing-addend"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-missing-308",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "Missing addend 4→13",
+      "prompt": "4 books on the shelf. Some more arrive — now there are 13. How many came?",
+      "answer": "9",
+      "answer_type": "number",
+      "hints": [
+        "4 + ? = 13.",
+        "Count up.",
+        "13 - 4."
+      ],
+      "strategies": [
+        "count up",
+        "missing addend"
+      ],
+      "tags": [
+        "missing-addend"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-missing-309",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "Missing addend 6→12",
+      "prompt": "6 turtles on the log. Some more arrive — now there are 12. How many came?",
+      "answer": "6",
+      "answer_type": "number",
+      "hints": [
+        "6 + ? = 12.",
+        "Count up.",
+        "12 - 6."
+      ],
+      "strategies": [
+        "count up",
+        "missing addend"
+      ],
+      "tags": [
+        "missing-addend"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "as-extra-missing-310",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "story",
+      "title": "Missing addend 3→11",
+      "prompt": "3 balloons in the air. Some more arrive — now there are 11. How many came?",
+      "answer": "8",
+      "answer_type": "number",
+      "hints": [
+        "3 + ? = 11.",
+        "Count up.",
+        "11 - 3."
+      ],
+      "strategies": [
+        "count up",
+        "missing addend"
+      ],
+      "tags": [
+        "missing-addend"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-subitize-pair-7",
+      "strand": "number_sense",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "How did you see 7?",
+      "prompt": "Quick look: I show 7 dots in 2 groups. How many? How did you split them in your mind?",
+      "answer": "7",
+      "answer_type": "number",
+      "hints": [
+        "Try seeing it as 5 and the rest.",
+        "5 + 2 = 7.",
+        "Or as a near-double."
+      ],
+      "strategies": [
+        "subitize",
+        "decompose"
+      ],
+      "materials": [
+        "dot card"
+      ],
+      "tags": [
+        "subitize",
+        "decompose",
+        "K-1"
+      ],
+      "minutes": 1,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-subitize-pair-8",
+      "strand": "number_sense",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "How did you see 8?",
+      "prompt": "Quick look: I show 8 dots in 2 groups. How many? How did you split them in your mind?",
+      "answer": "8",
+      "answer_type": "number",
+      "hints": [
+        "Try seeing it as 5 and the rest.",
+        "5 + 3 = 8.",
+        "Or as a near-double."
+      ],
+      "strategies": [
+        "subitize",
+        "decompose"
+      ],
+      "materials": [
+        "dot card"
+      ],
+      "tags": [
+        "subitize",
+        "decompose",
+        "K-1"
+      ],
+      "minutes": 1,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-subitize-pair-9",
+      "strand": "number_sense",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "How did you see 9?",
+      "prompt": "Quick look: I show 9 dots in 2 groups. How many? How did you split them in your mind?",
+      "answer": "9",
+      "answer_type": "number",
+      "hints": [
+        "Try seeing it as 5 and the rest.",
+        "5 + 4 = 9.",
+        "Or as a near-double."
+      ],
+      "strategies": [
+        "subitize",
+        "decompose"
+      ],
+      "materials": [
+        "dot card"
+      ],
+      "tags": [
+        "subitize",
+        "decompose",
+        "K-1"
+      ],
+      "minutes": 1,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-subitize-pair-10",
+      "strand": "number_sense",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "How did you see 10?",
+      "prompt": "Quick look: I show 10 dots in 2 groups. How many? How did you split them in your mind?",
+      "answer": "10",
+      "answer_type": "number",
+      "hints": [
+        "Try seeing it as 5 and the rest.",
+        "5 + 5 = 10.",
+        "Or as a near-double."
+      ],
+      "strategies": [
+        "subitize",
+        "decompose"
+      ],
+      "materials": [
+        "dot card"
+      ],
+      "tags": [
+        "subitize",
+        "decompose",
+        "K-1"
+      ],
+      "minutes": 1,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-place-value-35",
+      "strand": "number_sense",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "warm_up",
+      "title": "Tens and ones in 35",
+      "prompt": "How many tens in 35? How many ones? Build it with blocks.",
+      "answer": "3 tens, 5 ones",
+      "answer_type": "text",
+      "hints": [
+        "Look at the tens digit (3).",
+        "Look at the ones digit (5).",
+        "3×10 + 5 = 35."
+      ],
+      "strategies": [
+        "place value"
+      ],
+      "materials": [
+        "base-10 blocks"
+      ],
+      "tags": [
+        "place-value",
+        "1"
+      ],
+      "minutes": 2,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-place-value-52",
+      "strand": "number_sense",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "warm_up",
+      "title": "Tens and ones in 52",
+      "prompt": "How many tens in 52? How many ones? Build it with blocks.",
+      "answer": "5 tens, 2 ones",
+      "answer_type": "text",
+      "hints": [
+        "Look at the tens digit (5).",
+        "Look at the ones digit (2).",
+        "5×10 + 2 = 52."
+      ],
+      "strategies": [
+        "place value"
+      ],
+      "materials": [
+        "base-10 blocks"
+      ],
+      "tags": [
+        "place-value",
+        "1"
+      ],
+      "minutes": 2,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-place-value-64",
+      "strand": "number_sense",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "warm_up",
+      "title": "Tens and ones in 64",
+      "prompt": "How many tens in 64? How many ones? Build it with blocks.",
+      "answer": "6 tens, 4 ones",
+      "answer_type": "text",
+      "hints": [
+        "Look at the tens digit (6).",
+        "Look at the ones digit (4).",
+        "6×10 + 4 = 64."
+      ],
+      "strategies": [
+        "place value"
+      ],
+      "materials": [
+        "base-10 blocks"
+      ],
+      "tags": [
+        "place-value",
+        "1"
+      ],
+      "minutes": 2,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-place-value-70",
+      "strand": "number_sense",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "warm_up",
+      "title": "Tens and ones in 70",
+      "prompt": "How many tens in 70? How many ones? Build it with blocks.",
+      "answer": "7 tens, 0 ones",
+      "answer_type": "text",
+      "hints": [
+        "Look at the tens digit (7).",
+        "Look at the ones digit (0).",
+        "7×10 + 0 = 70."
+      ],
+      "strategies": [
+        "place value"
+      ],
+      "materials": [
+        "base-10 blocks"
+      ],
+      "tags": [
+        "place-value",
+        "1"
+      ],
+      "minutes": 2,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-place-value-89",
+      "strand": "number_sense",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "warm_up",
+      "title": "Tens and ones in 89",
+      "prompt": "How many tens in 89? How many ones? Build it with blocks.",
+      "answer": "8 tens, 9 ones",
+      "answer_type": "text",
+      "hints": [
+        "Look at the tens digit (8).",
+        "Look at the ones digit (9).",
+        "8×10 + 9 = 89."
+      ],
+      "strategies": [
+        "place value"
+      ],
+      "materials": [
+        "base-10 blocks"
+      ],
+      "tags": [
+        "place-value",
+        "1"
+      ],
+      "minutes": 2,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ns-place-value-48",
+      "strand": "number_sense",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "warm_up",
+      "title": "Tens and ones in 48",
+      "prompt": "How many tens in 48? How many ones? Build it with blocks.",
+      "answer": "4 tens, 8 ones",
+      "answer_type": "text",
+      "hints": [
+        "Look at the tens digit (4).",
+        "Look at the ones digit (8).",
+        "4×10 + 8 = 48."
+      ],
+      "strategies": [
+        "place value"
+      ],
+      "materials": [
+        "base-10 blocks"
+      ],
+      "tags": [
+        "place-value",
+        "1"
+      ],
+      "minutes": 2,
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-tf-extra-01",
+      "strand": "equality_balance",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "True or false: 4 + 5 = 9",
+      "prompt": "Is this true or false? 4 + 5 = 9",
+      "answer": "true",
+      "answer_type": "text",
+      "hints": [
+        "Compute each side.",
+        "Compare.",
+        "= means same."
+      ],
+      "strategies": [
+        "compute",
+        "compare"
+      ],
+      "tags": [
+        "true-false"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-tf-extra-02",
+      "strand": "equality_balance",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "True or false: 6 + 2 = 7",
+      "prompt": "Is this true or false? 6 + 2 = 7",
+      "answer": "false",
+      "answer_type": "text",
+      "hints": [
+        "Compute each side.",
+        "Compare.",
+        "= means same."
+      ],
+      "strategies": [
+        "compute",
+        "compare"
+      ],
+      "tags": [
+        "true-false"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-tf-extra-03",
+      "strand": "equality_balance",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "True or false: 10 = 5 + 5",
+      "prompt": "Is this true or false? 10 = 5 + 5",
+      "answer": "true",
+      "answer_type": "text",
+      "hints": [
+        "Compute each side.",
+        "Compare.",
+        "= means same."
+      ],
+      "strategies": [
+        "compute",
+        "compare"
+      ],
+      "tags": [
+        "true-false"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-tf-extra-04",
+      "strand": "equality_balance",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "True or false: 8 = 8",
+      "prompt": "Is this true or false? 8 = 8",
+      "answer": "true",
+      "answer_type": "text",
+      "hints": [
+        "Compute each side.",
+        "Compare.",
+        "= means same."
+      ],
+      "strategies": [
+        "compute",
+        "compare"
+      ],
+      "tags": [
+        "true-false"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-tf-extra-05",
+      "strand": "equality_balance",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "True or false: 11 - 4 = 6",
+      "prompt": "Is this true or false? 11 - 4 = 6",
+      "answer": "false",
+      "answer_type": "text",
+      "hints": [
+        "Compute each side.",
+        "Compare.",
+        "= means same."
+      ],
+      "strategies": [
+        "compute",
+        "compare"
+      ],
+      "tags": [
+        "true-false"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-tf-extra-06",
+      "strand": "equality_balance",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "True or false: 3 + 3 = 2 + 4",
+      "prompt": "Is this true or false? 3 + 3 = 2 + 4",
+      "answer": "true",
+      "answer_type": "text",
+      "hints": [
+        "Compute each side.",
+        "Compare.",
+        "= means same."
+      ],
+      "strategies": [
+        "compute",
+        "compare"
+      ],
+      "tags": [
+        "true-false"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-tf-extra-07",
+      "strand": "equality_balance",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "True or false: 9 = 4 + 4",
+      "prompt": "Is this true or false? 9 = 4 + 4",
+      "answer": "false",
+      "answer_type": "text",
+      "hints": [
+        "Compute each side.",
+        "Compare.",
+        "= means same."
+      ],
+      "strategies": [
+        "compute",
+        "compare"
+      ],
+      "tags": [
+        "true-false"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-tf-extra-08",
+      "strand": "equality_balance",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "True or false: 7 + 0 = 7",
+      "prompt": "Is this true or false? 7 + 0 = 7",
+      "answer": "true",
+      "answer_type": "text",
+      "hints": [
+        "Compute each side.",
+        "Compare.",
+        "= means same."
+      ],
+      "strategies": [
+        "compute",
+        "compare"
+      ],
+      "tags": [
+        "true-false"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-fill-extra-01",
+      "strand": "equality_balance",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Fill the blank: __ + 5 = 12",
+      "prompt": "What number makes this true? __ + 5 = 12",
+      "answer": "7",
+      "answer_type": "number",
+      "hints": [
+        "Equals = same as.",
+        "Compute the side you can.",
+        "Find what makes both sides match."
+      ],
+      "strategies": [
+        "both sides equal"
+      ],
+      "tags": [
+        "equality"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-fill-extra-02",
+      "strand": "equality_balance",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Fill the blank: 9 = __ + 6",
+      "prompt": "What number makes this true? 9 = __ + 6",
+      "answer": "3",
+      "answer_type": "number",
+      "hints": [
+        "Equals = same as.",
+        "Compute the side you can.",
+        "Find what makes both sides match."
+      ],
+      "strategies": [
+        "both sides equal"
+      ],
+      "tags": [
+        "equality"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-fill-extra-03",
+      "strand": "equality_balance",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Fill the blank: __ - 4 = 8",
+      "prompt": "What number makes this true? __ - 4 = 8",
+      "answer": "12",
+      "answer_type": "number",
+      "hints": [
+        "Equals = same as.",
+        "Compute the side you can.",
+        "Find what makes both sides match."
+      ],
+      "strategies": [
+        "both sides equal"
+      ],
+      "tags": [
+        "equality"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-fill-extra-04",
+      "strand": "equality_balance",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Fill the blank: 15 - __ = 9",
+      "prompt": "What number makes this true? 15 - __ = 9",
+      "answer": "6",
+      "answer_type": "number",
+      "hints": [
+        "Equals = same as.",
+        "Compute the side you can.",
+        "Find what makes both sides match."
+      ],
+      "strategies": [
+        "both sides equal"
+      ],
+      "tags": [
+        "equality"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-fill-extra-05",
+      "strand": "equality_balance",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Fill the blank: 4 + __ = 4 + 7",
+      "prompt": "What number makes this true? 4 + __ = 4 + 7",
+      "answer": "7",
+      "answer_type": "number",
+      "hints": [
+        "Equals = same as.",
+        "Compute the side you can.",
+        "Find what makes both sides match."
+      ],
+      "strategies": [
+        "both sides equal"
+      ],
+      "tags": [
+        "equality"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-fill-extra-06",
+      "strand": "equality_balance",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Fill the blank: 6 + 8 = __ + 7",
+      "prompt": "What number makes this true? 6 + 8 = __ + 7",
+      "answer": "7",
+      "answer_type": "number",
+      "hints": [
+        "Equals = same as.",
+        "Compute the side you can.",
+        "Find what makes both sides match."
+      ],
+      "strategies": [
+        "both sides equal"
+      ],
+      "tags": [
+        "equality"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "eq-fill-extra-07",
+      "strand": "equality_balance",
+      "level": 3,
+      "grade_band": "1",
+      "kind": "rich_puzzle",
+      "title": "Fill the blank: __ + 0 = 13",
+      "prompt": "What number makes this true? __ + 0 = 13",
+      "answer": "13",
+      "answer_type": "number",
+      "hints": [
+        "Equals = same as.",
+        "Compute the side you can.",
+        "Find what makes both sides match."
+      ],
+      "strategies": [
+        "both sides equal"
+      ],
+      "tags": [
+        "equality"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-variant-01",
+      "strand": "patterns",
+      "level": 1,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "Pattern (AB)",
+      "prompt": "What comes next? 🐶 🐱 🐶 🐱 🐶 🐱 ___ ___",
+      "answer": "🐶 🐱",
+      "answer_type": "text",
+      "hints": [
+        "Find the smallest repeating unit.",
+        "Mark the unit boundaries.",
+        "Predict the next slot."
+      ],
+      "strategies": [
+        "unit-of-repeat"
+      ],
+      "tags": [
+        "pattern",
+        "AB"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-variant-02",
+      "strand": "patterns",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "Pattern (AAB)",
+      "prompt": "What comes next? ⭐ ⭐ 🌙 ⭐ ⭐ 🌙 ⭐ ___ ___",
+      "answer": "⭐ 🌙",
+      "answer_type": "text",
+      "hints": [
+        "Find the smallest repeating unit.",
+        "Mark the unit boundaries.",
+        "Predict the next slot."
+      ],
+      "strategies": [
+        "unit-of-repeat"
+      ],
+      "tags": [
+        "pattern",
+        "AAB"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-variant-03",
+      "strand": "patterns",
+      "level": 3,
+      "grade_band": "1-2",
+      "kind": "warm_up",
+      "title": "Pattern (ABC)",
+      "prompt": "What comes next? 🍎 🍌 🍇 🍎 🍌 🍇 🍎 ___ ___",
+      "answer": "🍌 🍇",
+      "answer_type": "text",
+      "hints": [
+        "Find the smallest repeating unit.",
+        "Mark the unit boundaries.",
+        "Predict the next slot."
+      ],
+      "strategies": [
+        "unit-of-repeat"
+      ],
+      "tags": [
+        "pattern",
+        "ABC"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-variant-04",
+      "strand": "patterns",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "warm_up",
+      "title": "Pattern (ABC numeric)",
+      "prompt": "What comes next? 1, 2, 3, 1, 2, 3, 1, ___ ___",
+      "answer": "2, 3",
+      "answer_type": "text",
+      "hints": [
+        "Find the smallest repeating unit.",
+        "Mark the unit boundaries.",
+        "Predict the next slot."
+      ],
+      "strategies": [
+        "unit-of-repeat"
+      ],
+      "tags": [
+        "pattern",
+        "ABC numeric"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-variant-05",
+      "strand": "patterns",
+      "level": 4,
+      "grade_band": "1-2",
+      "kind": "warm_up",
+      "title": "Pattern (ABBC)",
+      "prompt": "What comes next? A B B C A B B C A ___ ___",
+      "answer": "B B",
+      "answer_type": "text",
+      "hints": [
+        "Find the smallest repeating unit.",
+        "Mark the unit boundaries.",
+        "Predict the next slot."
+      ],
+      "strategies": [
+        "unit-of-repeat"
+      ],
+      "tags": [
+        "pattern",
+        "ABBC"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-fmachine-extra-01",
+      "strand": "patterns",
+      "level": 2,
+      "grade_band": "1-2",
+      "kind": "rich_puzzle",
+      "title": "What does the machine do?",
+      "prompt": "Inputs and outputs: 1→2, 5→6, 9→10. What's the rule? If 10 goes in, what comes out?",
+      "answer": "rule: +1; out: 11",
+      "answer_type": "text",
+      "hints": [
+        "Compare each in→out pair.",
+        "All examples follow +1.",
+        "Apply the rule."
+      ],
+      "strategies": [
+        "look at pairs",
+        "find rule"
+      ],
+      "tags": [
+        "function"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-fmachine-extra-02",
+      "strand": "patterns",
+      "level": 3,
+      "grade_band": "1-2",
+      "kind": "rich_puzzle",
+      "title": "What does the machine do?",
+      "prompt": "Inputs and outputs: 3→8, 7→12, 10→15. What's the rule? If 11 goes in, what comes out?",
+      "answer": "rule: +5; out: 16",
+      "answer_type": "text",
+      "hints": [
+        "Compare each in→out pair.",
+        "All examples follow +5.",
+        "Apply the rule."
+      ],
+      "strategies": [
+        "look at pairs",
+        "find rule"
+      ],
+      "tags": [
+        "function"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-fmachine-extra-03",
+      "strand": "patterns",
+      "level": 4,
+      "grade_band": "1-2",
+      "kind": "rich_puzzle",
+      "title": "What does the machine do?",
+      "prompt": "Inputs and outputs: 2→4, 4→8, 6→12. What's the rule? If 7 goes in, what comes out?",
+      "answer": "rule: double; out: 14",
+      "answer_type": "text",
+      "hints": [
+        "Compare each in→out pair.",
+        "All examples follow double.",
+        "Apply the rule."
+      ],
+      "strategies": [
+        "look at pairs",
+        "find rule"
+      ],
+      "tags": [
+        "function"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-fmachine-extra-04",
+      "strand": "patterns",
+      "level": 3,
+      "grade_band": "1-2",
+      "kind": "rich_puzzle",
+      "title": "What does the machine do?",
+      "prompt": "Inputs and outputs: 5→4, 8→7, 12→11. What's the rule? If 13 goes in, what comes out?",
+      "answer": "rule: -1; out: 12",
+      "answer_type": "text",
+      "hints": [
+        "Compare each in→out pair.",
+        "All examples follow -1.",
+        "Apply the rule."
+      ],
+      "strategies": [
+        "look at pairs",
+        "find rule"
+      ],
+      "tags": [
+        "function"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "pat-fmachine-extra-05",
+      "strand": "patterns",
+      "level": 3,
+      "grade_band": "1-2",
+      "kind": "rich_puzzle",
+      "title": "What does the machine do?",
+      "prompt": "Inputs and outputs: 4→14, 12→22, 25→35. What's the rule? If 26 goes in, what comes out?",
+      "answer": "rule: +10; out: 36",
+      "answer_type": "text",
+      "hints": [
+        "Compare each in→out pair.",
+        "All examples follow +10.",
+        "Apply the rule."
+      ],
+      "strategies": [
+        "look at pairs",
+        "find rule"
+      ],
+      "tags": [
+        "function"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "lg-lineup-extra-01",
+      "strand": "logic_classification",
+      "level": 3,
+      "grade_band": "1-2",
+      "kind": "rich_puzzle",
+      "title": "Line up the 3",
+      "prompt": "Find the order. Anna is first. Coco is right after Ben.",
+      "answer": "Anna, Ben, Coco",
+      "answer_type": "text",
+      "hints": [
+        "Place fixed positions first.",
+        "Use 'is right after' to chain.",
+        "Test orders against the clues."
+      ],
+      "strategies": [
+        "place fixed first",
+        "use clues"
+      ],
+      "tags": [
+        "logic",
+        "ordering"
+      ],
+      "minutes": 5,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "lg-lineup-extra-02",
+      "strand": "logic_classification",
+      "level": 3,
+      "grade_band": "1-2",
+      "kind": "rich_puzzle",
+      "title": "Line up the 3",
+      "prompt": "Find the order. Mom is in the middle. Dad is not last.",
+      "answer": "Dad, Mom, Kid",
+      "answer_type": "text",
+      "hints": [
+        "Place fixed positions first.",
+        "Use 'is right after' to chain.",
+        "Test orders against the clues."
+      ],
+      "strategies": [
+        "place fixed first",
+        "use clues"
+      ],
+      "tags": [
+        "logic",
+        "ordering"
+      ],
+      "minutes": 5,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "lg-lineup-extra-03",
+      "strand": "logic_classification",
+      "level": 4,
+      "grade_band": "1-2",
+      "kind": "rich_puzzle",
+      "title": "Line up the 4",
+      "prompt": "Find the order. The fish is last. The dog is right before the cat. The bird is first.",
+      "answer": "bird, dog, cat, fish",
+      "answer_type": "text",
+      "hints": [
+        "Place fixed positions first.",
+        "Use 'is right after' to chain.",
+        "Test orders against the clues."
+      ],
+      "strategies": [
+        "place fixed first",
+        "use clues"
+      ],
+      "tags": [
+        "logic",
+        "ordering"
+      ],
+      "minutes": 5,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "gm-shape-rectangle",
+      "strand": "geometry_spatial",
+      "level": 3,
+      "grade_band": "1-2",
+      "kind": "warm_up",
+      "title": "Shape: rectangle",
+      "prompt": "How many sides? How many corners? How does it differ from a square?",
+      "answer": "4 sides, 4 corners; not all sides same",
+      "answer_type": "text",
+      "hints": [
+        "Trace the shape.",
+        "Count sides.",
+        "Compare to a square."
+      ],
+      "strategies": [
+        "count corners"
+      ],
+      "tags": [
+        "shapes",
+        "rectangle"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "gm-shape-pentagon",
+      "strand": "geometry_spatial",
+      "level": 3,
+      "grade_band": "1-2",
+      "kind": "warm_up",
+      "title": "Shape: pentagon",
+      "prompt": "How many sides has a pentagon? Can you draw one?",
+      "answer": "5",
+      "answer_type": "text",
+      "hints": [
+        "Trace the shape.",
+        "Count sides.",
+        "Compare to a square."
+      ],
+      "strategies": [
+        "count corners"
+      ],
+      "tags": [
+        "shapes",
+        "pentagon"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "gm-shape-octagon",
+      "strand": "geometry_spatial",
+      "level": 3,
+      "grade_band": "1-2",
+      "kind": "warm_up",
+      "title": "Shape: octagon",
+      "prompt": "How many sides has a stop sign?",
+      "answer": "8",
+      "answer_type": "text",
+      "hints": [
+        "Trace the shape.",
+        "Count sides.",
+        "Compare to a square."
+      ],
+      "strategies": [
+        "count corners"
+      ],
+      "tags": [
+        "shapes",
+        "octagon"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "gm-shape-rhombus",
+      "strand": "geometry_spatial",
+      "level": 3,
+      "grade_band": "1-2",
+      "kind": "warm_up",
+      "title": "Shape: rhombus",
+      "prompt": "A diamond shape — how many sides? Is it a square?",
+      "answer": "4; only if all angles equal",
+      "answer_type": "text",
+      "hints": [
+        "Trace the shape.",
+        "Count sides.",
+        "Compare to a square."
+      ],
+      "strategies": [
+        "count corners"
+      ],
+      "tags": [
+        "shapes",
+        "rhombus"
+      ],
+      "minutes": 2,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ms-est-01",
+      "strand": "measurement",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "visual",
+      "title": "Estimate: the kitchen table",
+      "prompt": "Estimate how many feet the kitchen table is. Then measure. Were you close? Why might your guess be off?",
+      "answer": "about 5",
+      "answer_type": "open",
+      "hints": [
+        "Picture the unit first.",
+        "Make a guess.",
+        "Then measure."
+      ],
+      "strategies": [
+        "estimate",
+        "measure"
+      ],
+      "tags": [
+        "estimate",
+        "length"
+      ],
+      "minutes": 5,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ms-est-02",
+      "strand": "measurement",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "visual",
+      "title": "Estimate: a doorway",
+      "prompt": "Estimate how many feet tall a doorway is. Then measure. Were you close? Why might your guess be off?",
+      "answer": "about 7",
+      "answer_type": "open",
+      "hints": [
+        "Picture the unit first.",
+        "Make a guess.",
+        "Then measure."
+      ],
+      "strategies": [
+        "estimate",
+        "measure"
+      ],
+      "tags": [
+        "estimate",
+        "length"
+      ],
+      "minutes": 5,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "ms-est-03",
+      "strand": "measurement",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "visual",
+      "title": "Estimate: a math book",
+      "prompt": "Estimate how many fingers wide a math book is. Then measure. Were you close? Why might your guess be off?",
+      "answer": "about 6",
+      "answer_type": "open",
+      "hints": [
+        "Picture the unit first.",
+        "Make a guess.",
+        "Then measure."
+      ],
+      "strategies": [
+        "estimate",
+        "measure"
+      ],
+      "tags": [
+        "estimate",
+        "length"
+      ],
+      "minutes": 5,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "cb-outfit-01",
+      "strand": "combinatorics_counting",
+      "level": 4,
+      "grade_band": "1-2",
+      "kind": "rich_puzzle",
+      "title": "How many hats+shirts?",
+      "prompt": "You can pick 1 of 2 hats (red, green) and 1 of 3 shirts (white, yellow, purple). How many combinations?",
+      "answer": "6",
+      "answer_type": "number",
+      "hints": [
+        "For each hat, list shirts.",
+        "2 × 3.",
+        "= 6."
+      ],
+      "strategies": [
+        "multiply",
+        "tree"
+      ],
+      "tags": [
+        "combinations"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "cb-outfit-02",
+      "strand": "combinatorics_counting",
+      "level": 3,
+      "grade_band": "1-2",
+      "kind": "rich_puzzle",
+      "title": "How many scarves+coats?",
+      "prompt": "You can pick 1 of 2 scarves (wool, silk) and 1 of 2 coats (black, blue). How many combinations?",
+      "answer": "4",
+      "answer_type": "number",
+      "hints": [
+        "For each scarve, list coats.",
+        "2 × 2.",
+        "= 4."
+      ],
+      "strategies": [
+        "multiply",
+        "tree"
+      ],
+      "tags": [
+        "combinations"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "cb-outfit-03",
+      "strand": "combinatorics_counting",
+      "level": 4,
+      "grade_band": "1-2",
+      "kind": "rich_puzzle",
+      "title": "How many breakfasts+drinks?",
+      "prompt": "You can pick 1 of 3 breakfasts (toast, cereal, pancake) and 1 of 2 drinks (juice, milk). How many combinations?",
+      "answer": "6",
+      "answer_type": "number",
+      "hints": [
+        "For each breakfast, list drinks.",
+        "3 × 2.",
+        "= 6."
+      ],
+      "strategies": [
+        "multiply",
+        "tree"
+      ],
+      "tags": [
+        "combinations"
+      ],
+      "minutes": 4,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-mystery-extra-01",
+      "strand": "missing_number_stories",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "rich_puzzle",
+      "title": "Secret number",
+      "prompt": "I'm thinking of a number. If I add 2, I get 8. What is it?",
+      "answer": "6",
+      "answer_type": "number",
+      "hints": [
+        "Work backwards.",
+        "Use the clue.",
+        "Test your guess."
+      ],
+      "strategies": [
+        "work backwards",
+        "guess and check"
+      ],
+      "tags": [
+        "mystery"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-mystery-extra-02",
+      "strand": "missing_number_stories",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "rich_puzzle",
+      "title": "Secret number",
+      "prompt": "I'm thinking of a number. If I add 5, I get 11. What is it?",
+      "answer": "6",
+      "answer_type": "number",
+      "hints": [
+        "Work backwards.",
+        "Use the clue.",
+        "Test your guess."
+      ],
+      "strategies": [
+        "work backwards",
+        "guess and check"
+      ],
+      "tags": [
+        "mystery"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-mystery-extra-03",
+      "strand": "missing_number_stories",
+      "level": 2,
+      "grade_band": "K-1",
+      "kind": "rich_puzzle",
+      "title": "Secret number",
+      "prompt": "I'm thinking of a number. If I take away 3, I get 4. What is it?",
+      "answer": "7",
+      "answer_type": "number",
+      "hints": [
+        "Work backwards.",
+        "Use the clue.",
+        "Test your guess."
+      ],
+      "strategies": [
+        "work backwards",
+        "guess and check"
+      ],
+      "tags": [
+        "mystery"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-mystery-extra-04",
+      "strand": "missing_number_stories",
+      "level": 3,
+      "grade_band": "1-2",
+      "kind": "rich_puzzle",
+      "title": "Secret number",
+      "prompt": "I'm thinking of a number. If I double, I get 8. What is it?",
+      "answer": "4",
+      "answer_type": "number",
+      "hints": [
+        "Work backwards.",
+        "Use the clue.",
+        "Test your guess."
+      ],
+      "strategies": [
+        "work backwards",
+        "guess and check"
+      ],
+      "tags": [
+        "mystery"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-mystery-extra-05",
+      "strand": "missing_number_stories",
+      "level": 4,
+      "grade_band": "1-2",
+      "kind": "rich_puzzle",
+      "title": "Secret number",
+      "prompt": "I'm thinking of a number. If I add itself, I get 14. What is it?",
+      "answer": "7",
+      "answer_type": "number",
+      "hints": [
+        "Work backwards.",
+        "Use the clue.",
+        "Test your guess."
+      ],
+      "strategies": [
+        "work backwards",
+        "guess and check"
+      ],
+      "tags": [
+        "mystery"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-mystery-extra-06",
+      "strand": "missing_number_stories",
+      "level": 4,
+      "grade_band": "1-2",
+      "kind": "rich_puzzle",
+      "title": "Secret number",
+      "prompt": "I'm thinking of a number. If I add 4 then add 2, I get 13. What is it?",
+      "answer": "7",
+      "answer_type": "number",
+      "hints": [
+        "Work backwards.",
+        "Use the clue.",
+        "Test your guess."
+      ],
+      "strategies": [
+        "work backwards",
+        "guess and check"
+      ],
+      "tags": [
+        "mystery"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    },
+    {
+      "slug": "mn-mystery-extra-07",
+      "strand": "missing_number_stories",
+      "level": 4,
+      "grade_band": "1-2",
+      "kind": "rich_puzzle",
+      "title": "Secret number",
+      "prompt": "I'm thinking of a number. It's between 5 and 15. It's even. It's not 10. What is it?",
+      "answer": "6, 8, 12, or 14",
+      "answer_type": "set",
+      "hints": [
+        "Work backwards.",
+        "Use the clue.",
+        "Test your guess."
+      ],
+      "strategies": [
+        "work backwards",
+        "guess and check"
+      ],
+      "tags": [
+        "mystery"
+      ],
+      "minutes": 3,
+      "materials": [],
+      "explain_prompt": "How do you know? Can you show it another way?",
+      "parent_extension": "",
+      "template": null
+    }
+  ],
+  "templates": [
+    {
+      "name": "secret_number_add",
+      "strand": "missing_number_stories",
+      "level": 2,
+      "kind": "rich_puzzle",
+      "template": {
+        "type": "secret_number_add",
+        "params": {
+          "add_min": 1,
+          "add_max": 9,
+          "result_min": 5,
+          "result_max": 18
+        }
+      }
+    },
+    {
+      "name": "secret_number_sub",
+      "strand": "missing_number_stories",
+      "level": 3,
+      "kind": "rich_puzzle",
+      "template": {
+        "type": "secret_number_sub",
+        "params": {
+          "sub_min": 1,
+          "sub_max": 9,
+          "result_min": 1,
+          "result_max": 9
+        }
+      }
+    },
+    {
+      "name": "ways_to_make_n",
+      "strand": "combinatorics_counting",
+      "level": 3,
+      "kind": "rich_puzzle",
+      "template": {
+        "type": "ways_to_make_n",
+        "params": {
+          "n_min": 6,
+          "n_max": 14
+        }
+      }
+    },
+    {
+      "name": "missing_addend",
+      "strand": "add_sub_structures",
+      "level": 3,
+      "kind": "story",
+      "template": {
+        "type": "missing_addend",
+        "params": {
+          "start_min": 3,
+          "start_max": 12,
+          "end_min": 8,
+          "end_max": 20
+        }
+      }
+    },
+    {
+      "name": "balance_blank",
+      "strand": "equality_balance",
+      "level": 3,
+      "kind": "rich_puzzle",
+      "template": {
+        "type": "balance_blank",
+        "params": {
+          "max_value": 20
+        }
+      }
+    },
+    {
+      "name": "ab_pattern_continue",
+      "strand": "patterns",
+      "level": 1,
+      "kind": "warm_up",
+      "template": {
+        "type": "ab_pattern",
+        "params": {
+          "shapes": [
+            [
+              "△",
+              "◻"
+            ],
+            [
+              "🔴",
+              "🔵"
+            ],
+            [
+              "🐶",
+              "🐱"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "name": "aab_pattern_continue",
+      "strand": "patterns",
+      "level": 2,
+      "kind": "warm_up",
+      "template": {
+        "type": "aab_pattern",
+        "params": {
+          "shapes": [
+            [
+              "△",
+              "◻"
+            ],
+            [
+              "🍎",
+              "🍌"
+            ],
+            [
+              "⭐",
+              "🌙"
+            ]
+          ]
+        }
+      }
+    },
+    {
+      "name": "function_machine",
+      "strand": "patterns",
+      "level": 3,
+      "kind": "rich_puzzle",
+      "template": {
+        "type": "function_machine",
+        "params": {
+          "ops": [
+            "+1",
+            "+2",
+            "+3",
+            "+5",
+            "+10",
+            "double"
+          ]
+        }
+      }
+    },
+    {
+      "name": "ten_frame_show",
+      "strand": "number_sense",
+      "level": 2,
+      "kind": "visual",
+      "template": {
+        "type": "ten_frame_show",
+        "params": {
+          "n_min": 4,
+          "n_max": 10
+        }
+      }
+    },
+    {
+      "name": "two_dice_sum",
+      "strand": "math_games",
+      "level": 2,
+      "kind": "game",
+      "template": {
+        "type": "two_dice_sum",
+        "params": {}
+      }
+    }
+  ]
+}

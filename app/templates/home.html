@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Math Circle Home{% endblock %}
+{% block body %}
+  <section class="card">
+    <h1>Welcome to Math Circle Home</h1>
+    <p class="muted">A joyful, Soviet-style enrichment app for K–2: deep number sense, logic, geometry, mental math, puzzles, and verbal reasoning. <strong>Depth before acceleration. Strategies before answers.</strong></p>
+    <p>{{ problem_count }} hand-crafted puzzles across {{ strand_count }} strands. Pick a child below to start a 15–25 minute session.</p>
+  </section>
+
+  {% if children %}
+  <h2>Your math circle</h2>
+  <div class="grid">
+    {% for c in children %}
+      <div class="child-card" style="--child-color: {{ c.color }}">
+        <div style="display:flex; gap:1rem; align-items:center;">
+          <div class="avatar">{{ c.avatar }}</div>
+          <div>
+            <h2 style="margin:0">{{ c.name }}</h2>
+            <div class="muted">Grade {{ c.grade }}{% if c.age %} · age {{ c.age }}{% endif %}</div>
+            {% if c.interests %}<div class="muted">Loves: {{ c.interests }}</div>{% endif %}
+          </div>
+        </div>
+        <div class="actions">
+          <a class="btn" href="/child/{{ c.id }}">Open dashboard</a>
+          <form method="post" action="/child/{{ c.id }}/start_session" style="display:inline">
+            <button class="btn accent" type="submit">Today's session →</button>
+          </form>
+          <a class="btn ghost small" href="/child/{{ c.id }}/edit">Edit</a>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <p style="margin-top:1.2rem"><a class="btn warm" href="/children/new">+ Add another child</a></p>
+  {% else %}
+  <div class="empty">
+    <h2>No children yet</h2>
+    <p>Create a profile to begin.</p>
+    <a class="btn" href="/children/new">+ Add a child</a>
+  </div>
+  {% endif %}
+
+  <section class="card" style="margin-top:2rem">
+    <h2>What a session looks like</h2>
+    <ul class="bare">
+      <li>☀️ <strong>Warm-up:</strong> mental math (a few quick rounds to wake up the brain)</li>
+      <li>🧩 <strong>Rich puzzle:</strong> one juicy problem worth talking through</li>
+      <li>🖐️ <strong>Visual / hands-on:</strong> ten-frames, blocks, paper folding, tangrams</li>
+      <li>📖 <strong>Story problem:</strong> a small situation to model and solve</li>
+      <li>💬 <strong>Explain:</strong> "How do you know?" — the most important question in math</li>
+      <li>🏡 <strong>Parent extension:</strong> something you can play later with toys, coins, or food</li>
+    </ul>
+  </section>
+{% endblock %}

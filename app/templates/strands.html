@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Math strands{% endblock %}
+{% block body %}
+<section class="card">
+  <h1>The 10 strands</h1>
+  <p class="muted">A balanced curriculum has many tracks. We rotate across all of them — never just arithmetic. Click any strand to browse.</p>
+</section>
+<div class="grid">
+  {% for s in strands %}
+    <a class="strand-card" href="/strands/{{ s.key }}" style="background: {{ strand_color(s.key) }}">
+      <span class="icon">{{ s.icon }}</span>
+      <span class="name">{{ s.name }}</span>
+      <span class="desc">{{ s.description }}</span>
+      <span class="count">{{ counts.get(s.id, 0) }} puzzles</span>
+    </a>
+  {% endfor %}
+</div>
+{% endblock %}

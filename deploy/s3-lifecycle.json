@@ -1,0 +1,21 @@
+{
+  "Rules": [
+    {
+      "ID": "mathcircle-snapshots",
+      "Status": "Enabled",
+      "Filter": { "Prefix": "mathcircle/" },
+      "Transitions": [
+        {
+          "Days": 30,
+          "StorageClass": "GLACIER_IR"
+        }
+      ],
+      "Expiration": {
+        "Days": 365
+      },
+      "NoncurrentVersionExpiration": {
+        "NoncurrentDays": 90
+      }
+    }
+  ]
+}

@@ -1,0 +1,184 @@
+#cloud-config
+# Math Circle Home — first-boot provisioner for Ubuntu 24.04 on EC2 t2.micro.
+#
+# Before launching the instance, replace these placeholders below:
+#   __GIT_REPO_URL__              e.g. https://github.com/base2ml/mathcircle.git
+#   __GIT_BRANCH__                e.g. main
+#   __DOMAIN__                    e.g. mathcircle.base2ml.com
+#   __BASIC_AUTH_HASH__           bcrypt hash for the household password
+#                                 generate with: caddy hash-password --plaintext 'YourPass'
+#                                 (or run on the box once Caddy is installed)
+#   __S3_BUCKET__                 e.g. base2ml-mathcircle-backups
+#   __ACME_EMAIL__                e.g. christopherwlindeman@gmail.com
+#
+# IAM: attach an instance role with `s3:PutObject` on the bucket
+#      (a tight inline policy template is in DEPLOY.md).
+
+package_update: true
+package_upgrade: true
+
+packages:
+  - git
+  - python3.11
+  - python3.11-venv
+  - python3-pip
+  - sqlite3
+  - debian-keyring
+  - debian-archive-keyring
+  - apt-transport-https
+  - curl
+  - ca-certificates
+  - awscli
+  - unattended-upgrades
+
+users:
+  - name: mathcircle
+    system: true
+    shell: /usr/sbin/nologin
+    home: /opt/mathcircle
+    create_home: true
+
+write_files:
+  - path: /etc/mathcircle/env
+    permissions: "0644"
+    content: |
+      MATHCIRCLE_S3_BUCKET=__S3_BUCKET__
+
+  - path: /etc/systemd/system/mathcircle.service
+    permissions: "0644"
+    content: |
+      [Unit]
+      Description=Math Circle Home (FastAPI / uvicorn)
+      After=network-online.target
+      Wants=network-online.target
+
+      [Service]
+      Type=simple
+      User=mathcircle
+      Group=mathcircle
+      WorkingDirectory=/opt/mathcircle/app
+      Environment="PATH=/opt/mathcircle/app/.venv/bin"
+      Environment="MATHCIRCLE_DATABASE_URL=sqlite:////opt/mathcircle/data/mathcircle.db"
+      ExecStart=/opt/mathcircle/app/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 2
+      Restart=on-failure
+      RestartSec=3s
+      NoNewPrivileges=true
+      ProtectSystem=strict
+      ProtectHome=true
+      ReadWritePaths=/opt/mathcircle/data /opt/mathcircle/logs
+      PrivateTmp=true
+
+      [Install]
+      WantedBy=multi-user.target
+
+  - path: /etc/caddy/Caddyfile
+    permissions: "0644"
+    content: |
+      __DOMAIN__ {
+          encode zstd gzip
+
+          basic_auth {
+              family __BASIC_AUTH_HASH__
+          }
+
+          @static path /static/*
+          header @static Cache-Control "public, max-age=86400"
+
+          header {
+              Strict-Transport-Security "max-age=31536000; includeSubDomains"
+              X-Content-Type-Options "nosniff"
+              Referrer-Policy "strict-origin-when-cross-origin"
+              -Server
+          }
+
+          reverse_proxy 127.0.0.1:8000 {
+              header_up X-Real-IP {remote_host}
+              header_up X-Forwarded-For {remote_host}
+              header_up X-Forwarded-Proto {scheme}
+          }
+
+          log {
+              output file /var/log/caddy/mathcircle.log {
+                  roll_size 10mb
+                  roll_keep 5
+              }
+              format console
+          }
+      }
+
+      {
+          email __ACME_EMAIL__
+      }
+
+  - path: /opt/mathcircle/bin/deploy.sh
+    permissions: "0755"
+    content: |
+      #!/bin/bash
+      # Pull latest, rebuild venv if requirements changed, restart service.
+      set -euo pipefail
+      cd /opt/mathcircle/app
+      sudo -u mathcircle git fetch --all
+      sudo -u mathcircle git reset --hard origin/__GIT_BRANCH__
+      if ! sudo -u mathcircle test -d /opt/mathcircle/app/.venv; then
+          sudo -u mathcircle python3.11 -m venv /opt/mathcircle/app/.venv
+      fi
+      sudo -u mathcircle /opt/mathcircle/app/.venv/bin/pip install --quiet --upgrade pip
+      sudo -u mathcircle /opt/mathcircle/app/.venv/bin/pip install --quiet -r /opt/mathcircle/app/requirements.txt
+      systemctl restart mathcircle
+
+  - path: /opt/mathcircle/bin/backup.sh
+    permissions: "0755"
+    content: |
+      #!/bin/bash
+      set -euo pipefail
+      DATA_DIR="/opt/mathcircle/data"
+      BACKUP_DIR="/opt/mathcircle/backups"
+      LOG_FILE="/opt/mathcircle/logs/backup.log"
+      DB_FILE="${DATA_DIR}/mathcircle.db"
+      source /etc/mathcircle/env
+      mkdir -p "$BACKUP_DIR" "$(dirname "$LOG_FILE")"
+      DATE_STAMP=$(date -u +%Y-%m-%dT%H%M%SZ)
+      SNAPSHOT="${BACKUP_DIR}/mathcircle-${DATE_STAMP}.db"
+      COMPRESSED="${SNAPSHOT}.gz"
+      echo "[$(date -Iseconds)] backup start" >> "$LOG_FILE"
+      sqlite3 "$DB_FILE" ".backup '${SNAPSHOT}'"
+      gzip -f "$SNAPSHOT"
+      aws s3 cp "$COMPRESSED" "s3://${MATHCIRCLE_S3_BUCKET}/mathcircle/$(basename "$COMPRESSED")" \
+          --storage-class STANDARD_IA --sse AES256 >> "$LOG_FILE" 2>&1
+      find "$BACKUP_DIR" -name 'mathcircle-*.db.gz' -mtime +14 -delete
+      echo "[$(date -Iseconds)] backup ok" >> "$LOG_FILE"
+
+  - path: /etc/cron.d/mathcircle-backup
+    permissions: "0644"
+    content: |
+      # Nightly DB backup at 03:17 UTC
+      17 3 * * * root /opt/mathcircle/bin/backup.sh
+
+runcmd:
+  # 1. install Caddy
+  - curl -fsSL "https://dl.cloudsmith.io/public/caddy/stable/gpg.key" | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+  - 'echo "deb [signed-by=/usr/share/keyrings/caddy-stable-archive-keyring.gpg] https://dl.cloudsmith.io/public/caddy/stable/deb/debian any-version main" > /etc/apt/sources.list.d/caddy-stable.list'
+  - apt-get update
+  - DEBIAN_FRONTEND=noninteractive apt-get install -y caddy
+
+  # 2. clone the app
+  - mkdir -p /opt/mathcircle/data /opt/mathcircle/logs /opt/mathcircle/backups
+  - sudo -u mathcircle git clone --branch __GIT_BRANCH__ __GIT_REPO_URL__ /opt/mathcircle/app
+
+  # 3. python venv + deps
+  - sudo -u mathcircle python3.11 -m venv /opt/mathcircle/app/.venv
+  - sudo -u mathcircle /opt/mathcircle/app/.venv/bin/pip install --quiet --upgrade pip
+  - sudo -u mathcircle /opt/mathcircle/app/.venv/bin/pip install --quiet -r /opt/mathcircle/app/requirements.txt
+
+  # 4. ownership for data + logs (so the service can write)
+  - chown -R mathcircle:mathcircle /opt/mathcircle
+
+  # 5. start services
+  - systemctl daemon-reload
+  - systemctl enable --now mathcircle
+  - systemctl reload caddy || systemctl restart caddy
+
+  # 6. enable unattended security updates
+  - dpkg-reconfigure --priority=low unattended-upgrades
+
+final_message: "Math Circle Home is up. Tail journalctl -u mathcircle / journalctl -u caddy."

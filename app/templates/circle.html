@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% block title %}Math Circle Night{% endblock %}
+{% block body %}
+
+{% if not session %}
+<section class="card">
+  <h1>🌟 Math Circle Night</h1>
+  <p>A 20–30 minute mode for both kids together. Mixed-level problems, more games, more conversation. Pick who's playing and start.</p>
+  <form method="post" action="/circle/start" class="stack">
+    {% for c in children %}
+      <label style="display:flex; gap:.6rem; align-items:center; font-weight: normal">
+        <input type="checkbox" name="child_ids" value="{{ c.id }}" checked style="width: auto"> {{ c.avatar }} {{ c.name }} (grade {{ c.grade }})
+      </label>
+    {% endfor %}
+    <div><button class="btn" type="submit">Start tonight's circle →</button></div>
+  </form>
+</section>
+
+<section class="card">
+  <h2>How to run a math circle</h2>
+  <ol>
+    <li><strong>Warm up together</strong> — a quick game (Race to 20, Target 7, Pig).</li>
+    <li><strong>One puzzle, mixed levels</strong> — older child explains; younger spots patterns.</li>
+    <li><strong>One hands-on activity</strong> — paper folding, tangrams, ten-frames.</li>
+    <li><strong>One story problem</strong> — both attempt; compare strategies.</li>
+    <li><strong>Wrap with a question</strong> — "What surprised you tonight?"</li>
+  </ol>
+  <p class="muted">It's not a quiz. It's a conversation about ideas.</p>
+</section>
+{% else %}
+<section class="card">
+  <h1>🌟 Math Circle Night session #{{ session.id }}</h1>
+  <p class="muted">Started {{ session.started_at.strftime('%b %d, %Y %H:%M') }} · {{ items|length }} activities</p>
+  <a class="btn ghost small" href="/circle">← New circle</a>
+</section>
+
+{% for item in items %}
+{% set p = item.problem %}
+<article class="problem kind-{{ item.kind }}">
+  <div class="top">
+    <span class="tag kind">{{ kind_emoji(item.kind) }} {{ kind_label(item.kind) }}</span>
+    {% if item.strand %}
+      <span class="strand-pill" style="background: {{ strand_color(item.strand.key) }}">{{ item.strand.icon }} {{ item.strand.name }}</span>
+    {% endif %}
+    <span class="tag level-{{ p.level }}">L{{ p.level }}</span>
+  </div>
+  <h3>{{ p.title }}</h3>
+  <p class="prompt">{{ p.prompt }}</p>
+  {% if p.materials %}<p><strong>Materials:</strong> {{ p.materials|join(', ') }}</p>{% endif %}
+  {% if p.hints %}
+    <details>
+      <summary>Hints (use sparingly)</summary>
+      <ol>{% for h in p.hints %}<li>{{ h }}</li>{% endfor %}</ol>
+    </details>
+  {% endif %}
+  {% if p.explain_prompt %}<p><strong>💬 Ask:</strong> {{ p.explain_prompt }}</p>{% endif %}
+</article>
+{% endfor %}
+
+<section class="card">
+  <h2>Closing question</h2>
+  <p>“What did you notice tonight that you hadn’t seen before?”</p>
+</section>
+{% endif %}
+{% endblock %}

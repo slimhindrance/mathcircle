@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}{% if child %}Edit{% else %}New{% endif %} child{% endblock %}
+{% block body %}
+<section class="card">
+  <h1>{% if child %}Edit {{ child.name }}{% else %}New child{% endif %}</h1>
+  <form class="stack" method="post"
+        action="{% if child %}/child/{{ child.id }}/edit{% else %}/children{% endif %}">
+    <div>
+      <label>Name</label>
+      <input type="text" name="name" required value="{{ child.name if child else '' }}">
+    </div>
+    <div class="field-row">
+      <div>
+        <label>Grade</label>
+        <select name="grade">
+          {% for g in ['PK','K','1','2'] %}
+            <option value="{{ g }}" {% if child and child.grade == g %}selected{% endif %}>{{ g }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label>Age</label>
+        <input type="number" name="age" min="3" max="12" value="{{ child.age if child and child.age else '' }}">
+      </div>
+      <div>
+        <label>Avatar (emoji)</label>
+        <input type="text" name="avatar" maxlength="4" value="{{ child.avatar if child else '🦊' }}">
+      </div>
+      <div>
+        <label>Color</label>
+        <input type="color" name="color" value="{{ child.color if child else '#f4a261' }}">
+      </div>
+    </div>
+    <div>
+      <label>Interests / themes</label>
+      <input type="text" name="interests" value="{{ child.interests if child else '' }}"
+             placeholder="space, dinosaurs, animals, music...">
+    </div>
+    <div>
+      <button class="btn" type="submit">{% if child %}Save{% else %}Add child{% endif %}</button>
+      <a class="btn ghost" href="/">Cancel</a>
+    </div>
+  </form>
+</section>
+{% endblock %}

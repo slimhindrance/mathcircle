@@ -1,0 +1,28 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+# Triggers `/opt/mathcircle/bin/deploy.sh` on the box via SSH.
+# Requires three repo secrets:
+#   EC2_HOST       — public DNS or EIP, e.g. mathcircle.base2ml.com
+#   EC2_USER       — usually "ubuntu"
+#   EC2_SSH_KEY    — private key (PEM) with access to the instance
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger remote pull + restart
+        env:
+          SSH_KEY: ${{ secrets.EC2_SSH_KEY }}
+          HOST: ${{ secrets.EC2_HOST }}
+          USER: ${{ secrets.EC2_USER }}
+        run: |
+          mkdir -p ~/.ssh
+          echo "$SSH_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H "$HOST" >> ~/.ssh/known_hosts 2>/dev/null
+          ssh -i ~/.ssh/id_rsa "$USER@$HOST" "sudo /opt/mathcircle/bin/deploy.sh"

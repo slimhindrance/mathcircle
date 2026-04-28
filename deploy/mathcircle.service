@@ -1,0 +1,25 @@
+[Unit]
+Description=Math Circle Home (FastAPI / uvicorn)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=mathcircle
+Group=mathcircle
+WorkingDirectory=/opt/mathcircle/app
+Environment="PATH=/opt/mathcircle/app/.venv/bin"
+Environment="MATHCIRCLE_DATABASE_URL=sqlite:////opt/mathcircle/data/mathcircle.db"
+ExecStart=/opt/mathcircle/app/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 2
+Restart=on-failure
+RestartSec=3s
+
+# Hardening — t2.micro friendly
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/mathcircle/data /opt/mathcircle/logs
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% block title %}{{ child.name }} — Dashboard{% endblock %}
+{% block body %}
+<section class="child-card" style="--child-color: {{ child.color }}; margin-bottom: 1rem;">
+  <div style="display:flex; gap:1rem; align-items:center;">
+    <div class="avatar">{{ child.avatar }}</div>
+    <div style="flex:1">
+      <h1 style="margin:0">{{ child.name }}</h1>
+      <div class="muted">Grade {{ child.grade }}{% if child.age %} · age {{ child.age }}{% endif %}</div>
+      {% if child.interests %}<div class="muted">Loves: {{ child.interests }}</div>{% endif %}
+    </div>
+    <div style="text-align:right">
+      <div style="font-size:1.6rem; font-weight:700">{{ total_correct }}/{{ total_attempts }}</div>
+      <div class="muted">attempts solved</div>
+    </div>
+  </div>
+  <div class="actions">
+    <form method="post" action="/child/{{ child.id }}/start_session" style="display:inline">
+      <button class="btn accent" type="submit">▶ Start today's session</button>
+    </form>
+    <a class="btn warm" href="/parent/notes/{{ child.id }}">Parent notes</a>
+    <a class="btn ghost small" href="/child/{{ child.id }}/edit">Edit profile</a>
+    <a class="btn ghost small" href="/api/children/{{ child.id }}/export.json" download>Export JSON</a>
+    <a class="btn ghost small" href="/api/children/{{ child.id }}/export.csv" download>Export CSV</a>
+  </div>
+</section>
+
+<div class="grid-2">
+  <section class="card">
+    <h2>🎯 Mastery by strand</h2>
+    {% for s in strands %}
+      {% set sk = skills.get(s.id) %}
+      <div class="mastery">
+        <div>
+          <span class="strand-pill" style="background: {{ strand_color(s.key) }}">{{ s.icon }} {{ s.name }}</span>
+        </div>
+        <div class="bar">
+          <i style="width: {{ (sk.level if sk else 1) * 20 }}%; background: {{ strand_color(s.key) }}"></i>
+        </div>
+        <div class="muted">L{{ sk.level if sk else 1 }}</div>
+      </div>
+    {% endfor %}
+    <p class="muted" style="margin-top:.6rem">Levels go 1 → 5. The system nudges up after 3 strong attempts in a row, and steps back gently when something feels too hard.</p>
+  </section>
+
+  <section class="card">
+    <h2>📅 Recent sessions</h2>
+    {% if sessions %}
+      <ul class="bare">
+        {% for s in sessions %}
+          <li>
+            <a href="/child/{{ child.id }}/session/{{ s.id }}">
+              {{ s.started_at.strftime('%b %d, %Y %H:%M') }}
+            </a>
+            <span class="tag">{{ s.mode }}</span>
+            {% if s.completed_at %}<span class="tag" style="background:#d8f3dc; color:#2d6a4f">done</span>{% endif %}
+            <span class="muted">— {{ s.plan|length }} items</span>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <div class="empty">
+        <p>No sessions yet. Hit <strong>Start today's session</strong> above.</p>
+      </div>
+    {% endif %}
+  </section>
+</div>
+
+<section class="card">
+  <h2>🔥 Recent attempts</h2>
+  {% if attempts %}
+    <table style="width:100%; border-collapse: collapse;">
+      <thead>
+        <tr style="text-align:left; border-bottom: 2px solid var(--line);">
+          <th style="padding:.4rem .2rem">When</th>
+          <th>Problem</th>
+          <th>Result</th>
+          <th>Hints</th>
+          <th>Rating</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for a in attempts %}
+        {% set p = a.problem %}
+        <tr style="border-bottom: 1px solid var(--line);">
+          <td class="muted" style="padding:.45rem .2rem">{{ a.created_at.strftime('%b %d %H:%M') }}</td>
+          <td>{% if p %}<a href="/problem/{{ p.id }}">{{ p.title }}</a>{% else %}—{% endif %}</td>
+          <td>
+            {% if a.correct is none %}
+              <span class="muted">talked through</span>
+            {% elif a.correct %}
+              <span style="color:var(--accent); font-weight:600">✓</span>
+            {% else %}
+              <span style="color:var(--primary-dark); font-weight:600">×</span>
+            {% endif %}
+          </td>
+          <td>{{ a.hint_count }}</td>
+          <td><span class="muted">{{ a.parent_rating or '—' }}</span></td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p class="empty">No attempts yet — they show up here as your child works through sessions.</p>
+  {% endif %}
+</section>
+
+<section class="card">
+  <h2>📝 Parent notes</h2>
+  {% if notes %}
+    {% for n in notes[:5] %}
+      <div class="note {{ n.kind }}">
+        {{ n.body }}
+        <div class="meta">{{ n.kind }} · {{ n.created_at.strftime('%b %d, %Y') }}</div>
+      </div>
+    {% endfor %}
+    <a href="/parent/notes/{{ child.id }}">All notes →</a>
+  {% else %}
+    <p class="muted">Capture observations to look back on. <a href="/parent/notes/{{ child.id }}">Open notes →</a></p>
+  {% endif %}
+</section>
+{% endblock %}

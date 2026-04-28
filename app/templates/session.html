@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block title %}{{ child.name }}'s session{% endblock %}
+{% block body %}
+<div class="session-bar">
+  <div>
+    <strong>{{ child.avatar }} {{ child.name }}</strong>
+    <span class="muted"> — {{ items|length }} activities · ~{{ items|sum(attribute='problem.minutes') }} min</span>
+  </div>
+  <div class="progress" aria-label="progress"><i></i></div>
+  <a class="btn ghost small" href="/child/{{ child.id }}">← Dashboard</a>
+</div>
+
+{% for item in items %}
+{% set p = item.problem %}
+<article class="problem kind-{{ item.kind }}"
+         data-problem-id="{{ p.id }}"
+         data-answer="{{ p.answer }}"
+         data-answer-type="{{ p.answer_type }}">
+  <div class="top">
+    <span class="tag kind">{{ kind_emoji(item.kind) }} {{ kind_label(item.kind) }}</span>
+    {% if item.strand %}
+      <span class="strand-pill" style="background: {{ strand_color(item.strand.key) }}">{{ item.strand.icon }} {{ item.strand.name }}</span>
+    {% endif %}
+    <span class="tag level-{{ p.level }}">Level {{ p.level }}</span>
+    <span class="muted">~{{ p.minutes }} min</span>
+  </div>
+  <h3>{{ p.title }}</h3>
+  {% if item.explain_only %}
+    <p class="prompt">💬 Talk it out: <em>{{ p.explain_prompt or 'How did you figure that out? Can you show another way?' }}</em></p>
+  {% else %}
+    <p class="prompt">{{ p.prompt }}</p>
+  {% endif %}
+
+  {% if p.materials %}
+    <div class="materials"><strong>You'll need:</strong> {{ p.materials | join(', ') }}</div>
+  {% endif %}
+
+  {% if not item.explain_only %}
+    <div class="answer-row">
+      <input type="text" class="answer-input" placeholder="Your answer (optional — you can also just talk it through)" />
+      <button class="btn small btn-check" type="button">Check</button>
+      <span class="feedback"></span>
+    </div>
+    <details>
+      <summary>📓 Strategy notes (parent or child can write)</summary>
+      <textarea class="strategy-input" placeholder="What strategy did they use? Counting up? Doubles? A picture?"></textarea>
+    </details>
+  {% endif %}
+
+  {% if p.hints %}
+    <div class="hints">
+      <strong>Hints:</strong>
+      {% for h in p.hints %}
+        <div class="hint locked">{{ h }}</div>
+      {% endfor %}
+    </div>
+    <button class="btn ghost small btn-hint" type="button">Need a hint? ({{ p.hints|length }} available)</button>
+  {% endif %}
+
+  {% if p.strategies %}
+    <div class="strategies">
+      <strong>Possible strategies:</strong>
+      {% for s in p.strategies %}<span class="tag">{{ s }}</span>{% endfor %}
+    </div>
+  {% endif %}
+
+  {% if p.parent_extension and item.kind == 'parent_extension' %}
+    <div class="explain"><strong>🏡 Try later:</strong> {{ p.parent_extension }}</div>
+  {% endif %}
+
+  {% if p.explain_prompt and not item.explain_only %}
+    <div class="explain">
+      <strong>💬 Then ask:</strong> {{ p.explain_prompt }}
+    </div>
+  {% endif %}
+
+  <div class="rating-row" aria-label="parent rating">
+    <span class="muted" style="align-self:center; margin-right:.4rem">Parent rating:</span>
+    <button class="easy" data-value="easy" type="button">Easy</button>
+    <button class="good_struggle" data-value="good_struggle" type="button">Good struggle</button>
+    <button class="too_hard" data-value="too_hard" type="button">Too hard</button>
+  </div>
+</article>
+{% endfor %}
+
+<section class="card">
+  <h2>🌟 Wrap up</h2>
+  <p class="muted">A short note now is gold for you to look back on later.</p>
+  <textarea id="parent-summary" placeholder="What clicked? What was tricky? What strategies did they try?"></textarea>
+  <div style="margin-top:.6rem">
+    <button id="complete-session" class="btn">Save & finish session</button>
+    <a class="btn ghost" href="/child/{{ child.id }}">Exit without saving summary</a>
+  </div>
+</section>
+
+{% endblock %}
+{% block scripts %}
+<script>
+  window.MC_CHILD_ID = {{ child.id }};
+  window.MC_SESSION_ID = {{ session.id }};
+</script>
+<script src="{{ url_for('static', path='js/session.js') }}"></script>
+{% endblock %}
