@@ -29,15 +29,14 @@ packages:
   - curl
   - ca-certificates
   - awscli
-  - unattended-upgrades
 
 users:
   - default
   - name: mathcircle
     system: true
     shell: /usr/sbin/nologin
-    home: /opt/mathcircle
-    create_home: true
+    homedir: /opt/mathcircle
+    no_create_home: false
 
 write_files:
   - path: /etc/mathcircle/env
@@ -75,11 +74,15 @@ write_files:
   - path: /etc/caddy/Caddyfile
     permissions: "0644"
     content: |
+      {
+          email __ACME_EMAIL__
+      }
+
       __DOMAIN__ {
           encode zstd gzip
 
           basic_auth {
-              family __BASIC_AUTH_HASH__
+              __BASIC_AUTH_USER__ __BASIC_AUTH_HASH__
           }
 
           @static path /static/*
@@ -92,11 +95,7 @@ write_files:
               -Server
           }
 
-          reverse_proxy 127.0.0.1:8000 {
-              header_up X-Real-IP {remote_host}
-              header_up X-Forwarded-For {remote_host}
-              header_up X-Forwarded-Proto {scheme}
-          }
+          reverse_proxy 127.0.0.1:8000
 
           log {
               output file /var/log/caddy/mathcircle.log {
@@ -105,10 +104,6 @@ write_files:
               }
               format console
           }
-      }
-
-      {
-          email __ACME_EMAIL__
       }
 
   - path: /opt/mathcircle/bin/deploy.sh

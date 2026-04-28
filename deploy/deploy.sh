@@ -252,23 +252,26 @@ log "hash ready"
 
 log "rendering cloud-init"
 RENDERED="$STATE_DIR/cloud-init.yaml"
-python3 <<PY > "$RENDERED"
-import pathlib
-src = pathlib.Path("$SCRIPT_DIR/cloud-init.yaml").read_text()
+# Use a heredoc-fed python so we don't have to worry about escaping `$` in the hash
+python3 - "$SCRIPT_DIR/cloud-init.yaml" "$RENDERED" \
+  "$GIT_REPO_URL" "$GIT_BRANCH" "$DOMAIN" "$S3_BUCKET" "$ACME_EMAIL" \
+  "$BASIC_AUTH_USER" "$HASH" <<'PY'
+import pathlib, sys
+src = pathlib.Path(sys.argv[1]).read_text()
+out = sys.argv[2]
+git_url, branch, domain, bucket, email, user, h = sys.argv[3:10]
 sub = {
-    "__GIT_REPO_URL__": "$GIT_REPO_URL",
-    "__GIT_BRANCH__": "$GIT_BRANCH",
-    "__DOMAIN__": "$DOMAIN",
-    "__S3_BUCKET__": "$S3_BUCKET",
-    "__ACME_EMAIL__": "$ACME_EMAIL",
-    "__BASIC_AUTH_HASH__": """$HASH""",
+    "__GIT_REPO_URL__": git_url,
+    "__GIT_BRANCH__":   branch,
+    "__DOMAIN__":       domain,
+    "__S3_BUCKET__":    bucket,
+    "__ACME_EMAIL__":   email,
+    "__BASIC_AUTH_USER__": user,
+    "__BASIC_AUTH_HASH__": h,
 }
 for k, v in sub.items():
     src = src.replace(k, v)
-# Replace the username 'family' if user picked something else
-if "$BASIC_AUTH_USER" != "family":
-    src = src.replace("              family __BASIC_AUTH_HASH__", "              $BASIC_AUTH_USER __BASIC_AUTH_HASH__")
-print(src)
+pathlib.Path(out).write_text(src)
 PY
 log "cloud-init at $RENDERED"
 
