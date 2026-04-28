@@ -341,20 +341,20 @@ def about_sample(request: Request, db: Session = Depends(get_db)):
             ).scalars().all()
         }
         strand_lookup = _strand_lookup(db)
-        items = []
+        plan_items = []
         for item in plan:
             prob = problems_by_id.get(item["problem_id"])
             if prob is None:
                 continue
-            items.append({
+            plan_items.append({
                 "kind": item["kind"],
                 "position": item["position"],
                 "problem": prob,
                 "strand": strand_lookup.get(prob.strand_id),
             })
-        items.sort(key=lambda it: it["position"])
-        total_minutes = sum(it["problem"].minutes for it in items)
-        samples.append({**spec, "items": items, "total_minutes": total_minutes})
+        plan_items.sort(key=lambda it: it["position"])
+        total_minutes = sum(it["problem"].minutes for it in plan_items)
+        samples.append({**spec, "plan_items": plan_items, "total_minutes": total_minutes})
     return _templates(request).TemplateResponse(
         request, "about_sample.html", {"samples": samples}
     )

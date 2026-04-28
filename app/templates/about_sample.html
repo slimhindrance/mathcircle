@@ -116,11 +116,11 @@
 <section class="grade-section" id="grade-{{ s.grade }}">
   <div class="head">
     <h2>{{ s.label }} — sample session</h2>
-    <span class="muted">ages {{ s.age }} · {{ s.items|length }} activities · ~{{ s.total_minutes }} min</span>
+    <span class="muted">ages {{ s.age }} · {{ s.plan_items|length }} activities · ~{{ s.total_minutes }} min</span>
   </div>
   <p class="muted" style="margin-bottom: 1rem">{{ s.blurb }}</p>
 
-  {% for item in s.items %}
+  {% for item in s.plan_items %}
   {% set p = item.problem %}
   <article class="preview-problem kind-{{ item.kind }}">
     <div class="top">
