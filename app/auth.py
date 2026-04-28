@@ -48,8 +48,9 @@ COOKIE_NAME = "mc_family"
 COOKIE_DAYS = 90
 TOKEN_TTL_HOURS = 48
 RESEND_API_KEY = os.getenv("RESEND_API_KEY", "")
-RESEND_FROM = os.getenv("RESEND_FROM", "clindeman@base2ml.com")
+RESEND_FROM = os.getenv("RESEND_FROM", "chris@send.base2ml.com")
 RESEND_FROM_NAME = os.getenv("RESEND_FROM_NAME", "Math Circle Home")
+RESEND_REPLY_TO = os.getenv("RESEND_REPLY_TO", "chris@base2ml.com")
 PUBLIC_BASE_URL = os.getenv("PUBLIC_BASE_URL", "https://mathcircle.base2ml.com")
 
 
@@ -169,7 +170,9 @@ def send_magic_link(family: Family, token: LoginToken, *, kind: str = "login") -
         f"{intro}\n\n{link}\n\n"
         f"If you didn't request this, you can ignore the email — the link "
         f"won't do anything until used.\n\n"
-        f"— Chris (Math Circle Home, Mt Lebanon, PA)"
+        f"— Chris\n"
+        f"Math Circle Home, Mt Lebanon, PA\n"
+        f"Reply to chris@base2ml.com if you have questions."
     )
     body_html = f"""
     <div style="font-family: -apple-system, sans-serif; max-width: 540px; padding: 16px;">
@@ -205,6 +208,7 @@ def send_magic_link(family: Family, token: LoginToken, *, kind: str = "login") -
             json={
                 "from": f"{RESEND_FROM_NAME} <{RESEND_FROM}>",
                 "to": [family.email],
+                "reply_to": [RESEND_REPLY_TO] if RESEND_REPLY_TO else None,
                 "subject": subject,
                 "text": body_text,
                 "html": body_html,
