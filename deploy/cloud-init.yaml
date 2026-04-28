@@ -29,6 +29,12 @@ packages:
   - curl
   - ca-certificates
   - unzip
+  # WeasyPrint native deps (for PDF flyer rendering)
+  - libpango-1.0-0
+  - libpangoft2-1.0-0
+  - libharfbuzz0b
+  - libcairo2
+  - libffi-dev
 
 users:
   - default

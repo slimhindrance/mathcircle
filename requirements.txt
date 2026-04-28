@@ -8,3 +8,4 @@ pytest==7.4.4
 httpx==0.26.0
 boto3==1.34.40
 qrcode[pil]==7.4.2
+weasyprint==65.1

@@ -357,27 +357,63 @@ def child_digest_run(child_id: int, db: Session = Depends(get_db)):
     return RedirectResponse(f"/child/{child_id}", status_code=303)
 
 
-@router.get("/flyer", response_class=HTMLResponse)
-def flyer(request: Request, db: Session = Depends(get_db)):
-    """Printable one-page flyer with a QR code to the join URL."""
+def _build_flyer_context(db: Session) -> dict:
+    """Shared context for /flyer (HTML) and /flyer.pdf (PDF)."""
     import io
     import qrcode
     import qrcode.image.svg
 
     base_url = "https://mathcircle.base2ml.com"
-    img = qrcode.make(base_url, image_factory=qrcode.image.svg.SvgPathImage, box_size=10, border=2)
+    qr_target = f"{base_url}/request-access"
+    img = qrcode.make(qr_target, image_factory=qrcode.image.svg.SvgPathImage, box_size=10, border=2)
     buf = io.BytesIO()
     img.save(buf)
     qr_svg = buf.getvalue().decode()
-    # Strip XML declaration so it inlines cleanly
     if qr_svg.startswith("<?xml"):
         qr_svg = qr_svg.split("?>", 1)[1].lstrip()
     active = db.execute(select(func.count(Family.id)).where(Family.is_active.is_(True))).scalar_one()
-    cap = 20  # mirror config; keep flyer self-contained
-    return _templates(request).TemplateResponse(
-        request,
-        "flyer.html",
-        {"qr_svg": qr_svg, "active_count": active, "cap": cap, "base_url": base_url},
+    return {
+        "qr_svg": qr_svg,
+        "qr_target": qr_target,
+        "active_count": active,
+        "cap": 20,
+        "base_url": base_url,
+        "display_url": "mathcircle.base2ml.com/request-access",
+    }
+
+
+@router.get("/flyer", response_class=HTMLResponse)
+def flyer(request: Request, db: Session = Depends(get_db)):
+    """Printable one-page flyer with a QR code to the join URL."""
+    ctx = _build_flyer_context(db)
+    return _templates(request).TemplateResponse(request, "flyer.html", ctx)
+
+
+@router.get("/flyer.pdf")
+def flyer_pdf(request: Request, db: Session = Depends(get_db)):
+    """Server-rendered PDF version of the flyer (real PDF, not browser print)."""
+    from fastapi.responses import Response
+
+    try:
+        from weasyprint import HTML
+    except ImportError:
+        raise HTTPException(
+            500,
+            "WeasyPrint isn't installed on this instance yet. "
+            "Run: pip install weasyprint==60.2",
+        )
+
+    ctx = _build_flyer_context(db)
+    # Render the same template to a string, then to PDF bytes.
+    html_str = _templates(request).get_template("flyer.html").render(
+        request=request, **ctx
+    )
+    base_url = str(request.base_url).rstrip("/")
+    pdf_bytes = HTML(string=html_str, base_url=base_url).write_pdf()
+    return Response(
+        content=pdf_bytes,
+        media_type="application/pdf",
+        headers={"Content-Disposition": 'inline; filename="math-circle-home-flyer.pdf"'},
     )
 
 

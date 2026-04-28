@@ -119,11 +119,13 @@
       font-size: 11pt;
       font-family: -apple-system, "SF Pro Text", sans-serif;
     }
+    .controls a {
+      margin-left: 0.5rem;
+    }
     .controls a.ghost {
       background: transparent;
       color: #c8553d;
       border: 2px solid #c8553d;
-      margin-left: 0.5rem;
     }
     @media print {
       body { background: #fff; }
@@ -136,6 +138,7 @@
 
 <div class="controls">
   <button onclick="window.print()">🖨 Print this flyer</button>
+  <a href="/flyer.pdf" download="math-circle-home-flyer.pdf">📄 Download as PDF</a>
   <a class="ghost" href="/">← Back</a>
 </div>
 
@@ -152,7 +155,7 @@
       <p style="margin: 0 0 0.1in; font-weight: 700; font-size: 14pt; color: #264653;">
         Or visit:
       </p>
-      <p style="margin: 0;"><span class="url">mathcircle.base2ml.com</span></p>
+      <p style="margin: 0;"><span class="url">{{ display_url }}</span></p>
       <p style="margin: 0.2in 0 0; font-size: 11pt;">
         <span class="scarcity">{{ active_count }} of {{ cap }} families · {{ cap - active_count }} slots open</span>
       </p>
