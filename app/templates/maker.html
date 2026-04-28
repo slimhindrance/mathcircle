@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}Chris Lindeman — Math Circle Home{% endblock %}
+{% block head %}
+<style>
+  .maker {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 1.5rem 0;
+  }
+  .maker h1 {
+    font-size: 2.6rem;
+    margin: 0 0 1.4rem;
+    color: var(--cool);
+  }
+  .maker .lead {
+    font-size: 1.2rem;
+    color: var(--ink);
+    margin: 0 0 1.8rem;
+    line-height: 1.55;
+    font-family: var(--serif);
+  }
+  .maker h2 {
+    margin: 2rem 0 .6rem;
+    font-size: 1.25rem;
+    color: var(--cool);
+  }
+  .maker p {
+    line-height: 1.6;
+    margin: 0 0 1rem;
+  }
+  .maker ul {
+    margin: 0 0 1rem 1.2rem;
+    padding: 0;
+    line-height: 1.7;
+  }
+  .maker .quiet {
+    color: var(--ink-soft);
+    font-size: .9rem;
+    margin-top: 2.4rem;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--line);
+  }
+  .maker a.email {
+    font-family: "SF Mono", Menlo, monospace;
+    background: var(--bg-soft);
+    padding: 2px 8px;
+    border-radius: 4px;
+    border-bottom: none;
+  }
+</style>
+{% endblock %}
+{% block body %}
+
+<article class="maker">
+  <h1>Chris Lindeman</h1>
+
+  <p class="lead">I build software that makes sense of the mess.</p>
+
+  <p>Math Circle Home is one of those tools — a math-circle app for my two
+  kids and a small group of families in Mt Lebanon. It's free, capped at
+  twenty families, and I'll personally email you when you sign up.</p>
+
+  <h2>Base2ML</h2>
+  <p>I'm the founder of Base2ML, a small AI and data engineering practice.
+  I take on a few engagements at a time — the kind where the goal is a real
+  working system that makes a hard decision easier for the people who have
+  to make it.</p>
+
+  <p>Work I've done over the last six years:</p>
+  <ul>
+    <li>Computer-vision systems for transportation and law enforcement</li>
+    <li>Data pipelines for the Department of Defense</li>
+    <li>Document-processing systems for VA healthcare</li>
+    <li>A long tail of business-automation work for small companies that
+        needed something specific and didn't want a platform</li>
+  </ul>
+  <p>I also teach part-time at Georgia Tech as an instructional associate
+  in machine learning.</p>
+
+  <h2>How I think about the work</h2>
+  <p>I'd rather build the smallest thing that proves an idea is good and
+  let it grow from there. Boring infrastructure when boring works, AI
+  where AI actually adds something a human notices.</p>
+
+  <h2>Where I am</h2>
+  <p>I came back to Pittsburgh after a few years in DC. I'm raising a
+  family here because the community reflects the values I grew up with —
+  neighborliness, education, compassion, the long view.</p>
+
+  <p>Outside of work I like throwing parties and hunting the big woods.</p>
+
+  <h2>If you want to talk</h2>
+  <p>I'm reachable at <a class="email" href="mailto:chris@base2ml.com">chris@base2ml.com</a>.
+  Topics I'd genuinely enjoy hearing about:</p>
+  <ul>
+    <li>Local civic projects where some technical infrastructure would
+        actually help.</li>
+    <li>Consulting or fractional engineering, especially anything where
+        data, AI, or decision-support is the real problem.</li>
+    <li>Anyone in Pittsburgh building something real.</li>
+  </ul>
+  <p>I read every email and reply within a few days.</p>
+
+  <p class="quiet">
+    Math Circle Home is built on Base2ML ·
+    <a href="https://github.com/slimhindrance/mathcircle">source</a> ·
+    Made by a parent in Mt Lebanon, PA
+  </p>
+</article>
+
+{% endblock %}

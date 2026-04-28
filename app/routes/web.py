@@ -325,6 +325,12 @@ def problem_print(problem_id: int, request: Request, db: Session = Depends(get_d
     return _templates(request).TemplateResponse(request, "problem_print.html", {"problem": p, "strand": p.strand})
 
 
+@router.get("/maker", response_class=HTMLResponse)
+def maker(request: Request):
+    """Quiet bio page for the maker. Linked from footer + landing FAQ."""
+    return _templates(request).TemplateResponse(request, "maker.html")
+
+
 @router.get("/parent/guide", response_class=HTMLResponse)
 def parent_guide(request: Request):
     return _templates(request).TemplateResponse(request, "parent_guide.html")
