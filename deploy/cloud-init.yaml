@@ -35,6 +35,8 @@ packages:
   - libharfbuzz0b
   - libcairo2
   - libffi-dev
+  - fonts-noto-color-emoji
+  - fonts-dejavu
 
 users:
   - default
