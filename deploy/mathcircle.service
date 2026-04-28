@@ -10,7 +10,7 @@ Group=mathcircle
 WorkingDirectory=/opt/mathcircle/app
 Environment="PATH=/opt/mathcircle/app/.venv/bin"
 Environment="MATHCIRCLE_DATABASE_URL=sqlite:////opt/mathcircle/data/mathcircle.db"
-ExecStart=/opt/mathcircle/app/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 2
+ExecStart=/opt/mathcircle/app/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1
 Restart=on-failure
 RestartSec=3s
 

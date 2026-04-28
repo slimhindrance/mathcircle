@@ -59,7 +59,7 @@ write_files:
       WorkingDirectory=/opt/mathcircle/app
       Environment="PATH=/opt/mathcircle/app/.venv/bin"
       Environment="MATHCIRCLE_DATABASE_URL=sqlite:////opt/mathcircle/data/mathcircle.db"
-      ExecStart=/opt/mathcircle/app/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 2
+      ExecStart=/opt/mathcircle/app/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1
       Restart=on-failure
       RestartSec=3s
       NoNewPrivileges=true
@@ -163,17 +163,18 @@ runcmd:
   - DEBIAN_FRONTEND=noninteractive apt-get update
   - DEBIAN_FRONTEND=noninteractive apt-get install -y -o Dpkg::Options::="--force-confold" -o Dpkg::Options::="--force-confdef" caddy
 
-  # 2. clone the app
-  - mkdir -p /opt/mathcircle/data /opt/mathcircle/logs /opt/mathcircle/backups
+  # 2. prepare /opt/mathcircle and hand it to the mathcircle user BEFORE cloning
+  - mkdir -p /opt/mathcircle/data /opt/mathcircle/logs /opt/mathcircle/backups /var/log/caddy
+  - chown -R mathcircle:mathcircle /opt/mathcircle
+  - chown -R caddy:caddy /var/log/caddy
+
+  # 3. clone the app as mathcircle (now that they own the parent dir)
   - sudo -u mathcircle git clone --branch __GIT_BRANCH__ __GIT_REPO_URL__ /opt/mathcircle/app
 
-  # 3. python venv + deps
+  # 4. python venv + deps
   - sudo -u mathcircle python3 -m venv /opt/mathcircle/app/.venv
   - sudo -u mathcircle /opt/mathcircle/app/.venv/bin/pip install --quiet --upgrade pip
   - sudo -u mathcircle /opt/mathcircle/app/.venv/bin/pip install --quiet -r /opt/mathcircle/app/requirements.txt
-
-  # 4. ownership for data + logs (so the service can write)
-  - chown -R mathcircle:mathcircle /opt/mathcircle
 
   # 5. start services
   - systemctl daemon-reload
