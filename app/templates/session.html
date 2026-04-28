@@ -64,8 +64,10 @@
     </div>
   {% endif %}
 
-  {% if p.parent_extension and item.kind == 'parent_extension' %}
-    <div class="explain"><strong>🏡 Try later:</strong> {{ p.parent_extension }}</div>
+  {% if p.parent_extension %}
+    <div class="explain" style="background:#f5fbff; border-color:#b9e3ff">
+      <strong>🏡 Kitchen-table follow-up:</strong> {{ p.parent_extension }}
+    </div>
   {% endif %}
 
   {% if p.explain_prompt and not item.explain_only %}

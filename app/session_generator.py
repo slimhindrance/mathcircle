@@ -12,7 +12,7 @@ Builds a 15–25 minute session in the requested shape:
 Adaptive logic
 --------------
 Per (child, strand) we keep a Skill row with rolling accuracy and a level
-1..5. The composer:
+1..7. The composer:
 
 * Reads each child's skill levels.
 * For each slot, picks problems near the relevant level (preferring level
@@ -20,6 +20,9 @@ Per (child, strand) we keep a Skill row with rolling accuracy and a level
 * Avoids problems the child has attempted in the last `cooldown` sessions
   (default = 4) so they don't loop.
 * Rotates strands across days so all 10 get touched over a week.
+* For warm-ups and selected slots, mixes in **parametric problems** from
+  the template generators — these never repeat, so the bank is effectively
+  infinite for those slots.
 
 Adaptation runs after attempts are recorded (`update_skill_from_attempt`):
 - correct + low hints + parent_rating != "too_hard" → bump streak/accuracy
@@ -47,7 +50,19 @@ from .models import (
     Skill,
     Strand,
 )
-from .problem_generator import generate_from_template
+from .problem_generator import GeneratedProblem, generate_from_template
+
+# Probability that a slot pulls from a generator (vs the curated bank) when
+# both are available. Slots NOT in this map use only curated problems.
+_GENERATOR_PROBABILITY = {
+    "warm_up": 0.6,        # warm-ups benefit most from infinite variety
+    "rich_puzzle": 0.35,   # mix curated gems with parametric
+    "story": 0.4,
+    "visual": 0.2,         # visual problems mostly need handcrafted artwork prompts
+    "game": 0.0,           # games are inherently re-playable; keep curated
+    "explain": 0.0,        # attached to existing rich puzzle, no generation
+    "parent_extension": 0.0,
+}
 
 # Strand rotation per "day of session" — picks 4 strands focus per session.
 _DAILY_FOCUS = [
@@ -136,17 +151,35 @@ def _pick_problem(
     avoid: set[int],
     rng: random.Random,
 ) -> Problem | None:
-    """Pick a problem matching the slot. Tries strict match → relaxes."""
+    """Pick a problem matching the slot. Tries strict match → relaxes.
+
+    May return a freshly-generated parametric problem (persisted into the DB)
+    when one of the requested strands has a matching template and the
+    per-kind generator probability fires.
+    """
+    # 1) Try the generator path first for kinds that benefit from it.
+    gen_prob = _GENERATOR_PROBABILITY.get(kind, 0.0)
+    if gen_prob > 0 and rng.random() < gen_prob:
+        gen_problem = _generate_and_persist(
+            db,
+            preferred_strands=strand_keys,
+            preferred_kind=kind,
+            target_level=target_level,
+            rng=rng,
+        )
+        if gen_problem is not None:
+            return gen_problem
+
+    # 2) Fall back to the curated bank.
     strand_ids = _strand_id_map(db)
     strand_filter = [strand_ids[k] for k in strand_keys if k in strand_ids]
 
-    # Tier 1: exact level + matching kind + preferred strands
     for relax_kind in [False, True]:
         for level_radius in [0, 1, 2]:
             stmt = select(Problem).where(
                 Problem.strand_id.in_(strand_filter),
                 Problem.level >= max(1, target_level - level_radius),
-                Problem.level <= min(5, target_level + level_radius),
+                Problem.level <= min(7, target_level + level_radius),
             )
             if not relax_kind:
                 stmt = stmt.where(Problem.kind == kind)
@@ -158,6 +191,78 @@ def _pick_problem(
     rows = db.execute(select(Problem).where(Problem.level == target_level)).scalars().all()
     rows = [r for r in rows if r.id not in avoid]
     return rng.choice(rows) if rows else None
+
+
+def _generate_and_persist(
+    db: Session,
+    *,
+    preferred_strands: list[str],
+    preferred_kind: str,
+    target_level: int,
+    rng: random.Random,
+) -> Problem | None:
+    """Pick a matching template, generate a fresh problem, persist as a Problem row."""
+    # Find templates matching the preferred strands & kind & level (radius 1).
+    stmt = (
+        select(GeneratedTemplate)
+        .join(Strand, GeneratedTemplate.strand_id == Strand.id)
+        .where(Strand.key.in_(preferred_strands))
+    )
+    candidates = db.execute(stmt).scalars().all()
+    if not candidates:
+        return None
+
+    def _score(t: GeneratedTemplate) -> int:
+        kind_match = 0 if t.kind == preferred_kind else 2
+        level_match = abs((t.level or 1) - target_level)
+        return kind_match + level_match
+
+    candidates.sort(key=_score)
+    # Pick from the best-scoring tier with some randomness
+    best_score = _score(candidates[0])
+    tier = [t for t in candidates if _score(t) <= best_score + 1]
+    template = rng.choice(tier)
+
+    seed = rng.randint(1, 1_000_000_000)
+    gen = generate_from_template(template, seed=seed)
+
+    # Strand id for the generated problem
+    strand_row = (
+        db.execute(select(Strand).where(Strand.key == gen.strand))
+        .scalar_one_or_none()
+    )
+    if strand_row is None:
+        return None
+
+    # Each generated problem gets a unique slug (seed-based) — collision-safe.
+    existing = db.execute(
+        select(Problem).where(Problem.slug == gen.slug)
+    ).scalar_one_or_none()
+    if existing is not None:
+        return existing
+
+    row = Problem(
+        slug=gen.slug,
+        strand_id=strand_row.id,
+        level=gen.level,
+        grade_band="K-2",
+        kind=gen.kind,
+        title=gen.title,
+        prompt=gen.prompt,
+        answer=gen.answer,
+        answer_type=gen.answer_type,
+        hints=gen.hints,
+        strategies=gen.strategies,
+        materials=gen.materials,
+        tags=gen.tags + ["auto"],
+        explain_prompt=gen.explain_prompt,
+        parent_extension=gen.parent_extension,
+        minutes=gen.minutes,
+        template={"source_template": template.name, "seed": seed},
+    )
+    db.add(row)
+    db.flush()
+    return row
 
 
 def _choose_warmup_strands(focus: list[str], skills: dict[str, Skill]) -> list[str]:
@@ -374,9 +479,9 @@ def update_skill_from_attempt(
         sk.level = max(1, sk.level - 1)
         sk.streak = 0
     elif rating == "easy" and sk.streak >= 2:
-        sk.level = min(5, sk.level + 1)
+        sk.level = min(7, sk.level + 1)
     elif sk.streak >= 3 and sk.rolling_accuracy >= 0.8:
-        sk.level = min(5, sk.level + 1)
+        sk.level = min(7, sk.level + 1)
         sk.streak = 0
     elif sk.rolling_accuracy < 0.4 and len(recent) >= 3:
         sk.level = max(1, sk.level - 1)
