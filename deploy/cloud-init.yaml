@@ -19,8 +19,8 @@ package_upgrade: true
 
 packages:
   - git
-  - python3.11
-  - python3.11-venv
+  - python3
+  - python3-venv
   - python3-pip
   - sqlite3
   - debian-keyring
@@ -28,7 +28,7 @@ packages:
   - apt-transport-https
   - curl
   - ca-certificates
-  - awscli
+  - unzip
 
 users:
   - default
@@ -116,7 +116,7 @@ write_files:
       sudo -u mathcircle git fetch --all
       sudo -u mathcircle git reset --hard origin/__GIT_BRANCH__
       if ! sudo -u mathcircle test -d /opt/mathcircle/app/.venv; then
-          sudo -u mathcircle python3.11 -m venv /opt/mathcircle/app/.venv
+          sudo -u mathcircle python3 -m venv /opt/mathcircle/app/.venv
       fi
       sudo -u mathcircle /opt/mathcircle/app/.venv/bin/pip install --quiet --upgrade pip
       sudo -u mathcircle /opt/mathcircle/app/.venv/bin/pip install --quiet -r /opt/mathcircle/app/requirements.txt
@@ -127,6 +127,7 @@ write_files:
     content: |
       #!/bin/bash
       set -euo pipefail
+      export PATH=/snap/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
       DATA_DIR="/opt/mathcircle/data"
       BACKUP_DIR="/opt/mathcircle/backups"
       LOG_FILE="/opt/mathcircle/logs/backup.log"
@@ -151,8 +152,12 @@ write_files:
       17 3 * * * root /opt/mathcircle/bin/backup.sh
 
 runcmd:
-  # 1. install Caddy — force-confnew so our pre-written /etc/caddy/Caddyfile wins
-  #    (otherwise dpkg prompts about modified config files and stalls)
+  # 1a. install awscli v2 (not in noble apt; snap preinstalled but classic confinement
+  #     is fine here)
+  - snap install aws-cli --classic
+
+  # 1b. install Caddy — force-confold so our pre-written /etc/caddy/Caddyfile wins
+  #     (otherwise dpkg prompts about modified config files and stalls)
   - curl -fsSL "https://dl.cloudsmith.io/public/caddy/stable/gpg.key" | gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
   - 'echo "deb [signed-by=/usr/share/keyrings/caddy-stable-archive-keyring.gpg] https://dl.cloudsmith.io/public/caddy/stable/deb/debian any-version main" > /etc/apt/sources.list.d/caddy-stable.list'
   - DEBIAN_FRONTEND=noninteractive apt-get update
@@ -163,7 +168,7 @@ runcmd:
   - sudo -u mathcircle git clone --branch __GIT_BRANCH__ __GIT_REPO_URL__ /opt/mathcircle/app
 
   # 3. python venv + deps
-  - sudo -u mathcircle python3.11 -m venv /opt/mathcircle/app/.venv
+  - sudo -u mathcircle python3 -m venv /opt/mathcircle/app/.venv
   - sudo -u mathcircle /opt/mathcircle/app/.venv/bin/pip install --quiet --upgrade pip
   - sudo -u mathcircle /opt/mathcircle/app/.venv/bin/pip install --quiet -r /opt/mathcircle/app/requirements.txt
 
