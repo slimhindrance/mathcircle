@@ -32,6 +32,7 @@ packages:
   - unattended-upgrades
 
 users:
+  - default
   - name: mathcircle
     system: true
     shell: /usr/sbin/nologin
