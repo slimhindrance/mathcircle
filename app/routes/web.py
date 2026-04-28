@@ -10,7 +10,7 @@ from sqlalchemy.orm import Session
 
 from ..database import get_db
 from ..models import Attempt, Child, Note, Problem, Session as SessionRow, Skill, Strand
-from ..session_generator import build_session_plan, circle_night_plan
+from ..session_generator import build_preview_session, build_session_plan, circle_night_plan
 
 router = APIRouter()
 
@@ -318,6 +318,45 @@ def about(request: Request, db: Session = Depends(get_db)):
         request,
         "about.html",
         {"problem_count": problem_count, "strand_count": strand_count},
+    )
+
+
+@router.get("/about/sample", response_class=HTMLResponse)
+def about_sample(request: Request, db: Session = Depends(get_db)):
+    """Read-only preview: one full sample session per grade (K, 1, 2). No auth."""
+    grade_specs = [
+        {"grade": "K", "label": "Kindergarten", "age": "5–6", "blurb": "Subitizing, ten-frames, AB patterns, position words. Counting confidently to 20."},
+        {"grade": "1", "label": "Grade 1", "age": "6–7", "blurb": "Sums and differences within 20, missing addends, mystery numbers, balance thinking."},
+        {"grade": "2", "label": "Grade 2", "age": "7–8", "blurb": "Place value to 100, two-step problems, growing patterns, early combinatorics."},
+    ]
+    samples = []
+    for spec in grade_specs:
+        plan = build_preview_session(db, grade=spec["grade"], seed=42)
+        problems_by_id = {
+            p.id: p
+            for p in db.execute(
+                select(Problem).where(
+                    Problem.id.in_([item["problem_id"] for item in plan])
+                )
+            ).scalars().all()
+        }
+        strand_lookup = _strand_lookup(db)
+        items = []
+        for item in plan:
+            prob = problems_by_id.get(item["problem_id"])
+            if prob is None:
+                continue
+            items.append({
+                "kind": item["kind"],
+                "position": item["position"],
+                "problem": prob,
+                "strand": strand_lookup.get(prob.strand_id),
+            })
+        items.sort(key=lambda it: it["position"])
+        total_minutes = sum(it["problem"].minutes for it in items)
+        samples.append({**spec, "items": items, "total_minutes": total_minutes})
+    return _templates(request).TemplateResponse(
+        request, "about_sample.html", {"samples": samples}
     )
 
 

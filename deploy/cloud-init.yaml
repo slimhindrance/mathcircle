@@ -83,12 +83,12 @@ write_files:
 
           # Public-facing pages that bypass basic-auth (school-district pitch + static assets)
           @public {
-              path /about /about/ /static/*
+              path /about /about/* /static/*
           }
 
           # Everything else requires household login.
           @private {
-              not path /about /about/ /static/*
+              not path /about /about/* /static/*
           }
           basic_auth @private {
               __BASIC_AUTH_USER__ __BASIC_AUTH_HASH__

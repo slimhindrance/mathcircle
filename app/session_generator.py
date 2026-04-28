@@ -508,6 +508,83 @@ def generate_template_problem(
     return generate_from_template(template_row, seed=seed).to_dict()
 
 
+def build_preview_session(
+    db: Session,
+    *,
+    grade: str,
+    seed: int = 42,
+) -> list[dict]:
+    """Build a deterministic, read-only preview session for the public /about page.
+
+    Reads only from the curated bank (no generators, no DB writes, no skills).
+    Same shape as a real session so the preview feels accurate.
+    """
+    rng = random.Random(seed + (hash(grade) % 1_000))
+    target_level = _starting_level(grade)
+    strand_ids = _strand_id_map(db)
+    strand_lookup = {sid: key for key, sid in strand_ids.items()}
+
+    def _pick(kinds: list[str], strand_keys: list[str], lvl: int) -> Problem | None:
+        sids = [strand_ids[k] for k in strand_keys if k in strand_ids]
+        if not sids:
+            return None
+        for radius in [0, 1, 2]:
+            stmt = select(Problem).where(
+                Problem.strand_id.in_(sids),
+                Problem.kind.in_(kinds),
+                Problem.level >= max(1, lvl - radius),
+                Problem.level <= min(7, lvl + radius),
+            )
+            rows = db.execute(stmt).scalars().all()
+            if rows:
+                return rng.choice(rows)
+        return None
+
+    plan: list[dict] = []
+    pos = 1
+
+    def _emit(prob: Problem | None, kind: str) -> None:
+        nonlocal pos
+        if prob is None:
+            return
+        plan.append({
+            "kind": kind,
+            "problem_id": prob.id,
+            "position": pos,
+            "strand_key": strand_lookup.get(prob.strand_id, ""),
+            "title": prob.title,
+            "minutes": prob.minutes,
+        })
+        pos += 1
+
+    # 3 warm-ups — number sense + add/sub
+    for _ in range(3):
+        _emit(
+            _pick(["warm_up"], ["number_sense", "add_sub_structures", "patterns"], max(1, target_level - 1)),
+            "warm_up",
+        )
+    # rich puzzle — pull from the more interesting strands
+    _emit(
+        _pick(
+            ["rich_puzzle"],
+            ["missing_number_stories", "logic_classification", "patterns", "combinatorics_counting", "equality_balance"],
+            target_level,
+        ),
+        "rich_puzzle",
+    )
+    # visual / hands-on
+    _emit(
+        _pick(["visual"], ["geometry_spatial", "number_sense", "patterns"], target_level),
+        "visual",
+    )
+    # story problem
+    _emit(
+        _pick(["story"], ["add_sub_structures", "missing_number_stories", "measurement"], target_level),
+        "story",
+    )
+    return plan
+
+
 def circle_night_plan(db: Session, children: list[Child]) -> list[dict]:
     """A shared plan for math-circle-night mode (cooperative, mixed levels)."""
     if not children:

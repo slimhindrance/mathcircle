@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% block title %}Sample sessions — Math Circle Home{% endblock %}
+{% block head %}
+<style>
+  .grade-pick {
+    display: flex; gap: .5rem; flex-wrap: wrap;
+    margin-bottom: 1rem;
+    position: sticky; top: 56px; z-index: 5;
+    background: var(--bg);
+    padding: .5rem 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .grade-pick a {
+    padding: .4rem 1rem;
+    border-radius: 999px;
+    background: var(--paper);
+    border: 1.5px solid var(--line);
+    text-decoration: none;
+    color: var(--ink);
+    font-weight: 600;
+  }
+  .grade-pick a.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+  .preview-banner {
+    background: linear-gradient(120deg, #fff8e7, #fdf6e3);
+    border: 1.5px dashed var(--accent-2);
+    padding: 1rem 1.2rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.4rem;
+  }
+  .preview-banner h2 { margin: 0 0 .35rem; color: var(--cool); }
+  .grade-section { margin-bottom: 3rem; }
+  .grade-section .head {
+    display: flex; gap: 1rem; align-items: baseline;
+    flex-wrap: wrap;
+    margin-bottom: .8rem;
+  }
+  .grade-section .head h2 { margin: 0; }
+  .preview-problem {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1rem;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .preview-problem .top {
+    display: flex; gap: .5rem; align-items: center; flex-wrap: wrap;
+    margin-bottom: .5rem;
+  }
+  .preview-problem h3 { margin: .2rem 0 .4rem; font-size: 1.25rem; }
+  .preview-problem .prompt {
+    font-size: 1.1rem;
+    margin: .6rem 0;
+    font-family: var(--serif);
+    line-height: 1.5;
+  }
+  .preview-problem.kind-warm_up { border-left: 5px solid var(--warm); }
+  .preview-problem.kind-rich_puzzle { border-left: 5px solid var(--primary); }
+  .preview-problem.kind-visual { border-left: 5px solid var(--accent); }
+  .preview-problem.kind-story { border-left: 5px solid var(--accent-2); }
+  .preview-block {
+    background: var(--bg-soft);
+    padding: .55rem .9rem;
+    border-radius: var(--radius-sm);
+    margin: .5rem 0;
+    font-size: .94rem;
+    border: 1px dashed var(--line);
+  }
+  .preview-block strong { color: var(--cool); }
+  .preview-block.parent-ext { background: #f5fbff; border-color: #b9e3ff; }
+  .preview-block.explain  { background: #f7eefc; border-color: #d6b8f0; }
+  .pedagogy-badge {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: .35rem .7rem;
+    background: #d8f3dc;
+    color: #2d6a4f;
+    border-radius: 999px;
+    font-size: .85rem;
+    font-weight: 600;
+  }
+  .ahead-callout {
+    background: #fff;
+    border: 2px solid var(--primary);
+    border-radius: var(--radius);
+    padding: 1.2rem 1.4rem;
+    margin-bottom: 1.6rem;
+  }
+  .ahead-callout h2 { color: var(--primary-dark); margin-top: 0; }
+  .ahead-callout p { margin-bottom: .6rem; }
+</style>
+{% endblock %}
+{% block body %}
+
+<section class="ahead-callout">
+  <h2>For parents who want their kids to "get ahead"</h2>
+  <p>Most "ahead" tools accelerate <em>arithmetic</em>: a Grade 1 child solving Grade 3 problems. That's a kind of ahead, but it's a shallow one — and research suggests it can actively hurt deeper mathematical thinking later.</p>
+  <p><strong>This app is a different kind of ahead.</strong> A child finishing K with Math Circle Home will know less arithmetic than a kid drilled on flashcards — but will know <em>more about how numbers work</em>: that 7 = 5 + 2 = 4 + 3 = 10 - 3, that an equation balances both sides, that a pattern has a rule, that you can argue about an answer. Those skills are what predict mathematical success in middle school and beyond.</p>
+  <p>We call it <strong>depth before acceleration</strong>. The samples below are real sessions — pulled live from the bank — at three difficulty bands. Read them as a parent would: <em>could my child have a real conversation about this?</em></p>
+</section>
+
+<section class="preview-banner">
+  <h2>👀 Read-only preview</h2>
+  <p style="margin-bottom: 0">These are example sessions, exactly as a child would see them. The answer-input fields, hint reveals, and rating chips have been removed for browsing — open the app for the full interactive experience. Hint and "explain" prompts shown here are normally shown progressively, only when needed.</p>
+</section>
+
+<nav class="grade-pick" aria-label="Jump to grade">
+  {% for s in samples %}
+    <a href="#grade-{{ s.grade }}">{{ s.label }}</a>
+  {% endfor %}
+  <a href="/about" style="margin-left:auto">← Back to About</a>
+</nav>
+
+{% for s in samples %}
+<section class="grade-section" id="grade-{{ s.grade }}">
+  <div class="head">
+    <h2>{{ s.label }} — sample session</h2>
+    <span class="muted">ages {{ s.age }} · {{ s.items|length }} activities · ~{{ s.total_minutes }} min</span>
+  </div>
+  <p class="muted" style="margin-bottom: 1rem">{{ s.blurb }}</p>
+
+  {% for item in s.items %}
+  {% set p = item.problem %}
+  <article class="preview-problem kind-{{ item.kind }}">
+    <div class="top">
+      <span class="tag kind">{{ kind_emoji(item.kind) }} {{ kind_label(item.kind) }}</span>
+      {% if item.strand %}
+        <span class="strand-pill" style="background: {{ strand_color(item.strand.key) }}">{{ item.strand.icon }} {{ item.strand.name }}</span>
+      {% endif %}
+      <span class="tag level-{{ p.level }}">Level {{ p.level }}</span>
+      <span class="muted">~{{ p.minutes }} min</span>
+    </div>
+    <h3>{{ p.title }}</h3>
+    <p class="prompt">{{ p.prompt }}</p>
+
+    {% if p.materials %}
+      <div class="preview-block"><strong>Materials:</strong> {{ p.materials|join(', ') }}</div>
+    {% endif %}
+
+    {% if p.hints %}
+      <div class="preview-block">
+        <strong>Hints (revealed progressively in the real session):</strong>
+        <ol style="margin: .35rem 0 0 1.2rem; padding: 0">
+          {% for h in p.hints %}<li>{{ h }}</li>{% endfor %}
+        </ol>
+      </div>
+    {% endif %}
+
+    {% if p.strategies %}
+      <div class="preview-block">
+        <strong>Strategies a child might use:</strong>
+        {% for st in p.strategies %}<span class="tag">{{ st }}</span>{% endfor %}
+      </div>
+    {% endif %}
+
+    {% if p.explain_prompt %}
+      <div class="preview-block explain">
+        <strong>💬 Then ask:</strong> {{ p.explain_prompt }}
+      </div>
+    {% endif %}
+
+    {% if p.parent_extension %}
+      <div class="preview-block parent-ext">
+        <strong>🏡 Kitchen-table follow-up:</strong> {{ p.parent_extension }}
+      </div>
+    {% endif %}
+  </article>
+  {% endfor %}
+
+  <div style="margin-top: .4rem">
+    <span class="pedagogy-badge">✓ Same shape every day: warm-ups → rich puzzle → visual → story → talk-it-out</span>
+  </div>
+</section>
+{% endfor %}
+
+<section class="card" style="background: var(--cool); color: #fff; border: none;">
+  <h2 style="color: #fff">What's missing from this preview</h2>
+  <p>The static page above shows the <em>content</em>. The real app adds:</p>
+  <ul>
+    <li><strong>Adaptive difficulty per strand.</strong> A child fluent at patterns but stuck on geometry sees harder patterns and easier geometry. The system targets productive confusion, not get-it-right.</li>
+    <li><strong>Strategy notes.</strong> The parent or child types in <em>how</em> they solved it. Over weeks, you can see when "count up" gives way to "decompose to ten" — the moment that signals real growth.</li>
+    <li><strong>Parent ratings.</strong> Three taps: easy / good struggle / too hard. The system listens.</li>
+    <li><strong>Hints that reveal progressively.</strong> Three tiers of scaffolding. Children build the habit of trying first, asking second.</li>
+    <li><strong>JSON/CSV export.</strong> Every attempt, every strategy note. Yours forever.</li>
+    <li><strong>Math Circle Night mode.</strong> Cooperative sessions for siblings or play-dates.</li>
+  </ul>
+  <p style="margin-top: 1rem"><a href="/about" style="color: var(--warm); border-color: var(--warm)">← Back to About</a> · <a href="/" style="color: var(--warm); border-color: var(--warm)">Open the app (login required)</a></p>
+</section>
+
+{% endblock %}
