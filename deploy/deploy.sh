@@ -228,16 +228,24 @@ else
 fi
 
 # ---------- 7. password hash + cloud-init ----------
-log "hashing basic-auth password"
+log "hashing basic-auth password (bcrypt cost 14)"
 HASH=""
+# Prefer caddy if installed, else use python bcrypt (most reliable across machines).
 if have caddy; then
   HASH=$(caddy hash-password --plaintext "$BASIC_AUTH_PASS")
-elif have docker; then
-  HASH=$(docker run --rm caddy:2 caddy hash-password --plaintext "$BASIC_AUTH_PASS")
-else
-  # python fallback using bcrypt — install if needed
-  python3 -c "import bcrypt" 2>/dev/null || python3 -m pip install --quiet bcrypt
-  HASH=$(python3 -c "import bcrypt,sys; print(bcrypt.hashpw(sys.argv[1].encode(),bcrypt.gensalt(14)).decode())" "$BASIC_AUTH_PASS")
+fi
+if [[ -z "$HASH" ]]; then
+  if ! python3 -c "import bcrypt" >/dev/null 2>&1; then
+    log "installing python bcrypt locally (one-time)"
+    python3 -m pip install --quiet --user bcrypt 2>/dev/null \
+      || python3 -m pip install --quiet --break-system-packages bcrypt 2>/dev/null \
+      || python3 -m pip install --quiet bcrypt
+  fi
+  HASH=$(python3 - "$BASIC_AUTH_PASS" <<'PY'
+import bcrypt, sys
+print(bcrypt.hashpw(sys.argv[1].encode(), bcrypt.gensalt(14)).decode())
+PY
+)
 fi
 [[ -z "$HASH" ]] && die "failed to hash password"
 log "hash ready"
