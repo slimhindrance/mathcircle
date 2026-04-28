@@ -359,7 +359,8 @@ def child_digest_run(child_id: int, db: Session = Depends(get_db)):
         raise HTTPException(404)
     if not c.ai_digests_enabled:
         raise HTTPException(403, "AI digests not enabled")
-    ai_generate_and_persist(db, c, hours=24, period_label="adhoc")
+    # 7-day window matches the weekly cron cadence
+    ai_generate_and_persist(db, c, hours=24 * 7, period_label="adhoc")
     return RedirectResponse(f"/child/{child_id}", status_code=303)
 
 

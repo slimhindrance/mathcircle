@@ -1,13 +1,12 @@
-"""Daily digest generator. Run from cron at ~04:00 UTC.
+"""Weekly digest generator. Run from systemd timer at ~04:30 UTC every Monday.
 
-For every child where ai_digests_enabled is True, generate a 24h digest and
+For every child where ai_digests_enabled is True, generate a 7-day digest and
 persist it. Logs progress; never crashes the cron line.
 """
 from __future__ import annotations
 
 import logging
 import sys
-from datetime import datetime
 
 from sqlalchemy import select
 
@@ -21,7 +20,7 @@ def main() -> int:
         level=logging.INFO,
         format="%(asctime)s %(levelname)s %(message)s",
     )
-    log = logging.getLogger("daily-digests")
+    log = logging.getLogger("weekly-digests")
     init_db()
 
     with SessionLocal() as db:
@@ -31,7 +30,7 @@ def main() -> int:
         log.info("opted-in children: %d", len(children))
         for c in children:
             try:
-                row = generate_and_persist(db, c, hours=24, period_label="daily")
+                row = generate_and_persist(db, c, hours=24 * 7, period_label="weekly")
                 log.info(
                     "child=%s digest=%s tokens_in=%d tokens_out=%d cost=$%.4f%s",
                     c.id, row.id, row.input_tokens, row.output_tokens, row.cost_usd,

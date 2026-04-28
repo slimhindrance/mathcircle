@@ -72,26 +72,25 @@
 {# AI digest opt-in flow + digest panel #}
 {% if child.ai_digests_enabled is none %}
 <section class="optin-banner" id="ai-optin">
-  <h2>✨ Try the AI daily digest?</h2>
-  <p>Each night, an AI tutor (Anthropic's Claude Haiku 4.5, running in your AWS account through Amazon Bedrock) can read {{ child.name }}'s practice from the last 24 hours and write a one-paragraph note for you: what strategies they used, what they're working on, what to try tomorrow.</p>
+  <h2>✨ Try the AI weekly digest?</h2>
+  <p>Once a week, an AI tutor (Anthropic's Claude Haiku 4.5, running through Amazon Bedrock) can read {{ child.name }}'s practice from the past seven days and write a short note for you: what strategies they used, what they're working on, what to try next.</p>
 
   <details>
     <summary><strong>What gets sent? (read this before deciding)</strong></summary>
     <ul style="margin-top:.5rem">
-      <li>Problem titles, prompts, and strands {{ child.name }} attempted in the last 24 hours.</li>
-      <li>Whether each attempt was correct, the parent rating (easy / good struggle / too hard), the time spent, and any strategy notes <em>you typed</em>.</li>
-      <li>Parent notes you wrote in the last 24 hours.</li>
+      <li>Problem titles, prompts, and strands {{ child.name }} attempted in the past 7 days.</li>
+      <li>Whether each attempt was correct, the parent rating (easy / good struggle / too hard), time spent, and any strategy notes <em>you typed</em>.</li>
+      <li>Parent notes you wrote in the past 7 days.</li>
       <li><strong>{{ child.name }}'s name is replaced with "Child" before sending</strong> — the model never sees their real name.</li>
-      <li>Bedrock's contract: prompts and responses are not used to train models, do not leave your AWS region (us-east-1), and are not seen by any third party.</li>
+      <li>Bedrock's contract: prompts and responses are not used to train models, do not leave the AWS region (us-east-1), and are not seen by any third party.</li>
       <li>You can turn this off any time. Past digests stay; new ones won't be generated.</li>
-      <li>Cost: roughly half a cent per digest, charged to your AWS account.</li>
     </ul>
   </details>
 
   <div class="actions">
     <form method="post" action="/child/{{ child.id }}/ai-optin" style="display:inline">
       <input type="hidden" name="enabled" value="true">
-      <button class="btn" type="submit">Yes, enable daily digests</button>
+      <button class="btn" type="submit">Yes, enable weekly digests</button>
     </form>
     <form method="post" action="/child/{{ child.id }}/ai-optin" style="display:inline">
       <input type="hidden" name="enabled" value="false">
@@ -103,7 +102,7 @@
 
 {% if latest_digest %}
 <section class="digest-card">
-  <h2>🧠 Today's digest <span class="muted" style="font-size:.85rem; font-weight:normal">— {{ latest_digest.period_label }}, {{ latest_digest.created_at.strftime('%b %d, %Y %H:%M UTC') }}</span></h2>
+  <h2>🧠 This week's digest <span class="muted" style="font-size:.85rem; font-weight:normal">— {{ latest_digest.period_label }}, {{ latest_digest.created_at.strftime('%b %d, %Y %H:%M UTC') }}</span></h2>
   <p class="headline">{{ latest_digest.summary.headline }}</p>
 
   {% if latest_digest.summary.what_we_noticed %}
@@ -155,7 +154,7 @@
 {% elif child.ai_digests_enabled %}
 <section class="digest-card">
   <h2>🧠 AI digest</h2>
-  <p>Digests are enabled for {{ child.name }}. The first one will appear after the next overnight run, or you can generate one now:</p>
+  <p>Weekly digests are enabled for {{ child.name }}. The first one will appear after the next Monday morning run, or you can generate one now:</p>
   <form method="post" action="/child/{{ child.id }}/digest/run" style="display:inline">
     <button class="btn" type="submit">Generate digest now</button>
   </form>
