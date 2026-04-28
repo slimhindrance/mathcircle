@@ -57,6 +57,7 @@ write_files:
       User=mathcircle
       Group=mathcircle
       WorkingDirectory=/opt/mathcircle/app
+      EnvironmentFile=/etc/mathcircle/env
       Environment="PATH=/opt/mathcircle/app/.venv/bin"
       Environment="MATHCIRCLE_DATABASE_URL=sqlite:////opt/mathcircle/data/mathcircle.db"
       ExecStart=/opt/mathcircle/app/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1
@@ -81,19 +82,6 @@ write_files:
       __DOMAIN__ {
           encode zstd gzip
 
-          # Public-facing pages that bypass basic-auth (school-district pitch + static assets)
-          @public {
-              path /about /about/* /static/*
-          }
-
-          # Everything else requires household login.
-          @private {
-              not path /about /about/* /static/*
-          }
-          basic_auth @private {
-              __BASIC_AUTH_USER__ __BASIC_AUTH_HASH__
-          }
-
           header /static/* Cache-Control "public, max-age=86400"
 
           header {
@@ -103,6 +91,8 @@ write_files:
               -Server
           }
 
+          # The app handles auth (magic-link sessions). Caddy is a transparent
+          # reverse proxy.
           reverse_proxy 127.0.0.1:8000
 
           log {

@@ -31,6 +31,14 @@ SESSION_SHAPE = {
     "parent_extension": 1,
 }
 
+# Cap for the local-cohort waitlist play.
+FAMILY_CAP = int(os.getenv("MATHCIRCLE_FAMILY_CAP", "20"))
+KIDS_PER_FAMILY = int(os.getenv("MATHCIRCLE_KIDS_PER_FAMILY", "2"))
+
+# Footer attribution.
+FOOTER_AUTHOR = os.getenv("MATHCIRCLE_FOOTER_AUTHOR", "Chris Lindeman")
+FOOTER_LOCATION = os.getenv("MATHCIRCLE_FOOTER_LOCATION", "Mt Lebanon, PA")
+
 # Strand keys (canonical order).
 STRAND_KEYS = [
     "number_sense",

@@ -11,6 +11,7 @@ from fastapi.templating import Jinja2Templates
 from .config import STATIC_DIR, TEMPLATES_DIR
 from .database import SessionLocal, init_db
 from .routes import api as api_routes
+from .routes import auth as auth_routes
 from .routes import web as web_routes
 from .seed import ensure_default_children, seed_database
 
@@ -83,5 +84,14 @@ templates.env.globals["app_version"] = app.version
 app.state.templates = templates
 
 app.mount("/static", StaticFiles(directory=str(STATIC_DIR)), name="static")
+# Auth routes own `/`, `/request-access`, `/auth/*`, `/admin/*` — register first
+# so they take precedence over any web.py wildcard routes.
+app.include_router(auth_routes.router)
 app.include_router(web_routes.router)
 app.include_router(api_routes.router)
+
+
+# Make footer attribution available as Jinja globals so any template can render it.
+from .config import FOOTER_AUTHOR, FOOTER_LOCATION
+templates.env.globals["FOOTER_AUTHOR"] = FOOTER_AUTHOR
+templates.env.globals["FOOTER_LOCATION"] = FOOTER_LOCATION

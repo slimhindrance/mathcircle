@@ -36,10 +36,61 @@ class Strand(Base):
     problems: Mapped[list["Problem"]] = relationship(back_populates="strand")
 
 
+class Family(Base):
+    __tablename__ = "families"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    email: Mapped[str] = mapped_column(String(160), unique=True, index=True)
+    display_name: Mapped[str] = mapped_column(String(120), default="")  # "The Lindemans"
+    is_admin: Mapped[bool] = mapped_column(Boolean, default=False)
+    is_active: Mapped[bool] = mapped_column(Boolean, default=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+    last_login_at: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
+    notes: Mapped[str] = mapped_column(Text, default="")  # admin-only
+
+    children: Mapped[list["Child"]] = relationship(back_populates="family")
+
+
+class AccessRequest(Base):
+    """Public-facing 'request access' submissions. Admin reviews + approves."""
+    __tablename__ = "access_requests"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    family_name: Mapped[str] = mapped_column(String(160))
+    parent_email: Mapped[str] = mapped_column(String(160), index=True)
+    kids_summary: Mapped[str] = mapped_column(Text, default="")  # "Anna (K), Ben (Gr1)"
+    referral: Mapped[str] = mapped_column(Text, default="")  # how they heard / why
+    status: Mapped[str] = mapped_column(String(24), default="pending", index=True)
+    # pending | approved | declined | waitlisted
+    admin_note: Mapped[str] = mapped_column(Text, default="")
+    ip_address: Mapped[str] = mapped_column(String(64), default="")
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+    decided_at: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
+    family_id: Mapped[Optional[int]] = mapped_column(
+        ForeignKey("families.id"), nullable=True
+    )
+
+
+class LoginToken(Base):
+    """Single-use magic-link tokens."""
+    __tablename__ = "login_tokens"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    family_id: Mapped[int] = mapped_column(ForeignKey("families.id"), index=True)
+    token: Mapped[str] = mapped_column(String(96), unique=True, index=True)
+    purpose: Mapped[str] = mapped_column(String(32), default="login")  # login | invite
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+    expires_at: Mapped[datetime] = mapped_column(DateTime)
+    used_at: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
+
+
 class Child(Base):
     __tablename__ = "children"
 
     id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    family_id: Mapped[Optional[int]] = mapped_column(
+        ForeignKey("families.id"), nullable=True, index=True
+    )
     name: Mapped[str] = mapped_column(String(64))
     grade: Mapped[str] = mapped_column(String(16), default="K")  # "K", "1", "2"
     age: Mapped[Optional[int]] = mapped_column(Integer, nullable=True)
@@ -50,6 +101,8 @@ class Child(Base):
     # AI digests opt-in. None = never asked; True/False = explicit choice.
     ai_digests_enabled: Mapped[Optional[bool]] = mapped_column(Boolean, nullable=True)
     ai_digests_decided_at: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
+
+    family: Mapped[Optional[Family]] = relationship(back_populates="children")
 
     skills: Mapped[list["Skill"]] = relationship(
         back_populates="child", cascade="all, delete-orphan"

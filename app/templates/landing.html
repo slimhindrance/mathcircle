@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+{% block title %}Math Circle Home — for K–2 families{% endblock %}
+{% block head %}
+<style>
+  .hero {
+    text-align: center;
+    padding: 3rem 1rem 2.5rem;
+    background: linear-gradient(120deg, #fdf6e3 0%, #fff8e7 100%);
+    border-radius: var(--radius);
+    margin-bottom: 1.6rem;
+    border: 1px solid var(--line);
+  }
+  .hero h1 { font-size: 2.7rem; margin: 0 0 .6rem; line-height: 1.1; }
+  .hero .tagline {
+    font-size: 1.25rem; color: var(--ink-soft); font-style: italic;
+    max-width: 620px; margin: 0 auto 1.4rem; line-height: 1.5;
+  }
+  .hero .cta {
+    display: inline-block; padding: .8rem 1.6rem; background: var(--primary);
+    color: #fff; border-radius: 999px; font-weight: 700; text-decoration: none;
+    font-size: 1.1rem;
+  }
+  .hero .cta:hover { background: var(--primary-dark); border: none; }
+  .counter {
+    display: inline-block;
+    margin: .6rem .3rem 1.2rem;
+    padding: .5rem 1rem;
+    background: #fff;
+    border: 1.5px solid var(--accent);
+    border-radius: 999px;
+    font-weight: 600;
+    color: var(--cool);
+  }
+  .counter .full { color: var(--primary-dark); }
+  .three-cols {
+    display: grid; gap: 1.2rem;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    margin: 1.5rem 0;
+  }
+  .three-cols .card-mini {
+    padding: 1rem 1.2rem; background: var(--paper);
+    border: 1px solid var(--line); border-radius: var(--radius-sm);
+  }
+  .three-cols .card-mini h3 { margin: 0 0 .4rem; font-size: 1.1rem; }
+  .three-cols .card-mini p { margin: 0; font-size: .95rem; }
+  .story {
+    background: var(--bg-soft); padding: 1.4rem 1.6rem;
+    border-radius: var(--radius); border: 1px solid var(--line);
+    margin: 1.4rem 0;
+  }
+  .story p { font-family: var(--serif); font-size: 1.05rem; line-height: 1.6; }
+  .footer-attr {
+    text-align: center; color: var(--ink-soft);
+    padding: 2rem 1rem 1rem; font-size: .9rem;
+  }
+</style>
+{% endblock %}
+{% block body %}
+
+<section class="hero">
+  <h1>Math, on purpose.</h1>
+  <p class="tagline">A small, deliberate math-circle app for K–2 — built by a parent for a small group of families in our neighborhood.</p>
+
+  {% if is_full %}
+    <div class="counter"><span class="full">{{ active_count }} of {{ cap }} families</span> — currently full · {{ waitlist_count }} on waitlist</div>
+    <br><a class="cta" href="/request-access">Join the waitlist →</a>
+  {% else %}
+    <div class="counter">{{ active_count }} of {{ cap }} families · {{ cap - active_count }} slots open</div>
+    <br><a class="cta" href="/request-access">Request access for my kids →</a>
+  {% endif %}
+  <div style="margin-top: .8rem; font-size: .9rem;">
+    <a href="/about">Read the pedagogy →</a> · <a href="/about/sample">See sample sessions →</a> · <a href="/auth/sign-in">Already a member? Sign in</a>
+  </div>
+</section>
+
+<div class="three-cols">
+  <div class="card-mini">
+    <h3>🧠 Depth, not speed</h3>
+    <p>No timers, no leaderboards, no flashcard drills. Real problems, real conversations.</p>
+  </div>
+  <div class="card-mini">
+    <h3>🌟 15 minutes a day</h3>
+    <p>One short, structured session: warm-up · puzzle · hands-on · story · "explain your thinking."</p>
+  </div>
+  <div class="card-mini">
+    <h3>🤝 Small by design</h3>
+    <p>Capped at {{ cap }} families. Free. No ads, no third-party tracking. Run by a neighbor.</p>
+  </div>
+</div>
+
+<section class="story">
+  <p><strong>Here's why I built this.</strong> A Romanian high-school graduate at 18 has covered calculus with proofs, linear algebra, and combinatorics. A US student finishing AP Calculus BC has done single-variable calculus, no proofs. The gap doesn't open in 11th grade — it opens in kindergarten, when one tradition teaches structure and reasoning, and the other teaches arithmetic drill.</p>
+  <p>I have two K–1 kids who love math. I built this for them, drawing from the Soviet/Russian math-circle tradition (Zvonkin, Kordemsky), the modern research on mathematical mindsets (Boaler), and good American writing about how to teach math without crushing the joy out of it (Tracy Zager, James Tanton).</p>
+  <p>This isn't a startup. It's a tool I made for our family that I'm sharing with a small number of yours. If it helps your kid have a great math conversation tonight, that's the whole point.</p>
+</section>
+
+<section class="story" style="background: #fff; border-color: var(--accent-2)">
+  <h2 style="margin-top: 0">A daily session looks like this</h2>
+  <ol>
+    <li>☀️ <strong>Warm-up</strong> — 3 quick mental-math puzzles to wake up the brain</li>
+    <li>🧩 <strong>Rich puzzle</strong> — one juicy problem worth talking through</li>
+    <li>🖐️ <strong>Visual / hands-on</strong> — ten-frames, blocks, paper folding</li>
+    <li>📖 <strong>Story problem</strong> — a small situation to model and solve</li>
+    <li>💬 <strong>"How do you know?"</strong> — the most important question in math</li>
+    <li>🏡 <strong>Kitchen-table follow-up</strong> — to play with toys, coins, or food later</li>
+  </ol>
+  <p><a class="btn" href="/about/sample">See real samples for K, Grade 1, Grade 2 →</a></p>
+</section>
+
+<section class="card">
+  <h2>Frequently asked</h2>
+  <details>
+    <summary><strong>How does the waitlist work?</strong></summary>
+    <p>Submit the form. I'll personally email you within a couple of days. If a slot is open, you'll get a sign-in link by email. If not, you go on the waitlist; when an active family becomes inactive, I offer the slot to the next person.</p>
+  </details>
+  <details>
+    <summary><strong>Does it cost anything?</strong></summary>
+    <p>No. Not now, not ever. I run it on AWS for under $30/month total for the whole community. If you want to chip in for the AWS bill someday, I won't say no, but this is a free thing.</p>
+  </details>
+  <details>
+    <summary><strong>Why the cap?</strong></summary>
+    <p>Two reasons. (1) I personally email every family who signs up — that scales to about 20 families, not 200. (2) Small communities are better than big ones. {{ cap }} families × {{ kids_per_family }} kids = {{ cap * kids_per_family }} kids — plenty to make this real, small enough that I can answer your questions when you have them.</p>
+  </details>
+  <details>
+    <summary><strong>What about my kid's data?</strong></summary>
+    <p>Lives only on my AWS account in your family's row. Nightly encrypted backup. No third-party tracking. Anything I'd send to an AI service (the optional daily digest) anonymizes your child's name first. Full data export in JSON or CSV is one click on your dashboard.</p>
+  </details>
+  <details>
+    <summary><strong>Who are you?</strong></summary>
+    <p>{{ "Built by Chris Lindeman, a parent in Mt Lebanon, PA." }} I'm not an EdTech company. I'm a neighbor who builds software for a living.</p>
+  </details>
+</section>
+
+<div class="footer-attr">
+  <a href="/about">About</a> · <a href="/about/sample">Sample sessions</a> · <a href="/flyer">Flyer</a><br>
+  Built by Chris Lindeman, a parent in Mt Lebanon, PA · <a href="https://github.com/slimhindrance/mathcircle">source</a>
+</div>
+
+{% endblock %}

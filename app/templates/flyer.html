@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Math Circle Home — flyer</title>
+  <style>
+    @page { size: letter; margin: 0.5in; }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+      color: #2b2b2b;
+      background: #fdf6e3;
+    }
+    .sheet {
+      width: 7.5in;
+      max-width: 100%;
+      margin: 0.4in auto;
+      padding: 0.4in 0.45in;
+      background: #fff;
+      border: 2px solid #e2d6b8;
+      border-radius: 12px;
+      position: relative;
+    }
+    h1 { font-size: 38pt; margin: 0 0 0.05in; line-height: 1; color: #264653; }
+    .tagline {
+      font-style: italic; color: #5b5b5b;
+      font-size: 14pt; margin: 0 0 0.3in; line-height: 1.35;
+    }
+    .lead {
+      font-size: 13pt; line-height: 1.5; margin: 0.25in 0;
+    }
+    .lead strong { color: #264653; }
+    .row {
+      display: flex; gap: 0.4in; align-items: center;
+      margin: 0.35in 0;
+    }
+    .qr-block {
+      flex: 0 0 auto;
+      text-align: center;
+      padding: 0.15in;
+      background: #fdf6e3;
+      border: 2px solid #e76f51;
+      border-radius: 10px;
+    }
+    .qr-block svg { width: 1.7in; height: 1.7in; display: block; }
+    .qr-caption {
+      margin-top: 0.08in;
+      font-size: 9pt;
+      font-weight: 700;
+      color: #c8553d;
+      letter-spacing: 0.04em;
+    }
+    .url-block {
+      flex: 1;
+      font-size: 12pt;
+      line-height: 1.4;
+    }
+    .url-block .url {
+      font-family: "SF Mono", "Menlo", monospace;
+      font-size: 13pt;
+      font-weight: 700;
+      background: #fff8e7;
+      padding: 0.08in 0.15in;
+      border-radius: 6px;
+      display: inline-block;
+      color: #c8553d;
+    }
+    .what {
+      margin: 0.25in 0;
+      padding: 0.2in 0.3in;
+      background: #fff8e7;
+      border-left: 4px solid #f4a261;
+      border-radius: 6px;
+      font-size: 11.5pt; line-height: 1.5;
+    }
+    .what strong { color: #264653; }
+    .session-flow {
+      list-style: none;
+      padding: 0;
+      margin: 0.15in 0 0;
+      font-size: 10.5pt;
+    }
+    .session-flow li {
+      padding: 0.04in 0;
+    }
+    .footer {
+      margin-top: 0.35in;
+      padding-top: 0.2in;
+      border-top: 1px solid #ddd;
+      font-size: 10pt;
+      color: #5b5b5b;
+      text-align: center;
+    }
+    .scarcity {
+      display: inline-block;
+      background: #2a9d8f;
+      color: #fff;
+      padding: 0.06in 0.18in;
+      border-radius: 999px;
+      font-size: 10pt;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+    .controls {
+      max-width: 7.5in; margin: 0.2in auto 0.4in;
+      text-align: center;
+    }
+    .controls button, .controls a {
+      display: inline-block;
+      padding: 0.5rem 1.2rem;
+      background: #e76f51;
+      color: #fff;
+      border: none;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      font-size: 11pt;
+      font-family: -apple-system, "SF Pro Text", sans-serif;
+    }
+    .controls a.ghost {
+      background: transparent;
+      color: #c8553d;
+      border: 2px solid #c8553d;
+      margin-left: 0.5rem;
+    }
+    @media print {
+      body { background: #fff; }
+      .sheet { border: none; padding: 0.2in 0.3in; margin: 0; }
+      .controls { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="controls">
+  <button onclick="window.print()">🖨 Print this flyer</button>
+  <a class="ghost" href="/">← Back</a>
+</div>
+
+<article class="sheet">
+  <h1>Math, on purpose.</h1>
+  <p class="tagline">A small, deliberate K–2 math app — built by a parent in Mt&nbsp;Lebanon, for our neighborhood.</p>
+
+  <div class="row">
+    <div class="qr-block">
+      {{ qr_svg|safe }}
+      <div class="qr-caption">SCAN TO JOIN</div>
+    </div>
+    <div class="url-block">
+      <p style="margin: 0 0 0.1in; font-weight: 700; font-size: 14pt; color: #264653;">
+        Or visit:
+      </p>
+      <p style="margin: 0;"><span class="url">mathcircle.base2ml.com</span></p>
+      <p style="margin: 0.2in 0 0; font-size: 11pt;">
+        <span class="scarcity">{{ active_count }} of {{ cap }} families · {{ cap - active_count }} slots open</span>
+      </p>
+    </div>
+  </div>
+
+  <p class="lead">
+    Most math apps drill arithmetic. <strong>This one teaches kids to think
+    like mathematicians</strong> — patterns, balance, mystery numbers, logic
+    games. 15 minutes a day, no timers, no leaderboards.
+  </p>
+
+  <div class="what">
+    <strong>What a daily session looks like:</strong>
+    <ul class="session-flow">
+      <li>☀️ <strong>Warm-up</strong> — three quick mental-math puzzles</li>
+      <li>🧩 <strong>Rich puzzle</strong> — one juicy problem worth talking through</li>
+      <li>🖐️ <strong>Hands-on</strong> — ten-frames, blocks, paper folding, tangrams</li>
+      <li>📖 <strong>Story problem</strong> — a small situation to model and solve</li>
+      <li>💬 <strong>"How do you know?"</strong> — the most important question in math</li>
+      <li>🏡 <strong>Kitchen-table follow-up</strong> — to play later with toys, coins, food</li>
+    </ul>
+  </div>
+
+  <p class="lead">
+    <strong>Free.</strong> Capped at {{ cap }} families. No ads, no third-party tracking.
+    Built for our neighborhood. I personally email every family who signs up.
+  </p>
+
+  <div class="footer">
+    Built by <strong>Chris Lindeman</strong>, a parent in Mt Lebanon, PA · drawing
+    from Soviet/Russian math-circle tradition (Zvonkin), modern research on
+    mathematical mindsets (Boaler), and great American writing on teaching math
+    (Tracy Zager, James Tanton).
+  </div>
+</article>
+
+</body>
+</html>

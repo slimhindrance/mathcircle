@@ -11,7 +11,9 @@ from sqlalchemy.orm import Session
 from ..database import get_db
 from ..models import Attempt, Child, Digest, Note, Problem, Session as SessionRow, Skill, Strand
 from ..ai_digest import generate_and_persist as ai_generate_and_persist
+from ..auth import current_family, require_family
 from ..session_generator import build_preview_session, build_session_plan, circle_night_plan
+from ..models import Family
 
 router = APIRouter()
 
@@ -28,12 +30,22 @@ def _children(db: Session) -> list[Child]:
     return db.execute(select(Child).order_by(Child.created_at)).scalars().all()
 
 
-@router.get("/", response_class=HTMLResponse)
+@router.get("/home", response_class=HTMLResponse)
 def home(request: Request, db: Session = Depends(get_db)):
-    children = _children(db)
+    fam = current_family(request, db)
+    if fam is None:
+        return RedirectResponse("/", status_code=303)
+    children = (
+        db.execute(
+            select(Child).where(Child.family_id == fam.id).order_by(Child.created_at)
+        )
+        .scalars()
+        .all()
+    )
     strand_count = db.execute(select(func.count(Strand.id))).scalar_one()
     problem_count = db.execute(select(func.count(Problem.id))).scalar_one()
     return _templates(request).TemplateResponse(request, "home.html", {
+            "family": fam,
             "children": children,
             "strand_count": strand_count,
             "problem_count": problem_count,
@@ -343,6 +355,30 @@ def child_digest_run(child_id: int, db: Session = Depends(get_db)):
         raise HTTPException(403, "AI digests not enabled")
     ai_generate_and_persist(db, c, hours=24, period_label="adhoc")
     return RedirectResponse(f"/child/{child_id}", status_code=303)
+
+
+@router.get("/flyer", response_class=HTMLResponse)
+def flyer(request: Request, db: Session = Depends(get_db)):
+    """Printable one-page flyer with a QR code to the join URL."""
+    import io
+    import qrcode
+    import qrcode.image.svg
+
+    base_url = "https://mathcircle.base2ml.com"
+    img = qrcode.make(base_url, image_factory=qrcode.image.svg.SvgPathImage, box_size=10, border=2)
+    buf = io.BytesIO()
+    img.save(buf)
+    qr_svg = buf.getvalue().decode()
+    # Strip XML declaration so it inlines cleanly
+    if qr_svg.startswith("<?xml"):
+        qr_svg = qr_svg.split("?>", 1)[1].lstrip()
+    active = db.execute(select(func.count(Family.id)).where(Family.is_active.is_(True))).scalar_one()
+    cap = 20  # mirror config; keep flyer self-contained
+    return _templates(request).TemplateResponse(
+        request,
+        "flyer.html",
+        {"qr_svg": qr_svg, "active_count": active, "cap": cap, "base_url": base_url},
+    )
 
 
 @router.get("/about", response_class=HTMLResponse)

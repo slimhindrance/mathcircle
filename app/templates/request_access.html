@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Request access — Math Circle Home{% endblock %}
+{% block body %}
+
+{% if submitted %}
+<section class="card" style="background: #d8f3dc; border-color: #74c69d;">
+  <h1>Thank you — request received</h1>
+  <p>I've got your request from <strong>{{ submitted_email }}</strong>. I'll personally email you back within a couple of days.</p>
+  <p>If a slot is open ({{ active_count }} of {{ cap }} families currently active), you'll get a sign-in link in your email shortly after. If we're full, you'll hear from me about the waitlist.</p>
+  <p style="margin-top: 1.4rem">Either way — <strong>thank you for being part of this</strong>.</p>
+  <p>— Chris</p>
+  <p><a class="btn ghost" href="/">← Home</a></p>
+</section>
+{% else %}
+<section class="card">
+  <h1>Request access for your kids</h1>
+  <p style="color: var(--ink-soft);">
+    {% if is_full %}
+      <strong>Currently full</strong> — {{ active_count }} of {{ cap }} families ·
+      {{ waitlist_count }} on waitlist. Submit anyway; I'll add you to the queue.
+    {% else %}
+      <strong>{{ cap - active_count }} of {{ cap }} slots open right now.</strong>
+      I'll personally read every request and email you back within a couple of days.
+    {% endif %}
+  </p>
+
+  <form method="post" action="/request-access" class="stack">
+    <div>
+      <label>Family name</label>
+      <input type="text" name="family_name" required placeholder="e.g. The Lindemans" maxlength="160">
+    </div>
+    <div>
+      <label>Parent email</label>
+      <input type="email" name="parent_email" required placeholder="you@example.com" maxlength="160">
+      <small style="color: var(--ink-soft);">I'll email you here and send your sign-in link to this address.</small>
+    </div>
+    <div>
+      <label>Kids you'd like to use this with</label>
+      <input type="text" name="kids_summary" placeholder="e.g. Anna (K), Ben (Grade 1)" maxlength="500">
+    </div>
+    <div>
+      <label>How did you hear about this? Why are you interested?</label>
+      <textarea name="referral" placeholder="A flyer at school, a friend, etc. — and what about it caught your interest?" maxlength="1000"></textarea>
+      <small style="color: var(--ink-soft);">This is the part I'll actually read. A sentence or two is plenty.</small>
+    </div>
+    <div>
+      <button class="btn" type="submit">Submit request</button>
+      <a class="btn ghost" href="/">Cancel</a>
+    </div>
+  </form>
+
+  <p class="muted" style="margin-top: 1.4rem">
+    By submitting, you're consenting to me having your email so I can write back.
+    Your email is never shared, never resold, never used for marketing.
+    If you change your mind, just email me and I'll delete the request.
+  </p>
+</section>
+{% endif %}
+
+{% endblock %}

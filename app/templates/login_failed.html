@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% block title %}Sign-in link expired{% endblock %}
+{% block body %}
+<section class="card" style="max-width: 520px; margin: 0 auto;">
+  <h1>That sign-in link didn't work</h1>
+  <p>{{ reason }}</p>
+  <p>Sign-in links can only be used once and expire after 48 hours. You can request a fresh one:</p>
+  <p><a class="btn" href="/auth/sign-in">Send me a new link →</a></p>
+  <p><a class="btn ghost" href="/">← Home</a></p>
+</section>
+{% endblock %}

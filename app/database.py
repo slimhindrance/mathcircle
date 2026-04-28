@@ -68,6 +68,7 @@ def init_db() -> None:
     additions = [
         ("children", "ai_digests_enabled", "BOOLEAN"),
         ("children", "ai_digests_decided_at", "DATETIME"),
+        ("children", "family_id", "INTEGER REFERENCES families(id)"),
     ]
     insp = inspect(engine)
     with engine.begin() as conn:

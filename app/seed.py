@@ -129,27 +129,54 @@ def seed_database(db: Session) -> dict[str, int]:
 
 
 def ensure_default_children(db: Session) -> None:
-    """Create two starter children if none exist."""
+    """Ensure Danica + Mila exist under Chris's family.
+
+    On first boot creates the Lindeman family + the two children.
+    On later boots backfills children's family_id if missing.
+    """
+    from .models import Family
+
+    admin_email = "clindeman@base2ml.com"
+    fam = db.execute(
+        select(Family).where(Family.email == admin_email)
+    ).scalar_one_or_none()
+    if fam is None:
+        fam = Family(
+            email=admin_email,
+            display_name="The Lindemans",
+            is_admin=True,
+            is_active=True,
+        )
+        db.add(fam)
+        db.flush()
+
     existing = db.execute(select(Child)).scalars().first()
-    if existing is not None:
-        return
-    db.add_all(
-        [
-            Child(
-                name="Danica",
-                grade="1",
-                age=7,
-                interests="",
-                avatar="🦊",
-                color="#f4a261",
-            ),
-            Child(
-                name="Mila",
-                grade="K",
-                age=6,
-                interests="",
-                avatar="🐝",
-                color="#e9c46a",
-            ),
-        ]
-    )
+    if existing is None:
+        db.add_all(
+            [
+                Child(
+                    name="Danica",
+                    grade="1",
+                    age=7,
+                    interests="",
+                    avatar="🦊",
+                    color="#f4a261",
+                    family_id=fam.id,
+                ),
+                Child(
+                    name="Mila",
+                    grade="K",
+                    age=6,
+                    interests="",
+                    avatar="🐝",
+                    color="#e9c46a",
+                    family_id=fam.id,
+                ),
+            ]
+        )
+    else:
+        # Backfill any pre-existing children with no family.
+        from sqlalchemy import update
+        db.execute(
+            update(Child).where(Child.family_id.is_(None)).values(family_id=fam.id)
+        )

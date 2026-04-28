@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Sign in — Math Circle Home{% endblock %}
+{% block body %}
+<section class="card" style="max-width: 520px; margin: 0 auto;">
+  <h1>Sign in</h1>
+  {% if sent %}
+    <p>If <strong>{{ email }}</strong> matches an active family, a sign-in link is on its way to your inbox.</p>
+    <p>The link works for 48 hours. Check your spam folder if you don't see it within a minute or two.</p>
+    <p><a class="btn ghost" href="/">← Home</a></p>
+  {% else %}
+    <p>Enter the email address your family is registered under. We'll send you a one-time sign-in link.</p>
+    <form method="post" action="/auth/sign-in" class="stack">
+      <div>
+        <label>Family email</label>
+        <input type="email" name="email" required placeholder="you@example.com" maxlength="160" autofocus>
+      </div>
+      <div>
+        <button class="btn" type="submit">Send me a sign-in link</button>
+      </div>
+    </form>
+    <p class="muted" style="margin-top: 1rem">
+      Don't have access yet? <a href="/request-access">Request access for your kids →</a>
+    </p>
+  {% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block title %}Admin — access requests{% endblock %}
+{% block body %}
+<section class="card">
+  <h1>Access requests</h1>
+  <p class="muted">{{ active_count }} of {{ cap }} families currently active. Pending: {{ pending|length }}.</p>
+</section>
+
+<h2>Pending</h2>
+{% if pending %}
+  {% for r in pending %}
+    <section class="card" style="border-left: 6px solid {% if r.status == 'waitlisted' %}var(--warm){% else %}var(--accent-2){% endif %}">
+      <div style="display: flex; gap: 1rem; align-items: baseline; flex-wrap: wrap;">
+        <h3 style="margin: 0; font-size: 1.2rem">{{ r.family_name }}</h3>
+        <span class="muted">{{ r.parent_email }}</span>
+        <span class="tag">{{ r.status }}</span>
+        <span class="muted" style="margin-left: auto;">{{ r.created_at.strftime('%b %d, %Y %H:%M UTC') }}</span>
+      </div>
+      {% if r.kids_summary %}<p><strong>Kids:</strong> {{ r.kids_summary }}</p>{% endif %}
+      {% if r.referral %}<p><strong>Why:</strong> {{ r.referral }}</p>{% endif %}
+      <p class="muted" style="font-size: .85rem;">From IP {{ r.ip_address or '—' }}</p>
+
+      <div style="display: flex; gap: .5rem; flex-wrap: wrap;">
+        <form method="post" action="/admin/requests/{{ r.id }}/approve" style="display: inline">
+          <button class="btn accent" type="submit"
+                  {% if active_count >= cap %}disabled title="Family cap reached"{% endif %}>
+            ✓ Approve & email link
+          </button>
+        </form>
+        <form method="post" action="/admin/requests/{{ r.id }}/decline" style="display: inline; flex: 1; max-width: 400px;">
+          <input type="text" name="note" placeholder="(optional) note for log" style="width: 60%; display: inline-block;">
+          <button class="btn ghost small" type="submit">Decline</button>
+        </form>
+      </div>
+    </section>
+  {% endfor %}
+{% else %}
+  <p class="muted">Nothing pending.</p>
+{% endif %}
+
+<h2 style="margin-top: 2rem">Active families</h2>
+{% if families %}
+<table style="width: 100%; border-collapse: collapse;">
+  <thead>
+    <tr style="text-align: left; border-bottom: 2px solid var(--line);">
+      <th style="padding: .4rem .2rem">Family</th>
+      <th>Email</th>
+      <th>Joined</th>
+      <th>Last login</th>
+      <th>Admin?</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for f in families %}
+    <tr style="border-bottom: 1px solid var(--line);">
+      <td style="padding: .4rem .2rem">{{ f.display_name or '(unnamed)' }}</td>
+      <td>{{ f.email }}</td>
+      <td class="muted">{{ f.created_at.strftime('%b %d') }}</td>
+      <td class="muted">{% if f.last_login_at %}{{ f.last_login_at.strftime('%b %d') }}{% else %}—{% endif %}</td>
+      <td>{% if f.is_admin %}✓{% endif %}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+  <p class="muted">No families yet.</p>
+{% endif %}
+
+<h2 style="margin-top: 2rem">Recent decisions</h2>
+{% if decided %}
+<ul class="bare">
+  {% for r in decided %}
+    <li>
+      <span class="tag {% if r.status == 'approved' %}level-1{% else %}level-4{% endif %}">{{ r.status }}</span>
+      {{ r.family_name }} · <span class="muted">{{ r.parent_email }}</span>
+      <span class="muted">— {{ r.decided_at.strftime('%b %d') if r.decided_at else '—' }}</span>
+      {% if r.status == 'approved' %}
+        <form method="post" action="/admin/requests/{{ r.id }}/resend" style="display: inline">
+          <button class="btn tiny ghost" type="submit">resend link</button>
+        </form>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}
+
+{% endblock %}

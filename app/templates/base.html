@@ -12,17 +12,28 @@
   <header class="site no-print">
     <a href="/" class="brand"><span class="logo">🧮</span>Math Circle Home</a>
     <nav>
-      <a href="/">Home</a>
-      <a href="/strands">Strands</a>
-      <a href="/puzzles">Puzzles</a>
-      <a href="/circle">Math Circle Night</a>
-      <a href="/parent/guide">Parent Guide</a>
       <a href="/about">About</a>
+      <a href="/about/sample">Sample sessions</a>
+      {% if request.cookies.get('mc_family') %}
+        <a href="/home">My family</a>
+        <a href="/strands">Strands</a>
+        <a href="/puzzles">Puzzles</a>
+        <a href="/circle">Math Circle Night</a>
+        <a href="/parent/guide">Parent Guide</a>
+        <a href="/auth/logout">Sign out</a>
+      {% else %}
+        <a href="/auth/sign-in">Sign in</a>
+      {% endif %}
     </nav>
   </header>
   <main>
     {% block body %}{% endblock %}
   </main>
+  <footer class="no-print" style="text-align:center; padding: 2.5rem 1rem 1.5rem; color: var(--ink-soft); font-size: .85rem;">
+    Built by {{ FOOTER_AUTHOR }}, a parent in {{ FOOTER_LOCATION }} ·
+    <a href="/about">About</a> · <a href="/flyer">Flyer</a> ·
+    <a href="https://github.com/slimhindrance/mathcircle">Source</a>
+  </footer>
   {% block scripts %}{% endblock %}
 </body>
 </html>
