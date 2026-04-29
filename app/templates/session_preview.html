@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block title %}Get ready — {{ child.name }}'s session{% endblock %}
+{% block head %}
+<style>
+  .prep-summary {
+    background: var(--bg-soft);
+    border: 1px solid var(--line);
+    padding: 1rem 1.2rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .prep-summary .stat .num {
+    font-size: 1.5rem; font-weight: 700; color: var(--cool);
+  }
+  .prep-summary .stat .label {
+    font-size: .85rem; color: var(--ink-soft);
+  }
+  .prep-row {
+    display: flex; gap: .8rem; align-items: flex-start;
+    padding: .8rem .2rem;
+    border-bottom: 1px solid var(--line);
+  }
+  .prep-row:last-child { border-bottom: none; }
+  .prep-row input[type="checkbox"] {
+    width: 22px; height: 22px;
+    margin-top: 2px;
+    accent-color: var(--accent);
+  }
+  .prep-row label {
+    font-weight: 600;
+    color: var(--ink);
+    cursor: pointer;
+    flex: 1;
+  }
+  .prep-row .count {
+    color: var(--ink-soft);
+    font-size: .85rem;
+    font-weight: normal;
+    margin-left: .4rem;
+  }
+  .prep-row .swap {
+    display: block;
+    margin-top: .25rem;
+    font-size: .9rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    font-weight: normal;
+  }
+  .empty-list {
+    text-align: center; padding: 2.5rem 1rem;
+    color: var(--ink-soft);
+    border: 2px dashed var(--line);
+    border-radius: var(--radius);
+  }
+  .actions {
+    margin-top: 1.5rem;
+    display: flex; gap: .5rem; flex-wrap: wrap;
+  }
+</style>
+{% endblock %}
+{% block body %}
+
+<section class="card">
+  <h1>Get ready — {{ child.name }}'s session</h1>
+  <p class="muted">A quick check of what tonight's activities call for. Uncheck anything you don't have nearby — I'll swap those out for activities you can actually do.</p>
+
+  <div class="prep-summary">
+    <div class="stat">
+      <div class="num">{{ item_count }}</div>
+      <div class="label">activities</div>
+    </div>
+    <div class="stat">
+      <div class="num">~{{ total_minutes }}</div>
+      <div class="label">minutes</div>
+    </div>
+    <div class="stat">
+      <div class="num">{{ materials_bucket|length }}</div>
+      <div class="label">{% if materials_bucket|length == 1 %}material{% else %}materials{% endif %} needed</div>
+    </div>
+  </div>
+
+  <form method="post" action="/child/{{ child.id }}/session/start">
+    {% if materials_bucket %}
+      <h2>What you'll need</h2>
+      <p class="muted">All checked = ready. Uncheck anything you don't have right now.</p>
+      {% for key, info in materials_bucket.items() %}
+        <div class="prep-row">
+          <input type="checkbox" id="have_{{ key }}" name="have_{{ key }}" checked>
+          <label for="have_{{ key }}">
+            {{ info.material.label }}
+            {% if info.count > 1 %}<span class="count">— used in {{ info.count }} activities</span>{% endif %}
+            {% if info.material.swap %}
+              <span class="swap">No problem if you don't have one: {{ info.material.swap }}</span>
+            {% endif %}
+          </label>
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="empty-list">
+        <p><strong>No special materials tonight.</strong></p>
+        <p class="muted">Just a pencil, paper, and {{ child.name }}'s thinking.</p>
+      </div>
+    {% endif %}
+
+    <div class="actions">
+      <button class="btn" type="submit">▶ Start session</button>
+      <a class="btn ghost" href="/child/{{ child.id }}">Cancel</a>
+    </div>
+  </form>
+</section>
+
+<p class="muted" style="font-size: .85rem; margin-top: 1rem;">
+  Tip: I always keep a small bin with counters, dice, dominoes, and a deck of cards near the kitchen table.
+  That covers most sessions for the rest of the year.
+</p>
+
+{% endblock %}

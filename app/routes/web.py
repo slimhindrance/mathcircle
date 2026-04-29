@@ -180,10 +180,63 @@ def child_dashboard(child_id: int, request: Request, db: Session = Depends(get_d
 
 @router.post("/child/{child_id}/start_session")
 def child_start_session(child_id: int, db: Session = Depends(get_db)):
+    """Step 1 of starting a session: route to the materials prep page."""
     c = db.get(Child, child_id)
     if c is None:
         raise HTTPException(404)
-    plan = build_session_plan(db, c)
+    return RedirectResponse(f"/child/{child_id}/session/preview", status_code=303)
+
+
+@router.get("/child/{child_id}/session/preview", response_class=HTMLResponse)
+def session_preview(child_id: int, request: Request, db: Session = Depends(get_db)):
+    """Show the materials checklist before generating the actual session."""
+    from ..materials import collect_for_plan
+
+    c = db.get(Child, child_id)
+    if c is None:
+        raise HTTPException(404)
+
+    # Build a tentative plan to learn what materials are involved.
+    # The same seed is used on POST so the parent sees what they'll actually get
+    # if they say "yes to everything."
+    tentative_plan = build_session_plan(db, c)
+    problem_ids = [it["problem_id"] for it in tentative_plan]
+    problems = (
+        db.execute(select(Problem).where(Problem.id.in_(problem_ids)))
+        .scalars()
+        .all()
+    )
+    materials_bucket = collect_for_plan(problems)
+    total_minutes = sum(it.get("minutes", 0) for it in tentative_plan)
+    return _templates(request).TemplateResponse(
+        request,
+        "session_preview.html",
+        {
+            "child": c,
+            "materials_bucket": materials_bucket,
+            "total_minutes": total_minutes,
+            "item_count": len(tentative_plan),
+        },
+    )
+
+
+@router.post("/child/{child_id}/session/start")
+async def session_start(
+    child_id: int,
+    request: Request,
+    db: Session = Depends(get_db),
+):
+    """Step 2: build the actual session, applying any unchecked materials."""
+    c = db.get(Child, child_id)
+    if c is None:
+        raise HTTPException(404)
+    form = await request.form()
+    # Form sends `have_<key>=on` for each box that's CHECKED. Anything missing
+    # is what the parent doesn't have.
+    from ..materials import CANONICAL
+    have_keys = {key[len("have_"):] for key in form.keys() if key.startswith("have_")}
+    excluded = {m.key for m in CANONICAL if not m.always_have and m.key not in have_keys}
+    plan = build_session_plan(db, c, excluded_materials=excluded)
     s = SessionRow(child_id=child_id, mode="solo", plan=plan)
     db.add(s)
     db.commit()

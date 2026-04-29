@@ -41,6 +41,7 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from .config import SESSION_SHAPE, STRAND_KEYS
+from .materials import normalize as normalize_materials
 from .models import (
     Attempt,
     Child,
@@ -142,6 +143,14 @@ def _recent_attempted_problem_ids(
     return {r[0] for r in rows}
 
 
+def _materials_ok(prob: Problem, excluded_materials: set[str] | None) -> bool:
+    """True if this problem's materials don't intersect the excluded set."""
+    if not excluded_materials:
+        return True
+    needed = normalize_materials(prob.materials or [])
+    return needed.isdisjoint(excluded_materials)
+
+
 def _pick_problem(
     db: Session,
     *,
@@ -150,12 +159,16 @@ def _pick_problem(
     target_level: int,
     avoid: set[int],
     rng: random.Random,
+    excluded_materials: set[str] | None = None,
 ) -> Problem | None:
     """Pick a problem matching the slot. Tries strict match → relaxes.
 
     May return a freshly-generated parametric problem (persisted into the DB)
     when one of the requested strands has a matching template and the
     per-kind generator probability fires.
+
+    `excluded_materials`: canonical material keys the parent says they DON'T
+    have. Any candidate whose materials intersect this set is filtered out.
     """
     # 1) Try the generator path first for kinds that benefit from it.
     gen_prob = _GENERATOR_PROBABILITY.get(kind, 0.0)
@@ -167,29 +180,35 @@ def _pick_problem(
             target_level=target_level,
             rng=rng,
         )
-        if gen_problem is not None:
+        if gen_problem is not None and _materials_ok(gen_problem, excluded_materials):
             return gen_problem
 
-    # 2) Fall back to the curated bank.
+    # 2) Fall back to the curated bank, with progressive relaxation.
     strand_ids = _strand_id_map(db)
     strand_filter = [strand_ids[k] for k in strand_keys if k in strand_ids]
 
-    for relax_kind in [False, True]:
-        for level_radius in [0, 1, 2]:
-            stmt = select(Problem).where(
-                Problem.strand_id.in_(strand_filter),
-                Problem.level >= max(1, target_level - level_radius),
-                Problem.level <= min(7, target_level + level_radius),
-            )
-            if not relax_kind:
-                stmt = stmt.where(Problem.kind == kind)
-            rows = db.execute(stmt).scalars().all()
-            rows = [r for r in rows if r.id not in avoid]
-            if rows:
-                return rng.choice(rows)
-    # Last resort: any strand, any kind
+    # Progressive relaxation: respect avoid + materials first, then drop avoid
+    # (allow recent-session repeats) before dropping the materials filter.
+    for ignore_avoid in [False, True]:
+        for relax_kind in [False, True]:
+            for level_radius in [0, 1, 2]:
+                stmt = select(Problem).where(
+                    Problem.strand_id.in_(strand_filter),
+                    Problem.level >= max(1, target_level - level_radius),
+                    Problem.level <= min(7, target_level + level_radius),
+                )
+                if not relax_kind:
+                    stmt = stmt.where(Problem.kind == kind)
+                rows = db.execute(stmt).scalars().all()
+                if not ignore_avoid:
+                    rows = [r for r in rows if r.id not in avoid]
+                rows = [r for r in rows if _materials_ok(r, excluded_materials)]
+                if rows:
+                    return rng.choice(rows)
+    # Last resort: any strand, any kind, materials-permitting
     rows = db.execute(select(Problem).where(Problem.level == target_level)).scalars().all()
-    rows = [r for r in rows if r.id not in avoid]
+    rows = [r for r in rows if _materials_ok(r, excluded_materials)]
+    rows = [r for r in rows if r.id not in avoid] or rows
     return rng.choice(rows) if rows else None
 
 
@@ -278,8 +297,14 @@ def build_session_plan(
     *,
     mode: str = "solo",
     seed: int | None = None,
+    excluded_materials: set[str] | None = None,
 ) -> list[dict]:
-    """Compose today's session plan for a child."""
+    """Compose today's session plan for a child.
+
+    `excluded_materials`: canonical material keys (from app.materials) that
+    the parent says they DON'T have available. Composer filters candidates
+    accordingly; cooldown is loosened silently if the filtered pool runs thin.
+    """
     rng = random.Random(seed)
     skills = _ensure_skills(db, child)
     focus = _today_focus(child)
@@ -301,6 +326,7 @@ def build_session_plan(
             target_level=max(1, target - 1),  # warm-ups slightly easier
             avoid=avoid,
             rng=rng,
+            excluded_materials=excluded_materials,
         )
         if prob:
             avoid.add(prob.id)
@@ -319,6 +345,7 @@ def build_session_plan(
             target_level=target,
             avoid=avoid,
             rng=rng,
+            excluded_materials=excluded_materials,
         )
         if prob:
             avoid.add(prob.id)
@@ -334,6 +361,7 @@ def build_session_plan(
             target_level=_avg_level(skills, focus),
             avoid=avoid,
             rng=rng,
+            excluded_materials=excluded_materials,
         )
         if prob:
             avoid.add(prob.id)
@@ -349,6 +377,7 @@ def build_session_plan(
             target_level=_avg_level(skills, ["add_sub_structures", "missing_number_stories"]),
             avoid=avoid,
             rng=rng,
+            excluded_materials=excluded_materials,
         )
         if prob:
             avoid.add(prob.id)
@@ -372,7 +401,7 @@ def build_session_plan(
         pos += 1
 
     # parent extension — pick a problem with a parent_extension
-    ext_prob = _pick_problem_with_extension(db, focus)
+    ext_prob = _pick_problem_with_extension(db, focus, excluded_materials)
     if ext_prob:
         plan.append(
             {
@@ -404,7 +433,9 @@ def _plan_item(prob: Problem, kind: str, pos: int) -> dict:
     }
 
 
-def _pick_problem_with_extension(db: Session, focus: list[str]) -> Problem | None:
+def _pick_problem_with_extension(
+    db: Session, focus: list[str], excluded_materials: set[str] | None = None
+) -> Problem | None:
     strand_ids = _strand_id_map(db)
     sids = [strand_ids[k] for k in focus if k in strand_ids]
     rows = (
@@ -416,6 +447,7 @@ def _pick_problem_with_extension(db: Session, focus: list[str]) -> Problem | Non
         .scalars()
         .all()
     )
+    rows = [r for r in rows if _materials_ok(r, excluded_materials)]
     return random.choice(rows) if rows else None
 
 
