@@ -1,11 +1,12 @@
-"""Magic-link authentication with Resend email delivery.
+"""Magic-link authentication with Google Workspace SMTP delivery.
 
 Flow
 ----
 1. Family fills /request-access form → AccessRequest row, status=pending.
 2. Admin (Chris) reviews queue at /admin/requests → clicks Approve.
-3. Approve action: create Family row, create LoginToken (24h), send Resend email
-   with link `/auth/login/{token}`.
+3. Approve action: create Family row, create LoginToken (24h), send email via
+   Workspace SMTP relay (smtp.gmail.com:587, STARTTLS, app password) with link
+   `/auth/login/{token}`.
 4. Recipient clicks link → token validated, marked used → session cookie set
    `mc_family={signed_family_id}`. They land on /home.
 
@@ -18,7 +19,7 @@ Sessions
 - Routes that need auth use `require_family(...)` dependency.
 - Admin routes use `require_admin(...)`.
 
-No third-party auth library; this is ~120 lines of standard library + httpx.
+No third-party auth library; this is ~120 lines of standard library + smtplib.
 """
 from __future__ import annotations
 
@@ -27,7 +28,11 @@ import hmac
 import logging
 import os
 import secrets
+import smtplib
+import ssl
 from datetime import datetime, timedelta
+from email.message import EmailMessage
+from email.utils import formataddr, make_msgid
 from typing import Optional
 
 from fastapi import Depends, HTTPException, Request, Response
@@ -47,10 +52,13 @@ SECRET_KEY = os.getenv(
 COOKIE_NAME = "mc_family"
 COOKIE_DAYS = 90
 TOKEN_TTL_HOURS = 48
-RESEND_API_KEY = os.getenv("RESEND_API_KEY", "")
-RESEND_FROM = os.getenv("RESEND_FROM", "chris@send.base2ml.com")
-RESEND_FROM_NAME = os.getenv("RESEND_FROM_NAME", "Math Circle Home")
-RESEND_REPLY_TO = os.getenv("RESEND_REPLY_TO", "chris@base2ml.com")
+SMTP_HOST = os.getenv("SMTP_HOST", "smtp.gmail.com")
+SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
+SMTP_USER = os.getenv("SMTP_USER", "chris@base2ml.com")
+SMTP_PASSWORD = os.getenv("SMTP_PASSWORD", "")
+SMTP_FROM = os.getenv("SMTP_FROM", SMTP_USER)
+SMTP_FROM_NAME = os.getenv("SMTP_FROM_NAME", "Math Circle Home")
+SMTP_REPLY_TO = os.getenv("SMTP_REPLY_TO", "chris@base2ml.com")
 PUBLIC_BASE_URL = os.getenv("PUBLIC_BASE_URL", "https://mathcircle.base2ml.com")
 
 
@@ -148,12 +156,12 @@ def consume_token(db: Session, raw: str) -> Optional[Family]:
     return fam
 
 
-# ---------- Resend ----------
+# ---------- SMTP (Google Workspace) ----------
 def send_magic_link(family: Family, token: LoginToken, *, kind: str = "login") -> dict:
-    """Send the family their magic-link via Resend.
+    """Send the family their magic-link via Workspace SMTP.
 
     Returns a dict with at least {"ok": bool, "id": str|None, "fallback": bool}.
-    Falls back to logging the URL if RESEND_API_KEY is empty (useful for dev).
+    Falls back to logging the URL if SMTP_PASSWORD is empty (useful for dev).
     """
     link = f"{PUBLIC_BASE_URL}/auth/login/{token.token}"
     if kind == "invite":
@@ -193,32 +201,31 @@ def send_magic_link(family: Family, token: LoginToken, *, kind: str = "login") -
     </div>
     """
 
-    if not RESEND_API_KEY:
-        log.warning("RESEND_API_KEY missing — magic link NOT sent. Link: %s", link)
+    if not SMTP_PASSWORD:
+        log.warning("SMTP_PASSWORD missing — magic link NOT sent. Link: %s", link)
         return {"ok": False, "id": None, "fallback": True, "link": link}
 
+    msg = EmailMessage()
+    msg["Subject"] = subject
+    msg["From"] = formataddr((SMTP_FROM_NAME, SMTP_FROM))
+    msg["To"] = family.email
+    if SMTP_REPLY_TO:
+        msg["Reply-To"] = SMTP_REPLY_TO
+    message_id = make_msgid(domain=SMTP_FROM.split("@", 1)[-1] or "base2ml.com")
+    msg["Message-ID"] = message_id
+    msg.set_content(body_text)
+    msg.add_alternative(body_html, subtype="html")
+
     try:
-        import httpx
-        r = httpx.post(
-            "https://api.resend.com/emails",
-            headers={
-                "Authorization": f"Bearer {RESEND_API_KEY}",
-                "Content-Type": "application/json",
-            },
-            json={
-                "from": f"{RESEND_FROM_NAME} <{RESEND_FROM}>",
-                "to": [family.email],
-                "reply_to": [RESEND_REPLY_TO] if RESEND_REPLY_TO else None,
-                "subject": subject,
-                "text": body_text,
-                "html": body_html,
-            },
-            timeout=10.0,
-        )
-        r.raise_for_status()
-        data = r.json()
-        log.info("magic-link sent to %s (id=%s)", family.email, data.get("id"))
-        return {"ok": True, "id": data.get("id"), "fallback": False, "link": link}
+        context = ssl.create_default_context()
+        with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=15) as s:
+            s.ehlo()
+            s.starttls(context=context)
+            s.ehlo()
+            s.login(SMTP_USER, SMTP_PASSWORD)
+            s.send_message(msg)
+        log.info("magic-link sent to %s (msg-id=%s)", family.email, message_id)
+        return {"ok": True, "id": message_id, "fallback": False, "link": link}
     except Exception as e:
-        log.exception("resend send failed: %s", e)
+        log.exception("smtp send failed: %s", e)
         return {"ok": False, "id": None, "fallback": True, "link": link, "error": str(e)}
