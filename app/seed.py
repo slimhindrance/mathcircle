@@ -136,13 +136,14 @@ def ensure_default_children(db: Session) -> None:
     """
     from .models import Family
 
-    admin_email = "clindeman@base2ml.com"
+    # Look up the existing admin by flag, not by email — admins may have changed
+    # their email after first boot, and we don't want to recreate a stale row.
     fam = db.execute(
-        select(Family).where(Family.email == admin_email)
+        select(Family).where(Family.is_admin.is_(True)).order_by(Family.id).limit(1)
     ).scalar_one_or_none()
     if fam is None:
         fam = Family(
-            email=admin_email,
+            email="christopherwlindeman@gmail.com",
             display_name="The Lindemans",
             is_admin=True,
             is_active=True,
