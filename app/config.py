@@ -32,8 +32,8 @@ SESSION_SHAPE = {
 }
 
 # Cap for the local-cohort waitlist play.
-FAMILY_CAP = int(os.getenv("MATHCIRCLE_FAMILY_CAP", "20"))
-KIDS_PER_FAMILY = int(os.getenv("MATHCIRCLE_KIDS_PER_FAMILY", "2"))
+FAMILY_CAP = int(os.getenv("MATHCIRCLE_FAMILY_CAP", "50"))
+KIDS_PER_FAMILY = int(os.getenv("MATHCIRCLE_KIDS_PER_FAMILY", "3"))
 
 # Footer attribution.
 FOOTER_AUTHOR = os.getenv("MATHCIRCLE_FOOTER_AUTHOR", "Chris Lindeman")
