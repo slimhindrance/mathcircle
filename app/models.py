@@ -44,6 +44,7 @@ class Family(Base):
     display_name: Mapped[str] = mapped_column(String(120), default="")  # "The Lindemans"
     is_admin: Mapped[bool] = mapped_column(Boolean, default=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
+    password_hash: Mapped[Optional[str]] = mapped_column(String(120), nullable=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
     last_login_at: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
     notes: Mapped[str] = mapped_column(Text, default="")  # admin-only

@@ -4,11 +4,13 @@ Flow
 ----
 1. Family fills /request-access form → AccessRequest row, status=pending.
 2. Admin (Chris) reviews queue at /admin/requests → clicks Approve.
-3. Approve action: create Family row, create LoginToken (24h), send email via
+3. Approve action: create Family row, create LoginToken (48h), send email via
    Workspace SMTP relay (smtp.gmail.com:587, STARTTLS, app password) with link
-   `/auth/login/{token}`.
-4. Recipient clicks link → token validated, marked used → session cookie set
-   `mc_family={signed_family_id}`. They land on /home.
+   `/auth/reset/{token}`.
+4. Recipient clicks link → sets a password → token marked used → session cookie set
+   `mc_family={signed_family_id}`. They land on /home. Subsequent sign-ins use
+   email + password against `Family.password_hash` (bcrypt). "Forgot password"
+   reuses the same token-by-email plumbing.
 
 Sessions
 --------
@@ -35,6 +37,7 @@ from email.message import EmailMessage
 from email.utils import formataddr, make_msgid
 from typing import Optional
 
+import bcrypt
 from fastapi import Depends, HTTPException, Request, Response
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -126,8 +129,22 @@ def require_admin(
     return fam
 
 
-# ---------- magic-link tokens ----------
-def create_login_token(db: Session, family: Family, *, purpose: str = "login") -> LoginToken:
+# ---------- password hashing ----------
+def hash_password(plain: str) -> str:
+    return bcrypt.hashpw(plain.encode("utf-8"), bcrypt.gensalt()).decode("ascii")
+
+
+def verify_password(plain: str, hashed: str) -> bool:
+    if not hashed:
+        return False
+    try:
+        return bcrypt.checkpw(plain.encode("utf-8"), hashed.encode("ascii"))
+    except (ValueError, TypeError):
+        return False
+
+
+# ---------- magic-link / reset tokens ----------
+def create_login_token(db: Session, family: Family, *, purpose: str = "reset") -> LoginToken:
     raw = secrets.token_urlsafe(32)
     token = LoginToken(
         family_id=family.id,
@@ -138,6 +155,19 @@ def create_login_token(db: Session, family: Family, *, purpose: str = "login") -
     db.add(token)
     db.flush()
     return token
+
+
+def peek_token(db: Session, raw: str) -> Optional[Family]:
+    """Return the family if the token is valid and unused, WITHOUT consuming it."""
+    row = db.execute(
+        select(LoginToken).where(LoginToken.token == raw)
+    ).scalar_one_or_none()
+    if row is None or row.used_at is not None or row.expires_at < datetime.utcnow():
+        return None
+    fam = db.get(Family, row.family_id)
+    if fam is None or not fam.is_active:
+        return None
+    return fam
 
 
 def consume_token(db: Session, raw: str) -> Optional[Family]:
@@ -157,22 +187,31 @@ def consume_token(db: Session, raw: str) -> Optional[Family]:
 
 
 # ---------- SMTP (Google Workspace) ----------
-def send_magic_link(family: Family, token: LoginToken, *, kind: str = "login") -> dict:
-    """Send the family their magic-link via Workspace SMTP.
+def send_magic_link(family: Family, token: LoginToken, *, kind: str = "reset") -> dict:
+    """Send the family a password set/reset link via Workspace SMTP.
+
+    `kind` controls the copy:
+      - "invite": admin just approved a new family — "welcome, set your password"
+      - "reset":  forgot-password flow — "reset your password"
 
     Returns a dict with at least {"ok": bool, "id": str|None, "fallback": bool}.
     Falls back to logging the URL if SMTP_PASSWORD is empty (useful for dev).
     """
-    link = f"{PUBLIC_BASE_URL}/auth/login/{token.token}"
+    link = f"{PUBLIC_BASE_URL}/auth/reset/{token.token}"
     if kind == "invite":
         subject = "You're in — Math Circle Home"
         intro = (
             "Hi! Chris has approved your family for Math Circle Home. "
-            "Click the link below to sign in for the first time:"
+            "Click the link below to set a password and sign in for the first time:"
         )
+        button = "Set your password"
     else:
-        subject = "Your Math Circle Home sign-in link"
-        intro = "Click the link below to sign in. It works for 48 hours."
+        subject = "Reset your Math Circle Home password"
+        intro = (
+            "Click the link below to choose a new password. "
+            "It works for 48 hours."
+        )
+        button = "Choose a new password"
 
     body_text = (
         f"{intro}\n\n{link}\n\n"
@@ -188,7 +227,7 @@ def send_magic_link(family: Family, token: LoginToken, *, kind: str = "login") -
       <p style="margin: 24px 0;">
         <a href="{link}" style="display:inline-block; padding:12px 22px; background:#e76f51;
            color:#fff; border-radius: 999px; text-decoration:none; font-weight:600;">
-          Sign in to Math Circle Home
+          {button}
         </a>
       </p>
       <p style="font-size: 13px; color: #666;">Or paste this URL into your browser:<br>

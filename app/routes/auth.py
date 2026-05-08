@@ -14,9 +14,12 @@ from ..auth import (
     consume_token,
     create_login_token,
     current_family,
+    hash_password,
+    peek_token,
     require_admin,
     send_magic_link,
     set_session,
+    verify_password,
 )
 from ..config import FAMILY_CAP, KIDS_PER_FAMILY
 from ..database import get_db
@@ -135,16 +138,38 @@ async def request_access_submit(
     )
 
 
-# ---------- magic-link login ----------
-@router.get("/auth/login/{token}", response_class=HTMLResponse)
-def auth_consume(token: str, request: Request, db: Session = Depends(get_db)):
-    fam = consume_token(db, token)
-    if fam is None:
+# ---------- password sign-in ----------
+@router.get("/auth/sign-in", response_class=HTMLResponse)
+def signin_form(request: Request):
+    return _templates(request).TemplateResponse(
+        request, "signin.html", {"error": None}
+    )
+
+
+@router.post("/auth/sign-in")
+async def signin_submit(
+    request: Request,
+    email: str = Form(...),
+    password: str = Form(...),
+    db: Session = Depends(get_db),
+):
+    email = email.strip().lower()
+    fam = db.execute(
+        select(Family).where(Family.email == email)
+    ).scalar_one_or_none()
+    ok = (
+        fam is not None
+        and fam.is_active
+        and fam.password_hash
+        and verify_password(password, fam.password_hash)
+    )
+    if not ok:
         return _templates(request).TemplateResponse(
             request,
-            "login_failed.html",
-            {"reason": "Link expired or already used."},
+            "signin.html",
+            {"error": "Email and password don't match an active account."},
         )
+    fam.last_login_at = datetime.utcnow()
     db.commit()
     resp = RedirectResponse("/home", status_code=303)
     set_session(resp, fam.id)
@@ -158,16 +183,16 @@ def auth_logout(_request: Request):
     return resp
 
 
-# Optional convenience: existing family can request a new login link by email
-@router.get("/auth/sign-in", response_class=HTMLResponse)
-def signin_form(request: Request):
+# ---------- forgot password ----------
+@router.get("/auth/forgot-password", response_class=HTMLResponse)
+def forgot_form(request: Request):
     return _templates(request).TemplateResponse(
-        request, "signin.html", {"sent": False}
+        request, "forgot_password.html", {"sent": False}
     )
 
 
-@router.post("/auth/sign-in")
-async def signin_submit(
+@router.post("/auth/forgot-password")
+async def forgot_submit(
     request: Request,
     email: str = Form(...),
     db: Session = Depends(get_db),
@@ -176,14 +201,84 @@ async def signin_submit(
     fam = db.execute(
         select(Family).where(Family.email == email)
     ).scalar_one_or_none()
-    # Always show the same response — we don't reveal which emails exist.
+    # Always show the same confirmation — anti-enumeration.
     if fam is not None and fam.is_active:
-        token = create_login_token(db, fam, purpose="login")
+        token = create_login_token(db, fam, purpose="reset")
         db.commit()
-        send_magic_link(fam, token, kind="login")
+        send_magic_link(fam, token, kind="reset")
     return _templates(request).TemplateResponse(
-        request, "signin.html", {"sent": True, "email": email}
+        request, "forgot_password.html", {"sent": True, "email": email}
     )
+
+
+# ---------- set / reset password ----------
+@router.get("/auth/reset/{token}", response_class=HTMLResponse)
+def reset_form(token: str, request: Request, db: Session = Depends(get_db)):
+    fam = peek_token(db, token)
+    if fam is None:
+        return _templates(request).TemplateResponse(
+            request,
+            "login_failed.html",
+            {"reason": "Reset link expired or already used."},
+        )
+    is_first = fam.password_hash is None
+    return _templates(request).TemplateResponse(
+        request,
+        "reset_password.html",
+        {"token": token, "email": fam.email, "is_first": is_first, "error": None},
+    )
+
+
+@router.post("/auth/reset/{token}")
+async def reset_submit(
+    token: str,
+    request: Request,
+    password: str = Form(...),
+    confirm: str = Form(...),
+    db: Session = Depends(get_db),
+):
+    fam = peek_token(db, token)
+    if fam is None:
+        return _templates(request).TemplateResponse(
+            request,
+            "login_failed.html",
+            {"reason": "Reset link expired or already used."},
+        )
+    err: Optional[str] = None
+    if len(password) < 8:
+        err = "Password must be at least 8 characters."
+    elif password != confirm:
+        err = "Passwords don't match."
+    if err:
+        return _templates(request).TemplateResponse(
+            request,
+            "reset_password.html",
+            {
+                "token": token,
+                "email": fam.email,
+                "is_first": fam.password_hash is None,
+                "error": err,
+            },
+        )
+    consumed = consume_token(db, token)
+    if consumed is None:
+        return _templates(request).TemplateResponse(
+            request,
+            "login_failed.html",
+            {"reason": "Reset link expired or already used."},
+        )
+    consumed.password_hash = hash_password(password)
+    db.commit()
+    resp = RedirectResponse("/home", status_code=303)
+    set_session(resp, consumed.id)
+    return resp
+
+
+# Backwards compat — old emails contained /auth/login/{token} URLs.
+# Redirect them into the new reset flow so the click still works.
+@router.get("/auth/login/{token}")
+def legacy_login_redirect(token: str):
+    return RedirectResponse(f"/auth/reset/{token}", status_code=307)
 
 
 # ---------- admin queue ----------
@@ -282,14 +377,15 @@ def admin_resend(
     db: Session = Depends(get_db),
     _admin: Family = Depends(require_admin),
 ):
-    """Re-send the magic link for an already-approved request (in case email was lost)."""
+    """Re-send the password set/reset email for an already-approved request."""
     ar = db.get(AccessRequest, req_id)
     if ar is None or ar.status != "approved" or ar.family_id is None:
         raise HTTPException(404)
     fam = db.get(Family, ar.family_id)
     if fam is None:
         raise HTTPException(404)
-    token = create_login_token(db, fam, purpose="login")
+    kind = "invite" if fam.password_hash is None else "reset"
+    token = create_login_token(db, fam, purpose=kind)
     db.commit()
-    send_magic_link(fam, token, kind="login")
+    send_magic_link(fam, token, kind=kind)
     return RedirectResponse("/admin/requests", status_code=303)
