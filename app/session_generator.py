@@ -438,28 +438,65 @@ def _plan_item(prob: Problem, kind: str, pos: int) -> dict:
 
 
 def _build_prek_plan(db: Session, child: Child, *, seed: int | None = None) -> list[dict]:
-    """Pick 2 Pre-K parent-led problems from random strands. No skill model yet."""
+    """Pick 2 Pre-K parent-led problems, level-aware per strand.
+
+    Uses the same Skill model as K-2: each strand has an independent level
+    (1 or 2 within Pre-K). On a fresh child every strand starts at Level 1;
+    parent rating drives the level via update_skill_from_attempt.
+    """
     rng = random.Random(seed)
+    skills = _ensure_skills(db, child)  # ensures one row per strand at starting level
     avoid = _recent_attempted_problem_ids(db, child.id)
-    stmt = select(Problem).where(
-        Problem.grade_band == "PK",
-        Problem.kind == "parent_led",
-    )
-    if avoid:
-        stmt = stmt.where(Problem.id.notin_(avoid))
-    candidates = db.execute(stmt).scalars().all()
-    if not candidates:
-        # Fallback: ignore cooldown.
-        candidates = db.execute(
-            select(Problem).where(
-                Problem.grade_band == "PK",
-                Problem.kind == "parent_led",
-            )
-        ).scalars().all()
-    if not candidates:
-        return []
-    pick = rng.sample(candidates, k=min(2, len(candidates)))
-    return [_plan_item(p, "parent_led", i + 1) for i, p in enumerate(pick)]
+    strand_ids = _strand_id_map(db)
+
+    # Pick 2 strands to draw from, biased toward ones the child has practiced least recently
+    strand_keys = list(strand_ids.keys())
+    rng.shuffle(strand_keys)
+    plan: list[dict] = []
+
+    for strand_key in strand_keys:
+        if len(plan) >= 2:
+            break
+        sid = strand_ids[strand_key]
+        skill = skills.get(strand_key)
+        target_level = skill.level if skill else 1
+        # Clamp to PreK level range (1-2). Skill.level can drift higher from K-2 logic;
+        # within Pre-K we only have content at 1 and 2.
+        target_level = max(1, min(2, target_level))
+
+        stmt = select(Problem).where(
+            Problem.grade_band == "PK",
+            Problem.kind == "parent_led",
+            Problem.strand_id == sid,
+            Problem.level == target_level,
+        )
+        if avoid:
+            stmt = stmt.where(Problem.id.notin_(avoid))
+        candidates = db.execute(stmt).scalars().all()
+        if not candidates:
+            # Relax cooldown for this strand, then relax level
+            candidates = db.execute(
+                select(Problem).where(
+                    Problem.grade_band == "PK",
+                    Problem.kind == "parent_led",
+                    Problem.strand_id == sid,
+                    Problem.level == target_level,
+                )
+            ).scalars().all()
+        if not candidates:
+            candidates = db.execute(
+                select(Problem).where(
+                    Problem.grade_band == "PK",
+                    Problem.kind == "parent_led",
+                    Problem.strand_id == sid,
+                )
+            ).scalars().all()
+        if candidates:
+            chosen = rng.choice(candidates)
+            avoid.add(chosen.id)
+            plan.append(_plan_item(chosen, "parent_led", len(plan) + 1))
+
+    return plan
 
 
 def _pick_problem_with_extension(

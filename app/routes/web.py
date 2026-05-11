@@ -114,15 +114,21 @@ async def child_edit(
 
 
 def _prek_ready_to_graduate(child: Child, skills: dict, total_attempts: int, recent: list) -> bool:
-    """Pre-K kid is ready for K when they've practiced enough across strands without
-    consistent 'too hard' ratings. Heuristic on purpose — parent makes the call.
+    """Pre-K → K graduation: child has demonstrated meaningful mastery of Pre-K
+    depth (Level 2 in most strands) without consistent 'too hard' patterns.
+
+    A Pre-K child can sit at Level 1 indefinitely doing the foundational set.
+    The graduation signal fires only when they've moved to Level 2 in 7+ of 10
+    strands — meaning they're consistently handling the late-Pre-K / K-bridge
+    cognitive demands, and the K-2 7-level adaptive engine is the next natural
+    container for further growth.
     """
     if (child.grade or "").upper() not in ("PK", "PREK"):
         return False
-    if total_attempts < 8:
+    if total_attempts < 25:
         return False
-    strands_practiced = sum(1 for s in skills.values() if s.last_practiced is not None)
-    if strands_practiced < 3:
+    strands_at_level_2_or_above = sum(1 for s in skills.values() if (s.level or 1) >= 2)
+    if strands_at_level_2_or_above < 7:
         return False
     last_five_too_hard = sum(1 for a in recent[:5] if a.parent_rating == "too_hard")
     if last_five_too_hard >= 2:

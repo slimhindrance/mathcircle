@@ -29,7 +29,7 @@ from pathlib import Path
 
 # Allow importing the Pre-K markdown parser from this same data/ directory.
 sys.path.insert(0, str(Path(__file__).parent))
-from build_prek_seed import parse_curriculum as _parse_prek  # noqa: E402
+from build_prek_seed import parse_all_levels as _parse_prek  # noqa: E402
 
 OUT = Path(__file__).parent / "seed_problems.json"
 

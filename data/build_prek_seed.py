@@ -1,8 +1,12 @@
-"""Parse data/drafts/prek_curriculum.md into Pre-K problem JSON entries.
+"""Parse Pre-K curriculum markdown files into problem JSON entries.
 
 The Pre-K curriculum lives in Markdown so it can be edited like prose. This
 module converts it into the same dict shape used by build_seed.py so the two
 sources can be merged into a single seed_problems.json.
+
+Two levels are supported today:
+  - data/drafts/prek_curriculum.md         (Level 1: foundational, ~3-4 yrs)
+  - data/drafts/prek_curriculum_level2.md  (Level 2: late Pre-K / K-bridge, ~4-5 yrs)
 
 The Pre-K problem dict carries 4 fields beyond the standard Problem shape:
   - parent_script: the read-aloud / do-this script
@@ -15,7 +19,9 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-MD_FILE = Path(__file__).parent / "drafts" / "prek_curriculum.md"
+DRAFTS_DIR = Path(__file__).parent / "drafts"
+MD_FILE_L1 = DRAFTS_DIR / "prek_curriculum.md"
+MD_FILE_L2 = DRAFTS_DIR / "prek_curriculum_level2.md"
 
 # Map strand section header (in the markdown) → canonical strand key.
 STRAND_KEY = {
@@ -89,10 +95,19 @@ def _extract_section(block: str, heading: str) -> str:
     return m.group(1).strip() if m else ""
 
 
-def parse_curriculum(md_text: str | None = None) -> list[dict]:
-    """Return a list of Pre-K problem dicts in the seed JSON shape."""
+def parse_curriculum(
+    md_text: str | None = None,
+    *,
+    md_path: Path | None = None,
+    level: int = 1,
+) -> list[dict]:
+    """Return a list of Pre-K problem dicts in the seed JSON shape.
+
+    `level` tags the problems for the Skill engine and disambiguates slugs
+    so Level 1 and Level 2 problems with the same title can coexist.
+    """
     if md_text is None:
-        md_text = MD_FILE.read_text(encoding="utf-8")
+        md_text = (md_path or MD_FILE_L1).read_text(encoding="utf-8")
 
     lines = md_text.split("\n")
     problems: list[dict] = []
@@ -145,7 +160,8 @@ def parse_curriculum(md_text: str | None = None) -> list[dict]:
             magic_prompt = _strip_quote(magic_prompt)
             capture_field = _strip_quote(capture_field)
 
-            slug = f"prek-{current_strand[:10]}-{_slugify(title_clean)}"[:96]
+            slug_level = "" if level == 1 else f"-L{level}"
+            slug = f"prek-{current_strand[:10]}-{_slugify(title_clean)}{slug_level}"[:96]
 
             # `prompt` field on K-2 problems is what the child sees. For Pre-K
             # the parent is the user, but we still need *something* in `prompt`
@@ -155,7 +171,7 @@ def parse_curriculum(md_text: str | None = None) -> list[dict]:
             problems.append({
                 "slug": slug,
                 "strand": current_strand,
-                "level": 1,
+                "level": level,
                 "grade_band": "PK",
                 "kind": "parent_led",
                 "title": title_clean,
@@ -183,14 +199,23 @@ def parse_curriculum(md_text: str | None = None) -> list[dict]:
     return problems
 
 
+def parse_all_levels() -> list[dict]:
+    """Parse both Level 1 and Level 2 (if present). Used by build_seed.py."""
+    out: list[dict] = []
+    out += parse_curriculum(md_path=MD_FILE_L1, level=1)
+    if MD_FILE_L2.exists():
+        out += parse_curriculum(md_path=MD_FILE_L2, level=2)
+    return out
+
+
 if __name__ == "__main__":
     import json
-    probs = parse_curriculum()
-    print(f"Parsed {len(probs)} Pre-K problems")
     from collections import Counter
-    c = Counter(p["strand"] for p in probs)
-    for k, n in sorted(c.items(), key=lambda x: -x[1]):
+    probs = parse_all_levels()
+    print(f"Parsed {len(probs)} Pre-K problems across all levels")
+    by_level = Counter(p["level"] for p in probs)
+    for lvl, n in sorted(by_level.items()):
+        print(f"  Level {lvl}: {n}")
+    by_strand = Counter(p["strand"] for p in probs)
+    for k, n in sorted(by_strand.items(), key=lambda x: -x[1]):
         print(f"  {k}: {n}")
-    # Dump to stdout for quick inspection.
-    print("--- first problem ---")
-    print(json.dumps(probs[0], indent=2, ensure_ascii=False))
