@@ -8577,6 +8577,1797 @@
       "explain_prompt": "How do you know? Can you show it another way?",
       "parent_extension": "",
       "template": null
+    },
+    {
+      "slug": "prek-number_sen-how-many",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "How many?",
+      "prompt": "Sit across from your child at the table. Put two objects out, side by side. Cover with your hand for a second, lift and immediately put your hand back down — your child sees them for about one second. Ask: **\"How many?\"** Repeat with 3, the",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "4–5 small identical objects"
+      ],
+      "tags": [
+        "PreK",
+        "number_sense"
+      ],
+      "explain_prompt": "After 2–3 rounds, ask: **\"How did you know?\"** The point is not the right number — it's whether they *saw it* (subitizing) or *counted it*. Both are good.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Sit across from your child at the table. Put two objects out, side by side. Cover with your hand for a second, lift and immediately put your hand back down — your child sees them for about one second. Ask: **\"How many?\"** Repeat with 3, then 1, then 4 objects, each time covering between rounds.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- \"I just knew\" → subitizing. Strong sign at this age.\n- Counting in the air with a finger → also good, slower but accurate.\n- A wrong number → no correction. Try again with the same arrangement.",
+      "capture_field": "What did they actually say? What did they do with their fingers or eyes?"
+    },
+    {
+      "slug": "prek-number_sen-one-for-me-one-for-you",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "One for me, one for you",
+      "prompt": "Put 4 cups in a row. Put a pile of spoons next to them. Say: **\"Can you give each cup exactly one spoon?\"** Watch them work. Don't help unless they ask.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "4–6 cups + 4–6 spoons"
+      ],
+      "tags": [
+        "PreK",
+        "number_sense"
+      ],
+      "explain_prompt": "When they're done: **\"Are there enough? How do you know?\"** Some kids will physically pair (lifting a spoon over each cup), some will count cups then spoons, some will just look. All valid.",
+      "parent_extension": "",
+      "minutes": 6,
+      "template": null,
+      "parent_script": "Put 4 cups in a row. Put a pile of spoons next to them. Say: **\"Can you give each cup exactly one spoon?\"** Watch them work. Don't help unless they ask.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Physical one-to-one matching is the foundation skill — more important than counting at this age.\n- If they pair correctly but can't explain why, that's fine. The understanding is in the doing.\n- Variation: add an extra spoon. \"Is there one for every cup?\" Now they have to notice the leftover.",
+      "capture_field": "Did they pair physically or count? Did they notice the extra?"
+    },
+    {
+      "slug": "prek-number_sen-count-up-to-the-cookie",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Count up to the cookie",
+      "prompt": "Put 5 raisins on a plate. Tell your child: **\"You can eat them all. But first, count them with me. One … two … three … four … five.\"** Touch each one as you both say the number. Then say: **\"Now you count, and I'll touch.\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "5 raisins",
+        "one plate"
+      ],
+      "tags": [
+        "PreK",
+        "number_sense"
+      ],
+      "explain_prompt": "After they've counted, ask: **\"How many will be left if we eat one?\"** Eat one (or let them eat one). Recount together. \"How many now?\"",
+      "parent_extension": "",
+      "minutes": 3,
+      "template": null,
+      "parent_script": "Put 5 raisins on a plate. Tell your child: **\"You can eat them all. But first, count them with me. One … two … three … four … five.\"** Touch each one as you both say the number. Then say: **\"Now you count, and I'll touch.\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Are they pointing/touching one item per number word (one-to-one with the count)?\n- Do they say \"four\" when there are four, or are they reciting numbers without tracking?\n- Recounting after eating one — do they know they have to recount, or just say \"one less\"?",
+      "capture_field": "Did they get the count right? Did they need to recount or did they know \"one less\"?"
+    },
+    {
+      "slug": "prek-number_sen-more-or-less",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "More or less?",
+      "prompt": "Make two piles on the table: one pile of 3, one pile of 6. Ask: **\"Which pile has more?\"** They'll point. Now make piles of 4 and 5. Ask again. Then make 7 and 2.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "8–10 small objects"
+      ],
+      "tags": [
+        "PreK",
+        "number_sense"
+      ],
+      "explain_prompt": "**\"How do you know which has more?\"** Some kids will say \"it looks bigger.\" Some will count both piles. Some will pair them off one-to-one. Each is a different way of comparing.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Make two piles on the table: one pile of 3, one pile of 6. Ask: **\"Which pile has more?\"** They'll point. Now make piles of 4 and 5. Ask again. Then make 7 and 2.",
+      "magic_prompt_tag": "another_way",
+      "what_to_listen_for": "- Visual judgment (looks bigger) works for very different sizes but breaks down for close ones — let them discover this.\n- Counting both piles is more advanced.\n- One-to-one pairing (lining them up) is the most mature strategy.",
+      "capture_field": "Which strategy did they use? Did it change when the piles were close in size?"
+    },
+    {
+      "slug": "prek-number_sen-hidden-hands",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Hidden hands",
+      "prompt": "Hold up 3 fingers behind your back. Bring them out for one second, then hide again. Ask: **\"How many fingers?\"** Repeat with 2, 4, 1, 5. Mix one and two hands.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "Just your hands"
+      ],
+      "tags": [
+        "PreK",
+        "number_sense"
+      ],
+      "explain_prompt": "**\"How did you see it so fast?\"** This is subitizing on fingers — pre-cursor to instant number sense. By Pre-K end, most kids should subitize 1–4 reliably.",
+      "parent_extension": "",
+      "minutes": 3,
+      "template": null,
+      "parent_script": "Hold up 3 fingers behind your back. Bring them out for one second, then hide again. Ask: **\"How many fingers?\"** Repeat with 2, 4, 1, 5. Mix one and two hands.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Speed matters here — instant answers indicate subitizing.\n- 1–3 fingers should be instant; 4–5 is still developing at this age.\n- If they want to count slowly, fine — show fewer fingers so they can succeed at subitizing.",
+      "capture_field": "Which numbers were instant? Which needed counting?"
+    },
+    {
+      "slug": "prek-number_sen-the-fingers-game",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "The fingers game",
+      "prompt": "Say a number from 1 to 5. Your child holds up that many fingers. Then they say a number and you hold up that many. Take turns.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "Just hands"
+      ],
+      "tags": [
+        "PreK",
+        "number_sense"
+      ],
+      "explain_prompt": "Pick numbers where they have to *think* — start with 1, 2, 3 (easy) then jump to 4 or 5. After they show 5, ask: **\"Can you show 5 a different way?\"** Most kids will show one whole hand. Can they show 3+2? 4+1?",
+      "parent_extension": "",
+      "minutes": 5,
+      "template": null,
+      "parent_script": "Say a number from 1 to 5. Your child holds up that many fingers. Then they say a number and you hold up that many. Take turns.",
+      "magic_prompt_tag": "another_way",
+      "what_to_listen_for": "- Decomposing 5 into 4+1 or 3+2 is a big developmental moment — usually late Pre-K or K.\n- If they always go all-one-hand-then-one, that's developmentally fine; the alternative will come.",
+      "capture_field": "Did they find different ways to show 5? What were they?"
+    },
+    {
+      "slug": "prek-number_sen-build-me-a-tower-of-3",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Build me a tower of 3",
+      "prompt": "Say: **\"Can you build me a tower of three blocks?\"** Watch them build. When done, ask: **\"How tall is it?\"** Then: **\"Can you make one that's four blocks tall?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "10+ blocks"
+      ],
+      "tags": [
+        "PreK",
+        "number_sense"
+      ],
+      "explain_prompt": "After they build several, ask: **\"Which tower is tallest? How do you know?\"** They can compare by counting or by looking. Both are fine.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Say: **\"Can you build me a tower of three blocks?\"** Watch them build. When done, ask: **\"How tall is it?\"** Then: **\"Can you make one that's four blocks tall?\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Do they count as they stack, or stack and then count?\n- Do they overshoot (build 5 when asked for 3) and self-correct?\n- Comparing two towers — visual or counted?",
+      "capture_field": "Did they count while building or after? Any self-correction?"
+    },
+    {
+      "slug": "prek-number_sen-empty-cup-full-cup",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Empty cup, full cup",
+      "prompt": "Show your child a cup. Pour cereal in until it's full. Say: **\"This is full.\"** Pour it back out. **\"This is empty.\"** Now pour halfway. **\"What's this?\"** They might say \"some\" or \"half.\"",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "A cup",
+        "water",
+        "dry cereal"
+      ],
+      "tags": [
+        "PreK",
+        "number_sense"
+      ],
+      "explain_prompt": "**\"Can you show me a cup with a little bit? With a lot? With nothing?\"** This is the conceptual cousin of zero/few/many before number words attach.",
+      "parent_extension": "",
+      "minutes": 3,
+      "template": null,
+      "parent_script": "Show your child a cup. Pour cereal in until it's full. Say: **\"This is full.\"** Pour it back out. **\"This is empty.\"** Now pour halfway. **\"What's this?\"** They might say \"some\" or \"half.\"",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Vocabulary: full, empty, some, little, lot — at Pre-K these are the building blocks of comparison.\n- \"Half\" is sophisticated for Pre-K; many won't have the word but will pour to the right level.",
+      "capture_field": "What words did they use for \"some\" or \"half\"? Did the language surprise you?"
+    },
+    {
+      "slug": "prek-number_sen-the-cookie-monster-game",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "The cookie monster game",
+      "prompt": "Put 5 items on a plate. Say: **\"There are five cookies. The cookie monster is hungry.\"** Use your hand as a puppet (chomp sound) and \"eat\" one. **\"How many now?\"** Continue: 4, 3, 2, 1, 0.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "5 small cookies/crackers/coins",
+        "one plate"
+      ],
+      "tags": [
+        "PreK",
+        "number_sense"
+      ],
+      "explain_prompt": "After \"zero,\" ask: **\"What happens next? Can the monster keep eating?\"** This is the conceptual seed of \"you can't take from nothing\" — but kids will sometimes invent fun answers (\"the plate is the next cookie!\"), which is great.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Put 5 items on a plate. Say: **\"There are five cookies. The cookie monster is hungry.\"** Use your hand as a puppet (chomp sound) and \"eat\" one. **\"How many now?\"** Continue: 4, 3, 2, 1, 0.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Counting backwards is harder than counting forwards. Stumbling is normal.\n- \"Zero\" / \"none\" / \"all gone\" — what word do they reach for?\n- Reaching the \"nothing left\" moment — do they understand it ended, or want to continue?",
+      "capture_field": "What did they call \"zero\"? What did they say when there were none?"
+    },
+    {
+      "slug": "prek-number_sen-count-the-steps",
+      "strand": "number_sense",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Count the steps",
+      "prompt": "Walk with your child from the kitchen to the front door (or up the stairs). Count each step out loud together: \"One … two … three …\" Match the count to the step.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "Stairs",
+        "or just floor space"
+      ],
+      "tags": [
+        "PreK",
+        "number_sense"
+      ],
+      "explain_prompt": "When you arrive, ask: **\"How many steps was that?\"** Then walk back and count again. **\"Is it the same number? Why?\"**",
+      "parent_extension": "",
+      "minutes": 3,
+      "template": null,
+      "parent_script": "Walk with your child from the kitchen to the front door (or up the stairs). Count each step out loud together: \"One … two … three …\" Match the count to the step.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Counting with motion is harder than counting still objects — kids often skip or double.\n- Realizing the count is the same both directions is a small but real \"conservation\" moment.",
+      "capture_field": "Did they keep their count synced with their feet? What did they say when the count came out different the second time?"
+    },
+    {
+      "slug": "prek-add_sub_st-one-more-bear",
+      "strand": "add_sub_structures",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "One more bear",
+      "prompt": "Line up 2 bears. **\"How many bears?\"** They say \"two.\" Add one more. **\"And now? One more bear — how many?\"** Continue: 3, then 4, then 5.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "5 small toys"
+      ],
+      "tags": [
+        "PreK",
+        "add_sub_structures"
+      ],
+      "explain_prompt": "**\"How do you know it's three now?\"** Some kids will recount the whole line. Some will just say \"three\" because they tracked the +1. Both are good.",
+      "parent_extension": "",
+      "minutes": 3,
+      "template": null,
+      "parent_script": "Line up 2 bears. **\"How many bears?\"** They say \"two.\" Add one more. **\"And now? One more bear — how many?\"** Continue: 3, then 4, then 5.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Recounting after each addition → developmentally typical, building the count.\n- Knowing \"one more makes three\" without recounting → starting to understand the *structure* of adding.",
+      "capture_field": "Did they recount each time, or know one more?"
+    },
+    {
+      "slug": "prek-add_sub_st-hide-and-find",
+      "strand": "add_sub_structures",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Hide and find",
+      "prompt": "Put 5 objects on the table. Have your child count them. Cover with a cloth. Reach under the cloth, take one away, hide it in your hand. Reveal: **\"How many now?\"** They count: 4. **\"What happened?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "5 small objects",
+        "a cloth",
+        "towel"
+      ],
+      "tags": [
+        "PreK",
+        "add_sub_structures"
+      ],
+      "explain_prompt": "**\"How do you know one is missing?\"** The answer can be \"I counted\" or \"I remember there were five.\" Either is great.",
+      "parent_extension": "",
+      "minutes": 3,
+      "template": null,
+      "parent_script": "Put 5 objects on the table. Have your child count them. Cover with a cloth. Reach under the cloth, take one away, hide it in your hand. Reveal: **\"How many now?\"** They count: 4. **\"What happened?\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Recounting reveals current count but not necessarily the change.\n- Saying \"you took one\" reveals tracking of the action.",
+      "capture_field": "Did they figure out one was missing by recounting or by memory of the original?"
+    },
+    {
+      "slug": "prek-add_sub_st-the-sharing-problem",
+      "strand": "add_sub_structures",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "The sharing problem",
+      "prompt": "Put 2 plates out. Give your child 4 raisins. **\"Can you share these so each plate has the same?\"** Let them work.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "4 raisins",
+        "2 plates"
+      ],
+      "tags": [
+        "PreK",
+        "add_sub_structures"
+      ],
+      "explain_prompt": "**\"How do you know it's fair?\"** They might say \"I gave one to each\" or \"two and two.\" Both reveal different understanding.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Put 2 plates out. Give your child 4 raisins. **\"Can you share these so each plate has the same?\"** Let them work.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Alternating distribution (\"one for you, one for me\") — the foundation of fair sharing.\n- All-on-one-side first, then noticing it's unfair → also great, self-correcting is sophisticated.\n- 6 items between 3 plates is the natural next step if this is easy.",
+      "capture_field": "How did they distribute? Did they count after, or just check by looking?"
+    },
+    {
+      "slug": "prek-add_sub_st-both-hands-together",
+      "strand": "add_sub_structures",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Both hands together",
+      "prompt": "Hold up 2 fingers on one hand. **\"How many?\"** Then hold up 3 on the other. **\"And here?\"** Now put both hands together. **\"All together — how many?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "Just hands"
+      ],
+      "tags": [
+        "PreK",
+        "add_sub_structures"
+      ],
+      "explain_prompt": "**\"How did you find it? Did you count all of them, or count from where we were?\"** \"Count on\" (saying \"two … three, four, five\") is more advanced than starting over.",
+      "parent_extension": "",
+      "minutes": 3,
+      "template": null,
+      "parent_script": "Hold up 2 fingers on one hand. **\"How many?\"** Then hold up 3 on the other. **\"And here?\"** Now put both hands together. **\"All together — how many?\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Starting over and counting all 5 → developmentally typical Pre-K.\n- Saying \"two … three, four, five\" — counting on — is early K territory and a meaningful leap.",
+      "capture_field": "Did they count all from one, or count on from the first number?"
+    },
+    {
+      "slug": "prek-add_sub_st-the-empty-bowl",
+      "strand": "add_sub_structures",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "The empty bowl",
+      "prompt": "Put 4 objects in a bowl. **\"How many in the bowl?\"** Now take them all out, one by one, counting down: \"three … two … one … zero.\" Say: **\"What's in the bowl now?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "4 objects",
+        "1 bowl"
+      ],
+      "tags": [
+        "PreK",
+        "add_sub_structures"
+      ],
+      "explain_prompt": "**\"What's zero? Can we have less than zero things in the bowl?\"** This question doesn't have a Pre-K-friendly answer (it does, but not without negative numbers) — the *asking* is what matters. Kids invent wonderful answers.",
+      "parent_extension": "",
+      "minutes": 3,
+      "template": null,
+      "parent_script": "Put 4 objects in a bowl. **\"How many in the bowl?\"** Now take them all out, one by one, counting down: \"three … two … one … zero.\" Say: **\"What's in the bowl now?\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- The word \"zero\" / \"none\" / \"nothing\" — which do they reach for?\n- Their answer to \"less than zero\" is rarely correct mathematically, but it's a window into how they think about emptiness.",
+      "capture_field": "What was their answer to \"less than zero\"? Worth saving verbatim."
+    },
+    {
+      "slug": "prek-missing_nu-what-s-under-the-cup",
+      "strand": "missing_number_stories",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "What's under the cup?",
+      "prompt": "Show your child 4 objects. Have them count: 4. While they watch, put 2 under one cup and 2 under the other. Lift one cup: 2 under here. **\"How many under the other cup? How do you know?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "2 opaque cups",
+        "4 small objects"
+      ],
+      "tags": [
+        "PreK",
+        "missing_number_stories"
+      ],
+      "explain_prompt": "**\"How did you figure it out?\"** This is the missing-addend idea in disguise. 4 total, 2 visible — kid figures the other must be 2.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Show your child 4 objects. Have them count: 4. While they watch, put 2 under one cup and 2 under the other. Lift one cup: 2 under here. **\"How many under the other cup? How do you know?\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- \"Because four take away two is two\" — verbal arithmetic. Late Pre-K.\n- \"Because they were the same when you split them\" — structural memory. Excellent.\n- A guess → fine. Reveal both cups. Try again with 5 objects (3+2 or 4+1).",
+      "capture_field": "Did they reason or guess? If they reasoned — what was the reason?"
+    },
+    {
+      "slug": "prek-missing_nu-the-penny-vanished",
+      "strand": "missing_number_stories",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "The penny vanished",
+      "prompt": "Show 3 pennies. Count them with your child: 3. Cover with cloth. While they watch, reach under, palm one (don't reveal it). Lift cloth: **\"How many?\"** They count: 2. **\"What happened?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "3 pennies",
+        "a cloth"
+      ],
+      "tags": [
+        "PreK",
+        "missing_number_stories"
+      ],
+      "explain_prompt": "**\"Where is the third penny? Can you guess?\"** This is a missing-quantity story in narrative form.",
+      "parent_extension": "",
+      "minutes": 3,
+      "template": null,
+      "parent_script": "Show 3 pennies. Count them with your child: 3. Cover with cloth. While they watch, reach under, palm one (don't reveal it). Lift cloth: **\"How many?\"** They count: 2. **\"What happened?\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- \"You took it\" (with confidence) → tracking the action.\n- A bewildered shrug → fine. Reveal the penny in your hand and laugh.\n- Older or quicker kids may want to play the trick on you next.",
+      "capture_field": "Did they figure out you palmed it? What was their guess?"
+    },
+    {
+      "slug": "prek-missing_nu-some-animals-went-home",
+      "strand": "missing_number_stories",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Some animals went home",
+      "prompt": "Line up 5 animals. **\"Five animals at the park.\"** Make a story: **\"Two went home for dinner.\"** Move 2 away. **\"How many are still at the park?\"** They count: 3.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "5 small animal toys"
+      ],
+      "tags": [
+        "PreK",
+        "missing_number_stories"
+      ],
+      "explain_prompt": "Repeat with different start numbers. Then reverse: **\"There are 3 at the park. Some went home. How many went home?\"** (Start with 5, end with 3, missing addend = 2.) This is harder — they may need to act it out.",
+      "parent_extension": "",
+      "minutes": 3,
+      "template": null,
+      "parent_script": "Line up 5 animals. **\"Five animals at the park.\"** Make a story: **\"Two went home for dinner.\"** Move 2 away. **\"How many are still at the park?\"** They count: 3.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Forward stories (start 5, take away 2, find 3) are accessible.\n- Backward stories (3 left, find how many went) are the seed of algebra and may be too hard. Acting it out is the bridge.",
+      "capture_field": "Did the backward story make sense? What did they say when stuck?"
+    },
+    {
+      "slug": "prek-equality_b-same-or-different",
+      "strand": "equality_balance",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Same or different?",
+      "prompt": "Make two small piles in front of your child: 3 pennies on the left, 3 pennies on the right. **\"Are these the same or different?\"** They say \"same.\" Now make 3 on the left and 4 on the right. **\"And now?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "6–8 small objects"
+      ],
+      "tags": [
+        "PreK",
+        "equality_balance"
+      ],
+      "explain_prompt": "**\"How do you know?\"** Counting both is one answer. Pairing them off (one on left next to one on right) is another. Either works.",
+      "parent_extension": "",
+      "minutes": 3,
+      "template": null,
+      "parent_script": "Make two small piles in front of your child: 3 pennies on the left, 3 pennies on the right. **\"Are these the same or different?\"** They say \"same.\" Now make 3 on the left and 4 on the right. **\"And now?\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Counting each pile separately → mature.\n- Pairing physically → also mature, possibly more intuitive at this age.\n- Just visual judgment → fine when piles are very different sizes; will fail when they're close.",
+      "capture_field": "How did they check? Did they count or pair?"
+    },
+    {
+      "slug": "prek-equality_b-make-them-match",
+      "strand": "equality_balance",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Make them match",
+      "prompt": "Put 4 objects in front of you. **\"I have four. Can you make a pile that's the same as mine?\"** Let them work. When done, ask: **\"Is yours the same as mine? How do you know?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "8–10 small objects"
+      ],
+      "tags": [
+        "PreK",
+        "equality_balance"
+      ],
+      "explain_prompt": "**\"Can you show me, without counting, that they're the same?\"** Pair them off. This is the foundation of equality-as-relation rather than equality-as-computed-result.",
+      "parent_extension": "",
+      "minutes": 3,
+      "template": null,
+      "parent_script": "Put 4 objects in front of you. **\"I have four. Can you make a pile that's the same as mine?\"** Let them work. When done, ask: **\"Is yours the same as mine? How do you know?\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Counting their pile and stopping at 4 → counting strategy.\n- Putting one of theirs next to each of yours → pairing strategy. Same answer, different concept.",
+      "capture_field": "Counting or pairing? Did they trust their answer?"
+    },
+    {
+      "slug": "prek-equality_b-fair-share",
+      "strand": "equality_balance",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Fair share",
+      "prompt": "Give your child 6 raisins and 2 plates. **\"Share them fairly between the two plates. Each plate gets the same.\"** Let them work.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "6 raisins",
+        "2 plates"
+      ],
+      "tags": [
+        "PreK",
+        "equality_balance"
+      ],
+      "explain_prompt": "When done, ask: **\"How do you know it's fair?\"** Counting each plate, or pairing the plates by lifting one raisin from each — both are valid.",
+      "parent_extension": "",
+      "minutes": 3,
+      "template": null,
+      "parent_script": "Give your child 6 raisins and 2 plates. **\"Share them fairly between the two plates. Each plate gets the same.\"** Let them work.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Alternating distribution — strong.\n- Counting after distributing to check — also strong.\n- Try 8 raisins next, then 5 (uneven). What do they do with the leftover?",
+      "capture_field": "How did they handle the leftover with 5 raisins?"
+    },
+    {
+      "slug": "prek-equality_b-the-scale-game",
+      "strand": "equality_balance",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "The scale game",
+      "prompt": "Show them the scale. Put a heavy object in one side (a small can) and a light object (a feather, a paper square) in the other. **\"Which side is heavier? How do you know?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "A coat hanger + 2 paper cups with string  OR a real kitchen scale"
+      ],
+      "tags": [
+        "PreK",
+        "equality_balance"
+      ],
+      "explain_prompt": "**\"Can you make the two sides the same?\"** They'll have to add more light objects until the scale balances — a physical equality.",
+      "parent_extension": "",
+      "minutes": 5,
+      "template": null,
+      "parent_script": "Show them the scale. Put a heavy object in one side (a small can) and a light object (a feather, a paper square) in the other. **\"Which side is heavier? How do you know?\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- They understand heavier = lower side / lighter = higher side.\n- They iterate: add objects, observe, add more. This is the foundation of \"balance both sides.\"\n- The leap from \"heavier\" to \"equal\" is the equality concept in physical form.",
+      "capture_field": "Did they figure out how to balance it? How many tries?"
+    },
+    {
+      "slug": "prek-patterns-red-blue-red-blue",
+      "strand": "patterns",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Red, blue, red, blue",
+      "prompt": "Build a pattern: **red, blue, red, blue, red, blue.** Point past the last one and ask: **\"What comes next?\"** Keep going as long as they're engaged. Then build a different pattern (blue-blue-red, blue-blue-red) and start over.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "8 blocks",
+        "buttons in two colors",
+        "or two types of cereal"
+      ],
+      "tags": [
+        "PreK",
+        "patterns"
+      ],
+      "explain_prompt": "**\"What did you notice?\"** or **\"What's the rule?\"** The leap from predicting the next piece to articulating the rule is a big developmental step.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Build a pattern: **red, blue, red, blue, red, blue.** Point past the last one and ask: **\"What comes next?\"** Keep going as long as they're engaged. Then build a different pattern (blue-blue-red, blue-blue-red) and start over.",
+      "magic_prompt_tag": "what_noticed",
+      "what_to_listen_for": "- Correct predictions, no articulation → very common at Pre-K. The pattern is felt, not yet spoken.\n- A wrong rule that's internally consistent (\"red-blue-red-blue-red\") → fascinating. Let them follow it.",
+      "capture_field": "Did they say the rule, or just predict? In what words?"
+    },
+    {
+      "slug": "prek-patterns-the-clap-stomp-pattern",
+      "strand": "patterns",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "The clap-stomp pattern",
+      "prompt": "Sit facing your child. **\"Watch and listen. Clap, stomp, clap, stomp, clap, stomp.\"** Do it slowly with sound. Then: **\"Your turn — clap, stomp, clap, stomp …\"** Let them continue. Then try a harder one: **\"Clap, clap, stomp, clap, clap, st",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "None"
+      ],
+      "tags": [
+        "PreK",
+        "patterns"
+      ],
+      "explain_prompt": "**\"Can you make up your own pattern?\"** This is the inversion — they invent, you follow. Most Pre-K kids love being the leader.",
+      "parent_extension": "",
+      "minutes": 3,
+      "template": null,
+      "parent_script": "Sit facing your child. **\"Watch and listen. Clap, stomp, clap, stomp, clap, stomp.\"** Do it slowly with sound. Then: **\"Your turn — clap, stomp, clap, stomp …\"** Let them continue. Then try a harder one: **\"Clap, clap, stomp, clap, clap, stomp.\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Audio/motor patterns are often easier than visual ones at this age.\n- Can they extend? Can they invent? Two different skills.\n- Invented patterns are sometimes irregular — that's information about their concept of \"rule.\"",
+      "capture_field": "Could they invent a pattern? What did it sound like?"
+    },
+    {
+      "slug": "prek-patterns-big-small-big-small",
+      "strand": "patterns",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Big-small-big-small",
+      "prompt": "Lay out: **big, small, big, small, big.** **\"What comes next?\"** Then try: **big, big, small, big, big, small.**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "Two sizes of any object — big",
+        "small blocks",
+        "big",
+        "small coins",
+        "plates",
+        "cups"
+      ],
+      "tags": [
+        "PreK",
+        "patterns"
+      ],
+      "explain_prompt": "**\"How is this pattern different from the red-blue one?\"** (If you've done it.) Or simply: **\"What's the rule here?\"** Size patterns require attending to a different attribute than color.",
+      "parent_extension": "",
+      "minutes": 3,
+      "template": null,
+      "parent_script": "Lay out: **big, small, big, small, big.** **\"What comes next?\"** Then try: **big, big, small, big, big, small.**",
+      "magic_prompt_tag": "what_noticed",
+      "what_to_listen_for": "- Some kids handle color easily but get tangled in size. Same skill, different attribute — info about *which attributes they're tracking*.",
+      "capture_field": "Was size harder than color? Why?"
+    },
+    {
+      "slug": "prek-patterns-up-down-up-down",
+      "strand": "patterns",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Up-down-up-down",
+      "prompt": "Hold the puppet. **\"Up, down, up, down, up …\"** Move the puppet each time you say it. **\"What comes next?\"** Then: **\"Up, up, down, up, up, down.\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "A hand puppet",
+        "a stuffed animal"
+      ],
+      "tags": [
+        "PreK",
+        "patterns"
+      ],
+      "explain_prompt": "**\"Can you do the pattern with me?\"** They mirror. Then they lead, you follow.",
+      "parent_extension": "",
+      "minutes": 3,
+      "template": null,
+      "parent_script": "Hold the puppet. **\"Up, down, up, down, up …\"** Move the puppet each time you say it. **\"What comes next?\"** Then: **\"Up, up, down, up, up, down.\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Spatial-language patterns are useful precursors to graphing and number-line work later.\n- Many kids can do this physically before they can describe it.",
+      "capture_field": "Did they lead well? What words did they use?"
+    },
+    {
+      "slug": "prek-patterns-three-color-pattern",
+      "strand": "patterns",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Three-color pattern",
+      "prompt": "Build: **red, blue, yellow, red, blue, yellow, red, blue …** **\"What comes next?\"** Three-element patterns are harder than two-element. Some Pre-K kids handle it, some don't yet.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "9 objects in three colors"
+      ],
+      "tags": [
+        "PreK",
+        "patterns"
+      ],
+      "explain_prompt": "**\"How did you know yellow comes after blue?\"** Some will articulate the cycle; some will just feel it.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Build: **red, blue, yellow, red, blue, yellow, red, blue …** **\"What comes next?\"** Three-element patterns are harder than two-element. Some Pre-K kids handle it, some don't yet.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- If they confidently predict, great.\n- If they break the pattern (red after yellow instead of red after the cycle), they're tracking by \"the color before\" rather than the whole cycle. That's a discovery moment.",
+      "capture_field": "Did they handle three colors, or stick to thinking in twos?"
+    },
+    {
+      "slug": "prek-patterns-the-growing-snake",
+      "strand": "patterns",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "The growing snake",
+      "prompt": "Build a row of 1 block. Next to it, a row of 2. Next to that, a row of 3. **\"Look at our snake — what do you notice?\"** Build a row of 4. **\"What comes next?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "10+ identical blocks",
+        "coins"
+      ],
+      "tags": [
+        "PreK",
+        "patterns"
+      ],
+      "explain_prompt": "**\"How is each row different from the one before it?\"** \"One more\" is the answer. Whether they articulate it or just continue building it.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Build a row of 1 block. Next to it, a row of 2. Next to that, a row of 3. **\"Look at our snake — what do you notice?\"** Build a row of 4. **\"What comes next?\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- They continue the pattern by adding one each time → strong intuitive grasp.\n- They build a random next row → no pattern grasp yet, totally normal for Pre-K.\n- \"One more!\" said aloud → developmental win.",
+      "capture_field": "Did they continue the +1 pattern? Could they say what was happening?"
+    },
+    {
+      "slug": "prek-patterns-pattern-in-the-kitchen",
+      "strand": "patterns",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Pattern in the kitchen",
+      "prompt": "Walk around the kitchen with your child. **\"Can we find a pattern somewhere?\"** Point to floor tiles, fabric patterns, the spice rack, anything that repeats. Each time you spot one, describe it: \"Big tile, small tile, big tile, small tile.\"",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "Your kitchen"
+      ],
+      "tags": [
+        "PreK",
+        "patterns"
+      ],
+      "explain_prompt": "**\"Can you find a pattern I haven't shown you?\"** They become the pattern-spotter.",
+      "parent_extension": "",
+      "minutes": 5,
+      "template": null,
+      "parent_script": "Walk around the kitchen with your child. **\"Can we find a pattern somewhere?\"** Point to floor tiles, fabric patterns, the spice rack, anything that repeats. Each time you spot one, describe it: \"Big tile, small tile, big tile, small tile.\"",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Real-world patterns are usually richer than constructed ones (3+ attributes at once).\n- Finding their own pattern is the goal — even if it's not technically a perfect repeat.",
+      "capture_field": "Where did they find one? What did they call it?"
+    },
+    {
+      "slug": "prek-patterns-make-your-own",
+      "strand": "patterns",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Make your own",
+      "prompt": "Hand your child a small collection of mixed objects. **\"Can you make a pattern? Any pattern you want.\"** When they do, ask: **\"What's your rule? Can you keep it going?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "Mixed small objects"
+      ],
+      "tags": [
+        "PreK",
+        "patterns"
+      ],
+      "explain_prompt": "Then: **\"Can you make a different pattern with the same things?\"** Inventing a pattern is harder than continuing one. Inventing two different ones is harder still.",
+      "parent_extension": "",
+      "minutes": 6,
+      "template": null,
+      "parent_script": "Hand your child a small collection of mixed objects. **\"Can you make a pattern? Any pattern you want.\"** When they do, ask: **\"What's your rule? Can you keep it going?\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Invented patterns are sometimes just \"arrangements\" without a rule. That's fine — gently prompt: \"What comes after the green block?\"\n- Two different patterns from the same objects → exceptional Pre-K abstraction.",
+      "capture_field": "What patterns did they invent? Were they truly repeating, or just arrangements?"
+    },
+    {
+      "slug": "prek-logic_clas-which-one-doesn-t-belong",
+      "strand": "logic_classification",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Which one doesn't belong?",
+      "prompt": "Lay out 4 objects. **\"Which one doesn't belong?\"** Whatever they pick, don't react. Ask: **\"Why?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "4 objects with multiple defensible \"doesn't belong\" answers"
+      ],
+      "tags": [
+        "PreK",
+        "logic_classification"
+      ],
+      "explain_prompt": "After their first answer: **\"Can you find a different one that doesn't belong, for a different reason?\"** Every object can be the odd one out for some reason.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Lay out 4 objects. **\"Which one doesn't belong?\"** Whatever they pick, don't react. Ask: **\"Why?\"**",
+      "magic_prompt_tag": "another_way",
+      "what_to_listen_for": "- They flip and pick a different one for a different reason → abstract reasoning happening in real time.\n- They invent an unusual category (\"this one is the only one I don't like\") → fine. They're using categories.",
+      "capture_field": "What reasons did they give? Did the second one surprise you?"
+    },
+    {
+      "slug": "prek-logic_clas-sort-by-color",
+      "strand": "logic_classification",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Sort by color",
+      "prompt": "Mix the objects in a pile. **\"Can you put all the same colors together?\"** Let them sort.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "10–12 objects in 2–3 colors"
+      ],
+      "tags": [
+        "PreK",
+        "logic_classification"
+      ],
+      "explain_prompt": "When done: **\"How did you decide which go together?\"** \"By color\" is the answer they may or may not articulate.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Mix the objects in a pile. **\"Can you put all the same colors together?\"** Let them sort.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Sorting silently — they understand attribute, may not have the word.\n- Sorting and naming colors — strong.\n- Mistakes (a blue-green item into the blue pile) → fine. Categories are fuzzy in the real world.",
+      "capture_field": "Did they articulate \"color\" as the rule? Any boundary cases?"
+    },
+    {
+      "slug": "prek-logic_clas-sort-by-size",
+      "strand": "logic_classification",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Sort by size",
+      "prompt": "Lay out a mix of sizes. **\"Can you sort these?\"** Don't tell them by what — see what they do.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "Same kind of object in 2–3 sizes"
+      ],
+      "tags": [
+        "PreK",
+        "logic_classification"
+      ],
+      "explain_prompt": "After they sort by size: **\"Could you sort them another way?\"** Most Pre-K kids will look stuck. If they came up with color first, prompt size. The discovery that *one set has multiple sortings* is the deep learning here.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Lay out a mix of sizes. **\"Can you sort these?\"** Don't tell them by what — see what they do.",
+      "magic_prompt_tag": "another_way",
+      "what_to_listen_for": "- Choosing size on their own (rather than color) → less common, valuable.\n- Realizing they could sort the same set two different ways → developmental win.",
+      "capture_field": "Did they discover size as a sorting rule? Were they stuck thinking of color?"
+    },
+    {
+      "slug": "prek-logic_clas-two-ways-to-sort",
+      "strand": "logic_classification",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Two ways to sort",
+      "prompt": "Lay them out mixed. **\"Sort them however you want.\"** Let them sort (probably by color or size). Then say: **\"That was great! Can you sort them a different way?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "8 objects: 4 big blocks  + 4 small blocks"
+      ],
+      "tags": [
+        "PreK",
+        "logic_classification"
+      ],
+      "explain_prompt": "**\"How is this way different from the first way?\"** This is the core insight: the same objects can be organized two different ways depending on which attribute you attend to.",
+      "parent_extension": "",
+      "minutes": 5,
+      "template": null,
+      "parent_script": "Lay them out mixed. **\"Sort them however you want.\"** Let them sort (probably by color or size). Then say: **\"That was great! Can you sort them a different way?\"**",
+      "magic_prompt_tag": "another_way",
+      "what_to_listen_for": "- Sorting one way then the other → big abstract leap.\n- Stuck on one way → fine. Suggest \"what about by how big they are?\"",
+      "capture_field": "Did they find both ways? What words did they use for each?"
+    },
+    {
+      "slug": "prek-logic_clas-the-is-not-game",
+      "strand": "logic_classification",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "The \"is not\" game",
+      "prompt": "Lay out 5 things. **\"I'm thinking of one of these. It's not red. It's not made of metal. It's not soft.\"** Each clue narrows the field. **\"Which one am I thinking of?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "5 different small objects in plain view"
+      ],
+      "tags": [
+        "PreK",
+        "logic_classification"
+      ],
+      "explain_prompt": "**\"Why did 'not red' help you?\"** Negative clues are harder than positive ones; reasoning from absence is more abstract than from presence.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Lay out 5 things. **\"I'm thinking of one of these. It's not red. It's not made of metal. It's not soft.\"** Each clue narrows the field. **\"Which one am I thinking of?\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- They eliminate as you give clues → strong logical thinking.\n- They get confused — fine, give positive clues mixed in (\"it's round\").\n- Older or quicker kids will want to give you \"is not\" clues. Let them.",
+      "capture_field": "Did they eliminate as clues came? Any moment of \"ohhh!\"?"
+    },
+    {
+      "slug": "prek-logic_clas-animal-homes",
+      "strand": "logic_classification",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Animal homes",
+      "prompt": "Lay out the animal pictures and the \"home\" labels. **\"Where does each animal live?\"** Sort them together: lion → jungle, fish → water, etc.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "Pictures",
+        "toys: lion",
+        "fish",
+        "bird",
+        "frog",
+        "dog. And a paper/place for \"jungle",
+        "\" \"water",
+        "\" \"sky",
+        "\" \"pond",
+        "\" \"house\""
+      ],
+      "tags": [
+        "PreK",
+        "logic_classification"
+      ],
+      "explain_prompt": "**\"Why do you think the fish lives in the water?\"** Categorical knowledge by function/habitat — a different kind of sorting than by visible attributes.",
+      "parent_extension": "",
+      "minutes": 5,
+      "template": null,
+      "parent_script": "Lay out the animal pictures and the \"home\" labels. **\"Where does each animal live?\"** Sort them together: lion → jungle, fish → water, etc.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- They sort confidently → solid background knowledge.\n- \"Frog → pond or water?\" → ambiguity is fine. Discuss: frogs live both places.\n- \"What if a fish came out of water?\" → wonderful conversation territory.",
+      "capture_field": "Any ambiguous sortings? Any surprising knowledge?"
+    },
+    {
+      "slug": "prek-logic_clas-what-s-missing",
+      "strand": "logic_classification",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "What's missing?",
+      "prompt": "Put 4 objects in front of your child. **\"Look closely. Remember what's here.\"** Have them close their eyes. Remove one. **\"Open. What's missing?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "4–5 small toys",
+        "objects"
+      ],
+      "tags": [
+        "PreK",
+        "logic_classification"
+      ],
+      "explain_prompt": "**\"How did you remember?\"** Memory of specific items vs. memory of the *set* are different cognitive strategies.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Put 4 objects in front of your child. **\"Look closely. Remember what's here.\"** Have them close their eyes. Remove one. **\"Open. What's missing?\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Quick recall of the missing one → strong attention.\n- They name what's still there and figure out by elimination → also strong.\n- A wrong guess → no big deal. Show them and try again.",
+      "capture_field": "Did they recall directly, or eliminate? Their words?"
+    },
+    {
+      "slug": "prek-logic_clas-find-the-hidden-rule",
+      "strand": "logic_classification",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Find the hidden rule",
+      "prompt": "You sort: put all the round things on the left, all the not-round on the right. **\"I'm using a rule to sort these. Can you figure out my rule?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "8 objects with two attributes"
+      ],
+      "tags": [
+        "PreK",
+        "logic_classification"
+      ],
+      "explain_prompt": "If they get it: **\"Now you make a rule and I'll guess.\"** Inventing a rule is harder than discovering one.",
+      "parent_extension": "",
+      "minutes": 5,
+      "template": null,
+      "parent_script": "You sort: put all the round things on the left, all the not-round on the right. **\"I'm using a rule to sort these. Can you figure out my rule?\"**",
+      "magic_prompt_tag": "what_noticed",
+      "what_to_listen_for": "- They notice the attribute → great.\n- They notice but use the wrong word (\"the puffy ones\") → fine, you understand each other.\n- They invent a different rule when it's their turn → exceptional.",
+      "capture_field": "Did they articulate your rule? What rule did they invent?"
+    },
+    {
+      "slug": "prek-geometry_s-same-shape-different-size",
+      "strand": "geometry_spatial",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Same shape, different size",
+      "prompt": "Mix them up. **\"Can you put all the round ones together, and all the not-round ones together?\"** When done, ask: **\"Are all the round ones the same?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "6 round objects of different sizes",
+        "6 square/rectangular ones"
+      ],
+      "tags": [
+        "PreK",
+        "geometry_spatial"
+      ],
+      "explain_prompt": "**\"They're different sizes — but they're all round. What makes them all round?\"** Identifying the *shape* property regardless of size is a big abstraction.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Mix them up. **\"Can you put all the round ones together, and all the not-round ones together?\"** When done, ask: **\"Are all the round ones the same?\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- They group by shape easily → shape recognition solid.\n- Confusion when sizes vary widely → totally normal. Reassure: \"yes, this big one and this little one are both circles.\"",
+      "capture_field": "What word did they use for \"round\"? Did size confuse them?"
+    },
+    {
+      "slug": "prek-geometry_s-the-mirror-game",
+      "strand": "geometry_spatial",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "The mirror game",
+      "prompt": "Sit facing your child. **\"Pretend we're mirrors. When I move, you move the same way.\"** Lift your left arm — they lift their right (it mirrors yours). Touch your nose — they do. Move slowly.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "None — just bodies"
+      ],
+      "tags": [
+        "PreK",
+        "geometry_spatial"
+      ],
+      "explain_prompt": "Switch: they lead. **\"Now you be the leader and I'll mirror.\"** Symmetry through embodiment.",
+      "parent_extension": "",
+      "minutes": 5,
+      "template": null,
+      "parent_script": "Sit facing your child. **\"Pretend we're mirrors. When I move, you move the same way.\"** Lift your left arm — they lift their right (it mirrors yours). Touch your nose — they do. Move slowly.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- They naturally mirror (using opposite side) → spatial intuition.\n- They copy literally (same side) → also fine, just different framing. Clarify if you want: \"no, I'm the mirror — my right is your left.\"",
+      "capture_field": "Did they understand mirror vs. copy? What did they say if confused?"
+    },
+    {
+      "slug": "prek-geometry_s-above-below-beside",
+      "strand": "geometry_spatial",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Above, below, beside",
+      "prompt": "Put the toy *on top of* the cup. **\"Where is the toy?\"** They say \"on top\" or \"above.\" Move it *under*. Move it *beside*. **\"And now?\"** Then: **\"Put the toy under the chair. Beside the door. On top of your foot.\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "A small toy",
+        "a cup"
+      ],
+      "tags": [
+        "PreK",
+        "geometry_spatial"
+      ],
+      "explain_prompt": "**\"Can you tell me where something is in this room — without pointing?\"** Spatial language without gesture is harder.",
+      "parent_extension": "",
+      "minutes": 3,
+      "template": null,
+      "parent_script": "Put the toy *on top of* the cup. **\"Where is the toy?\"** They say \"on top\" or \"above.\" Move it *under*. Move it *beside*. **\"And now?\"** Then: **\"Put the toy under the chair. Beside the door. On top of your foot.\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Vocabulary range: on / under / beside / behind / in front / between.\n- \"There\" + pointing → very common at Pre-K. Push gently for words.",
+      "capture_field": "What spatial words did they have? Which were missing?"
+    },
+    {
+      "slug": "prek-geometry_s-folded-paper-hearts",
+      "strand": "geometry_spatial",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Folded paper hearts",
+      "prompt": "Fold a paper in half. Draw half a heart shape against the fold. **\"What do you think will happen when I cut it?\"** Cut and unfold — full heart. Try again with half a butterfly, half a star.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "Paper",
+        "scissors",
+        "crayon"
+      ],
+      "tags": [
+        "PreK",
+        "geometry_spatial"
+      ],
+      "explain_prompt": "**\"What if we drew a circle on the fold? What would come out?\"** Predicting before cutting is the geometric reasoning.",
+      "parent_extension": "",
+      "minutes": 6,
+      "template": null,
+      "parent_script": "Fold a paper in half. Draw half a heart shape against the fold. **\"What do you think will happen when I cut it?\"** Cut and unfold — full heart. Try again with half a butterfly, half a star.",
+      "magic_prompt_tag": "what_if",
+      "what_to_listen_for": "- \"It'll be a whole thing!\" → they got the symmetry idea.\n- Surprise at the result → also fine, the surprise is the learning.\n- They want to try cutting themselves → great. Let them.",
+      "capture_field": "Did they predict correctly? What did they say about the symmetry?"
+    },
+    {
+      "slug": "prek-geometry_s-build-what-i-built",
+      "strand": "geometry_spatial",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Build what I built",
+      "prompt": "Build a small structure with 4 blocks (e.g., 3 in a row on the bottom, one on top of the middle). Hide it briefly behind something so they see it for 3 seconds, then hide. **\"Can you build the same thing?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "6+ identical blocks"
+      ],
+      "tags": [
+        "PreK",
+        "geometry_spatial"
+      ],
+      "explain_prompt": "When done, compare. **\"Is yours the same as mine? What's different?\"** Visual memory + spatial reconstruction.",
+      "parent_extension": "",
+      "minutes": 5,
+      "template": null,
+      "parent_script": "Build a small structure with 4 blocks (e.g., 3 in a row on the bottom, one on top of the middle). Hide it briefly behind something so they see it for 3 seconds, then hide. **\"Can you build the same thing?\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Number of blocks right → counting and spatial memory working together.\n- Wrong arrangement → discover differences together.\n- The compare step is the key learning, not the build itself.",
+      "capture_field": "Did they reconstruct accurately? What did they spot when comparing?"
+    },
+    {
+      "slug": "prek-geometry_s-match-the-shape",
+      "strand": "geometry_spatial",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Match the shape",
+      "prompt": "**\"Let's find five circles in our house.\"** Walk around together. Plates, doorknobs, faces of cans, buttons. Then: **\"Let's find five squares.\"** Then triangles, then rectangles.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "Your house"
+      ],
+      "tags": [
+        "PreK",
+        "geometry_spatial"
+      ],
+      "explain_prompt": "**\"What's the difference between a square and a rectangle?\"** This question is hard — squares are rectangles, but Pre-K kids usually see them as different. Their answer is interesting either way.",
+      "parent_extension": "",
+      "minutes": 5,
+      "template": null,
+      "parent_script": "**\"Let's find five circles in our house.\"** Walk around together. Plates, doorknobs, faces of cans, buttons. Then: **\"Let's find five squares.\"** Then triangles, then rectangles.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Vocabulary: circle, square, triangle, rectangle.\n- Finding shapes in unexpected places → strong shape recognition.\n- The square/rectangle question may be too abstract — that's fine.",
+      "capture_field": "What was their best find? How did they distinguish square from rectangle?"
+    },
+    {
+      "slug": "prek-geometry_s-half-a-face",
+      "strand": "geometry_spatial",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Half a face",
+      "prompt": "Draw half a face on a piece of paper — vertical line down the middle, then half a mouth, half a nose, one eye, on the left side only. Show it to your child. **\"Can you draw the other half?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "Paper",
+        "crayons"
+      ],
+      "tags": [
+        "PreK",
+        "geometry_spatial"
+      ],
+      "explain_prompt": "**\"How did you know where to put the other eye?\"** Symmetry through observation, not formula.",
+      "parent_extension": "",
+      "minutes": 6,
+      "template": null,
+      "parent_script": "Draw half a face on a piece of paper — vertical line down the middle, then half a mouth, half a nose, one eye, on the left side only. Show it to your child. **\"Can you draw the other half?\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- They mirror placement correctly → strong spatial sense.\n- One feature is off — fine. The drawing is the conversation.\n- They draw two different eyes or add new features → creative, less symmetric. Acknowledge both options.",
+      "capture_field": "How accurate was the symmetry? Did they add their own features?"
+    },
+    {
+      "slug": "prek-geometry_s-blocks-behind-your-back",
+      "strand": "geometry_spatial",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Blocks behind your back",
+      "prompt": "Show all 4 objects. Have your child close eyes. Put one behind their back, into their hand. **\"Without looking, what is it?\"** They feel it. They guess.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "4 distinct objects"
+      ],
+      "tags": [
+        "PreK",
+        "geometry_spatial"
+      ],
+      "explain_prompt": "**\"How did you know it was the spoon?\"** Tactile geometry — recognizing shape without sight.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Show all 4 objects. Have your child close eyes. Put one behind their back, into their hand. **\"Without looking, what is it?\"** They feel it. They guess.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- \"Because it has a long part\" → describing shape by feel.\n- \"It's flat and round like a coin\" → multi-attribute reasoning.\n- A wrong guess → laugh, reveal, do it again.",
+      "capture_field": "What words did they use for the felt shape? Any surprises?"
+    },
+    {
+      "slug": "prek-measuremen-longer-shorter",
+      "strand": "measurement",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Longer, shorter",
+      "prompt": "Pick two: a pencil and a spoon. Lay them side by side. **\"Which is longer?\"** They point. Try other pairs.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "Several objects of varying lengths"
+      ],
+      "tags": [
+        "PreK",
+        "measurement"
+      ],
+      "explain_prompt": "**\"How do you know it's longer? Can you show me?\"** Aligning ends to compare is the foundational measurement act.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Pick two: a pencil and a spoon. Lay them side by side. **\"Which is longer?\"** They point. Try other pairs.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Aligning ends without prompting → mature comparison.\n- Just looking → fine when difference is big, breaks down when close.\n- \"Same length\" → strong, often the hardest call to make.",
+      "capture_field": "How did they compare? Did they align ends?"
+    },
+    {
+      "slug": "prek-measuremen-taller-than-the-cat",
+      "strand": "measurement",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Taller than the cat?",
+      "prompt": "Put a stuffed bear on the floor. **\"Is the bear taller than the table? Than the door? Than your knee?\"** Compare against each thing.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "A reference object",
+        "and the room"
+      ],
+      "tags": [
+        "PreK",
+        "measurement"
+      ],
+      "explain_prompt": "**\"How can we check?\"** They might suggest standing the bear next to the thing. That's the measurement principle in action.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Put a stuffed bear on the floor. **\"Is the bear taller than the table? Than the door? Than your knee?\"** Compare against each thing.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- \"We can put it next to\" → measurement strategy.\n- Just answering by sight → fine when difference is big.\n- \"Same!\" for close calls → reasoning about equality of measure.",
+      "capture_field": "Did they propose how to check? What was their strategy?"
+    },
+    {
+      "slug": "prek-measuremen-heavy-or-light",
+      "strand": "measurement",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Heavy or light?",
+      "prompt": "Lay them out. **\"Pick up each one. Which is heaviest? Which is lightest?\"** Let them sort by weight, lightest to heaviest.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "4 objects of clearly different weights"
+      ],
+      "tags": [
+        "PreK",
+        "measurement"
+      ],
+      "explain_prompt": "**\"How do you know the can is heavier than the block?\"** Direct feel. Sometimes \"I just know,\" sometimes \"my hand goes down more.\"",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Lay them out. **\"Pick up each one. Which is heaviest? Which is lightest?\"** Let them sort by weight, lightest to heaviest.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Confident ordering → solid weight intuition.\n- Confusion between big/small and heavy/light → the misconception to gently surface. A small can vs. a big balloon: which is heavier?",
+      "capture_field": "Did size confuse them about weight?"
+    },
+    {
+      "slug": "prek-measuremen-how-many-cups-in-this-bowl",
+      "strand": "measurement",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "How many cups in this bowl?",
+      "prompt": "**\"How many of these cups do you think will fit in this bowl?\"** Make a guess together. Then fill. Count: \"one, two, three …\"",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "A small bowl",
+        "a measuring cup",
+        "any consistent-size cup",
+        "dry cereal",
+        "water"
+      ],
+      "tags": [
+        "PreK",
+        "measurement"
+      ],
+      "explain_prompt": "**\"Was your guess right? Was it more or less?\"** Estimation followed by measurement — the foundational pattern of practical math.",
+      "parent_extension": "",
+      "minutes": 5,
+      "template": null,
+      "parent_script": "**\"How many of these cups do you think will fit in this bowl?\"** Make a guess together. Then fill. Count: \"one, two, three …\"",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- The guess matters less than the willingness to make one.\n- Counting accurately while pouring is harder than you'd think.\n- \"Now let's try the big bowl\" → estimation gets better with repetition.",
+      "capture_field": "What was their guess? How close were they?"
+    },
+    {
+      "slug": "prek-measuremen-cold-or-warm",
+      "strand": "measurement",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Cold or warm?",
+      "prompt": "Line up the 4 cups. **\"Touch each one. Which is coldest? Which is hottest?\"** Order them by temperature.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "Four cups of water: cold",
+        "cool",
+        "warm",
+        "hot"
+      ],
+      "tags": [
+        "PreK",
+        "measurement"
+      ],
+      "explain_prompt": "**\"How would you describe this one to someone who couldn't feel it?\"** Vocabulary for temperature: cold, cool, warm, hot. Plus \"in between\" feels good for the middle cups.",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Line up the 4 cups. **\"Touch each one. Which is coldest? Which is hottest?\"** Order them by temperature.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Ordering correctly → temperature sense intact.\n- Vocabulary range — how many words do they have?\n- \"In between\" → comparing relatively, a real conceptual win.",
+      "capture_field": "What words did they use? Any \"in between\" reasoning?"
+    },
+    {
+      "slug": "prek-measuremen-how-long-is-a-song",
+      "strand": "measurement",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "How long is a song?",
+      "prompt": "Sing \"Twinkle Twinkle\" together. **\"Was that short or long?\"** Then sing \"Wheels on the Bus\" with all the verses. **\"Which song was longer?\"**",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "Two songs of different length",
+        "a timer",
+        "clock you check"
+      ],
+      "tags": [
+        "PreK",
+        "measurement"
+      ],
+      "explain_prompt": "**\"How could we measure how long a song is?\"** \"Counting\" comes up — counting verses, counting seconds, counting our steps while singing. Each is a valid unit.",
+      "parent_extension": "",
+      "minutes": 5,
+      "template": null,
+      "parent_script": "Sing \"Twinkle Twinkle\" together. **\"Was that short or long?\"** Then sing \"Wheels on the Bus\" with all the verses. **\"Which song was longer?\"**",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Time is hard at this age. \"Longer\" / \"shorter\" with felt experience is the goal.\n- Inventing units (steps, claps) → developmental win.",
+      "capture_field": "Did they propose a unit? Which one?"
+    },
+    {
+      "slug": "prek-combinator-where-could-they-sit",
+      "strand": "combinatorics_counting",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Where could they sit?",
+      "prompt": "Put 2 plates out. **\"Two seats at the table. Here's Bear and Bunny. Where can each sit? Can you find all the ways?\"** Let them place.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "2 small stuffed animals",
+        "2 plates"
+      ],
+      "tags": [
+        "PreK",
+        "combinatorics_counting"
+      ],
+      "explain_prompt": "Once they find both arrangements: **\"What if there were three friends — Bear, Bunny, Lion? How many ways then?\"** Don't expect them to solve it. The leap of asking \"what if\" is the goal.",
+      "parent_extension": "",
+      "minutes": 6,
+      "template": null,
+      "parent_script": "Put 2 plates out. **\"Two seats at the table. Here's Bear and Bunny. Where can each sit? Can you find all the ways?\"** Let them place.",
+      "magic_prompt_tag": "what_if",
+      "what_to_listen_for": "- Treating Bear-left/Bunny-right and Bear-right/Bunny-left as different ways → conservation of position.\n- Trying 3 animals and intuiting more options → exceptional.",
+      "capture_field": "Two ways or one? Did they try the 3-animal extension?"
+    },
+    {
+      "slug": "prek-combinator-two-hats-one-face",
+      "strand": "combinatorics_counting",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Two hats, one face",
+      "prompt": "Show two hats — say a red one and a blue one. **\"You can wear one hat at a time. How many different ways can you wear a hat?\"** Two ways (red, then blue).",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "Two hats"
+      ],
+      "tags": [
+        "PreK",
+        "combinatorics_counting"
+      ],
+      "explain_prompt": "**\"What if you had three hats? How many ways?\"** Three. **\"What if you had a hat AND a scarf? Two hats, two scarves — how many outfits?\"** Now it's 2 × 2 = 4 ways. Don't expect them to multiply — let them try every combination physically.",
+      "parent_extension": "",
+      "minutes": 3,
+      "template": null,
+      "parent_script": "Show two hats — say a red one and a blue one. **\"You can wear one hat at a time. How many different ways can you wear a hat?\"** Two ways (red, then blue).",
+      "magic_prompt_tag": "what_if",
+      "what_to_listen_for": "- Listing all 4 outfits physically → strong combinatorial sense.\n- Listing only 2 or 3 → developmentally typical. Help them spot what they missed.",
+      "capture_field": "Did they find all 4 outfits? Which did they miss?"
+    },
+    {
+      "slug": "prek-combinator-sock-matching",
+      "strand": "combinatorics_counting",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Sock matching",
+      "prompt": "Dump 6 mixed socks in front of your child. **\"Can you find the pairs?\"** They sort.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "6 socks"
+      ],
+      "tags": [
+        "PreK",
+        "combinatorics_counting"
+      ],
+      "explain_prompt": "**\"How did you know these two match?\"** Color, pattern, size — multiple attributes have to all line up for a \"match.\"",
+      "parent_extension": "",
+      "minutes": 4,
+      "template": null,
+      "parent_script": "Dump 6 mixed socks in front of your child. **\"Can you find the pairs?\"** They sort.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Matching by multi-attribute → real categorical reasoning.\n- A \"near miss\" (similar but not exact) → discuss: \"are these the same exactly? Or close but not exact?\"",
+      "capture_field": "What attributes did they use to match? Any close-but-not-exact pairs?"
+    },
+    {
+      "slug": "prek-combinator-three-friends-three-colors",
+      "strand": "combinatorics_counting",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Three friends, three colors",
+      "prompt": "**\"Each friend gets a bead. How many ways can we give them out?\"** Let them physically try arrangements.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "3 small toy figures",
+        "3 different-colored small objects"
+      ],
+      "tags": [
+        "PreK",
+        "combinatorics_counting"
+      ],
+      "explain_prompt": "The full answer is 6 ways, but Pre-K kids will find 2–4. **\"Are there more? Can you find a different way?\"** The goal isn't completeness — it's the search.",
+      "parent_extension": "",
+      "minutes": 6,
+      "template": null,
+      "parent_script": "**\"Each friend gets a bead. How many ways can we give them out?\"** Let them physically try arrangements.",
+      "magic_prompt_tag": "another_way",
+      "what_to_listen_for": "- Iterating to find new combinations → systematic thinking emerging.\n- Repeating an arrangement and not noticing → fine. Help them track: \"We already did red→Bear, blue→Bunny, yellow→Lion.\"",
+      "capture_field": "How many arrangements did they find? Did they get stuck?"
+    },
+    {
+      "slug": "prek-math_games-pick-up-sticks",
+      "strand": "math_games",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Pick-up sticks",
+      "prompt": "Lay out 5 sticks. **\"We take turns. On your turn, you take 1 or 2 sticks. Whoever takes the last stick wins.\"** Play. Let them try various strategies.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "5 sticks"
+      ],
+      "tags": [
+        "PreK",
+        "math_games"
+      ],
+      "explain_prompt": "After a few games: **\"Have you noticed anything that helps you win?\"** The winning strategy exists (take a multiple of 3) but Pre-K kids won't find it. Noticing *anything* — that some moves are better than others — is the goal.",
+      "parent_extension": "",
+      "minutes": 5,
+      "template": null,
+      "parent_script": "Lay out 5 sticks. **\"We take turns. On your turn, you take 1 or 2 sticks. Whoever takes the last stick wins.\"** Play. Let them try various strategies.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Trying different numbers of sticks → experimenting.\n- \"If I take one, I win\" → forward thinking, even one move ahead.\n- Wanting to play again → engagement.",
+      "capture_field": "Any strategy emerging? Any frustration?"
+    },
+    {
+      "slug": "prek-math_games-race-to-ten",
+      "strand": "math_games",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Race to ten",
+      "prompt": "Each player starts with no counters. Take turns rolling the die. Take that many counters. First to 10 wins.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "A die",
+        "10 small objects each"
+      ],
+      "tags": [
+        "PreK",
+        "math_games"
+      ],
+      "explain_prompt": "**\"How many more do you need to win?\"** Subtraction in disguise. 10 minus current count.",
+      "parent_extension": "",
+      "minutes": 5,
+      "template": null,
+      "parent_script": "Each player starts with no counters. Take turns rolling the die. Take that many counters. First to 10 wins.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Counting their pile after each roll → maintaining a running total.\n- \"I need three more!\" → mental subtraction in context.",
+      "capture_field": "Did they track the running total? Any mental arithmetic?"
+    },
+    {
+      "slug": "prek-math_games-memory-match",
+      "strand": "math_games",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Memory match",
+      "prompt": "Lay all 8 cards face down. Each turn, flip two cards. If they match (both show 3 dots), keep them. If not, flip back over. Take turns.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "8 index cards: pairs showing 1",
+        "2",
+        "3",
+        "4"
+      ],
+      "tags": [
+        "PreK",
+        "math_games"
+      ],
+      "explain_prompt": "When they flip a card: **\"How many dots? How do you know?\"** Subitizing in a game wrapper.",
+      "parent_extension": "",
+      "minutes": 6,
+      "template": null,
+      "parent_script": "Lay all 8 cards face down. Each turn, flip two cards. If they match (both show 3 dots), keep them. If not, flip back over. Take turns.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Subitizing 1–3 instantly, slower for 4.\n- Memory for card positions → general working memory, not specifically math.\n- Trying to remember \"the 3 card was here\" → strong pattern memory.",
+      "capture_field": "Subitizing speed? Memory for positions?"
+    },
+    {
+      "slug": "prek-math_games-who-has-more",
+      "strand": "math_games",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Who has more?",
+      "prompt": "Deal one card to each player, face up. **\"Whose number is bigger?\"** Bigger number wins. Play 10 hands.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "A regular playing card deck"
+      ],
+      "tags": [
+        "PreK",
+        "math_games"
+      ],
+      "explain_prompt": "**\"How much bigger is your 5 than my 2?\"** Difference / \"how many more\" reasoning.",
+      "parent_extension": "",
+      "minutes": 5,
+      "template": null,
+      "parent_script": "Deal one card to each player, face up. **\"Whose number is bigger?\"** Bigger number wins. Play 10 hands.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Quick comparison → solid number recognition.\n- \"How many more\" — counting up, or subtracting? Both work.\n- Ties → \"we're the same! Same number!\"",
+      "capture_field": "Comparison speed? Any \"how many more\" reasoning?"
+    },
+    {
+      "slug": "prek-math_games-beat-me-to-the-top",
+      "strand": "math_games",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "Beat me to the top",
+      "prompt": "Both start at \"Start.\" Take turns rolling the die, move that many squares. First to the top wins.",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "Draw a 10-square track on paper",
+        "2 small objects  as pawns",
+        "a die"
+      ],
+      "tags": [
+        "PreK",
+        "math_games"
+      ],
+      "explain_prompt": "**\"How many more squares do you need?\"** Each turn — distance to finish. A natural subtraction-in-context.",
+      "parent_extension": "",
+      "minutes": 5,
+      "template": null,
+      "parent_script": "Both start at \"Start.\" Take turns rolling the die, move that many squares. First to the top wins.",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Tracking \"where am I, where are you, who's ahead?\" — three-way comparison.\n- \"I need 4 more\" → mental subtraction.\n- The losing/winning emotion — math games can prompt early frustration. Practice graceful losing matters.",
+      "capture_field": "Distance-to-finish reasoning? Any emotional moments?"
+    },
+    {
+      "slug": "prek-math_games-the-disappearing-coin",
+      "strand": "math_games",
+      "level": 1,
+      "grade_band": "PK",
+      "kind": "parent_led",
+      "title": "The disappearing coin",
+      "prompt": "Put 4 coins on the table. **\"Can you split these into two equal piles?\"** Two and two — yes! Now 5 coins. **\"Can you split these into two equal piles?\"** No — one is left over. Try 6 (yes). Try 7 (no). Try 8 (yes).",
+      "answer": "",
+      "answer_type": "open",
+      "hints": [],
+      "strategies": [],
+      "materials": [
+        "6 coins",
+        "pebbles"
+      ],
+      "tags": [
+        "PreK",
+        "math_games"
+      ],
+      "explain_prompt": "**\"Why does it work with some numbers and not others?\"** They may not have the words \"even\" and \"odd\" yet — that's fine. The discovery that some quantities split fairly and some don't is the foundation.",
+      "parent_extension": "",
+      "minutes": 5,
+      "template": null,
+      "parent_script": "Put 4 coins on the table. **\"Can you split these into two equal piles?\"** Two and two — yes! Now 5 coins. **\"Can you split these into two equal piles?\"** No — one is left over. Try 6 (yes). Try 7 (no). Try 8 (yes).",
+      "magic_prompt_tag": "how_why",
+      "what_to_listen_for": "- Noticing the pattern (it works with 2, 4, 6, 8 but not 1, 3, 5, 7) → exceptional Pre-K reasoning.\n- \"There's always one left over!\" → the parity insight in their own words.\n- No pattern recognition → fine. Just play the game.",
+      "capture_field": "Did they notice the every-other pattern? Their words?"
     }
   ],
   "templates": [

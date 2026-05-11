@@ -142,6 +142,12 @@ class Problem(Base):
     parent_extension: Mapped[str] = mapped_column(Text, default="")
     template: Mapped[Optional[dict]] = mapped_column(JSON, nullable=True)
     minutes: Mapped[int] = mapped_column(Integer, default=3)
+    # Pre-K / parent-led fields. Empty for K-2 problems; populated for PreK.
+    parent_script: Mapped[str] = mapped_column(Text, default="")
+    magic_prompt_tag: Mapped[str] = mapped_column(String(32), default="")
+    # magic_prompt_tag: how_why | another_way | what_if | what_noticed
+    what_to_listen_for: Mapped[str] = mapped_column(Text, default="")
+    capture_field: Mapped[str] = mapped_column(Text, default="")
     created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
 
     strand: Mapped[Strand] = relationship(back_populates="problems")

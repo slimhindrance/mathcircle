@@ -73,6 +73,10 @@ def _ensure_problems(db: Session, data: dict, strand_ids: dict[str, int]) -> int
             row.parent_extension = prob.get("parent_extension", "")
             row.minutes = prob.get("minutes", 3)
             row.template = prob.get("template")
+            row.parent_script = prob.get("parent_script", "")
+            row.magic_prompt_tag = prob.get("magic_prompt_tag", "")
+            row.what_to_listen_for = prob.get("what_to_listen_for", "")
+            row.capture_field = prob.get("capture_field", "")
         else:
             row = Problem(
                 slug=prob["slug"],
@@ -92,6 +96,10 @@ def _ensure_problems(db: Session, data: dict, strand_ids: dict[str, int]) -> int
                 parent_extension=prob.get("parent_extension", ""),
                 minutes=prob.get("minutes", 3),
                 template=prob.get("template"),
+                parent_script=prob.get("parent_script", ""),
+                magic_prompt_tag=prob.get("magic_prompt_tag", ""),
+                what_to_listen_for=prob.get("what_to_listen_for", ""),
+                capture_field=prob.get("capture_field", ""),
             )
             db.add(row)
             added += 1
