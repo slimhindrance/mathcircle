@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+{% block title %}Admin — capture notes corpus{% endblock %}
+{% block body %}
+
+<section class="card">
+  <h1>Capture notes</h1>
+  <p class="muted">
+    Parent-typed strategy / "what did your kid say?" notes across all sessions.
+    Use for curriculum review: spot patterns, find which prompts elicit rich
+    responses, identify problems that are too hard or too easy.
+  </p>
+  <p>
+    <strong>{{ total }}</strong> non-empty notes total.
+  </p>
+
+  <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-top: 1rem;">
+    <form method="get" action="/admin/captures" style="display: flex; gap: .5rem; align-items: center;">
+      <label class="muted">Filter by grade:</label>
+      <select name="grade_band" onchange="this.form.submit()">
+        <option value="" {% if not filter_grade_band %}selected{% endif %}>All</option>
+        {% for band, n in by_grade %}
+          <option value="{{ band }}" {% if filter_grade_band == band %}selected{% endif %}>
+            {{ band }} ({{ n }})
+          </option>
+        {% endfor %}
+      </select>
+    </form>
+    <a class="btn ghost small" href="/admin/captures.csv{% if filter_grade_band %}?grade_band={{ filter_grade_band }}{% endif %}">
+      ⬇ Download CSV (anonymized)
+    </a>
+  </div>
+</section>
+
+{% if rows %}
+  <section class="card">
+    <p class="muted" style="font-size: .85rem;">
+      Showing {{ rows|length }} most recent. CSV export includes all matching rows
+      and replaces child names with child_id for privacy.
+    </p>
+    <table class="compare-table" style="width: 100%;">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Child</th>
+          <th>Problem</th>
+          <th>Strand</th>
+          <th>Grade</th>
+          <th>Rating</th>
+          <th>Note</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for attempt, problem, strand, child in rows %}
+          <tr>
+            <td style="font-size: .85rem; white-space: nowrap;">
+              {{ attempt.created_at.strftime('%b %d %Y') }}
+            </td>
+            <td style="font-size: .85rem;">{{ child.name }}</td>
+            <td>
+              <a href="/strand/{{ strand.key }}#problem-{{ problem.id }}">{{ problem.title }}</a>
+              {% if problem.kind == 'parent_led' %}
+                <span class="tag" style="font-size: .7rem;">👨‍👧</span>
+              {% endif %}
+            </td>
+            <td style="font-size: .85rem;">{{ strand.icon }} {{ strand.name }}</td>
+            <td><span class="tag">{{ problem.grade_band }}</span></td>
+            <td style="font-size: .85rem;">
+              {% if attempt.parent_rating == 'easy' %}🟢 easy
+              {% elif attempt.parent_rating == 'good_struggle' %}🟡 struggle
+              {% elif attempt.parent_rating == 'too_hard' %}🔴 too hard
+              {% else %}—{% endif %}
+            </td>
+            <td style="max-width: 400px;">{{ attempt.strategy_note }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </section>
+{% else %}
+  <section class="card">
+    <p class="muted">No capture notes yet for this filter.</p>
+  </section>
+{% endif %}
+
+<style>
+  .compare-table th, .compare-table td {
+    padding: .55rem .6rem;
+    text-align: left;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+  }
+  .compare-table th { background: var(--bg-soft); font-size: .9rem; }
+  .compare-table tr:last-child td { border-bottom: none; }
+</style>
+
+{% endblock %}

@@ -1,11 +1,13 @@
 """Auth + request-access + admin queue routes."""
 from __future__ import annotations
 
+import csv
+import io
 from datetime import datetime
 from typing import Optional
 
 from fastapi import APIRouter, Depends, Form, HTTPException, Request
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, RedirectResponse, StreamingResponse
 from sqlalchemy import desc, func, select
 from sqlalchemy.orm import Session
 
@@ -23,7 +25,7 @@ from ..auth import (
 )
 from ..config import FAMILY_CAP, KIDS_PER_FAMILY
 from ..database import get_db
-from ..models import AccessRequest, Child, Family
+from ..models import AccessRequest, Attempt, Child, Family, Problem, Strand
 
 router = APIRouter()
 
@@ -389,3 +391,97 @@ def admin_resend(
     db.commit()
     send_magic_link(fam, token, kind=kind)
     return RedirectResponse("/admin/requests", status_code=303)
+
+
+# ---------- captures corpus (admin) ----------
+def _captures_query(db: Session, grade_band: Optional[str] = None):
+    """Build the captures query: attempts joined to problem/strand/child, filtered."""
+    stmt = (
+        select(Attempt, Problem, Strand, Child)
+        .join(Problem, Attempt.problem_id == Problem.id)
+        .join(Strand, Problem.strand_id == Strand.id)
+        .join(Child, Attempt.child_id == Child.id)
+        .where(func.trim(Attempt.strategy_note) != "")
+        .order_by(desc(Attempt.created_at))
+    )
+    if grade_band:
+        stmt = stmt.where(Problem.grade_band == grade_band)
+    return stmt
+
+
+@router.get("/admin/captures", response_class=HTMLResponse)
+def admin_captures(
+    request: Request,
+    grade_band: Optional[str] = None,
+    db: Session = Depends(get_db),
+    _admin: Family = Depends(require_admin),
+):
+    """List capture notes for curriculum review. Filterable by grade band."""
+    rows = db.execute(_captures_query(db, grade_band).limit(500)).all()
+    total = db.execute(
+        select(func.count(Attempt.id)).where(func.trim(Attempt.strategy_note) != "")
+    ).scalar_one()
+    # Per-strand and per-grade rollups for at-a-glance pattern spotting
+    by_grade = db.execute(
+        select(Problem.grade_band, func.count(Attempt.id))
+        .join(Problem, Attempt.problem_id == Problem.id)
+        .where(func.trim(Attempt.strategy_note) != "")
+        .group_by(Problem.grade_band)
+        .order_by(desc(func.count(Attempt.id)))
+    ).all()
+    return _templates(request).TemplateResponse(
+        request,
+        "admin_captures.html",
+        {
+            "rows": rows,
+            "total": total,
+            "by_grade": by_grade,
+            "filter_grade_band": grade_band or "",
+        },
+    )
+
+
+@router.get("/admin/captures.csv")
+def admin_captures_csv(
+    grade_band: Optional[str] = None,
+    db: Session = Depends(get_db),
+    _admin: Family = Depends(require_admin),
+):
+    """CSV export of capture notes. Child names are replaced with child_id for
+    privacy when the corpus is shared or processed externally."""
+    rows = db.execute(_captures_query(db, grade_band)).all()
+
+    def _generate():
+        buf = io.StringIO()
+        w = csv.writer(buf)
+        w.writerow([
+            "date", "child_id", "problem_slug", "problem_title",
+            "strand", "grade_band", "level", "kind",
+            "magic_prompt_tag", "parent_rating", "strategy_note",
+        ])
+        yield buf.getvalue()
+        buf.seek(0); buf.truncate()
+        for attempt, problem, strand, child in rows:
+            w.writerow([
+                attempt.created_at.isoformat(),
+                child.id,
+                problem.slug,
+                problem.title,
+                strand.key,
+                problem.grade_band,
+                problem.level,
+                problem.kind,
+                problem.magic_prompt_tag,
+                attempt.parent_rating or "",
+                attempt.strategy_note,
+            ])
+            yield buf.getvalue()
+            buf.seek(0); buf.truncate()
+
+    stamp = datetime.utcnow().strftime("%Y%m%d")
+    band = f"-{grade_band}" if grade_band else ""
+    return StreamingResponse(
+        _generate(),
+        media_type="text/csv",
+        headers={"Content-Disposition": f"attachment; filename=captures{band}-{stamp}.csv"},
+    )

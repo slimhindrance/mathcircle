@@ -229,8 +229,15 @@
   </details>
   <details class="pulldown">
     <summary>Where is the data stored? Is it private?</summary>
-    <p>In the current single-household configuration, all data lives on one EC2 instance the family controls. SQLite snapshots are encrypted (AES-256) and backed up nightly to a private S3 bucket the family owns. No third-party analytics, no telemetry, no data sharing. The full export is a single button in the parent dashboard.</p>
+    <p>All session data lives on one EC2 instance Chris controls. SQLite snapshots are encrypted at rest and backed up nightly to a private S3 bucket. No third-party analytics, no telemetry, no data sharing. The full export is a single button in the parent dashboard — you can download everything your family has ever entered as JSON or CSV.</p>
     <p>For a multi-tenant deployment, the operator would need to define a privacy policy and either keep data per-tenant in isolated databases or apply row-level security in Postgres. The codebase is licensed permissively — schools can fork and self-host.</p>
+  </details>
+  <details class="pulldown">
+    <summary>How does Chris use the optional "what did your kid say?" notes?</summary>
+    <p>If you fill in the optional capture field after a Pre-K activity (or the strategy-notes field at any level), Chris may read those notes in aggregate to improve the curriculum — adjust which problems work for which ages, add missing prompts, drop ones that aren't landing, write new ones. This is the only "we use your data" use of your family's content.</p>
+    <p>Concretely, what Chris sees: the notes themselves, the problem they're about, the strand and rating. <strong>Not</strong> seen: your child's name (notes are reviewed under a child ID, never a name), your email, your location, anything else about your family.</p>
+    <p>This is not a third-party data sale; the notes never leave the EC2 instance, never get sent to ad networks, never get sold or shared. They're used the same way a teacher uses notes after a lesson — to make the next lesson better.</p>
+    <p>You can leave every capture field blank without breaking anything; sessions run identically whether you fill them in or not. If you ever want a note pulled from the corpus, email Chris and he'll remove it.</p>
   </details>
   <details class="pulldown">
     <summary>What does the optional AI digest do — and what about privacy?</summary>
