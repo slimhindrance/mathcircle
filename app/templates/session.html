@@ -25,6 +25,44 @@
     <span class="muted">~{{ p.minutes }} min</span>
   </div>
   <h3>{{ p.title }}</h3>
+
+  {# ---- Pre-K parent-led layout: kid never sees the screen ---- #}
+  {% if item.kind == 'parent_led' %}
+    {% if p.materials %}
+      <div class="materials"><strong>You'll need:</strong> {{ p.materials | join(', ') }}</div>
+    {% endif %}
+    <div class="explain" style="background:#fdf6e3; border:1px solid #e9c46a; padding:1rem; border-radius:8px; margin:1rem 0;">
+      <strong>👨‍👧 Parent script — read aloud, do this with your child:</strong>
+      <p style="margin:.5rem 0 0; line-height:1.6;">{{ p.parent_script }}</p>
+    </div>
+    {% if p.explain_prompt %}
+      <div class="explain" style="background:#e8f4ea; border:1px solid #74c69d; padding:1rem; border-radius:8px; margin:1rem 0;">
+        <strong>✨ Magic prompt — ask your child:</strong>
+        <p style="margin:.5rem 0 0; line-height:1.6;">{{ p.explain_prompt }}</p>
+      </div>
+    {% endif %}
+    {% if p.what_to_listen_for %}
+      <details style="margin:1rem 0;">
+        <summary><strong>👂 What to listen for</strong></summary>
+        <div style="margin-top:.5rem; line-height:1.6;">{{ p.what_to_listen_for | replace('\n', '<br>') | safe }}</div>
+      </details>
+    {% endif %}
+    {% if p.capture_field %}
+      <details style="margin:1rem 0;">
+        <summary>📝 Optional — share what your kid said (helps us improve)</summary>
+        <p class="muted" style="margin:.5rem 0 .3rem;">{{ p.capture_field }}</p>
+        <textarea class="strategy-input" placeholder="Voluntary. Your child's words, what they did with their fingers/eyes/objects — anything specific."></textarea>
+      </details>
+    {% endif %}
+    <div class="rating-row" aria-label="parent rating">
+      <span class="muted" style="align-self:center; margin-right:.4rem">How did it land?</span>
+      <button class="easy" data-value="easy" type="button">Easy / loved it</button>
+      <button class="good_struggle" data-value="good_struggle" type="button">Good struggle</button>
+      <button class="too_hard" data-value="too_hard" type="button">Lost interest</button>
+    </div>
+  {% else %}
+  {# ---- K–2 child-facing layout ---- #}
+
   {% if item.explain_only %}
     <p class="prompt">💬 Talk it out: <em>{{ p.explain_prompt or 'How did you figure that out? Can you show another way?' }}</em></p>
   {% else %}
@@ -82,6 +120,7 @@
     <button class="good_struggle" data-value="good_struggle" type="button">Good struggle</button>
     <button class="too_hard" data-value="too_hard" type="button">Too hard</button>
   </div>
+  {% endif %}
 </article>
 {% endfor %}
 

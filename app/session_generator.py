@@ -305,6 +305,10 @@ def build_session_plan(
     the parent says they DON'T have available. Composer filters candidates
     accordingly; cooldown is loosened silently if the filtered pool runs thin.
     """
+    # Pre-K kids get a simpler parent-led session shape, not the K-2 pipeline.
+    if (child.grade or "").upper() in ("PK", "PREK"):
+        return _build_prek_plan(db, child, seed=seed)
+
     rng = random.Random(seed)
     skills = _ensure_skills(db, child)
     focus = _today_focus(child)
@@ -431,6 +435,31 @@ def _plan_item(prob: Problem, kind: str, pos: int) -> dict:
         "title": prob.title,
         "minutes": prob.minutes,
     }
+
+
+def _build_prek_plan(db: Session, child: Child, *, seed: int | None = None) -> list[dict]:
+    """Pick 2 Pre-K parent-led problems from random strands. No skill model yet."""
+    rng = random.Random(seed)
+    avoid = _recent_attempted_problem_ids(db, child.id)
+    stmt = select(Problem).where(
+        Problem.grade_band == "PK",
+        Problem.kind == "parent_led",
+    )
+    if avoid:
+        stmt = stmt.where(Problem.id.notin_(avoid))
+    candidates = db.execute(stmt).scalars().all()
+    if not candidates:
+        # Fallback: ignore cooldown.
+        candidates = db.execute(
+            select(Problem).where(
+                Problem.grade_band == "PK",
+                Problem.kind == "parent_led",
+            )
+        ).scalars().all()
+    if not candidates:
+        return []
+    pick = rng.sample(candidates, k=min(2, len(candidates)))
+    return [_plan_item(p, "parent_led", i + 1) for i, p in enumerate(pick)]
 
 
 def _pick_problem_with_extension(

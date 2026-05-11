@@ -61,6 +61,7 @@ def _kind_label(kind: str) -> str:
         "explain": "Explain your thinking",
         "game": "Math game",
         "parent_extension": "Parent extension",
+        "parent_led": "Parent-led",
     }.get(kind, kind.replace("_", " ").title())
 
 
@@ -73,6 +74,7 @@ def _kind_emoji(kind: str) -> str:
         "explain": "💬",
         "game": "🎲",
         "parent_extension": "🏡",
+        "parent_led": "👨‍👧",
     }.get(kind, "•")
 
 
