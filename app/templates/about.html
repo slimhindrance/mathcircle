@@ -144,9 +144,13 @@
   <div class="pillar">
     <div class="icon">🔄</div>
     <div>
-      <h3>6. A living curriculum</h3>
-      <p>Math Circle Home is open source and auto-deployed from GitHub. Every commit to <code>main</code> updates the live system within seconds. Curriculum improvements show up the next morning. New problem types ship monthly. The seed bank grows with use — every parametric problem a child sees is persisted, so the bank gets richer over time.</p>
-      <p>Effective bank size <strong>after one year of daily use: ~2,300 problems</strong>. After three years, more than 6,000.</p>
+      <h3>6. A living curriculum that grows with the child</h3>
+      <p><strong>Per-strand adaptive levels.</strong> Each child has 10 strand skills tracked independently, each on a 7-level scale (Level 1 ≈ Pre-K, Level 7 ≈ mid-2nd-grade enrichment). A child can be at Level 4 in Patterns and Level 2 in Geometry at the same time — and that's the whole point. The system shows progress per strand on the parent dashboard.</p>
+      <p><strong>The parent rating is the dial.</strong> After every problem, the parent rates it <em>easy</em>, <em>good struggle</em>, or <em>too hard</em>. The system uses that — plus rolling accuracy across the last 5 attempts and consecutive-correct streaks — to move the strand level up or down before the next session. "Too hard" twice → ease down. "Easy" twice in a row → step up. The child never sees this; the parent sees the level change on the dashboard.</p>
+      <p><strong>Cooldown + parametric variants prevent staleness.</strong> A problem the child has seen in the last 4 sessions won't reappear. 22 parametric generators produce fresh variants on demand (new numbers, new objects, new contexts) and each generated problem is persisted — so the bank grows organically with use rather than draining.</p>
+      <p><strong>Pre-K-to-K graduation.</strong> Pre-K is parent-led activity, not levels — but once a Pre-K child has practiced across multiple strands without consistent "too hard" ratings, the dashboard surfaces a "Ready for Kindergarten?" prompt. One click promotes them and the 7-level adaptive engine takes over.</p>
+      <p><strong>Open-source, auto-deploy.</strong> Every push to <code>main</code> triggers a GitHub Action that pulls and restarts the live service within ~15 seconds. Curriculum changes ship as I write them, not on a release cadence.</p>
+      <p class="muted" style="font-size:.85rem; margin-top:1rem;">Bank-size projection (parametric growth × 365 sessions × typical generation rate) lands in the ~2,000–6,000 problem range over 1–3 years of daily use; the exact figure depends on which strands a child gravitates toward.</p>
     </div>
   </div>
 </section>

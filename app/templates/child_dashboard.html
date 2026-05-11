@@ -69,6 +69,17 @@
   </div>
 </section>
 
+{% if prek_ready_to_graduate %}
+<section class="card" style="background: #e8f4ea; border-left: 5px solid #2a9d8f;">
+  <h2 style="margin-top:0;">🌟 Ready for Kindergarten?</h2>
+  <p>{{ child.name }} has practiced across multiple strands without much "too hard" — they're looking ready to step up to the Kindergarten curriculum, where the difficulty starts adapting per strand (levels 1–7). You can switch any time, and switch back if it's too soon.</p>
+  <form method="post" action="/child/{{ child.id }}/promote-to-k" style="display:inline">
+    <button class="btn accent" type="submit">Move {{ child.name }} to Kindergarten</button>
+  </form>
+  <a class="btn ghost small" href="/child/{{ child.id }}/edit" style="margin-left:.4rem">Not yet</a>
+</section>
+{% endif %}
+
 {# AI digest opt-in flow + digest panel #}
 {% if child.ai_digests_enabled is none %}
 <section class="optin-banner" id="ai-optin">

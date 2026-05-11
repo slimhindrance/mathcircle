@@ -113,6 +113,23 @@ async def child_edit(
     return RedirectResponse(f"/child/{c.id}", status_code=303)
 
 
+def _prek_ready_to_graduate(child: Child, skills: dict, total_attempts: int, recent: list) -> bool:
+    """Pre-K kid is ready for K when they've practiced enough across strands without
+    consistent 'too hard' ratings. Heuristic on purpose — parent makes the call.
+    """
+    if (child.grade or "").upper() not in ("PK", "PREK"):
+        return False
+    if total_attempts < 8:
+        return False
+    strands_practiced = sum(1 for s in skills.values() if s.last_practiced is not None)
+    if strands_practiced < 3:
+        return False
+    last_five_too_hard = sum(1 for a in recent[:5] if a.parent_rating == "too_hard")
+    if last_five_too_hard >= 2:
+        return False
+    return True
+
+
 @router.get("/child/{child_id}", response_class=HTMLResponse)
 def child_dashboard(child_id: int, request: Request, db: Session = Depends(get_db)):
     c = db.get(Child, child_id)
@@ -175,7 +192,21 @@ def child_dashboard(child_id: int, request: Request, db: Session = Depends(get_d
             "total_attempts": total_attempts,
             "total_correct": total_correct,
             "latest_digest": latest_digest,
+            "prek_ready_to_graduate": _prek_ready_to_graduate(c, skills, total_attempts, list(attempts)),
         })
+
+
+@router.post("/child/{child_id}/promote-to-k")
+def child_promote_to_k(child_id: int, db: Session = Depends(get_db)):
+    """Move a Pre-K child up to Kindergarten. Lightweight — the existing skill
+    rows carry forward, and the K-2 adaptive engine takes over from level 1."""
+    c = db.get(Child, child_id)
+    if c is None:
+        raise HTTPException(404)
+    if (c.grade or "").upper() in ("PK", "PREK"):
+        c.grade = "K"
+        db.commit()
+    return RedirectResponse(f"/child/{child_id}", status_code=303)
 
 
 @router.post("/child/{child_id}/start_session")
