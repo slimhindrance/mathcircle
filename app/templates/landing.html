@@ -62,10 +62,9 @@
   <p class="tagline">A small, deliberate math-circle app for K–2 — built by a parent for a small group of families in our neighborhood.</p>
 
   {% if is_full %}
-    <div class="counter"><span class="full">{{ active_count }} of {{ cap }} families</span> — currently full · {{ waitlist_count }} on waitlist</div>
+    <div class="counter"><span class="full">Currently full</span>{% if waitlist_count %} · {{ waitlist_count }} on waitlist{% endif %}</div>
     <br><a class="cta" href="/request-access">Join the waitlist →</a>
   {% else %}
-    <div class="counter">{{ active_count }} of {{ cap }} families · {{ cap - active_count }} slots open</div>
     <br><a class="cta" href="/request-access">Request access for my kids →</a>
   {% endif %}
   <div style="margin-top: .8rem; font-size: .9rem;">
