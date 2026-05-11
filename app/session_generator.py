@@ -112,7 +112,7 @@ def _ensure_skills(db: Session, child: Child) -> dict[str, Skill]:
 
 def _starting_level(grade: str) -> int:
     g = (grade or "").upper()
-    if g in ("PK", "K"):
+    if g in ("PK", "PREK", "K"):
         return 1
     if g == "1":
         return 2
@@ -189,6 +189,8 @@ def _pick_problem(
 
     # Progressive relaxation: respect avoid + materials first, then drop avoid
     # (allow recent-session repeats) before dropping the materials filter.
+    # NB: Pre-K parent-led problems are excluded at every stage — they're a
+    # different UX intended for PK kids only.
     for ignore_avoid in [False, True]:
         for relax_kind in [False, True]:
             for level_radius in [0, 1, 2]:
@@ -196,6 +198,8 @@ def _pick_problem(
                     Problem.strand_id.in_(strand_filter),
                     Problem.level >= max(1, target_level - level_radius),
                     Problem.level <= min(7, target_level + level_radius),
+                    Problem.kind != "parent_led",
+                    Problem.grade_band != "PK",
                 )
                 if not relax_kind:
                     stmt = stmt.where(Problem.kind == kind)
@@ -205,8 +209,14 @@ def _pick_problem(
                 rows = [r for r in rows if _materials_ok(r, excluded_materials)]
                 if rows:
                     return rng.choice(rows)
-    # Last resort: any strand, any kind, materials-permitting
-    rows = db.execute(select(Problem).where(Problem.level == target_level)).scalars().all()
+    # Last resort: any strand, any kind, materials-permitting (still no PK).
+    rows = db.execute(
+        select(Problem).where(
+            Problem.level == target_level,
+            Problem.kind != "parent_led",
+            Problem.grade_band != "PK",
+        )
+    ).scalars().all()
     rows = [r for r in rows if _materials_ok(r, excluded_materials)]
     rows = [r for r in rows if r.id not in avoid] or rows
     return rng.choice(rows) if rows else None
